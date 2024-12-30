@@ -7,6 +7,7 @@
 //Tنماد طلسم
 //Gنماد طلا است
 //فعلا کاراکتر U به عنوان ادمک در نظر گرفته شده
+//  سلاح اعداد ۱تا۹
 #include<stdio.h>
 #include<ncurses.h>
 #include<stdlib.h>
@@ -16,6 +17,11 @@
 #include<time.h>
 // #include<locale.h>
 char map[49][183];
+//برای شمارش طلا ها 
+int GOLD=0;
+int HEALTH=100;
+//  سلاح اعداد ۱تا۹
+char SELAH[9];
 struct ADAMAK{
     int x;
     int y;
@@ -372,9 +378,11 @@ void generatemap(int tabagheh){
     int yo5=randomInRange(room[5].ys+2,room[5].ys+8);
     map[xo5][yo5]='o';
     //برای پله 
-    int xp5=randomInRange(room[5].xs+2,room[5].xs+8);
-    int yp5=randomInRange(room[5].ys+2,room[5].ys+8);
-    map[xp5][yp5]='<';
+    if(tabagheh!=4){
+        int xp5=randomInRange(room[5].xs+2,room[5].xs+8);
+        int yp5=randomInRange(room[5].ys+2,room[5].ys+8);
+        map[xp5][yp5]='<';
+    }
      //
      for(int i=room[5].xs+1;i<room[5].xs+10;i++){
          map[i][room[5].ys+10]='|';
@@ -416,9 +424,10 @@ void generatemap(int tabagheh){
         map[xT5][yT5]='^';
     }
 }
-void startgame(){
+int startgame(){
     clear();
-    generatemap(1);
+    int tabagheh=1;
+    generatemap(tabagheh);
     adamak.x=27;
     adamak.y=1;
     char u='U';
@@ -429,68 +438,342 @@ void startgame(){
             }
             printw("\n");
         }    
+        //نمایش کاراکتر
         mvprintw(adamak.x,adamak.y,"%c",u); 
+        //نمایش تعداد طلا ها در نوار بازی
+        mvprintw(49,0,"GOLD:%d  ",GOLD); 
+        //نمایش طبقه
+        mvprintw(49,9,"FLOOR:%d  ",tabagheh);
+        mvprintw(49,19,"HEALTH:%d",HEALTH);
         refresh();
         char c=getch();
         //دکمه های حرکت
         if(c=='w'){
             adamak.x--;
-            if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'){
+            //در صورت برخورد با موانع بازگشت به حالت قبل
+            if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.x++;
+            }
+            //درصورت برخورد با طلا جمع اوری طلا
+            else if(map[adamak.x][adamak.y]=='G'){
+                GOLD++;
+                map[adamak.x][adamak.y]='.';
+            }
+            //برخورد با طلسم
+
+            //برخورد با غذا
+
+            //برخورد با سلاح
+
+            //برخورد با پله
+            else if(map[adamak.x][adamak.y]=='<'){
+                clear();
+                adamak.x=27;
+                adamak.y=1;
+                mvprintw(20,60,"Move to the next floor");
+                refresh();
+                usleep(3000000);
+                tabagheh++;
+                generatemap(tabagheh);
+            }
+            //برخورد با تله
+            else if(map[adamak.x][adamak.y]=='^'){
+                if(HEALTH<=0){
+                    clear();
+                    mvprintw(20,60,"you lost");
+                    refresh();
+                    usleep(5000000);
+                    return 0;
+                }
+                HEALTH -= 5;
+                mvprintw(0,0,"you hit a trap !");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                ");
+                refresh();
+                map[adamak.x][adamak.y]='.';
             }
         }
         else if(c=='d'){
             adamak.y++;
-            if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'){
+            if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.y--;
+            }
+            else if(map[adamak.x][adamak.y]=='G'){
+                GOLD++;
+                map[adamak.x][adamak.y]='.';
+            }
+            else if(map[adamak.x][adamak.y]=='<'){
+                clear();
+                adamak.x=27;
+                adamak.y=1;
+                mvprintw(20,60,"Move to the next floor");
+                refresh();
+                usleep(3000000);
+                tabagheh++;
+                generatemap(tabagheh);
+            }
+            else if(map[adamak.x][adamak.y]=='^'){
+                if(HEALTH<=0){
+                    clear();
+                    mvprintw(20,60,"you lost");
+                    refresh();
+                    usleep(5000000);
+                    return 0;
+                }
+                HEALTH -= 5;
+                mvprintw(0,0,"you hit a trap !");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                ");
+                refresh();
+                map[adamak.x][adamak.y]='.';
             }
         }
         else if(c=='x'){
             adamak.x++;
-            if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'){
+            if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.x--;
+            }
+            else if(map[adamak.x][adamak.y]=='G'){
+                GOLD++;
+                map[adamak.x][adamak.y]='.';
+            }
+            else if(map[adamak.x][adamak.y]=='<'){
+                clear();
+                adamak.x=27;
+                adamak.y=1;
+                mvprintw(20,60,"Move to the next floor");
+                refresh();
+                usleep(3000000);
+                tabagheh++;
+                generatemap(tabagheh);
+            }
+            else if(map[adamak.x][adamak.y]=='^'){
+                if(HEALTH<=0){
+                    clear();
+                    mvprintw(20,60,"you lost");
+                    refresh();
+                    usleep(5000000);
+                    return 0;
+                }
+                HEALTH -= 5;
+                mvprintw(0,0,"you hit a trap !");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                ");
+                refresh();
+                map[adamak.x][adamak.y]='.';
             }
         }
         else if(c=='a'){
             adamak.y--;
-            if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'){
+            if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.y++;
+            }
+            else if(map[adamak.x][adamak.y]=='G'){
+                GOLD++;
+                map[adamak.x][adamak.y]='.';
+            }
+            else if(map[adamak.x][adamak.y]=='<'){
+                clear();
+                adamak.x=27;
+                adamak.y=1;
+                mvprintw(20,60,"Move to the next floor");
+                refresh();
+                usleep(3000000);
+                tabagheh++;
+                generatemap(tabagheh);
+            }
+            else if(map[adamak.x][adamak.y]=='^'){
+                if(HEALTH<=0){
+                    clear();
+                    mvprintw(20,60,"you lost");
+                    refresh();
+                    usleep(5000000);
+                    return 0;
+                }
+                HEALTH -= 5;
+                mvprintw(0,0,"you hit a trap !");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                ");
+                refresh();
+                map[adamak.x][adamak.y]='.';
             }
         }
         else if(c=='q'){
             adamak.x--;
             adamak.y--;
-            if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'){
+            if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.x++;
                 adamak.y++;
+            }
+            else if(map[adamak.x][adamak.y]=='G'){
+                GOLD++;
+                map[adamak.x][adamak.y]='.';
+            }
+            else if(map[adamak.x][adamak.y]=='<'){
+                clear();
+                adamak.x=27;
+                adamak.y=1;
+                mvprintw(20,60,"Move to the next floor");
+                refresh();
+                usleep(3000000);
+                tabagheh++;
+                generatemap(tabagheh);
+            }
+            else if(map[adamak.x][adamak.y]=='^'){
+                if(HEALTH<=0){
+                    clear();
+                    mvprintw(20,60,"you lost");
+                    refresh();
+                    usleep(5000000);
+                    return 0;
+                }
+                HEALTH -= 5;
+                mvprintw(0,0,"you hit a trap !");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                ");
+                refresh();
+                map[adamak.x][adamak.y]='.';
             }
         }
         else if(c=='z'){
             adamak.y--;
             adamak.x++;
-            if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'){
+            if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.x--;
                 adamak.y++;
+            }
+            else if(map[adamak.x][adamak.y]=='G'){
+                GOLD++;
+                map[adamak.x][adamak.y]='.';
+            }
+            else if(map[adamak.x][adamak.y]=='<'){
+                clear();
+                adamak.x=27;
+                adamak.y=1;
+                mvprintw(20,60,"Move to the next floor");
+                refresh();
+                usleep(3000000);
+                tabagheh++;
+                generatemap(tabagheh);
+            }
+            else if(map[adamak.x][adamak.y]=='^'){
+                if(HEALTH<=0){
+                    clear();
+                    mvprintw(20,60,"you lost");
+                    refresh();
+                    usleep(5000000);
+                    return 0;
+                }
+                HEALTH -= 5;
+                mvprintw(0,0,"you hit a trap !");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                ");
+                refresh();
+                map[adamak.x][adamak.y]='.';
             }
         }
         else if(c=='e'){
             adamak.y++;
             adamak.x--;
-            if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'){
+            if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.x++;
                 adamak.y--;
+            }
+            else if(map[adamak.x][adamak.y]=='G'){
+                GOLD++;
+                map[adamak.x][adamak.y]='.';
+            }
+            else if(map[adamak.x][adamak.y]=='<'){
+                clear();
+                adamak.x=27;
+                adamak.y=1;
+                mvprintw(20,60,"Move to the next floor");
+                refresh();
+                usleep(3000000);
+                tabagheh++;
+                generatemap(tabagheh);
+            }
+            else if(map[adamak.x][adamak.y]=='^'){
+                if(HEALTH<=0){
+                    clear();
+                    mvprintw(20,60,"you lost");
+                    refresh();
+                    usleep(5000000);
+                    return 0;
+                }
+                HEALTH -= 5;
+                mvprintw(0,0,"you hit a trap !");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                ");
+                refresh();
+                map[adamak.x][adamak.y]='.';
             }
         }
         else if(c=='c'){
             adamak.y++;
             adamak.x++;
-            if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'){
+            if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.x--;
                 adamak.y--;
             }
+            else if(map[adamak.x][adamak.y]=='G'){
+                GOLD++;
+                map[adamak.x][adamak.y]='.';
+            }
+            else if(map[adamak.x][adamak.y]=='<'){
+                clear();
+                adamak.x=27;
+                adamak.y=1;
+                mvprintw(20,60,"Move to the next floor");
+                refresh();
+                usleep(3000000);
+                tabagheh++;
+                generatemap(tabagheh);
+            }
+            else if(map[adamak.x][adamak.y]=='^'){
+                if(HEALTH<=0){
+                    clear();
+                    mvprintw(20,60,"you lost");
+                    refresh();
+                    usleep(5000000);
+                    return 0;
+                }
+                HEALTH -= 5;
+                mvprintw(0,0,"you hit a trap !");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                ");
+                refresh();
+                map[adamak.x][adamak.y]='.';
+            }
+        }
+        //برای خروج پ فرایند سیو شدن بازی
+        else if(c=='`'){
+            mvprintw(0,0,"are you want to exit the game?(to exit press[ y ])");
+            refresh();
+            char c2=getch(); 
+            if(c2=='y'){
+                clear();
+                mvprintw(20,60,"are you want to save the game?(to save press[ y ])");
+                refresh();
+                char c1=getch();
+                if(c1=='y'){
+                    //savegame();
+                    return 0;
+                }
+                else{
+                    return 0;
+                }
+            }
         }
         clear();
-    // usleep(10000000);
     }
 }
 //برای چک پسورد برای login
