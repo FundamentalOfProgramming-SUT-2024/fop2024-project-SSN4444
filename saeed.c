@@ -458,6 +458,11 @@ int startgame(){
             else if(map[adamak.x][adamak.y]=='G'){
                 GOLD++;
                 map[adamak.x][adamak.y]='.';
+                mvprintw(0,0,"Congratulations,You have collected GOLD!");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                                         ");
+                refresh();
             }
             //برخورد با طلسم
 
@@ -474,6 +479,10 @@ int startgame(){
                 refresh();
                 usleep(3000000);
                 tabagheh++;
+                if(tabagheh==4||tabagheh==2){
+                    adamak.x=26;
+                    adamak.y=182;
+                }
                 generatemap(tabagheh);
             }
             //برخورد با تله
@@ -502,6 +511,11 @@ int startgame(){
             else if(map[adamak.x][adamak.y]=='G'){
                 GOLD++;
                 map[adamak.x][adamak.y]='.';
+                mvprintw(0,0,"Congratulations,You have collected GOLD!");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                                         ");
+                refresh();
             }
             else if(map[adamak.x][adamak.y]=='<'){
                 clear();
@@ -511,6 +525,10 @@ int startgame(){
                 refresh();
                 usleep(3000000);
                 tabagheh++;
+                if(tabagheh==4||tabagheh==2){
+                    adamak.x=26;
+                    adamak.y=182;
+                }
                 generatemap(tabagheh);
             }
             else if(map[adamak.x][adamak.y]=='^'){
@@ -538,6 +556,11 @@ int startgame(){
             else if(map[adamak.x][adamak.y]=='G'){
                 GOLD++;
                 map[adamak.x][adamak.y]='.';
+                mvprintw(0,0,"Congratulations,You have collected GOLD!");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                                         ");
+                refresh();
             }
             else if(map[adamak.x][adamak.y]=='<'){
                 clear();
@@ -547,6 +570,10 @@ int startgame(){
                 refresh();
                 usleep(3000000);
                 tabagheh++;
+                if(tabagheh==4||tabagheh==2){
+                    adamak.x=26;
+                    adamak.y=182;
+                }
                 generatemap(tabagheh);
             }
             else if(map[adamak.x][adamak.y]=='^'){
@@ -574,6 +601,11 @@ int startgame(){
             else if(map[adamak.x][adamak.y]=='G'){
                 GOLD++;
                 map[adamak.x][adamak.y]='.';
+                mvprintw(0,0,"Congratulations,You have collected GOLD!");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                                         ");
+                refresh();
             }
             else if(map[adamak.x][adamak.y]=='<'){
                 clear();
@@ -583,6 +615,10 @@ int startgame(){
                 refresh();
                 usleep(3000000);
                 tabagheh++;
+                if(tabagheh==4||tabagheh==2){
+                    adamak.x=26;
+                    adamak.y=182;
+                }
                 generatemap(tabagheh);
             }
             else if(map[adamak.x][adamak.y]=='^'){
@@ -612,6 +648,11 @@ int startgame(){
             else if(map[adamak.x][adamak.y]=='G'){
                 GOLD++;
                 map[adamak.x][adamak.y]='.';
+                mvprintw(0,0,"Congratulations,You have collected GOLD!");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                                         ");
+                refresh();
             }
             else if(map[adamak.x][adamak.y]=='<'){
                 clear();
@@ -621,7 +662,11 @@ int startgame(){
                 refresh();
                 usleep(3000000);
                 tabagheh++;
-                generatemap(tabagheh);
+                if(tabagheh==4){
+                    adamak.x=26;
+                    adamak.y=182;
+                }
+                generatemap(tabagheh||tabagheh==2);
             }
             else if(map[adamak.x][adamak.y]=='^'){
                 if(HEALTH<=0){
@@ -650,6 +695,11 @@ int startgame(){
             else if(map[adamak.x][adamak.y]=='G'){
                 GOLD++;
                 map[adamak.x][adamak.y]='.';
+                mvprintw(0,0,"Congratulations,You have collected GOLD!");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                                         ");
+                refresh();
             }
             else if(map[adamak.x][adamak.y]=='<'){
                 clear();
@@ -659,6 +709,10 @@ int startgame(){
                 refresh();
                 usleep(3000000);
                 tabagheh++;
+                if(tabagheh==4||tabagheh==2){
+                    adamak.x=26;
+                    adamak.y=182;
+                }
                 generatemap(tabagheh);
             }
             else if(map[adamak.x][adamak.y]=='^'){
@@ -688,6 +742,11 @@ int startgame(){
             else if(map[adamak.x][adamak.y]=='G'){
                 GOLD++;
                 map[adamak.x][adamak.y]='.';
+                mvprintw(0,0,"Congratulations,You have collected GOLD!");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                                         ");
+                refresh();
             }
             else if(map[adamak.x][adamak.y]=='<'){
                 clear();
@@ -697,6 +756,10 @@ int startgame(){
                 refresh();
                 usleep(3000000);
                 tabagheh++;
+                if(tabagheh==4||tabagheh==2){
+                    adamak.x=26;
+                    adamak.y=182;
+                }
                 generatemap(tabagheh);
             }
             else if(map[adamak.x][adamak.y]=='^'){
@@ -726,6 +789,11 @@ int startgame(){
             else if(map[adamak.x][adamak.y]=='G'){
                 GOLD++;
                 map[adamak.x][adamak.y]='.';
+                mvprintw(0,0,"Congratulations,You have collected GOLD!");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                                         ");
+                refresh();
             }
             else if(map[adamak.x][adamak.y]=='<'){
                 clear();
@@ -735,6 +803,10 @@ int startgame(){
                 refresh();
                 usleep(3000000);
                 tabagheh++;
+                if(tabagheh==4||tabagheh==2){
+                    adamak.x=26;
+                    adamak.y=182;
+                }
                 generatemap(tabagheh);
             }
             else if(map[adamak.x][adamak.y]=='^'){
