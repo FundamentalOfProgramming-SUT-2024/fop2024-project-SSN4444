@@ -6,6 +6,7 @@
 //اتاق گنج در طبقه ۴  و اتاق شماره ی ۳ است
 //Tنماد طلسم
 //Gنماد طلا است
+//فعلا کاراکتر U به عنوان ادمک در نظر گرفته شده
 #include<stdio.h>
 #include<ncurses.h>
 #include<stdlib.h>
@@ -13,8 +14,14 @@
 #include<math.h>
 #include<unistd.h>
 #include<time.h>
-//saeed
+// #include<locale.h>
 char map[49][183];
+struct ADAMAK{
+    int x;
+    int y;
+    int dir;
+};
+struct ADAMAK adamak;
 struct ROOM{
     int xs;
     int ys;
@@ -412,14 +419,79 @@ void generatemap(int tabagheh){
 void startgame(){
     clear();
     generatemap(1);
-    for(int i=0;i<49;i++){
-        for(int j=0;j<183;j++){
-            printw("%c",map[i][j]);
+    adamak.x=27;
+    adamak.y=1;
+    char u='U';
+    while(1){
+        for(int i=0;i<49;i++){
+            for(int j=0;j<183;j++){
+                printw("%c",map[i][j]);
+            }
+            printw("\n");
+        }    
+        mvprintw(adamak.x,adamak.y,"%c",u); 
+        refresh();
+        char c=getch();
+        //دکمه های حرکت
+        if(c=='w'){
+            adamak.x--;
+            if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'){
+                adamak.x++;
+            }
         }
-        printw("\n");
-    }  
-    refresh();
-    usleep(10000000);
+        else if(c=='d'){
+            adamak.y++;
+            if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'){
+                adamak.y--;
+            }
+        }
+        else if(c=='x'){
+            adamak.x++;
+            if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'){
+                adamak.x--;
+            }
+        }
+        else if(c=='a'){
+            adamak.y--;
+            if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'){
+                adamak.y++;
+            }
+        }
+        else if(c=='q'){
+            adamak.x--;
+            adamak.y--;
+            if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'){
+                adamak.x++;
+                adamak.y++;
+            }
+        }
+        else if(c=='z'){
+            adamak.y--;
+            adamak.x++;
+            if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'){
+                adamak.x--;
+                adamak.y++;
+            }
+        }
+        else if(c=='e'){
+            adamak.y++;
+            adamak.x--;
+            if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'){
+                adamak.x++;
+                adamak.y--;
+            }
+        }
+        else if(c=='c'){
+            adamak.y++;
+            adamak.x++;
+            if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'){
+                adamak.x--;
+                adamak.y--;
+            }
+        }
+        clear();
+    // usleep(10000000);
+    }
 }
 //برای چک پسورد برای login
 int checkpasword2(char b[],int target){
