@@ -7,7 +7,6 @@
 //Tنماد طلسم
 //Gنماد طلا است
 //فعلا کاراکتر U به عنوان ادمک در نظر گرفته شده
-//  سلاح اعداد ۱تا۹
 #include<stdio.h>
 #include<ncurses.h>
 #include<stdlib.h>
@@ -20,8 +19,6 @@ char map[49][183];
 //برای شمارش طلا ها 
 int GOLD=0;
 int HEALTH=100;
-//  سلاح اعداد ۱تا۹
-char SELAH[9];
 struct ADAMAK{
     int x;
     int y;
@@ -448,7 +445,125 @@ int startgame(){
         refresh();
         char c=getch();
         //دکمه های حرکت
-        if(c=='w'){
+        if(c=='f'){
+            char c2=getch();
+            if(c2=='w'){
+                while(!(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0)){
+                    adamak.x--;   
+                }
+                adamak.x++; 
+            }
+            else if(c2=='x'){
+                while(!(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0)){
+                    adamak.x++;   
+                }
+                adamak.x--;
+            }
+            else if(c2=='a'){
+                while(!(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0)){
+                    adamak.y--;   
+                }
+                adamak.y++; 
+            }
+            else if(c2=='d'){
+                while(!(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0)){
+                    adamak.y++;   
+                }
+                adamak.y--;
+            }
+            else if(c2=='q'){
+                while(!(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0)){
+                    adamak.y--;
+                    adamak.x--;   
+                }
+                adamak.y++;
+                adamak.x++; 
+            }
+            else if(c2=='e'){
+                while(!(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0)){
+                    adamak.y++;
+                    adamak.x--;   
+                }
+                adamak.y--;
+                adamak.x++;
+            }
+            else if(c2=='z'){
+                while(!(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0)){
+                    adamak.y--;
+                    adamak.x++;   
+                }
+                adamak.y++;
+                adamak.x--;
+            }
+             else if(c2=='c'){
+                while(!(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0)){
+                    adamak.y++;
+                    adamak.x++;   
+                }
+                adamak.y++;
+                adamak.x--;
+            }
+        }
+        else if(c=='g'){
+            char c2=getch();
+            if(c2=='w'){
+                while(map[adamak.x][adamak.y]=='.'||map[adamak.x][adamak.y]=='#'||map[adamak.x][adamak.y]=='+'){
+                    adamak.x--;   
+                }
+                adamak.x++; 
+            }
+            else if(c2=='x'){
+                while(map[adamak.x][adamak.y]=='.'||map[adamak.x][adamak.y]=='#'||map[adamak.x][adamak.y]=='+'){
+                    adamak.x++;   
+                }
+                adamak.x--;
+            }
+            else if(c2=='a'){
+                while(map[adamak.x][adamak.y]=='.'||map[adamak.x][adamak.y]=='#'||map[adamak.x][adamak.y]=='+'){
+                    adamak.y--;   
+                }
+                adamak.y++; 
+            }
+            else if(c2=='d'){
+                while(map[adamak.x][adamak.y]=='.'||map[adamak.x][adamak.y]=='#'||map[adamak.x][adamak.y]=='+'){
+                    adamak.y++;   
+                }
+                adamak.y--;
+            }
+            else if(c2=='q'){
+                while(map[adamak.x][adamak.y]=='.'||map[adamak.x][adamak.y]=='#'||map[adamak.x][adamak.y]=='+'){
+                    adamak.y--;
+                    adamak.x--;   
+                }
+                adamak.y++;
+                adamak.x++; 
+            }
+            else if(c2=='e'){
+                while(map[adamak.x][adamak.y]=='.'||map[adamak.x][adamak.y]=='#'||map[adamak.x][adamak.y]=='+'){
+                    adamak.y++;
+                    adamak.x--;   
+                }
+                adamak.y--;
+                adamak.x++;
+            }
+            else if(c2=='z'){
+                while(map[adamak.x][adamak.y]=='.'||map[adamak.x][adamak.y]=='#'||map[adamak.x][adamak.y]=='+'){
+                    adamak.y--;
+                    adamak.x++;   
+                }
+                adamak.y++;
+                adamak.x--;
+            }
+             else if(c2=='c'){
+                while(map[adamak.x][adamak.y]=='.'||map[adamak.x][adamak.y]=='#'||map[adamak.x][adamak.y]=='+'){
+                    adamak.y++;
+                    adamak.x++;   
+                }
+                adamak.y++;
+                adamak.x--;
+            }
+        }
+        else if(c=='w'){
             adamak.x--;
             //در صورت برخورد با موانع بازگشت به حالت قبل
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
