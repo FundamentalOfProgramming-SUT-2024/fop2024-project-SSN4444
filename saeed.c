@@ -5,14 +5,17 @@
 //اتاق طلسم شماره ۴ است
 //اتاق گنج در طبقه ۴  و اتاق شماره ی ۳ است
 //Tنماد طلسم
-//Gنماد طلا است  
-//gهم نماد طلا است
-//jهم نماد طلاست(کیسه طلا)
+//Gنماد طلا است  🎗️
+//gهم نماد طلا است      
+//غذا    ▫️
+//jهم نماد طلاست(کیسه طلا)   ⚱️ 
 //فعلا کاراکتر U به عنوان ادمک در نظر گرفته شده
 //💰,🪙,✨
 // 🍔, 🍕,🍰
 // 🗡️,🪄 , 🛡️ 
 //🤖
+//❣️ ,  🎗️   ,   🗡️  ,  ⚠️  ,  ⚱️   ,    ,   ▫️  ,
+//❣️⭐🌝🌞🌛🌚⚡🌕🚦🎁🧨🏆🏅🥈🥇🥉🎗️🎖️🎄💍👑🔔⚱️🔑🗝️➡️⚠️🚸⚜️🔱🔅🔆🔸🔶🔻♦️💛🟨▫️◽◻️سل
 #include<stdio.h>
 #include<ncursesw/ncurses.h>
 #include<stdlib.h>
@@ -34,7 +37,7 @@ struct ADAMAK adamak;
 struct ROOM{
     int xs;
     int ys;
-    };
+};
 struct ROOM room[6];
 struct DOOR{
     int x;
@@ -207,6 +210,11 @@ void generatemap(int tabagheh){
     if(map[xG0][yG0]=='.'){
         map[xG0][yG0]='G';
     }
+    int xg0=randomInRange(room[0].xs+2,room[0].xs+4);
+    int yg0=randomInRange(room[0].ys+2,room[0].ys+4);
+    if(map[xg0][yg0]=='.'){
+        map[xg0][yg0]='g';
+    }
      //===============================================
      for(int i=room[1].xs+1;i<room[1].xs+10;i++){
         map[i][room[1].ys]='|';
@@ -238,13 +246,27 @@ void generatemap(int tabagheh){
     door[1].y=room[1].ys+10;
     map[door[1].x][room[1].ys+10]='+';
      //گذاشتن رندم طلا در این اتاق
+    int xj1=randomInRange(room[1].xs+2,room[1].xs+8);
+    int yj1=randomInRange(room[1].ys+2,room[1].ys+8);
+    if(map[xj1][yj1]=='.'){
+        map[xj1][yj1]='j';
+    }
      int count=0;
      while(count!=3){
+        int xg1=randomInRange(room[1].xs+2,room[1].xs+8);
+        int yg1=randomInRange(room[1].ys+2,room[1].ys+8);
+        if(map[xg1][yg1]=='.'){
+            map[xg1][yg1]='g';
+            count++;
+        }
+     }
+     int count2=0;
+     while(count2!=2){
         int xG1=randomInRange(room[1].xs+2,room[1].xs+8);
         int yG1=randomInRange(room[1].ys+2,room[1].ys+8);
         if(map[xG1][yG1]=='.'){
             map[xG1][yG1]='G';
-            count++;
+            count2++;
         }
      }
      //=======================================================
@@ -325,6 +347,15 @@ void generatemap(int tabagheh){
                 countgold++;
             }  
         }
+        int countgold2=0;
+        while(countgold2!=2){
+            int xj5=randomInRange(room[3].xs+2,room[3].xs+8);
+            int yj5=randomInRange(room[3].ys+2,room[3].ys+8);
+            if(map[xj5][yj5]=='.'){
+                map[xj5][yj5]='j';
+                countgold2++;
+            }  
+        }
     }
      //=====================================================
      for(int i=room[4].xs+1;i<room[4].xs+6;i++){
@@ -361,6 +392,15 @@ void generatemap(int tabagheh){
         if(map[xTT4][yTT4]=='.'){
             map[xTT4][yTT4]='T';
             countTT++;
+        }
+     }
+     int countgold=0;
+     while(countgold!=1){
+        int xTT4=randomInRange(room[4].xs+2,room[4].xs+4);
+        int yTT4=randomInRange(room[4].ys+2,room[4].ys+4);
+        if(map[xTT4][yTT4]=='.'){
+            map[xTT4][yTT4]='g';
+            countgold++;
         }
      }
      //===================================================
@@ -407,6 +447,15 @@ void generatemap(int tabagheh){
     if(map[xG5][yG5]=='.'){
         map[xG5][yG5]='G';
     }
+    int counter1=0;
+    while(counter1!=2){
+        int xG5=randomInRange(room[5].xs+2,room[5].xs+8);
+        int yG5=randomInRange(room[5].ys+2,room[5].ys+8);
+        if(map[xG5][yG5]=='.'){
+            map[xG5][yG5]='j';
+            counter1++;
+        }
+    }
     //====================================================
     //ساخت مسیر بین درب ها  
     generateRandomPath();
@@ -433,17 +482,28 @@ int startgame(){
     generatemap(tabagheh);
     adamak.x=27;
     adamak.y=1;
-    // char u='U';
     while(1){
         for(int i=0;i<49;i++){
-            for(int j=0;j<183;j++){
+            for(int j=0;j<182;j++){
                 if(map[i][j]=='G'){
-                const char *unicode_char="🪙";
-                    printw("%s",unicode_char);            
+                const char *unicode_char="🎗️";
+                    printw("%s",unicode_char);           
                 }
-                else if(){
-                    
+                else if(map[i][j]=='g'){
+                    const char *unicode_char="❤";
+                    addstr(unicode_char);
                 }
+                else if(map[i][j]=='j'){
+                    const char *unicode_char="⚱️";
+                    printw("%s",unicode_char);
+                }
+                else if(map[i][j]=='^'){
+                    printw("%c",'.');
+                }
+//وقتی تله غیر فعال میشود با این نماد نشان میدهیم {
+                else if(map[i][j]=='{'){
+                    printw("%c",'^');
+                }    
                 else{
                     printw("%c",map[i][j]);
                 }
@@ -587,10 +647,31 @@ int startgame(){
                 adamak.x++;
             }
             //درصورت برخورد با طلا جمع اوری طلا
+            //طلای عادی
             else if(map[adamak.x][adamak.y]=='G'){
-                GOLD++;
+                GOLD+=3;
                 map[adamak.x][adamak.y]='.';
                 mvprintw(0,0,"Congratulations,You have collected GOLD!");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                                         ");
+                refresh();
+            }
+            //کیسه طلا
+            else if(map[adamak.x][adamak.y]=='j'){
+                GOLD+=10;
+                map[adamak.x][adamak.y]='.';
+                mvprintw(0,0,"Congratulations,You have collected a BAG OF GOLD!");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                                         ");
+                refresh();
+            }
+            //طلای سیاه
+            else if(map[adamak.x][adamak.y]=='g'){
+                GOLD+=1;
+                map[adamak.x][adamak.y]='.';
+                mvprintw(0,0,"Congratulations,You have collected black GOLD!");
                 refresh();
                 usleep(3000000);
                 mvprintw(0,0,"                                         ");
@@ -632,7 +713,7 @@ int startgame(){
                 usleep(3000000);
                 mvprintw(0,0,"                ");
                 refresh();
-                map[adamak.x][adamak.y]='.';
+                map[adamak.x][adamak.y]='{';
             }
         }
         else if(c=='d'){
@@ -641,9 +722,27 @@ int startgame(){
                 adamak.y--;
             }
             else if(map[adamak.x][adamak.y]=='G'){
-                GOLD++;
+                GOLD+=3;
                 map[adamak.x][adamak.y]='.';
                 mvprintw(0,0,"Congratulations,You have collected GOLD!");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                                         ");
+                refresh();
+            }
+            else if(map[adamak.x][adamak.y]=='j'){
+                GOLD+=10;
+                map[adamak.x][adamak.y]='.';
+                mvprintw(0,0,"Congratulations,You have collected a BAG OF GOLD!");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                                         ");
+                refresh();
+            }
+            else if(map[adamak.x][adamak.y]=='g'){
+                GOLD+=1;
+                map[adamak.x][adamak.y]='.';
+                mvprintw(0,0,"Congratulations,You have collected black GOLD!");
                 refresh();
                 usleep(3000000);
                 mvprintw(0,0,"                                         ");
@@ -677,7 +776,7 @@ int startgame(){
                 usleep(3000000);
                 mvprintw(0,0,"                ");
                 refresh();
-                map[adamak.x][adamak.y]='.';
+                map[adamak.x][adamak.y]='{';
             }
         }
         else if(c=='x'){
@@ -686,9 +785,27 @@ int startgame(){
                 adamak.x--;
             }
             else if(map[adamak.x][adamak.y]=='G'){
-                GOLD++;
+                GOLD+=3;
                 map[adamak.x][adamak.y]='.';
                 mvprintw(0,0,"Congratulations,You have collected GOLD!");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                                         ");
+                refresh();
+            }
+            else if(map[adamak.x][adamak.y]=='j'){
+                GOLD+=10;
+                map[adamak.x][adamak.y]='.';
+                mvprintw(0,0,"Congratulations,You have collected a BAG OF GOLD!");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                                         ");
+                refresh();
+            }
+            else if(map[adamak.x][adamak.y]=='g'){
+                GOLD+=1;
+                map[adamak.x][adamak.y]='.';
+                mvprintw(0,0,"Congratulations,You have collected black GOLD!");
                 refresh();
                 usleep(3000000);
                 mvprintw(0,0,"                                         ");
@@ -722,7 +839,7 @@ int startgame(){
                 usleep(3000000);
                 mvprintw(0,0,"                ");
                 refresh();
-                map[adamak.x][adamak.y]='.';
+                map[adamak.x][adamak.y]='{';
             }
         }
         else if(c=='a'){
@@ -731,9 +848,27 @@ int startgame(){
                 adamak.y++;
             }
             else if(map[adamak.x][adamak.y]=='G'){
-                GOLD++;
+                GOLD+=3;
                 map[adamak.x][adamak.y]='.';
                 mvprintw(0,0,"Congratulations,You have collected GOLD!");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                                         ");
+                refresh();
+            }
+            else if(map[adamak.x][adamak.y]=='j'){
+                GOLD+=10;
+                map[adamak.x][adamak.y]='.';
+                mvprintw(0,0,"Congratulations,You have collected a BAG OF GOLD!");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                                         ");
+                refresh();
+            }
+            else if(map[adamak.x][adamak.y]=='g'){
+                GOLD+=1;
+                map[adamak.x][adamak.y]='.';
+                mvprintw(0,0,"Congratulations,You have collected black GOLD!");
                 refresh();
                 usleep(3000000);
                 mvprintw(0,0,"                                         ");
@@ -767,7 +902,7 @@ int startgame(){
                 usleep(3000000);
                 mvprintw(0,0,"                ");
                 refresh();
-                map[adamak.x][adamak.y]='.';
+                map[adamak.x][adamak.y]='{';
             }
         }
         else if(c=='q'){
@@ -778,9 +913,27 @@ int startgame(){
                 adamak.y++;
             }
             else if(map[adamak.x][adamak.y]=='G'){
-                GOLD++;
+                GOLD+=3;
                 map[adamak.x][adamak.y]='.';
                 mvprintw(0,0,"Congratulations,You have collected GOLD!");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                                         ");
+                refresh();
+            }
+            else if(map[adamak.x][adamak.y]=='j'){
+                GOLD+=10;
+                map[adamak.x][adamak.y]='.';
+                mvprintw(0,0,"Congratulations,You have collected a BAG OF GOLD!");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                                         ");
+                refresh();
+            }
+            else if(map[adamak.x][adamak.y]=='g'){
+                GOLD+=1;
+                map[adamak.x][adamak.y]='.';
+                mvprintw(0,0,"Congratulations,You have collected black GOLD!");
                 refresh();
                 usleep(3000000);
                 mvprintw(0,0,"                                         ");
@@ -814,7 +967,7 @@ int startgame(){
                 usleep(3000000);
                 mvprintw(0,0,"                ");
                 refresh();
-                map[adamak.x][adamak.y]='.';
+                map[adamak.x][adamak.y]='{';
             }
         }
         else if(c=='z'){
@@ -825,9 +978,27 @@ int startgame(){
                 adamak.y++;
             }
             else if(map[adamak.x][adamak.y]=='G'){
-                GOLD++;
+                GOLD+=3;
                 map[adamak.x][adamak.y]='.';
                 mvprintw(0,0,"Congratulations,You have collected GOLD!");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                                         ");
+                refresh();
+            }
+            else if(map[adamak.x][adamak.y]=='j'){
+                GOLD+=10;
+                map[adamak.x][adamak.y]='.';
+                mvprintw(0,0,"Congratulations,You have collected a BAG OF GOLD!");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                                         ");
+                refresh();
+            }
+            else if(map[adamak.x][adamak.y]=='g'){
+                GOLD+=1;
+                map[adamak.x][adamak.y]='.';
+                mvprintw(0,0,"Congratulations,You have collected black GOLD!");
                 refresh();
                 usleep(3000000);
                 mvprintw(0,0,"                                         ");
@@ -861,7 +1032,7 @@ int startgame(){
                 usleep(3000000);
                 mvprintw(0,0,"                ");
                 refresh();
-                map[adamak.x][adamak.y]='.';
+                map[adamak.x][adamak.y]='{';
             }
         }
         else if(c=='e'){
@@ -872,9 +1043,27 @@ int startgame(){
                 adamak.y--;
             }
             else if(map[adamak.x][adamak.y]=='G'){
-                GOLD++;
+                GOLD+=3;
                 map[adamak.x][adamak.y]='.';
                 mvprintw(0,0,"Congratulations,You have collected GOLD!");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                                         ");
+                refresh();
+            }
+            else if(map[adamak.x][adamak.y]=='j'){
+                GOLD+=10;
+                map[adamak.x][adamak.y]='.';
+                mvprintw(0,0,"Congratulations,You have collected a BAG OF GOLD!");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                                         ");
+                refresh();
+            }
+            else if(map[adamak.x][adamak.y]=='g'){
+                GOLD+=1;
+                map[adamak.x][adamak.y]='.';
+                mvprintw(0,0,"Congratulations,You have collected black GOLD!");
                 refresh();
                 usleep(3000000);
                 mvprintw(0,0,"                                         ");
@@ -908,7 +1097,7 @@ int startgame(){
                 usleep(3000000);
                 mvprintw(0,0,"                ");
                 refresh();
-                map[adamak.x][adamak.y]='.';
+                map[adamak.x][adamak.y]='{';
             }
         }
         else if(c=='c'){
@@ -919,9 +1108,27 @@ int startgame(){
                 adamak.y--;
             }
             else if(map[adamak.x][adamak.y]=='G'){
-                GOLD++;
+                GOLD+=3;
                 map[adamak.x][adamak.y]='.';
                 mvprintw(0,0,"Congratulations,You have collected GOLD!");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                                         ");
+                refresh();
+            }
+            else if(map[adamak.x][adamak.y]=='j'){
+                GOLD+=10;
+                map[adamak.x][adamak.y]='.';
+                mvprintw(0,0,"Congratulations,You have collected a BAG OF GOLD!");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                                         ");
+                refresh();
+            }
+            else if(map[adamak.x][adamak.y]=='g'){
+                GOLD+=1;
+                map[adamak.x][adamak.y]='.';
+                mvprintw(0,0,"Congratulations,You have collected black GOLD!");
                 refresh();
                 usleep(3000000);
                 mvprintw(0,0,"                                         ");
@@ -955,7 +1162,7 @@ int startgame(){
                 usleep(3000000);
                 mvprintw(0,0,"                ");
                 refresh();
-                map[adamak.x][adamak.y]='.';
+                map[adamak.x][adamak.y]='{';
             }
         }
         //برای خروج پ فرایند سیو شدن بازی
