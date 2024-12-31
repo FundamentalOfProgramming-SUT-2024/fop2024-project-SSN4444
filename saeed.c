@@ -6,8 +6,8 @@
 //اتاق گنج در طبقه ۴  و اتاق شماره ی ۳ است
 //Tنماد طلسم
 //Gنماد طلا است  🎗️
-//gهم نماد طلا است      
-//غذا    ▫️
+//gهم نماد طلا است      ▫️
+//غذا    ❤    0
 //jهم نماد طلاست(کیسه طلا)   ⚱️ 
 //فعلا کاراکتر U به عنوان ادمک در نظر گرفته شده
 //💰,🪙,✨
@@ -26,6 +26,7 @@
 #include<locale.h>
 char map[49][183];
 //برای شمارش طلا ها 
+int ghazayemaemooly=0;
 int GOLD=0;
 int HEALTH=100;
 struct ADAMAK{
@@ -215,6 +216,15 @@ void generatemap(int tabagheh){
     if(map[xg0][yg0]=='.'){
         map[xg0][yg0]='g';
     }
+    int count6=0;
+    while(count6!=1){
+        int xg0=randomInRange(room[0].xs+2,room[0].xs+4);
+        int yg0=randomInRange(room[0].ys+2,room[0].ys+4);
+        if(map[xg0][yg0]=='.'){
+            map[xg0][yg0]='0';
+            count6++;
+        }
+    }
      //===============================================
      for(int i=room[1].xs+1;i<room[1].xs+10;i++){
         map[i][room[1].ys]='|';
@@ -267,6 +277,15 @@ void generatemap(int tabagheh){
         if(map[xG1][yG1]=='.'){
             map[xG1][yG1]='G';
             count2++;
+        }
+     }
+     int count9=0;
+     while(count9!=2){
+        int xG1=randomInRange(room[1].xs+2,room[1].xs+8);
+        int yG1=randomInRange(room[1].ys+2,room[1].ys+8);
+        if(map[xG1][yG1]=='.'){
+            map[xG1][yG1]='0';
+            count9++;
         }
      }
      //=======================================================
@@ -326,6 +345,15 @@ void generatemap(int tabagheh){
     door[3].y=room[3].ys+10;
     //در رمز دار
     map[door[3].x][room[3].ys+10]='@';
+        int count7=0;
+        while(count7!=2){
+            int xj5=randomInRange(room[3].xs+2,room[3].xs+8);
+            int yj5=randomInRange(room[3].ys+2,room[3].ys+8);
+            if(map[xj5][yj5]=='.'){
+                map[xj5][yj5]='0';
+                count7++;
+            }  
+        }
     //اتاق گنج
     //برای شمارش و گذاشتن مقدار زیادی تلهو طلا 
     if(tabagheh==4){
@@ -403,6 +431,15 @@ void generatemap(int tabagheh){
             countgold++;
         }
      }
+     int count4=0;
+     while(count4!=1){
+        int xTT4=randomInRange(room[4].xs+2,room[4].xs+4);
+        int yTT4=randomInRange(room[4].ys+2,room[4].ys+4);
+        if(map[xTT4][yTT4]=='.'){
+            map[xTT4][yTT4]='0';
+            count4++;
+        }
+     }
      //===================================================
      for(int i=room[5].xs+1;i<room[5].xs+10;i++){
          map[i][room[5].ys]='|';
@@ -456,6 +493,16 @@ void generatemap(int tabagheh){
             counter1++;
         }
     }
+    //غذا
+    int count3=0;
+    while(count3!=2){
+        int xG5=randomInRange(room[5].xs+2,room[5].xs+8);
+        int yG5=randomInRange(room[5].ys+2,room[5].ys+8);
+        if(map[xG5][yG5]=='.'){
+            map[xG5][yG5]='0';
+            count3++;
+        }
+    }
     //====================================================
     //ساخت مسیر بین درب ها  
     generateRandomPath();
@@ -490,7 +537,7 @@ int startgame(){
                     printw("%s",unicode_char);           
                 }
                 else if(map[i][j]=='g'){
-                    const char *unicode_char="❤";
+                    const char *unicode_char="▫️";
                     addstr(unicode_char);
                 }
                 else if(map[i][j]=='j'){
@@ -503,6 +550,9 @@ int startgame(){
 //وقتی تله غیر فعال میشود با این نماد نشان میدهیم {
                 else if(map[i][j]=='{'){
                     printw("%c",'^');
+                }
+                else if(map[i][j]=='0'){ 
+                    printw("%s","❤");
                 }    
                 else{
                     printw("%c",map[i][j]);
@@ -518,12 +568,17 @@ int startgame(){
         mvprintw(49,0,"GOLD:%d  ",GOLD); 
         //نمایش طبقه
         mvprintw(49,9,"FLOOR:%d  ",tabagheh);
+        //نمایش سلامتی
         mvprintw(49,19,"HEALTH:%d",HEALTH);
         refresh();
         char c=getch();
         //دکمه های حرکت
         if(c=='f'){
             char c2=getch();
+            //برای دیدن غذا ها""""""""""""""""""""")))))))))))((((((((((((((((((((((&@TGGGGGGGGGGGGGGGGGGGG))))))))))))))))))))))
+            // if(c=='E'){
+            //     printw();
+            // }
             if(c2=='w'){
                 while(!(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0)){
                     adamak.x--;   
@@ -680,7 +735,15 @@ int startgame(){
             //برخورد با طلسم
 
             //برخورد با غذا
-
+            else if(map[adamak.x][adamak.y]=='0'){
+                ghazayemaemooly++;
+                map[adamak.x][adamak.y]='.';
+                mvprintw(0,0,"Food added");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                     ");
+                refresh();
+            }
             //برخورد با سلاح
 
             //برخورد با پله
@@ -728,6 +791,15 @@ int startgame(){
                 refresh();
                 usleep(3000000);
                 mvprintw(0,0,"                                         ");
+                refresh();
+            }
+            else if(map[adamak.x][adamak.y]=='0'){
+                ghazayemaemooly++;
+                map[adamak.x][adamak.y]='.';
+                mvprintw(0,0,"Food added");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                     ");
                 refresh();
             }
             else if(map[adamak.x][adamak.y]=='j'){
@@ -791,6 +863,15 @@ int startgame(){
                 refresh();
                 usleep(3000000);
                 mvprintw(0,0,"                                         ");
+                refresh();
+            }
+            else if(map[adamak.x][adamak.y]=='0'){
+                ghazayemaemooly++;
+                map[adamak.x][adamak.y]='.';
+                mvprintw(0,0,"Food added");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                     ");
                 refresh();
             }
             else if(map[adamak.x][adamak.y]=='j'){
@@ -865,6 +946,15 @@ int startgame(){
                 mvprintw(0,0,"                                         ");
                 refresh();
             }
+            else if(map[adamak.x][adamak.y]=='0'){
+                ghazayemaemooly++;
+                map[adamak.x][adamak.y]='.';
+                mvprintw(0,0,"Food added");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                     ");
+                refresh();
+            }
             else if(map[adamak.x][adamak.y]=='g'){
                 GOLD+=1;
                 map[adamak.x][adamak.y]='.';
@@ -919,6 +1009,15 @@ int startgame(){
                 refresh();
                 usleep(3000000);
                 mvprintw(0,0,"                                         ");
+                refresh();
+            }
+            else if(map[adamak.x][adamak.y]=='0'){
+                ghazayemaemooly++;
+                map[adamak.x][adamak.y]='.';
+                mvprintw(0,0,"Food added");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                     ");
                 refresh();
             }
             else if(map[adamak.x][adamak.y]=='j'){
@@ -995,6 +1094,15 @@ int startgame(){
                 mvprintw(0,0,"                                         ");
                 refresh();
             }
+            else if(map[adamak.x][adamak.y]=='0'){
+                ghazayemaemooly++;
+                map[adamak.x][adamak.y]='.';
+                mvprintw(0,0,"Food added");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                     ");
+                refresh();
+            }
             else if(map[adamak.x][adamak.y]=='g'){
                 GOLD+=1;
                 map[adamak.x][adamak.y]='.';
@@ -1060,6 +1168,15 @@ int startgame(){
                 mvprintw(0,0,"                                         ");
                 refresh();
             }
+            else if(map[adamak.x][adamak.y]=='0'){
+                ghazayemaemooly++;
+                map[adamak.x][adamak.y]='.';
+                mvprintw(0,0,"Food added");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                     ");
+                refresh();
+            }
             else if(map[adamak.x][adamak.y]=='g'){
                 GOLD+=1;
                 map[adamak.x][adamak.y]='.';
@@ -1114,6 +1231,15 @@ int startgame(){
                 refresh();
                 usleep(3000000);
                 mvprintw(0,0,"                                         ");
+                refresh();
+            }
+            else if(map[adamak.x][adamak.y]=='0'){
+                ghazayemaemooly++;
+                map[adamak.x][adamak.y]='.';
+                mvprintw(0,0,"Food added");
+                refresh();
+                usleep(3000000);
+                mvprintw(0,0,"                     ");
                 refresh();
             }
             else if(map[adamak.x][adamak.y]=='j'){
