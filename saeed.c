@@ -8,12 +8,14 @@
 //Gنماد طلا است
 //فعلا کاراکتر U به عنوان ادمک در نظر گرفته شده
 #include<stdio.h>
-#include<ncurses.h>
+#include<ncursesw/ncurses.h>
 #include<stdlib.h>
 #include<string.h>
 #include<math.h>
 #include<unistd.h>
 #include<time.h>
+#include <locale.h>
+#include <wchar.h>
 // #include<locale.h>
 char map[49][183];
 //برای شمارش طلا ها 
@@ -436,7 +438,8 @@ int startgame(){
             printw("\n");
         }    
         //نمایش کاراکتر
-        mvprintw(adamak.x,adamak.y,"%c",u); 
+        const char *robot ="🤖";
+        mvprintw(adamak.x,adamak.y,"%s",robot); 
         //نمایش تعداد طلا ها در نوار بازی
         mvprintw(49,0,"GOLD:%d  ",GOLD); 
         //نمایش طبقه
@@ -1250,6 +1253,7 @@ int MENU(){
 int main(){
     initscr();
     srand(time(NULL));
+    setlocale(LC_CTYPE, "");
     start_color();
     init_pair(1,COLOR_GREEN,COLOR_BLACK);
     attron(COLOR_PAIR(1));
