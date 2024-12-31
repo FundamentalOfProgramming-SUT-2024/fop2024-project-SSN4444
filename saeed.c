@@ -5,8 +5,14 @@
 //اتاق طلسم شماره ۴ است
 //اتاق گنج در طبقه ۴  و اتاق شماره ی ۳ است
 //Tنماد طلسم
-//Gنماد طلا است
+//Gنماد طلا است  
+//gهم نماد طلا است
+//jهم نماد طلاست(کیسه طلا)
 //فعلا کاراکتر U به عنوان ادمک در نظر گرفته شده
+//💰,🪙,✨
+// 🍔, 🍕,🍰
+// 🗡️,🪄 , 🛡️ 
+//🤖
 #include<stdio.h>
 #include<ncursesw/ncurses.h>
 #include<stdlib.h>
@@ -14,9 +20,7 @@
 #include<math.h>
 #include<unistd.h>
 #include<time.h>
-#include <locale.h>
-#include <wchar.h>
-// #include<locale.h>
+#include<locale.h>
 char map[49][183];
 //برای شمارش طلا ها 
 int GOLD=0;
@@ -429,17 +433,27 @@ int startgame(){
     generatemap(tabagheh);
     adamak.x=27;
     adamak.y=1;
-    char u='U';
+    // char u='U';
     while(1){
         for(int i=0;i<49;i++){
             for(int j=0;j<183;j++){
-                printw("%c",map[i][j]);
+                if(map[i][j]=='G'){
+                const char *unicode_char="🪙";
+                    printw("%s",unicode_char);            
+                }
+                else if(){
+                    
+                }
+                else{
+                    printw("%c",map[i][j]);
+                }
             }
             printw("\n");
         }    
         //نمایش کاراکتر
-        const char *robot ="🤖";
-        mvprintw(adamak.x,adamak.y,"%s",robot); 
+        const char *unicode_char="🤖";
+        mvprintw(adamak.x,adamak.y,"%s",unicode_char);
+        refresh(); 
         //نمایش تعداد طلا ها در نوار بازی
         mvprintw(49,0,"GOLD:%d  ",GOLD); 
         //نمایش طبقه
@@ -1251,9 +1265,9 @@ int MENU(){
     }
 }
 int main(){
+    setlocale(LC_CTYPE, "");
     initscr();
     srand(time(NULL));
-    setlocale(LC_CTYPE, "");
     start_color();
     init_pair(1,COLOR_GREEN,COLOR_BLACK);
     attron(COLOR_PAIR(1));
