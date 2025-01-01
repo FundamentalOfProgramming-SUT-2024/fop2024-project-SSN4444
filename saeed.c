@@ -10,8 +10,10 @@
 //غذا           0    ❤     
 //jهم نماد طلاست(کیسه طلا)   ⚱️ 
 //فعلا کاراکتر U به عنوان ادمک در نظر گرفته شده
+//وقتی تله غیر فعال میشود با این نماد نشان میدهیم {
 //💰,🪙,✨
 // 🍔, 🍕,🍰
+//🪓  سلاح اولیه
 // 🗡️1
 //🪄 2
 //  ➳   تیر3
@@ -32,7 +34,12 @@ char map[49][183];
 //برای شمارش طلا ها 
 int ghazayemaemooly=0;
 int GOLD=0;
-int HEALTH=100;
+int HEALTH=90;
+int food=0;
+int shamshir=0;
+int khanjar=0;
+int tir=0;
+int asa=0;
 struct ADAMAK{
     int x;
     int y;
@@ -51,6 +58,79 @@ struct DOOR{
 struct DOOR door[7];
 int randomInRange(int min,int max){
     return min+rand()%(max-min+1);
+}
+void foodmenu(){
+    clear();
+    mvprintw(0,0,"YOUR FOOD");
+    const char*nan="🍔";
+    mvprintw(3,0,"%s:%d",nan,food);
+    mvprintw(4,0,"THE DEGREE OF HUNGER");
+    int j=1;
+    const char*y="🟨";
+    int h=HEALTH;
+    mvprintw(5,0,"[");
+    while(h>0){
+        mvprintw(5,j,"%s",y);
+        h=h-5;
+        j++;
+    }
+    mvprintw(5,22,"]");
+    refresh();
+    while(1){
+        mvprintw(7,0,"EAT TO INCREASE YOUR HEALTH LEVEL(press o)");
+        noecho();
+        char c=getch();
+        if(c=='o'){
+            if(food<=0){
+                mvprintw(20,60,"THERE IS NOT ENOUGH FOOD");
+                refresh();
+                noecho();
+                usleep(2000000);
+                mvprintw(20,60,"                          ");
+                refresh();
+                continue;
+            }
+            if(HEALTH<100){
+                HEALTH+=5;
+                food--;
+                if(HEALTH>100){
+                    HEALTH=100;
+                }
+            }
+            foodmenu();
+        }
+        else{
+            break;
+        }
+    }
+    echo();
+    
+}
+void gunmenu(){
+    clear();
+    mvprintw(0,0,"YOUR WEAPON");
+    const char*sh="⚔️";
+    const char*kh="🗡️";
+    const char*asa1="🪄";
+    const char*tir1="➳";
+    const char*tabar="🪓";
+    // 🗡️1
+    //🪄 2
+    //  ➳   تیر3
+    // ⚔️  4 شمشیر
+    //🪓  سلاح اولیه
+    mvprintw(2,0,"%s:",sh);
+    mvprintw(2,2,"%d",shamshir);
+    mvprintw(4,0,"%s:",kh);
+    mvprintw(4,2,"%d",khanjar);
+    mvprintw(6,0,"%s:",asa1);
+    mvprintw(6,2,"%d",asa);
+    mvprintw(8,0,"%s:",tabar);
+    mvprintw(8,2,"%d",1);
+    mvprintw(10,0,"%s:",tir1);
+    mvprintw(10,2,"%d",tir);
+    refresh();
+    getch();
 }
 void generateRandomPath(){
     for(int i=1;i<45;i++){
@@ -229,6 +309,24 @@ void generatemap(int tabagheh){
             count6++;
         }
     }
+     int count66=0;
+    while(count66!=1){
+        int xg0=randomInRange(room[0].xs+2,room[0].xs+4);
+        int yg0=randomInRange(room[0].ys+2,room[0].ys+4);
+        if(map[xg0][yg0]=='.'){
+            map[xg0][yg0]='4';
+            count66++;
+        }
+    }
+     int count666=0;
+    while(count666!=1){
+        int xg0=randomInRange(room[0].xs+2,room[0].xs+4);
+        int yg0=randomInRange(room[0].ys+2,room[0].ys+4);
+        if(map[xg0][yg0]=='.'){
+            map[xg0][yg0]='3';
+            count666++;
+        }
+    }
      //===============================================
      for(int i=room[1].xs+1;i<room[1].xs+10;i++){
         map[i][room[1].ys]='|';
@@ -290,6 +388,24 @@ void generatemap(int tabagheh){
         if(map[xG1][yG1]=='.'){
             map[xG1][yG1]='0';
             count9++;
+        }
+     }
+     int count19=0;
+     while(count19!=2){
+        int xG1=randomInRange(room[1].xs+2,room[1].xs+8);
+        int yG1=randomInRange(room[1].ys+2,room[1].ys+8);
+        if(map[xG1][yG1]=='.'){
+            map[xG1][yG1]='3';
+            count19++;
+        }
+     }
+     int count192=0;
+     while(count192!=1){
+        int xG1=randomInRange(room[1].xs+2,room[1].xs+8);
+        int yG1=randomInRange(room[1].ys+2,room[1].ys+8);
+        if(map[xG1][yG1]=='.'){
+            map[xG1][yG1]='1';
+            count192++;
         }
      }
      //=======================================================
@@ -379,6 +495,24 @@ void generatemap(int tabagheh){
                 countgold++;
             }  
         }
+        int countgold3=0;
+        while(countgold3!=1){
+            int xT5=randomInRange(room[3].xs+2,room[3].xs+8);
+            int yT5=randomInRange(room[3].ys+2,room[3].ys+8);
+            if(map[xT5][yT5]=='.'){
+                map[xT5][yT5]='4';
+                countgold3++;
+            }  
+        }
+        int countgold4=0;
+        while(countgold4!=1){
+            int xT5=randomInRange(room[3].xs+2,room[3].xs+8);
+            int yT5=randomInRange(room[3].ys+2,room[3].ys+8);
+            if(map[xT5][yT5]=='.'){
+                map[xT5][yT5]='3';
+                countgold4++;
+            }  
+        }
         int countgold2=0;
         while(countgold2!=2){
             int xj5=randomInRange(room[3].xs+2,room[3].xs+8);
@@ -433,6 +567,24 @@ void generatemap(int tabagheh){
         if(map[xTT4][yTT4]=='.'){
             map[xTT4][yTT4]='g';
             countgold++;
+        }
+     }
+     int countgold1=0;
+     while(countgold1!=1){
+        int xTT4=randomInRange(room[4].xs+2,room[4].xs+4);
+        int yTT4=randomInRange(room[4].ys+2,room[4].ys+4);
+        if(map[xTT4][yTT4]=='.'){
+            map[xTT4][yTT4]='1';
+            countgold1++;
+        }
+     }
+     int countgold22=0;
+     while(countgold22!=1){
+        int xTT4=randomInRange(room[4].xs+2,room[4].xs+4);
+        int yTT4=randomInRange(room[4].ys+2,room[4].ys+4);
+        if(map[xTT4][yTT4]=='.'){
+            map[xTT4][yTT4]='3';
+            countgold22++;
         }
      }
      int count4=0;
@@ -497,6 +649,33 @@ void generatemap(int tabagheh){
             counter1++;
         }
     }
+    int counter11=0;
+    while(counter11!=1){
+        int xG5=randomInRange(room[5].xs+2,room[5].xs+8);
+        int yG5=randomInRange(room[5].ys+2,room[5].ys+8);
+        if(map[xG5][yG5]=='.'){
+            map[xG5][yG5]='1';
+            counter11++;
+        }
+    }
+    int counter12=0;
+    while(counter12!=2){
+        int xG5=randomInRange(room[5].xs+2,room[5].xs+8);
+        int yG5=randomInRange(room[5].ys+2,room[5].ys+8);
+        if(map[xG5][yG5]=='.'){
+            map[xG5][yG5]='3';
+            counter12++;
+        }
+    }
+    int counter123=0;
+    while(counter123!=1){
+        int xG5=randomInRange(room[5].xs+2,room[5].xs+8);
+        int yG5=randomInRange(room[5].ys+2,room[5].ys+8);
+        if(map[xG5][yG5]=='.'){
+            map[xG5][yG5]='2';
+            counter123++;
+        }
+    }
     //غذا
     int count3=0;
     while(count3!=2){
@@ -551,9 +730,25 @@ int startgame(){
                 else if(map[i][j]=='^'){
                     printw("%c",'.');
                 }
-//وقتی تله غیر فعال میشود با این نماد نشان میدهیم {
+                //وقتی تله غیر فعال میشود با این نماد نشان میدهیم {
                 else if(map[i][j]=='{'){
                     printw("%c",'^');
+                }
+                else if(map[i][j]=='1'){
+                    const char *unicode_char="🗡️";
+                    printw("%s",unicode_char);
+                }
+                else if(map[i][j]=='2'){
+                    const char *unicode_char="🪄";
+                    printw("%s",unicode_char);
+                }
+                else if(map[i][j]=='3'){
+                    const char *unicode_char="➳";
+                    printw("%s",unicode_char);
+                }
+                else if(map[i][j]=='4'){
+                    const char *unicode_char="⚔️";
+                    printw("%s",unicode_char);
                 }
                 else if(map[i][j]=='0'){ 
                     printw("%s","❤");
@@ -580,13 +775,19 @@ int startgame(){
         mvprintw(49,25,"%s",ghalb);
         refresh();
         char c=getch();
+        //برای دیدن لیست اسلحه ها
+        if(c=='i'){
+            gunmenu();
+            clear();
+        }
+        //برای دیدن لیست غذا و مصرف غذا
+        else if(c=='E'){
+            foodmenu();
+            clear();
+        }
         //دکمه های حرکت
-        if(c=='f'){
+        else if(c=='f'){
             char c2=getch();
-            //برای دیدن غذا ها""""""""""""""""""""")))))))))))((((((((((((((((((((((&@TGGGGGGGGGGGGGGGGGGGG))))))))))))))))))))))
-            // if(c=='E'){
-            //     printw();
-            // }
             if(c2=='w'){
                 while(!(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0)){
                     adamak.x--;   
