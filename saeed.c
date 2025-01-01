@@ -2197,7 +2197,7 @@ int checkusername2(char a[]){
     int i=0;
     char userchek[1000];
     while(fgets(userchek,1000,usernames1)!=NULL){
-        if(strncmp(userchek,a,strlen(a))==0){
+        if(strncmp(userchek,a,strlen(userchek)-1)==0){
             return i;
         }
         i++;
@@ -2284,7 +2284,7 @@ int checkusername(char a[]){
     char userchek[1000];
     FILE *usernames1=fopen("usernames.txt","r");
     while(fgets(userchek,1000,usernames1)!=NULL){
-        if(strncmp(userchek,a,strlen(a))==0){
+        if(strncmp(userchek,a,strlen(userchek)-1)==0){
             return 0;
         }
     }
@@ -2351,12 +2351,12 @@ void saveusername(){
     scanw("%s",a);
     if(checkusername(a)){
         FILE *usernames=fopen("usernames.txt","a");
-        int score=0;
-        int rank=0;
-        int gold=0;
-        int games=0;
-        int time=0;
-        fprintf(usernames,"%s %d %d %d %d %d\n",a,score,rank,gold,games,time);
+        // int score=0;
+        // int rank=0;
+        // int gold=0;
+        // int games=0;
+        // int time=0;
+        fprintf(usernames,"%s\n",a);
         fclose(usernames);
     }
     else{
