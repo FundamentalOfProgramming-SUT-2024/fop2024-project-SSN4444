@@ -7,12 +7,16 @@
 //Tنماد طلسم
 //Gنماد طلا است  🎗️
 //gهم نماد طلا است      ▫️
-//غذا    ❤    0
+//غذا           0    ❤     
 //jهم نماد طلاست(کیسه طلا)   ⚱️ 
 //فعلا کاراکتر U به عنوان ادمک در نظر گرفته شده
 //💰,🪙,✨
 // 🍔, 🍕,🍰
-// 🗡️,🪄 , 🛡️ 
+// 🗡️1
+//🪄 2
+//  ➳   تیر3
+// ⚔️  4 شمشیر
+//
 //🤖
 //❣️ ,  🎗️   ,   🗡️  ,  ⚠️  ,  ⚱️   ,    ,   ▫️  ,
 //❣️⭐🌝🌞🌛🌚⚡🌕🚦🎁🧨🏆🏅🥈🥇🥉🎗️🎖️🎄💍👑🔔⚱️🔑🗝️➡️⚠️🚸⚜️🔱🔅🔆🔸🔶🔻♦️💛🟨▫️◽◻️سل
@@ -43,7 +47,7 @@ struct ROOM room[6];
 struct DOOR{
     int x;
     int y;
-    };
+};
 struct DOOR door[7];
 int randomInRange(int min,int max){
     return min+rand()%(max-min+1);
@@ -565,11 +569,15 @@ int startgame(){
         mvprintw(adamak.x,adamak.y,"%s",unicode_char);
         refresh(); 
         //نمایش تعداد طلا ها در نوار بازی
-        mvprintw(49,0,"GOLD:%d  ",GOLD); 
+        mvprintw(49,0,"GOLD  :%d",GOLD);
+        const char *tala="💰";
+        mvprintw(49,4,"%s",tala); 
         //نمایش طبقه
-        mvprintw(49,9,"FLOOR:%d  ",tabagheh);
+        mvprintw(49,10,"FLOOR:%d  ",tabagheh);
         //نمایش سلامتی
-        mvprintw(49,19,"HEALTH:%d",HEALTH);
+        const char *ghalb="♥️";
+        mvprintw(49,20,"HEALTH :%d",HEALTH);
+        mvprintw(49,25,"%s",ghalb);
         refresh();
         char c=getch();
         //دکمه های حرکت
@@ -1360,6 +1368,8 @@ int Login(){
         if(checkpasword2(b,target)){
             //وارد شدن به بازی
             clear();
+            const char *unicode_char="⏳";
+            mvprintw(20,71,"%s",unicode_char);
             mvprintw(20,60,"Loading...");
             refresh();
             usleep(4000000);
