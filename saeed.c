@@ -45,10 +45,10 @@ int asa=0;
 int T_damage=0;
 int T_health=0;
 int T_speed=0;
+int tabagheh=1;
 struct ADAMAK{
     int x;
     int y;
-    int dir;
 };
 struct ADAMAK adamak;
 struct ROOM{
@@ -63,6 +63,36 @@ struct DOOR{
 struct DOOR door[7];
 int randomInRange(int min,int max){
     return min+rand()%(max-min+1);
+}
+
+void savegame(const char username[],const char username_filename[]){
+    char filename[100];
+    char filename2[100];
+    snprintf(filename2,sizeof(filename2),"%s.txt",username);
+    FILE*savefile_name=fopen(filename2,"a");
+    fprintf(savefile_name,"%s\n",username_filename);
+    snprintf(filename,sizeof(filename),"%s.txt",username_filename);
+    FILE*savefile=fopen(filename,"w");
+    for(int i=0;i<49;i++){
+        for(int j=0;j<183;j++){
+            fprintf(savefile,"%c\n",map[i][j]);
+        }
+    }
+    fprintf(savefile,"%d\n",GOLD);
+    fprintf(savefile,"%d\n",HEALTH);
+    fprintf(savefile,"%d\n",food);
+    fprintf(savefile,"%d\n",shamshir);
+    fprintf(savefile,"%d\n",khanjar);
+    fprintf(savefile,"%d\n",tir);
+    fprintf(savefile,"%d\n",asa);
+    fprintf(savefile,"%d\n",T_damage);
+    fprintf(savefile,"%d\n",T_health);
+    fprintf(savefile,"%d\n",T_speed);
+    fprintf(savefile,"%d\n",tabagheh);
+    fprintf(savefile,"%d\n",adamak.x);
+    fprintf(savefile,"%d\n",adamak.y);
+    fclose(savefile);
+    fclose(savefile_name);
 }
 void foodmenu(){
     clear();
@@ -739,12 +769,15 @@ void generatemap(int tabagheh){
         map[xT5][yT5]='^';
     }
 }
-int startgame(){
+int startgame(int v){
     clear();
-    int tabagheh=1;
-    generatemap(tabagheh);
-    adamak.x=27;
-    adamak.y=1;
+    noecho();
+    // int tabagheh=1;
+    if(v==0){
+        generatemap(tabagheh);
+        adamak.x=27;
+        adamak.y=1;
+    }
     while(1){
         for(int i=0;i<49;i++){
             for(int j=0;j<182;j++){
@@ -2163,7 +2196,21 @@ int startgame(){
                 refresh();
                 char c1=getch();
                 if(c1=='y'){
-                    //savegame();
+                    clear();
+                    noecho();
+                    echo();
+                    mvprintw(20,60,"plaes enter your username and filename:(username  and  username_filename )");
+                    refresh();
+                    move(22,60);
+                    refresh();
+                    echo();
+                    char username[50];
+                    char username_filename[50];
+                    scanf("%s",username);
+                    refresh();
+                    scanf("%s",username_filename);
+                    refresh();
+                    savegame(username,username_filename);
                     return 0;
                 }
                 else{
@@ -2173,6 +2220,77 @@ int startgame(){
         }
         clear();
     }
+}
+void Loadgame(const char username[]){
+    clear();
+    char filename[100];
+    //خوندن نام بازی های سیوی کاربر
+    snprintf(filename,sizeof(filename),"%s.txt",username);
+    FILE*fptr=fopen(filename,"r");
+    char a[50];
+    move(0,0);
+    while(fgets(a,50,fptr)!=NULL){
+        printw("%s",a);
+    }
+    refresh();
+    echo();
+    mvprintw(20,60,"pleas enter the name of the saved game:");
+    refresh();
+    move(21,60);
+    char name[50];
+    scanf("%s",name);
+    refresh();
+    clear();
+    char filename1[100];
+    snprintf(filename1,sizeof(filename1),"%s.txt",name);
+    FILE* game =fopen(filename1,"r");
+    for(int i=0;i<49;i++){
+        for(int j=0;j<183;j++){
+            fscanf(game,"%c",&map[i][j]);
+        }
+    }
+    int GOLD2;
+    int HEALTH2;
+    int food2;
+    int shamshir2;
+    int khanjar2;
+    int tir2;
+    int asa2;
+    int T_damage2;
+    int T_health2;
+    int T_speed2;
+    int tabagheh2;
+    int x;
+    int y;
+    fscanf(game,"%d",&GOLD2);
+    GOLD=GOLD2;
+    fscanf(game,"%d",&HEALTH2);
+    HEALTH=HEALTH2;
+    fscanf(game,"%d",&food2);
+    food=food2;
+    fscanf(game,"%d",&shamshir2);
+    shamshir=shamshir2;
+    fscanf(game,"%d",&khanjar2);
+    khanjar=khanjar2;
+    fscanf(game,"%d",&tir2);
+    tir=tir2;
+    fscanf(game,"%d",&asa2);
+    asa=asa2;
+    fscanf(game,"%d",&T_damage2);
+    T_damage=T_damage2;
+    fscanf(game,"%d",&T_health2);
+    T_health=T_health2;
+    fscanf(game,"%d",&T_speed2);
+    T_speed=T_speed2;
+    fscanf(game,"%d",&tabagheh2);
+    tabagheh=tabagheh2;
+    fscanf(game,"%d",&x);
+    adamak.x=x;
+    fscanf(game,"%d",&y);
+    adamak.y=y;
+    fclose(fptr);
+    fclose(game);
+    startgame(1);
 }
 //برای چک پسورد برای login
 int checkpasword2(char b[],int target){
@@ -2225,8 +2343,18 @@ int Login(){
             mvprintw(20,71,"%s",unicode_char);
             mvprintw(20,60,"Loading...");
             refresh();
-            usleep(4000000);
-            startgame();
+            usleep(3000000);
+            clear();
+            mvprintw(20,60,"to play the NEW game press(1)");
+            mvprintw(21,60,"to play the saved game press(2)");
+            refresh();
+            char c6=getch();
+            if(c6=='1'){
+                startgame(0);
+            }
+            else if(c6=='2'){
+                Loadgame(a);    
+            }
             clear();
             return 0;
         }
