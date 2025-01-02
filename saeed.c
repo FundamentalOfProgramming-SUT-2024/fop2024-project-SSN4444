@@ -2244,11 +2244,19 @@ void Loadgame(const char username[]){
     char filename1[100];
     snprintf(filename1,sizeof(filename1),"%s.txt",name);
     FILE* game =fopen(filename1,"r");
+    // char map2[49*183][2];/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     for(int i=0;i<49;i++){
         for(int j=0;j<183;j++){
-            fscanf(game,"%c",&map[i][j]);
+            map[i][j]=fgetc(game);
         }
     }
+    // int k=0;
+    // for(int i=0;i<49;i++){
+    //     for(int j=0;j<183;j++){
+    //         strcpy(map[i][j],map2[k]);
+    //         k++;
+    //     }
+    // }   
     int GOLD2;
     int HEALTH2;
     int food2;
