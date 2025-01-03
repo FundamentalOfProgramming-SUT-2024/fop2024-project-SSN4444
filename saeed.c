@@ -2262,6 +2262,7 @@ void Loadgame(const char username[]){
     //         k++;
     //     }
     //}
+    //
     char temp[49*183][2];
     for(int i=0;i<49*183;i++){
         fscanf(game,"%s",temp[i]);
