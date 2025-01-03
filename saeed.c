@@ -75,7 +75,12 @@ void savegame(const char username[],const char username_filename[]){
     FILE*savefile=fopen(filename,"w");
     for(int i=0;i<49;i++){
         for(int j=0;j<183;j++){
-            fprintf(savefile,"%c\n",map[i][j]);
+            if(map[i][j]==' '){
+                fprintf(savefile,"%c\n",'!');
+            }
+            else{
+                fprintf(savefile,"%c\n",map[i][j]);
+            }
         }
     }
     fprintf(savefile,"%d\n",GOLD);
@@ -2245,18 +2250,32 @@ void Loadgame(const char username[]){
     snprintf(filename1,sizeof(filename1),"%s.txt",name);
     FILE* game =fopen(filename1,"r");
     // char map2[49*183][2];/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    for(int i=0;i<49;i++){
-        for(int j=0;j<183;j++){
-            map[i][j]=fgetc(game);
-        }
-    }
+    // for(int i=0;i<49;i++){
+    //     for(int j=0;j<183;j++){
+    //         map[i][j]=fgetc(game);
+    //     }
+    // }
     // int k=0;
     // for(int i=0;i<49;i++){
     //     for(int j=0;j<183;j++){
     //         strcpy(map[i][j],map2[k]);
     //         k++;
     //     }
-    // }   
+    //}
+    char temp[49*183][2];
+    for(int i=0;i<49*183;i++){
+        fscanf(game,"%s",temp[i]);
+    }
+    for(int i=0;i<49;i++){
+        for(int j=0;j<183;j++){
+            if(temp[(183*i)+j][0]=='!'){
+                map[i][j]==' ';
+            }
+            else{
+                map[i][j]=temp[(183*i)+j][0];
+            }
+        }
+    }   
     int GOLD2;
     int HEALTH2;
     int food2;
