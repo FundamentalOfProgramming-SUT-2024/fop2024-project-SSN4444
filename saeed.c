@@ -46,6 +46,11 @@ int T_damage=0;
 int T_health=0;
 int T_speed=0;
 int tabagheh=1;
+///////////////////////////
+//میزان کاهش جان(درجه سختی بازی)
+int decrease=5;
+//انتخاب شخصیت بازی
+const char *unicode_char8095="🤖";
 struct ADAMAK{
     int x;
     int y;
@@ -64,7 +69,6 @@ struct DOOR door[7];
 int randomInRange(int min,int max){
     return min+rand()%(max-min+1);
 }
-
 void savegame(const char username[],const char username_filename[]){
     char filename[100];
     char filename2[100];
@@ -844,8 +848,7 @@ int startgame(int v){
         }    
         //نمایش کاراکتر
         //🤖 , 👾 ,⛄️ ,🛹,🥷
-        const char *unicode_char="🤖";
-        mvprintw(adamak.x,adamak.y,"%s",unicode_char);
+        mvprintw(adamak.x,adamak.y,"%s",unicode_char8095);
         refresh(); 
         //نمایش تعداد طلا ها در نوار بازی
         mvprintw(49,0,"GOLD  :%d",GOLD);
@@ -1137,7 +1140,7 @@ int startgame(int v){
                     usleep(5000000);
                     return 0;
                 }
-                HEALTH -= 5;
+                HEALTH -= decrease;
                 mvprintw(0,0,"you hit a trap !");
                 refresh();
                 usleep(2000000);
@@ -1245,7 +1248,7 @@ int startgame(int v){
                     usleep(5000000);
                     return 0;
                 }
-                HEALTH -= 5;
+                HEALTH -= decrease;
                 mvprintw(0,0,"you hit a trap !");
                 refresh();
                 usleep(2000000);
@@ -1393,7 +1396,7 @@ int startgame(int v){
                     usleep(5000000);
                     return 0;
                 }
-                HEALTH -= 5;
+                HEALTH -= decrease;
                 mvprintw(0,0,"you hit a trap !");
                 refresh();
                 usleep(2000000);
@@ -1541,7 +1544,7 @@ int startgame(int v){
                     usleep(5000000);
                     return 0;
                 }
-                HEALTH -= 5;
+                HEALTH -= decrease;
                 mvprintw(0,0,"you hit a trap !");
                 refresh();
                 usleep(2000000);
@@ -1691,7 +1694,7 @@ int startgame(int v){
                     usleep(5000000);
                     return 0;
                 }
-                HEALTH -= 5;
+                HEALTH -= decrease;
                 mvprintw(0,0,"you hit a trap !");
                 refresh();
                 usleep(2000000);
@@ -1841,7 +1844,7 @@ int startgame(int v){
                     usleep(5000000);
                     return 0;
                 }
-                HEALTH -= 5;
+                HEALTH -= decrease;
                 mvprintw(0,0,"you hit a trap !");
                 refresh();
                 usleep(2000000);
@@ -1991,7 +1994,7 @@ int startgame(int v){
                     usleep(5000000);
                     return 0;
                 }
-                HEALTH -= 5;
+                HEALTH -= decrease;
                 mvprintw(0,0,"you hit a trap !");
                 refresh();
                 usleep(2000000);
@@ -2141,7 +2144,7 @@ int startgame(int v){
                     usleep(5000000);
                     return 0;
                 }
-                HEALTH -= 5;
+                HEALTH -= decrease;
                 mvprintw(0,0,"you hit a trap !");
                 refresh();
                 usleep(2000000);
@@ -2538,6 +2541,75 @@ void createaccount(){
     //گرفتن یک چر الکی که صفحه تا زدن دکمه توسط کاربر باقی بماند 
     char p=getch();
 }
+void Settings(){
+    clear();
+    mvprintw(18,60,"choose the difficulty level of the game (1)");
+    mvprintw(20,60,"choose the character of the game (2)");
+    refresh();
+    char c=getch();
+    if(c=='1'){
+        clear();
+        mvprintw(18,60,"easy(1)");
+        mvprintw(20,60,"intermediate(2)");
+        mvprintw(22,60,"hard(3)");
+        refresh();
+        char c1=getch();
+        if(c1=='1'){
+            decrease=5;
+        }
+        else if(c1=='2'){
+            decrease=10;
+        }
+        else if(c1=='3'){
+            decrease=15;
+        }
+    }
+    else if(c=='2'){
+        //unicode_char8095
+        // 🤖, 👾 ,⛄️ ,🛹,🥷
+        clear();
+        mvprintw(0,0,"choose your character");
+        const char*unicode_char1="🤖";
+        mvprintw(18,68,"%s",unicode_char1);
+        mvprintw(18,70,"(1)");
+        const char*unicode_char2="👾";
+        mvprintw(20,68,"%s",unicode_char2);
+        mvprintw(20,70,"(2)");
+        const char*unicode_char3="⛄️";
+        mvprintw(22,68,"%s",unicode_char3);
+        mvprintw(22,70,"(3)");
+        const char*unicode_char4="🛹";
+        mvprintw(24,68,"%s",unicode_char4);
+        mvprintw(24,70,"(4)");
+        const char*unicode_char5="🥷";
+        mvprintw(26,68,"%s",unicode_char5);
+        mvprintw(26,70,"(5)");
+        refresh();
+        char c3=getch();
+        if(c3=='1'){
+            unicode_char8095="🤖";
+        }
+        else if(c3=='2'){
+            unicode_char8095="👾";
+        }
+        else if(c3=='3'){
+            unicode_char8095="⛄️";
+        }
+        else if(c3=='4'){
+            unicode_char8095="🛹";
+        }
+        else if(c3=='5'){
+            unicode_char8095="🥷";
+        }
+        else{
+            Settings();
+        }
+    }
+    else{
+        return;
+    }
+    Settings();
+}
 void display_menu(WINDOW *menu_win,int highlight,char *options[],int n_options){
     int x,y,i;
     x=2; 
@@ -2604,12 +2676,16 @@ int MENU(){
             clear();
             MENU();
             break;
-        // case 3:
-        //     guest account();
-        //     break;
-        // case 4:
-        //     Settings();
-        //     break;
+        case 3:
+            Settings();
+            clear();
+            MENU();
+            break;
+        case 4:
+            startgame(0);
+            clear();
+            MENU();
+            break;
         // case 5:
         //     Scoreboard();
         case 6:
