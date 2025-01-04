@@ -51,6 +51,10 @@ int tabagheh=1;
 int decrease=5;
 //انتخاب شخصیت بازی
 const char *unicode_char8095="🤖";
+struct MARK{
+    int m[49][183];
+};
+struct MARK mark;
 struct ADAMAK{
     int x;
     int y;
@@ -100,6 +104,11 @@ void savegame(const char username[],const char username_filename[]){
     fprintf(savefile,"%d\n",tabagheh);
     fprintf(savefile,"%d\n",adamak.x);
     fprintf(savefile,"%d\n",adamak.y);
+    for(int i=0;i<49;i++){
+        for(int j=0;j<183;j++){
+            fprintf(savefile,"%d\n",mark.m[i][j]);
+        }
+    }
     fclose(savefile);
     fclose(savefile_name);
 }
@@ -786,6 +795,11 @@ int startgame(int v){
         generatemap(tabagheh);
         adamak.x=27;
         adamak.y=1;
+        for(int i=0;i<49;i++){
+            for(int j=0;j<183;j++){
+                mark.m[i][j]=0;    
+            }
+    }
     }
     while(1){
         for(int i=0;i<49;i++){
@@ -845,7 +859,50 @@ int startgame(int v){
                 }
             }
             printw("\n");
-        }    
+        }
+        //جا هایی که ادمک رفته دیگه باید نمایان باشند
+        mark.m[adamak.x][adamak.y]=1;
+        // مسیر پیش رو تا ۵ خانه باید نمایان باشند
+        for(int i=adamak.x-5;i<adamak.x+5;i++){
+            for(int j=adamak.y-5;j<adamak.y+7;j++){
+                if(i>49||i<0||j>183||j<0){
+                    continue;
+                }
+                if(map[i][j]=='#'){
+                    mark.m[i][j]=1;
+                }
+            }
+        }
+        //برای نمایش اتاق ها وقتی ادمک به +میرسد
+        if(map[adamak.x][adamak.y]=='+'||map[adamak.x][adamak.y]=='@'||map[adamak.x][adamak.y]=='?'){
+            for(int i=adamak.x-10;i<adamak.x+10;i++){
+                for(int j=adamak.y-10;j<adamak.y+12;j++){
+                    if(i>49||i<0||j>183||j<0){
+                        continue;
+                    }
+                    else{
+                        mark.m[i][j]=1;
+                    }
+            }
+        }      
+        }
+        for(int i=1;i<48;i++){
+            for(int j=0;j<183;j++){
+                if(mark.m[i][j]==0){
+                    mvprintw(i,j,"%c",' ');
+                }
+                else if(mark.m[i][j]==1){
+                    continue;
+                }
+            }
+            printw("\n");
+        }
+        // if(tabagheh==2||tabagheh==4){
+        //     for(int i=adamak.x;i<adamak.x+6;i++){
+        //         mvprintw(26,183-i,"%c",'#');
+        //     }
+        // }
+        refresh();    
         //نمایش کاراکتر
         //🤖 , 👾 ,⛄️ ,🛹,🥷
         mvprintw(adamak.x,adamak.y,"%s",unicode_char8095);
@@ -866,6 +923,70 @@ int startgame(int v){
         if(c=='i'){
             gunandspellmenu();
             clear();
+        }
+        // یرای دیدن کل نقشه
+        else if(c=='M'){
+            clear();
+            for(int i=0;i<49;i++){
+                for(int j=0;j<182;j++){
+                    if(map[i][j]=='G'){
+                    const char *unicode_char="🎗️";
+                        printw("%s",unicode_char);           
+                    }
+                    else if(map[i][j]=='g'){
+                        const char *unicode_char="▫️";
+                        addstr(unicode_char);
+                    }
+                    else if(map[i][j]=='j'){
+                        const char *unicode_char="⚱️";
+                        printw("%s",unicode_char);
+                    }
+                    else if(map[i][j]=='^'){
+                        printw("%c",'.');
+                    }
+                    //وقتی تله غیر فعال میشود با این نماد نشان میدهیم {
+                    else if(map[i][j]=='{'){
+                        printw("%c",'^');
+                    }
+                    else if(map[i][j]=='1'){
+                        const char *unicode_char="🗡️";
+                        printw("%s",unicode_char);
+                    }
+                    else if(map[i][j]=='2'){
+                        const char *unicode_char="🪄";
+                        printw("%s",unicode_char);
+                    }
+                    else if(map[i][j]=='3'){
+                        const char *unicode_char="➳";
+                        printw("%s",unicode_char);
+                    }
+                    else if(map[i][j]=='4'){
+                        const char *unicode_char="⚔️";
+                        printw("%s",unicode_char);
+                    }
+                    else if(map[i][j]=='5'){
+                        const char *unicode_char="⚝";
+                        printw("%s",unicode_char);
+                    }
+                    else if(map[i][j]=='6'){
+                        const char *unicode_char="✦";
+                        printw("%s",unicode_char);
+                    }
+                    else if(map[i][j]=='7'){
+                        const char *unicode_char="☽";
+                        printw("%s",unicode_char);
+                    }
+                    else if(map[i][j]=='0'){ 
+                        printw("%s","❤");
+                    }    
+                    else{
+                        printw("%c",map[i][j]);
+                    }
+                }
+                printw("\n");
+            }
+            refresh();
+            char t=getch();
         }
         //برای دیدن لیست غذا و مصرف غذا
         else if(c=='E'){
@@ -1119,6 +1240,11 @@ int startgame(int v){
             //برخورد با پله
             else if(map[adamak.x][adamak.y]=='<'){
                 clear();
+                for(int i=0;i<49;i++){
+                    for(int j=0;j<183;j++){
+                        mark.m[i][j]=0;
+                    }
+                }
                 adamak.x=27;
                 adamak.y=1;
                 mvprintw(20,60,"Move to the next floor");
@@ -1127,7 +1253,7 @@ int startgame(int v){
                 tabagheh++;
                 if(tabagheh==4||tabagheh==2){
                     adamak.x=26;
-                    adamak.y=182;
+                    adamak.y=170;
                 }
                 generatemap(tabagheh);
             }
@@ -1228,6 +1354,11 @@ int startgame(int v){
             }
             else if(map[adamak.x][adamak.y]=='<'){
                 clear();
+                for(int i=0;i<49;i++){
+                    for(int j=0;j<183;j++){
+                        mark.m[i][j]=0;
+                    }
+                }
                 adamak.x=27;
                 adamak.y=1;
                 mvprintw(20,60,"Move to the next floor");
@@ -1236,7 +1367,7 @@ int startgame(int v){
                 tabagheh++;
                 if(tabagheh==4||tabagheh==2){
                     adamak.x=26;
-                    adamak.y=182;
+                    adamak.y=170;
                 }
                 generatemap(tabagheh);
             }
@@ -1376,6 +1507,11 @@ int startgame(int v){
             }
             else if(map[adamak.x][adamak.y]=='<'){
                 clear();
+                for(int i=0;i<49;i++){
+                    for(int j=0;j<183;j++){
+                        mark.m[i][j]=0;
+                    }
+                }
                 adamak.x=27;
                 adamak.y=1;
                 mvprintw(20,60,"Move to the next floor");
@@ -1384,7 +1520,7 @@ int startgame(int v){
                 tabagheh++;
                 if(tabagheh==4||tabagheh==2){
                     adamak.x=26;
-                    adamak.y=182;
+                    adamak.y=170;
                 }
                 generatemap(tabagheh);
             }
@@ -1524,6 +1660,11 @@ int startgame(int v){
             }
             else if(map[adamak.x][adamak.y]=='<'){
                 clear();
+                for(int i=0;i<49;i++){
+                    for(int j=0;j<183;j++){
+                        mark.m[i][j]=0;
+                    }
+                }
                 adamak.x=27;
                 adamak.y=1;
                 mvprintw(20,60,"Move to the next floor");
@@ -1532,7 +1673,7 @@ int startgame(int v){
                 tabagheh++;
                 if(tabagheh==4||tabagheh==2){
                     adamak.x=26;
-                    adamak.y=182;
+                    adamak.y=170;
                 }
                 generatemap(tabagheh);
             }
@@ -1674,6 +1815,11 @@ int startgame(int v){
             }
             else if(map[adamak.x][adamak.y]=='<'){
                 clear();
+                for(int i=0;i<49;i++){
+                    for(int j=0;j<183;j++){
+                        mark.m[i][j]=0;
+                    }
+                }
                 adamak.x=27;
                 adamak.y=1;
                 mvprintw(20,60,"Move to the next floor");
@@ -1682,7 +1828,7 @@ int startgame(int v){
                 tabagheh++;
                 if(tabagheh==4){
                     adamak.x=26;
-                    adamak.y=182;
+                    adamak.y=170;
                 }
                 generatemap(tabagheh||tabagheh==2);
             }
@@ -1824,6 +1970,11 @@ int startgame(int v){
             }
             else if(map[adamak.x][adamak.y]=='<'){
                 clear();
+                for(int i=0;i<49;i++){
+                    for(int j=0;j<183;j++){
+                        mark.m[i][j]=0;
+                    }
+                }
                 adamak.x=27;
                 adamak.y=1;
                 mvprintw(20,60,"Move to the next floor");
@@ -1832,7 +1983,7 @@ int startgame(int v){
                 tabagheh++;
                 if(tabagheh==4||tabagheh==2){
                     adamak.x=26;
-                    adamak.y=182;
+                    adamak.y=170;
                 }
                 generatemap(tabagheh);
             }
@@ -1974,6 +2125,11 @@ int startgame(int v){
             }
             else if(map[adamak.x][adamak.y]=='<'){
                 clear();
+                for(int i=0;i<49;i++){
+                    for(int j=0;j<183;j++){
+                        mark.m[i][j]=0;
+                    }
+                }
                 adamak.x=27;
                 adamak.y=1;
                 mvprintw(20,60,"Move to the next floor");
@@ -1982,7 +2138,7 @@ int startgame(int v){
                 tabagheh++;
                 if(tabagheh==4||tabagheh==2){
                     adamak.x=26;
-                    adamak.y=182;
+                    adamak.y=170;
                 }
                 generatemap(tabagheh);
             }
@@ -2124,6 +2280,11 @@ int startgame(int v){
             }
             else if(map[adamak.x][adamak.y]=='<'){
                 clear();
+                for(int i=0;i<49;i++){
+                    for(int j=0;j<183;j++){
+                        mark.m[i][j]=0;
+                    }
+                }
                 adamak.x=27;
                 adamak.y=1;
                 mvprintw(20,60,"Move to the next floor");
@@ -2132,7 +2293,7 @@ int startgame(int v){
                 tabagheh++;
                 if(tabagheh==4||tabagheh==2){
                     adamak.x=26;
-                    adamak.y=182;
+                    adamak.y=170;
                 }
                 generatemap(tabagheh);
             }
@@ -2252,20 +2413,6 @@ void Loadgame(const char username[]){
     char filename1[100];
     snprintf(filename1,sizeof(filename1),"%s.txt",name);
     FILE* game =fopen(filename1,"r");
-    // char map2[49*183][2];/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // for(int i=0;i<49;i++){
-    //     for(int j=0;j<183;j++){
-    //         map[i][j]=fgetc(game);
-    //     }
-    // }
-    // int k=0;
-    // for(int i=0;i<49;i++){
-    //     for(int j=0;j<183;j++){
-    //         strcpy(map[i][j],map2[k]);
-    //         k++;
-    //     }
-    //}
-    //
     char temp[49*183][2];
     for(int i=0;i<49*183;i++){
         fscanf(game,"%s",temp[i]);
@@ -2319,6 +2466,11 @@ void Loadgame(const char username[]){
     adamak.x=x;
     fscanf(game,"%d",&y);
     adamak.y=y;
+    for(int i=0;i<49;i++){
+        for(int j=0;j<183;j++){
+            fscanf(game,"%d",&mark.m[i][j]);
+        }
+    }
     fclose(fptr);
     fclose(game);
     startgame(1);
