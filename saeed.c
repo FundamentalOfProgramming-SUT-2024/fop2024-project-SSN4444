@@ -1375,6 +1375,12 @@ int startgame(int v){
             else if( map[adamak.x][adamak.y+1]==','){
                  map[adamak.x][adamak.y+1]='?';
             }
+            else if(map[adamak.x][adamak.y]=='&'){
+                clear();
+                printw("your code : %d",8567);
+                refresh();
+                usleep(4000000);
+            }
             else if(map[adamak.x][adamak.y]=='@'){
                 clear();
                 echo();
@@ -1555,6 +1561,12 @@ int startgame(int v){
             adamak.x++;
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.x--;
+            }
+            else if(map[adamak.x][adamak.y]=='&'){
+                clear();
+                printw("your code : %d",8567);
+                refresh();
+                usleep(4000000);
             }
             else if(map[adamak.x][adamak.y]=='@'){
                 clear();
@@ -1742,6 +1754,12 @@ int startgame(int v){
             adamak.y--;
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.y++;
+            }
+            else if(map[adamak.x][adamak.y]=='&'){
+                clear();
+                printw("your code : %d",8567);
+                refresh();
+                usleep(4000000);
             }
             else if(map[adamak.x+1][adamak.y]==','){
                 map[adamak.x+1][adamak.y]='?';
@@ -1931,6 +1949,12 @@ int startgame(int v){
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.x++;
                 adamak.y++;
+            }
+            else if(map[adamak.x][adamak.y]=='&'){
+                clear();
+                printw("your code : %d",8567);
+                refresh();
+                usleep(4000000);
             }
             else if(map[adamak.x+1][adamak.y]==','){
                 map[adamak.x+1][adamak.y]='?';
@@ -2123,6 +2147,12 @@ int startgame(int v){
                 adamak.x--;
                 adamak.y++;
             }
+            else if(map[adamak.x][adamak.y]=='&'){
+                clear();
+                printw("your code : %d",8567);
+                refresh();
+                usleep(4000000);
+            }
             else if(map[adamak.x][adamak.y]=='@'){
                 clear();
                 echo();
@@ -2314,6 +2344,12 @@ int startgame(int v){
                 adamak.x++;
                 adamak.y--;
             }
+            else if(map[adamak.x][adamak.y]=='&'){
+                clear();
+                printw("your code : %d",8567);
+                refresh();
+                usleep(4000000);
+            }
             else if(map[adamak.x+1][adamak.y]=='?'){
                 map[adamak.x+1][adamak.y]='+';
             }
@@ -2504,6 +2540,12 @@ int startgame(int v){
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.x--;
                 adamak.y--;
+            }
+            else if(map[adamak.x][adamak.y]=='&'){
+                clear();
+                printw("your code : %d",8567);
+                refresh();
+                usleep(4000000);
             }
             else if(map[adamak.x+1][adamak.y]==','){
                 map[adamak.x+1][adamak.y]='?';
