@@ -73,8 +73,8 @@ struct DOOR door[7];
 int randomInRange(int min,int max){
     return min+rand()%(max-min+1);
 }
-int correctcode(int a){
-    if(a==8567){
+int correctcode(char a[]){
+    if(strcmp(a,"8567")==0){
         return 1;
     }
     else return 0;
@@ -1177,26 +1177,12 @@ int startgame(int v){
                 echo();
                 mvprintw(20,60,"pleas enter the code");
                 refresh();
-                int a;
-                scanf("%d",&a);
+                char a[30];
+                scanf("%s",a);
                 if(!correctcode(a)){
                     adamak.x++;
                 }
-                else {
-                    map[adamak.x][adamak.y]='$';
-                }
-            }
-            else if(map[adamak.x][adamak.y]=='@'){
-                clear();
-                echo();
-                mvprintw(20,60,"pleas enter the code");
-                refresh();
-                int a;
-                scanf("%d",&a);
-                if(!correctcode(a)){
-                    adamak.x++;
-                }
-                else {
+                else{
                     map[adamak.x][adamak.y]='$';
                 }
             }
@@ -1386,24 +1372,10 @@ int startgame(int v){
                 echo();
                 mvprintw(20,60,"pleas enter the code");
                 refresh();
-                int a;
-                scanf("%d",&a);
+                char a[30];
+                scanf("%s",a);
                 if(!correctcode(a)){
                     adamak.y--;
-                }
-                else {
-                    map[adamak.x][adamak.y]='$';
-                }
-            }
-            else if(map[adamak.x][adamak.y]=='@'){
-                clear();
-                echo();
-                mvprintw(20,60,"pleas enter the code");
-                refresh();
-                int a;
-                scanf("%d",&a);
-                if(!correctcode(a)){
-                    adamak.x--;
                 }
                 else {
                     map[adamak.x][adamak.y]='$';
@@ -1573,22 +1545,8 @@ int startgame(int v){
                 echo();
                 mvprintw(20,60,"pleas enter the code");
                 refresh();
-                int a;
-                scanf("%d",&a);
-                if(!correctcode(a)){
-                    adamak.x--;
-                }
-                else {
-                    map[adamak.x][adamak.y]='$';
-                }
-            }
-            else if(map[adamak.x][adamak.y]=='@'){
-                clear();
-                echo();
-                mvprintw(20,60,"pleas enter the code");
-                refresh();
-                int a;
-                scanf("%d",&a);
+                char a[30];
+                scanf("%s",a);
                 if(!correctcode(a)){
                     adamak.x--;
                 }
@@ -1772,22 +1730,8 @@ int startgame(int v){
                 echo();
                 mvprintw(20,60,"pleas enter the code");
                 refresh();
-                int a;
-                scanf("%d",&a);
-                if(!correctcode(a)){
-                    adamak.y++;
-                }
-                else {
-                    map[adamak.x][adamak.y]='$';
-                }
-            }
-            else if(map[adamak.x][adamak.y]=='@'){
-                clear();
-                echo();
-                mvprintw(20,60,"pleas enter the code");
-                refresh();
-                int a;
-                scanf("%d",&a);
+                char a[30];
+                scanf("%s",a);
                 if(!correctcode(a)){
                     adamak.y++;
                 }
@@ -1967,23 +1911,8 @@ int startgame(int v){
                 echo();
                 mvprintw(20,60,"pleas enter the code");
                 refresh();
-                int a;
-                scanf("%d",&a);
-                if(!correctcode(a)){
-                    adamak.x++;
-                    adamak.y++;
-                }
-                else {
-                    map[adamak.x][adamak.y]='$';
-                }
-            }
-            else if(map[adamak.x][adamak.y]=='@'){
-                clear();
-                echo();
-                mvprintw(20,60,"pleas enter the code");
-                refresh();
-                int a;
-                scanf("%d",&a);
+                char a[30];
+                scanf("%s",a);
                 if(!correctcode(a)){
                     adamak.x++;
                     adamak.y++;
@@ -2158,23 +2087,8 @@ int startgame(int v){
                 echo();
                 mvprintw(20,60,"pleas enter the code");
                 refresh();
-                int a;
-                scanf("%d",&a);
-                if(!correctcode(a)){
-                    adamak.x--;
-                    adamak.y++;
-                }
-                else {
-                    map[adamak.x][adamak.y]='$';
-                }
-            }
-            else if(map[adamak.x][adamak.y]=='@'){
-                clear();
-                echo();
-                mvprintw(20,60,"pleas enter the code");
-                refresh();
-                int a;
-                scanf("%d",&a);
+                char a[30];
+                scanf("%s",a);
                 if(!correctcode(a)){
                     adamak.x--;
                     adamak.y++;
@@ -2361,23 +2275,8 @@ int startgame(int v){
                 echo();
                 mvprintw(20,60,"pleas enter the code");
                 refresh();
-                int a;
-                scanf("%d",&a);
-                if(!correctcode(a)){
-                    adamak.x--;
-                    adamak.y++;
-                }
-                else {
-                    map[adamak.x][adamak.y]='$';
-                }
-            }
-            else if(map[adamak.x][adamak.y]=='@'){
-                clear();
-                echo();
-                mvprintw(20,60,"pleas enter the code");
-                refresh();
-                int a;
-                scanf("%d",&a);
+                char a[30];
+                scanf("%s",a);
                 if(!correctcode(a)){
                     adamak.x--;
                     adamak.y++;
@@ -2558,23 +2457,8 @@ int startgame(int v){
                 echo();
                 mvprintw(20,60,"pleas enter the code");
                 refresh();
-                int a;
-                scanf("%d",&a);
-                if(!correctcode(a)){
-                    adamak.x--;
-                    adamak.y--;
-                }
-                else {
-                    map[adamak.x][adamak.y]='$';
-                }
-            }
-            else if(map[adamak.x][adamak.y]=='@'){
-                clear();
-                echo();
-                mvprintw(20,60,"pleas enter the code");
-                refresh();
-                int a;
-                scanf("%d",&a);
+                char a[30];
+                scanf("%s",a);
                 if(!correctcode(a)){
                     adamak.x--;
                     adamak.y--;
