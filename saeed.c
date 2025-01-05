@@ -53,6 +53,8 @@ int decrease=5;
 const char *unicode_char8095="🤖";
 //برای تعداد خطای در رمز دار
 int khata=0;
+//رمز متغیر
+int const_int;
 struct MARK{
     int m[49][183];
 };
@@ -75,8 +77,8 @@ struct DOOR door[7];
 int randomInRange(int min,int max){
     return min+rand()%(max-min+1);
 }
-int correctcode(char a[]){
-    if(strcmp(a,"8567")==0){
+int correctcode(int key,char a[]){
+    if(key==atoi(a)){
         return 1;
     }
     else return 0;
@@ -1162,6 +1164,7 @@ int startgame(int v){
         }
         else if(c=='w'){
             adamak.x--;
+            int key=randomInRange(1000,9999);
             //در صورت برخورد با موانع بازگشت به حالت قبل
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.x++;
@@ -1169,7 +1172,8 @@ int startgame(int v){
             //برخورد با کلید تولید دکمه رمز
             else if(map[adamak.x][adamak.y]=='&'){
                 clear();
-                printw("your code : %d",8567);
+                printw("your code : %d",key);
+                const_int=key;
                 refresh();
                 usleep(4000000);
             }
@@ -1182,7 +1186,7 @@ int startgame(int v){
                     refresh();
                     char a[30];
                     scanf("%s",a);
-                    if(!correctcode(a)){
+                    if(!correctcode(const_int,a)){
                         adamak.x++;
                         clear();
                         khata++;
@@ -1385,6 +1389,7 @@ int startgame(int v){
         }
         else if(c=='d'){
             adamak.y++;
+            int key=randomInRange(1000,9999);
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.y--;
             }
@@ -1396,7 +1401,8 @@ int startgame(int v){
             }
             else if(map[adamak.x][adamak.y]=='&'){
                 clear();
-                printw("your code : %d",8567);
+                printw("your code : %d",key);
+                const_int=key;
                 refresh();
                 usleep(4000000);
             }
@@ -1408,7 +1414,7 @@ int startgame(int v){
                     refresh();
                     char a[30];
                     scanf("%s",a);
-                    if(!correctcode(a)){
+                    if(!correctcode(const_int,a)){
                         adamak.y--;
                         clear();
                         khata++;
@@ -1595,12 +1601,14 @@ int startgame(int v){
         }
         else if(c=='x'){
             adamak.x++;
+            int key=randomInRange(1000,9999);
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.x--;
             }
             else if(map[adamak.x][adamak.y]=='&'){
                 clear();
-                printw("your code : %d",8567);
+                printw("your code : %d",key);
+                const_int=key;
                 refresh();
                 usleep(4000000);
             }
@@ -1612,7 +1620,7 @@ int startgame(int v){
                     refresh();
                     char a[30];
                     scanf("%s",a);
-                    if(!correctcode(a)){
+                    if(!correctcode(const_int,a)){
                         adamak.x--;
                         clear();
                         khata++;
@@ -1806,12 +1814,14 @@ int startgame(int v){
         }
         else if(c=='a'){
             adamak.y--;
+            int key=randomInRange(1000,9999);
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.y++;
             }
             else if(map[adamak.x][adamak.y]=='&'){
                 clear();
-                printw("your code : %d",8567);
+                printw("your code : %d",key);
+                const_int=key;
                 refresh();
                 usleep(4000000);
             }
@@ -1829,7 +1839,7 @@ int startgame(int v){
                     refresh();
                     char a[30];
                     scanf("%s",a);
-                    if(!correctcode(a)){
+                    if(!correctcode(const_int,a)){
                         adamak.y++;
                         clear();
                         khata++;
@@ -2017,13 +2027,15 @@ int startgame(int v){
         else if(c=='q'){
             adamak.x--;
             adamak.y--;
+            int key=randomInRange(1000,9999);
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.x++;
                 adamak.y++;
             }
             else if(map[adamak.x][adamak.y]=='&'){
                 clear();
-                printw("your code : %d",8567);
+                printw("your code : %d",key);
+                const_int=key;
                 refresh();
                 usleep(4000000);
             }
@@ -2041,7 +2053,7 @@ int startgame(int v){
                     refresh();
                     char a[30];
                     scanf("%s",a);
-                    if(!correctcode(a)){
+                    if(!correctcode(const_int,a)){
                         adamak.x++;
                         adamak.y++;
                         clear();
@@ -2231,13 +2243,15 @@ int startgame(int v){
         else if(c=='z'){
             adamak.y--;
             adamak.x++;
+            int key=randomInRange(1000,9999);
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.x--;
                 adamak.y++;
             }
             else if(map[adamak.x][adamak.y]=='&'){
                 clear();
-                printw("your code : %d",8567);
+                printw("your code : %d",key);
+                const_int=key;
                 refresh();
                 usleep(4000000);
             }
@@ -2249,7 +2263,7 @@ int startgame(int v){
                     refresh();
                     char a[30];
                     scanf("%s",a);
-                    if(!correctcode(a)){
+                    if(!correctcode(const_int,a)){
                         adamak.x++;
                         adamak.y--;
                         clear();
@@ -2445,13 +2459,15 @@ int startgame(int v){
         else if(c=='e'){
             adamak.y++;
             adamak.x--;
+            int key=randomInRange(1000,9999);
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.x++;
                 adamak.y--;
             }
             else if(map[adamak.x][adamak.y]=='&'){
                 clear();
-                printw("your code : %d",8567);
+                printw("your code : %d",key);
+                const_int=key;
                 refresh();
                 usleep(4000000);
             }
@@ -2469,7 +2485,7 @@ int startgame(int v){
                     refresh();
                     char a[30];
                     scanf("%s",a);
-                    if(!correctcode(a)){
+                    if(!correctcode(const_int,a)){
                         adamak.x--;
                         adamak.y++;
                         clear();
@@ -2659,13 +2675,15 @@ int startgame(int v){
         else if(c=='c'){
             adamak.y++;
             adamak.x++;
+            int key=randomInRange(1000,9999);
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.x--;
                 adamak.y--;
             }
             else if(map[adamak.x][adamak.y]=='&'){
                 clear();
-                printw("your code : %d",8567);
+                printw("your code : %d",key);
+                const_int=key;
                 refresh();
                 usleep(4000000);
             }
@@ -2683,7 +2701,7 @@ int startgame(int v){
                     refresh();
                     char a[30];
                     scanf("%s",a);
-                    if(!correctcode(a)){
+                    if(!correctcode(const_int,a)){
                         adamak.x--;
                         adamak.y--;
                         clear();
