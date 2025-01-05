@@ -73,6 +73,12 @@ struct DOOR door[7];
 int randomInRange(int min,int max){
     return min+rand()%(max-min+1);
 }
+int correctcode(int a){
+    if(a==8567){
+        return 1;
+    }
+    else return 0;
+}
 void savegame(const char username[],const char username_filename[]){
     char filename[100];
     char filename2[100];
@@ -252,7 +258,7 @@ void generateRandomPath(){
             i++;
         }
     }
-     if(map[door[3].x][door[3].y+1]==' '){
+    if(map[door[3].x][door[3].y+1]==' '){
         int i=door[3].x;
         while( map[i][door[3].y+1]!='#'){
             map[i][door[3].y+1]='#';
@@ -263,6 +269,20 @@ void generateRandomPath(){
         int i=door[3].x;
         while(map[i][door[3].y-1]!='#'){
             map[i][door[3].y-1]='#';
+            i--;
+        }
+    }
+    if(map[door[3].x][door[3].y-9]==' '){
+        int i=door[3].x;
+        while( map[i][door[3].y-9]!='#'){
+            map[i][door[3].y+1]='#';
+            i--;
+        }
+    }
+    else{
+        int i=door[3].x;
+        while(map[i][door[3].y-11]!='#'){
+            map[i][door[3].y-11]='#';
             i--;
         }
     }
@@ -528,6 +548,7 @@ void generatemap(int tabagheh){
     door[3].y=room[3].ys+10;
     //در رمز دار
     map[door[3].x][room[3].ys+10]='@';
+    map[door[3].x][room[3].ys]='+';
         int count7=0;
         while(count7!=2){
             int xj5=randomInRange(room[3].xs+2,room[3].xs+8);
@@ -535,6 +556,15 @@ void generatemap(int tabagheh){
             if(map[xj5][yj5]=='.'){
                 map[xj5][yj5]='0';
                 count7++;
+            }  
+        }
+        int count85674=0;
+        while(count85674!=1){
+            int xT5=randomInRange(room[3].xs+2,room[3].xs+8);
+            int yT5=randomInRange(room[3].ys+2,room[3].ys+8);
+            if(map[xT5][yT5]=='.'){
+                map[xT5][yT5]='&';
+                count85674++;
             }  
         }
     //اتاق گنج
@@ -612,7 +642,7 @@ void generatemap(int tabagheh){
     door[4].x=randomInRange(room[4].xs+2,room[4].xs+4);
     door[4].y=room[4].ys;
     //در مخفی//
-     map[door[4].x][room[4].ys]='?';
+     map[door[4].x][room[4].ys]='+';
      //اتاق طلسم 
      int countTT_h=0;
      while(countTT_h!=1){
@@ -714,7 +744,7 @@ void generatemap(int tabagheh){
     door[6].y=room[5].ys+10;
     door[5].x=randomInRange(room[5].xs+2,room[5].xs+8);
     door[5].y=room[5].ys;
-    map[door[6].x][room[5].ys+10]='+';
+    map[door[6].x][room[5].ys+10]=',';
     map[door[5].x][room[5].ys]='+';
     int xG5=randomInRange(room[5].xs+2,room[5].xs+8);
     int yG5=randomInRange(room[5].ys+2,room[5].ys+8);
@@ -816,6 +846,10 @@ int startgame(int v){
                     const char *unicode_char="⚱️";
                     printw("%s",unicode_char);
                 }
+                //در مخفی
+                else if(map[i][j]==','){
+                    printw("%c",'|');
+                }
                 else if(map[i][j]=='^'){
                     printw("%c",'.');
                 }
@@ -853,7 +887,19 @@ int startgame(int v){
                 }
                 else if(map[i][j]=='0'){ 
                     printw("%s","❤");
-                }    
+                }
+                else if(map[i][j]=='@'){
+                    init_pair(1,COLOR_RED,COLOR_BLACK);
+                    attron(COLOR_PAIR(1));
+                    printw("%c",map[i][j]);
+                    attroff(COLOR_PAIR(1));
+                }
+                else if(map[i][j]=='$'){
+                    init_pair(1,COLOR_GREEN,COLOR_BLACK);
+                    attron(COLOR_PAIR(1));
+                    printw("%c",'@');
+                    attroff(COLOR_PAIR(1));
+                }
                 else{
                     printw("%c",map[i][j]);
                 }
@@ -874,7 +920,7 @@ int startgame(int v){
             }
         }
         //برای نمایش اتاق ها وقتی ادمک به +میرسد
-        if(map[adamak.x][adamak.y]=='+'||map[adamak.x][adamak.y]=='@'||map[adamak.x][adamak.y]=='?'){
+        if(map[adamak.x][adamak.y]=='+'||map[adamak.x][adamak.y]=='@'||map[adamak.x][adamak.y]=='$'||map[adamak.x][adamak.y]=='?'){
             for(int i=adamak.x-10;i<adamak.x+10;i++){
                 for(int j=adamak.y-10;j<adamak.y+12;j++){
                     if(i>49||i<0||j>183||j<0){
@@ -1118,6 +1164,49 @@ int startgame(int v){
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.x++;
             }
+            //برخورد با کلید تولید دکمه رمز
+            else if(map[adamak.x][adamak.y]=='&'){
+                clear();
+                printw("your code : %d",8567);
+                refresh();
+                usleep(4000000);
+            }
+            //در رمز دار
+            else if(map[adamak.x][adamak.y]=='@'){
+                clear();
+                echo();
+                mvprintw(20,60,"pleas enter the code");
+                refresh();
+                int a;
+                scanf("%d",&a);
+                if(!correctcode(a)){
+                    adamak.x++;
+                }
+                else {
+                    map[adamak.x][adamak.y]='$';
+                }
+            }
+            else if(map[adamak.x][adamak.y]=='@'){
+                clear();
+                echo();
+                mvprintw(20,60,"pleas enter the code");
+                refresh();
+                int a;
+                scanf("%d",&a);
+                if(!correctcode(a)){
+                    adamak.x++;
+                }
+                else {
+                    map[adamak.x][adamak.y]='$';
+                }
+            }
+            //در مخفی
+            else if(map[adamak.x+1][adamak.y]==','){
+                map[adamak.x+1][adamak.y]='?';
+            }
+            else if( map[adamak.x][adamak.y+1]==','){
+                 map[adamak.x][adamak.y+1]='?';
+            }
             //درصورت برخورد با طلا جمع اوری طلا
             //طلای عادی
             else if(map[adamak.x][adamak.y]=='G'){
@@ -1280,6 +1369,40 @@ int startgame(int v){
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.y--;
             }
+            else if(map[adamak.x+1][adamak.y]==','){
+                map[adamak.x+1][adamak.y]='?';
+            }
+            else if( map[adamak.x][adamak.y+1]==','){
+                 map[adamak.x][adamak.y+1]='?';
+            }
+            else if(map[adamak.x][adamak.y]=='@'){
+                clear();
+                echo();
+                mvprintw(20,60,"pleas enter the code");
+                refresh();
+                int a;
+                scanf("%d",&a);
+                if(!correctcode(a)){
+                    adamak.y--;
+                }
+                else {
+                    map[adamak.x][adamak.y]='$';
+                }
+            }
+            else if(map[adamak.x][adamak.y]=='@'){
+                clear();
+                echo();
+                mvprintw(20,60,"pleas enter the code");
+                refresh();
+                int a;
+                scanf("%d",&a);
+                if(!correctcode(a)){
+                    adamak.x--;
+                }
+                else {
+                    map[adamak.x][adamak.y]='$';
+                }
+            }
             else if(map[adamak.x][adamak.y]=='G'){
                 GOLD+=3;
                 map[adamak.x][adamak.y]='.';
@@ -1433,6 +1556,40 @@ int startgame(int v){
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.x--;
             }
+            else if(map[adamak.x][adamak.y]=='@'){
+                clear();
+                echo();
+                mvprintw(20,60,"pleas enter the code");
+                refresh();
+                int a;
+                scanf("%d",&a);
+                if(!correctcode(a)){
+                    adamak.x--;
+                }
+                else {
+                    map[adamak.x][adamak.y]='$';
+                }
+            }
+            else if(map[adamak.x][adamak.y]=='@'){
+                clear();
+                echo();
+                mvprintw(20,60,"pleas enter the code");
+                refresh();
+                int a;
+                scanf("%d",&a);
+                if(!correctcode(a)){
+                    adamak.x--;
+                }
+                else {
+                    map[adamak.x][adamak.y]='$';
+                }
+            }
+            else if(map[adamak.x+1][adamak.y]==','){
+                map[adamak.x+1][adamak.y]='?';
+            }
+            else if( map[adamak.x][adamak.y+1]==','){
+                 map[adamak.x][adamak.y+1]='?';
+            }
             else if(map[adamak.x][adamak.y]=='G'){
                 GOLD+=3;
                 map[adamak.x][adamak.y]='.';
@@ -1585,6 +1742,40 @@ int startgame(int v){
             adamak.y--;
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.y++;
+            }
+            else if(map[adamak.x+1][adamak.y]==','){
+                map[adamak.x+1][adamak.y]='?';
+            }
+            else if( map[adamak.x][adamak.y+1]==','){
+                 map[adamak.x][adamak.y+1]='?';
+            }
+            else if(map[adamak.x][adamak.y]=='@'){
+                clear();
+                echo();
+                mvprintw(20,60,"pleas enter the code");
+                refresh();
+                int a;
+                scanf("%d",&a);
+                if(!correctcode(a)){
+                    adamak.y++;
+                }
+                else {
+                    map[adamak.x][adamak.y]='$';
+                }
+            }
+            else if(map[adamak.x][adamak.y]=='@'){
+                clear();
+                echo();
+                mvprintw(20,60,"pleas enter the code");
+                refresh();
+                int a;
+                scanf("%d",&a);
+                if(!correctcode(a)){
+                    adamak.y++;
+                }
+                else {
+                    map[adamak.x][adamak.y]='$';
+                }
             }
             else if(map[adamak.x][adamak.y]=='G'){
                 GOLD+=3;
@@ -1741,6 +1932,42 @@ int startgame(int v){
                 adamak.x++;
                 adamak.y++;
             }
+            else if(map[adamak.x+1][adamak.y]==','){
+                map[adamak.x+1][adamak.y]='?';
+            }
+            else if( map[adamak.x][adamak.y+1]==','){
+                 map[adamak.x][adamak.y+1]='?';
+            }
+            else if(map[adamak.x][adamak.y]=='@'){
+                clear();
+                echo();
+                mvprintw(20,60,"pleas enter the code");
+                refresh();
+                int a;
+                scanf("%d",&a);
+                if(!correctcode(a)){
+                    adamak.x++;
+                    adamak.y++;
+                }
+                else {
+                    map[adamak.x][adamak.y]='$';
+                }
+            }
+            else if(map[adamak.x][adamak.y]=='@'){
+                clear();
+                echo();
+                mvprintw(20,60,"pleas enter the code");
+                refresh();
+                int a;
+                scanf("%d",&a);
+                if(!correctcode(a)){
+                    adamak.x++;
+                    adamak.y++;
+                }
+                else {
+                    map[adamak.x][adamak.y]='$';
+                }
+            }
             else if(map[adamak.x][adamak.y]=='G'){
                 GOLD+=3;
                 map[adamak.x][adamak.y]='.';
@@ -1895,6 +2122,42 @@ int startgame(int v){
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.x--;
                 adamak.y++;
+            }
+            else if(map[adamak.x][adamak.y]=='@'){
+                clear();
+                echo();
+                mvprintw(20,60,"pleas enter the code");
+                refresh();
+                int a;
+                scanf("%d",&a);
+                if(!correctcode(a)){
+                    adamak.x--;
+                    adamak.y++;
+                }
+                else {
+                    map[adamak.x][adamak.y]='$';
+                }
+            }
+            else if(map[adamak.x][adamak.y]=='@'){
+                clear();
+                echo();
+                mvprintw(20,60,"pleas enter the code");
+                refresh();
+                int a;
+                scanf("%d",&a);
+                if(!correctcode(a)){
+                    adamak.x--;
+                    adamak.y++;
+                }
+                else {
+                    map[adamak.x][adamak.y]='$';
+                }
+            }
+            else if(map[adamak.x+1][adamak.y]==','){
+                map[adamak.x+1][adamak.y]='?';
+            }
+            else if( map[adamak.x][adamak.y+1]==','){
+                 map[adamak.x][adamak.y+1]='?';
             }
             else if(map[adamak.x][adamak.y]=='G'){
                 GOLD+=3;
@@ -2051,6 +2314,42 @@ int startgame(int v){
                 adamak.x++;
                 adamak.y--;
             }
+            else if(map[adamak.x+1][adamak.y]=='?'){
+                map[adamak.x+1][adamak.y]='+';
+            }
+            else if( map[adamak.x][adamak.y+1]=='?'){
+                 map[adamak.x][adamak.y+1]='+';
+            }
+            else if(map[adamak.x][adamak.y]=='@'){
+                clear();
+                echo();
+                mvprintw(20,60,"pleas enter the code");
+                refresh();
+                int a;
+                scanf("%d",&a);
+                if(!correctcode(a)){
+                    adamak.x--;
+                    adamak.y++;
+                }
+                else {
+                    map[adamak.x][adamak.y]='$';
+                }
+            }
+            else if(map[adamak.x][adamak.y]=='@'){
+                clear();
+                echo();
+                mvprintw(20,60,"pleas enter the code");
+                refresh();
+                int a;
+                scanf("%d",&a);
+                if(!correctcode(a)){
+                    adamak.x--;
+                    adamak.y++;
+                }
+                else {
+                    map[adamak.x][adamak.y]='$';
+                }
+            }
             else if(map[adamak.x][adamak.y]=='G'){
                 GOLD+=3;
                 map[adamak.x][adamak.y]='.';
@@ -2205,6 +2504,42 @@ int startgame(int v){
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.x--;
                 adamak.y--;
+            }
+            else if(map[adamak.x+1][adamak.y]==','){
+                map[adamak.x+1][adamak.y]='?';
+            }
+            else if( map[adamak.x][adamak.y+1]==','){
+                 map[adamak.x][adamak.y+1]='?';
+            }
+            else if(map[adamak.x][adamak.y]=='@'){
+                clear();
+                echo();
+                mvprintw(20,60,"pleas enter the code");
+                refresh();
+                int a;
+                scanf("%d",&a);
+                if(!correctcode(a)){
+                    adamak.x--;
+                    adamak.y--;
+                }
+                else {
+                    map[adamak.x][adamak.y]='$';
+                }
+            }
+            else if(map[adamak.x][adamak.y]=='@'){
+                clear();
+                echo();
+                mvprintw(20,60,"pleas enter the code");
+                refresh();
+                int a;
+                scanf("%d",&a);
+                if(!correctcode(a)){
+                    adamak.x--;
+                    adamak.y--;
+                }
+                else {
+                    map[adamak.x][adamak.y]='$';
+                }
             }
             else if(map[adamak.x][adamak.y]=='G'){
                 GOLD+=3;
