@@ -2998,7 +2998,8 @@ int checkpasword2(char b[],int target){
     char passwordchek[1000];
     while(fgets(passwordchek,sizeof(passwordchek),passwords)!=NULL){
         if(current_line==target){
-            if(strncmp(passwordchek,b,strlen(passwordchek)-1)==0){
+            passwordchek[strlen(passwordchek)-1]='\0';
+            if(strcmp(passwordchek,b)==0){
                 return 1;
             }
             else{
@@ -3014,7 +3015,8 @@ int checkusername2(char a[]){
     int i=0;
     char userchek[1000];
     while(fgets(userchek,1000,usernames1)!=NULL){
-        if(strncmp(userchek,a,strlen(userchek)-1)==0){
+        userchek[strlen(userchek)-1]='\0';
+        if(strcmp(userchek,a)==0){
             return i;
         }
         i++;
@@ -3111,7 +3113,8 @@ int checkusername(char a[]){
     char userchek[1000];
     FILE *usernames1=fopen("usernames.txt","r");
     while(fgets(userchek,1000,usernames1)!=NULL){
-        if(strncmp(userchek,a,strlen(userchek)-1)==0){
+        userchek[strlen(userchek)-1]='\0';
+        if(strcmp(userchek,a)==0){
             return 0;
         }
     }
