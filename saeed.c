@@ -51,6 +51,8 @@ int tabagheh=1;
 int decrease=5;
 //انتخاب شخصیت بازی
 const char *unicode_char8095="🤖";
+//برای تعداد خطای در رمز دار
+int khata=0;
 struct MARK{
     int m[49][183];
 };
@@ -1175,15 +1177,46 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]=='@'){
                 clear();
                 echo();
-                mvprintw(20,60,"pleas enter the code");
-                refresh();
-                char a[30];
-                scanf("%s",a);
-                if(!correctcode(a)){
-                    adamak.x++;
+                 if(khata<3){
+                    mvprintw(20,60,"pleas enter the code");
+                    refresh();
+                    char a[30];
+                    scanf("%s",a);
+                    if(!correctcode(a)){
+                        adamak.x++;
+                        clear();
+                        khata++;
+                        if(khata==1){
+                            init_pair(1,COLOR_YELLOW,COLOR_BLACK);
+                            attron(COLOR_PAIR(1));
+                            mvprintw(20,60,"the password is incorrect(Two opportunities left)");
+                            refresh();
+                            attroff(COLOR_PAIR(1));
+                            usleep(3000000);
+                        }
+                        else if(khata==2){
+                            init_pair(2,COLOR_RED,COLOR_YELLOW);
+                            attron(COLOR_PAIR(2));
+                            mvprintw(20,60,"the password is incorrect(one opportunities left)");
+                            refresh();
+                            attroff(COLOR_PAIR(2));
+                            usleep(3000000);
+                        }
+                        else if(khata==3){
+                            init_pair(3,COLOR_RED,COLOR_BLACK);
+                            attron(COLOR_PAIR(3));
+                            mvprintw(20,60,"the password is incorrect(SECURITY MODE)");
+                            refresh();
+                            attroff(COLOR_PAIR(3));
+                            usleep(3000000);
+                        }
+                    }
+                    else {
+                        map[adamak.x][adamak.y]='$';
+                    }
                 }
                 else{
-                    map[adamak.x][adamak.y]='$';
+                    adamak.x++;
                 }
             }
             //در مخفی
@@ -1370,15 +1403,46 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]=='@'){
                 clear();
                 echo();
-                mvprintw(20,60,"pleas enter the code");
-                refresh();
-                char a[30];
-                scanf("%s",a);
-                if(!correctcode(a)){
-                    adamak.y--;
+                 if(khata<3){
+                    mvprintw(20,60,"pleas enter the code");
+                    refresh();
+                    char a[30];
+                    scanf("%s",a);
+                    if(!correctcode(a)){
+                        adamak.y--;
+                        clear();
+                        khata++;
+                        if(khata==1){
+                            init_pair(1,COLOR_YELLOW,COLOR_BLACK);
+                            attron(COLOR_PAIR(1));
+                            mvprintw(20,60,"the password is incorrect(Two opportunities left)");
+                            refresh();
+                            attroff(COLOR_PAIR(1));
+                            usleep(3000000);
+                        }
+                        else if(khata==2){
+                            init_pair(2,COLOR_RED,COLOR_YELLOW);
+                            attron(COLOR_PAIR(2));
+                            mvprintw(20,60,"the password is incorrect(one opportunities left)");
+                            refresh();
+                            attroff(COLOR_PAIR(2));
+                            usleep(3000000);
+                        }
+                        else if(khata==3){
+                            init_pair(3,COLOR_RED,COLOR_BLACK);
+                            attron(COLOR_PAIR(3));
+                            mvprintw(20,60,"the password is incorrect(SECURITY MODE)");
+                            refresh();
+                            attroff(COLOR_PAIR(3));
+                            usleep(3000000);
+                        }
+                    }
+                    else {
+                        map[adamak.x][adamak.y]='$';
+                    }
                 }
-                else {
-                    map[adamak.x][adamak.y]='$';
+                else{
+                    adamak.y--;
                 }
             }
             else if(map[adamak.x][adamak.y]=='G'){
@@ -1543,15 +1607,47 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]=='@'){
                 clear();
                 echo();
-                mvprintw(20,60,"pleas enter the code");
-                refresh();
-                char a[30];
-                scanf("%s",a);
-                if(!correctcode(a)){
-                    adamak.x--;
+                 if(khata<3){
+                    mvprintw(20,60,"pleas enter the code");
+                    refresh();
+                    char a[30];
+                    scanf("%s",a);
+                    if(!correctcode(a)){
+                        adamak.x--;
+                        clear();
+                        khata++;
+                        if(khata==1){
+                            init_pair(1,COLOR_YELLOW,COLOR_BLACK);
+                            attron(COLOR_PAIR(1));
+                            mvprintw(20,60,"the password is incorrect(Two opportunities left)");
+                            refresh();
+                            attroff(COLOR_PAIR(1));
+                            usleep(3000000);
+                        }
+                        else if(khata==2){
+                            init_pair(2,COLOR_RED,COLOR_YELLOW);
+                            attron(COLOR_PAIR(2));
+                            mvprintw(20,60,"the password is incorrect(one opportunities left)");
+                            refresh();
+                            attroff(COLOR_PAIR(2));
+                            usleep(3000000);
+                        }
+                        else if(khata==3){
+                            init_pair(3,COLOR_RED,COLOR_BLACK);
+                            attron(COLOR_PAIR(3));
+                            mvprintw(20,60,"the password is incorrect(SECURITY MODE)");
+                            refresh();
+                            attroff(COLOR_PAIR(3));
+                            usleep(3000000);
+                        }
+                    }
+                    else {
+                        map[adamak.x][adamak.y]='$';
+                    }
                 }
-                else {
-                    map[adamak.x][adamak.y]='$';
+                else{
+                    adamak.x--;
+
                 }
             }
             else if(map[adamak.x+1][adamak.y]==','){
@@ -1728,15 +1824,46 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]=='@'){
                 clear();
                 echo();
-                mvprintw(20,60,"pleas enter the code");
-                refresh();
-                char a[30];
-                scanf("%s",a);
-                if(!correctcode(a)){
-                    adamak.y++;
+                 if(khata<3){
+                    mvprintw(20,60,"pleas enter the code");
+                    refresh();
+                    char a[30];
+                    scanf("%s",a);
+                    if(!correctcode(a)){
+                        adamak.y++;
+                        clear();
+                        khata++;
+                        if(khata==1){
+                            init_pair(1,COLOR_YELLOW,COLOR_BLACK);
+                            attron(COLOR_PAIR(1));
+                            mvprintw(20,60,"the password is incorrect(Two opportunities left)");
+                            refresh();
+                            attroff(COLOR_PAIR(1));
+                            usleep(3000000);
+                        }
+                        else if(khata==2){
+                            init_pair(2,COLOR_RED,COLOR_YELLOW);
+                            attron(COLOR_PAIR(2));
+                            mvprintw(20,60,"the password is incorrect(one opportunities left)");
+                            refresh();
+                            attroff(COLOR_PAIR(2));
+                            usleep(3000000);
+                        }
+                        else if(khata==3){
+                            init_pair(3,COLOR_RED,COLOR_BLACK);
+                            attron(COLOR_PAIR(3));
+                            mvprintw(20,60,"the password is incorrect(SECURITY MODE)");
+                            refresh();
+                            attroff(COLOR_PAIR(3));
+                            usleep(3000000);
+                        }
+                    }
+                    else {
+                        map[adamak.x][adamak.y]='$';
+                    }
                 }
-                else {
-                    map[adamak.x][adamak.y]='$';
+                else{
+                    adamak.y++;
                 }
             }
             else if(map[adamak.x][adamak.y]=='G'){
@@ -1909,16 +2036,48 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]=='@'){
                 clear();
                 echo();
-                mvprintw(20,60,"pleas enter the code");
-                refresh();
-                char a[30];
-                scanf("%s",a);
-                if(!correctcode(a)){
+                 if(khata<3){
+                    mvprintw(20,60,"pleas enter the code");
+                    refresh();
+                    char a[30];
+                    scanf("%s",a);
+                    if(!correctcode(a)){
+                        adamak.x++;
+                        adamak.y++;
+                        clear();
+                        khata++;
+                        if(khata==1){
+                            init_pair(1,COLOR_YELLOW,COLOR_BLACK);
+                            attron(COLOR_PAIR(1));
+                            mvprintw(20,60,"the password is incorrect(Two opportunities left)");
+                            refresh();
+                            attroff(COLOR_PAIR(1));
+                            usleep(3000000);
+                        }
+                        else if(khata==2){
+                            init_pair(2,COLOR_RED,COLOR_YELLOW);
+                            attron(COLOR_PAIR(2));
+                            mvprintw(20,60,"the password is incorrect(one opportunities left)");
+                            refresh();
+                            attroff(COLOR_PAIR(2));
+                            usleep(3000000);
+                        }
+                        else if(khata==3){
+                            init_pair(3,COLOR_RED,COLOR_BLACK);
+                            attron(COLOR_PAIR(3));
+                            mvprintw(20,60,"the password is incorrect(SECURITY MODE)");
+                            refresh();
+                            attroff(COLOR_PAIR(3));
+                            usleep(3000000);
+                        }
+                    }
+                    else {
+                        map[adamak.x][adamak.y]='$';
+                    }
+                }
+                else{
                     adamak.x++;
                     adamak.y++;
-                }
-                else {
-                    map[adamak.x][adamak.y]='$';
                 }
             }
             else if(map[adamak.x][adamak.y]=='G'){
@@ -2085,16 +2244,48 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]=='@'){
                 clear();
                 echo();
-                mvprintw(20,60,"pleas enter the code");
-                refresh();
-                char a[30];
-                scanf("%s",a);
-                if(!correctcode(a)){
-                    adamak.x--;
-                    adamak.y++;
+                 if(khata<3){
+                    mvprintw(20,60,"pleas enter the code");
+                    refresh();
+                    char a[30];
+                    scanf("%s",a);
+                    if(!correctcode(a)){
+                        adamak.x++;
+                        adamak.y--;
+                        clear();
+                        khata++;
+                        if(khata==1){
+                            init_pair(1,COLOR_YELLOW,COLOR_BLACK);
+                            attron(COLOR_PAIR(1));
+                            mvprintw(20,60,"the password is incorrect(Two opportunities left)");
+                            refresh();
+                            attroff(COLOR_PAIR(1));
+                            usleep(3000000);
+                        }
+                        else if(khata==2){
+                            init_pair(2,COLOR_RED,COLOR_YELLOW);
+                            attron(COLOR_PAIR(2));
+                            mvprintw(20,60,"the password is incorrect(one opportunities left)");
+                            refresh();
+                            attroff(COLOR_PAIR(2));
+                            usleep(3000000);
+                        }
+                        else if(khata==3){
+                            init_pair(3,COLOR_RED,COLOR_BLACK);
+                            attron(COLOR_PAIR(3));
+                            mvprintw(20,60,"the password is incorrect(SECURITY MODE)");
+                            refresh();
+                            attroff(COLOR_PAIR(3));
+                            usleep(3000000);
+                        }
+                    }
+                    else {
+                        map[adamak.x][adamak.y]='$';
+                    }
                 }
-                else {
-                    map[adamak.x][adamak.y]='$';
+                else{
+                    adamak.x++;
+                    adamak.y--;
                 }
             }
             else if(map[adamak.x+1][adamak.y]==','){
@@ -2273,16 +2464,48 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]=='@'){
                 clear();
                 echo();
-                mvprintw(20,60,"pleas enter the code");
-                refresh();
-                char a[30];
-                scanf("%s",a);
-                if(!correctcode(a)){
+                 if(khata<3){
+                    mvprintw(20,60,"pleas enter the code");
+                    refresh();
+                    char a[30];
+                    scanf("%s",a);
+                    if(!correctcode(a)){
+                        adamak.x--;
+                        adamak.y++;
+                        clear();
+                        khata++;
+                        if(khata==1){
+                            init_pair(1,COLOR_YELLOW,COLOR_BLACK);
+                            attron(COLOR_PAIR(1));
+                            mvprintw(20,60,"the password is incorrect(Two opportunities left)");
+                            refresh();
+                            attroff(COLOR_PAIR(1));
+                            usleep(3000000);
+                        }
+                        else if(khata==2){
+                            init_pair(2,COLOR_RED,COLOR_YELLOW);
+                            attron(COLOR_PAIR(2));
+                            mvprintw(20,60,"the password is incorrect(one opportunities left)");
+                            refresh();
+                            attroff(COLOR_PAIR(2));
+                            usleep(3000000);
+                        }
+                        else if(khata==3){
+                            init_pair(3,COLOR_RED,COLOR_BLACK);
+                            attron(COLOR_PAIR(3));
+                            mvprintw(20,60,"the password is incorrect(SECURITY MODE)");
+                            refresh();
+                            attroff(COLOR_PAIR(3));
+                            usleep(3000000);
+                        }
+                    }
+                    else {
+                        map[adamak.x][adamak.y]='$';
+                    }
+                }
+                else{
                     adamak.x--;
                     adamak.y++;
-                }
-                else {
-                    map[adamak.x][adamak.y]='$';
                 }
             }
             else if(map[adamak.x][adamak.y]=='G'){
@@ -2455,16 +2678,48 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]=='@'){
                 clear();
                 echo();
-                mvprintw(20,60,"pleas enter the code");
-                refresh();
-                char a[30];
-                scanf("%s",a);
-                if(!correctcode(a)){
+                if(khata<3){
+                    mvprintw(20,60,"pleas enter the code");
+                    refresh();
+                    char a[30];
+                    scanf("%s",a);
+                    if(!correctcode(a)){
+                        adamak.x--;
+                        adamak.y--;
+                        clear();
+                        khata++;
+                        if(khata==1){
+                            init_pair(1,COLOR_YELLOW,COLOR_BLACK);
+                            attron(COLOR_PAIR(1));
+                            mvprintw(20,60,"the password is incorrect(Two opportunities left)");
+                            refresh();
+                            attroff(COLOR_PAIR(1));
+                            usleep(3000000);
+                        }
+                        else if(khata==2){
+                            init_pair(2,COLOR_RED,COLOR_YELLOW);
+                            attron(COLOR_PAIR(2));
+                            mvprintw(20,60,"the password is incorrect(one opportunities left)");
+                            refresh();
+                            attroff(COLOR_PAIR(2));
+                            usleep(3000000);
+                        }
+                        else if(khata==3){
+                            init_pair(3,COLOR_RED,COLOR_BLACK);
+                            attron(COLOR_PAIR(3));
+                            mvprintw(20,60,"the password is incorrect(SECURITY MODE)");
+                            refresh();
+                            attroff(COLOR_PAIR(3));
+                            usleep(3000000);
+                        }
+                    }
+                    else {
+                        map[adamak.x][adamak.y]='$';
+                    }
+                }
+                else{
                     adamak.x--;
                     adamak.y--;
-                }
-                else {
-                    map[adamak.x][adamak.y]='$';
                 }
             }
             else if(map[adamak.x][adamak.y]=='G'){
