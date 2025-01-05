@@ -13,6 +13,7 @@
 //💰,🪙,✨
 // 🍔, 🍕,🍰
 //🪓  سلاح اولیه
+// △ کلید باستانی
 // 🗡️1
 //🪄 2
 //  ➳   تیر3
@@ -46,6 +47,7 @@ int T_damage=0;
 int T_health=0;
 int T_speed=0;
 int tabagheh=1;
+int Ancient_Key=0;
 ///////////////////////////
 //میزان کاهش جان(درجه سختی بازی)
 int decrease=5;
@@ -78,6 +80,9 @@ int randomInRange(int min,int max){
     return min+rand()%(max-min+1);
 }
 int correctcode(int key,char a[]){
+    for(int i=0;i<strlen(a);i++){
+        if(a[i]<'0'||a[i]>'9') return 0;
+    }
     if(key==atoi(a)){
         return 1;
     }
@@ -114,6 +119,7 @@ void savegame(const char username[],const char username_filename[]){
     fprintf(savefile,"%d\n",tabagheh);
     fprintf(savefile,"%d\n",adamak.x);
     fprintf(savefile,"%d\n",adamak.y);
+    fprintf(savefile,"%d\n",Ancient_Key);
     for(int i=0;i<49;i++){
         for(int j=0;j<183;j++){
             fprintf(savefile,"%d\n",mark.m[i][j]);
@@ -412,6 +418,15 @@ void generatemap(int tabagheh){
         if(map[xg0][yg0]=='.'){
             map[xg0][yg0]='3';
             count666++;
+        }
+    }
+     int count6666=0;
+    while(count6666!=1){
+        int xg0=randomInRange(room[0].xs+2,room[0].xs+4);
+        int yg0=randomInRange(room[0].ys+2,room[0].ys+4);
+        if(map[xg0][yg0]=='.'){
+            map[xg0][yg0]='9';
+            count6666++;
         }
     }
      //===============================================
@@ -904,6 +919,13 @@ int startgame(int v){
                     printw("%c",'@');
                     attroff(COLOR_PAIR(1));
                 }
+                else if(map[i][j]=='9'){
+                    init_pair(7,COLOR_YELLOW,COLOR_BLACK);
+                    attron(COLOR_PAIR(7));
+                    const char*kilid="△";
+                    printw("%s",kilid);
+                    attroff(COLOR_PAIR(7));
+                }
                 else{
                     printw("%c",map[i][j]);
                 }
@@ -974,6 +996,15 @@ int startgame(int v){
             gunandspellmenu();
             clear();
         }
+        //برای اینمه در موقع باگ به مسیر برگردد
+        else if(c=='}'){
+            adamak.x=door[3].x;
+            adamak.y=door[3].y-9;
+        }
+        else if(c=='{'){
+            adamak.x=27;
+            adamak.y=1;
+        }
         // یرای دیدن کل نقشه
         else if(c=='M'){
             clear();
@@ -1028,6 +1059,25 @@ int startgame(int v){
                     }
                     else if(map[i][j]=='0'){ 
                         printw("%s","❤");
+                    }
+                    else if(map[i][j]=='9'){
+                    init_pair(7,COLOR_YELLOW,COLOR_BLACK);
+                    attron(COLOR_PAIR(7));
+                    const char*kilid="△";
+                    printw("%s",kilid);
+                    attroff(COLOR_PAIR(7));
+                }
+                    else if(map[i][j]=='@'){
+                        init_pair(1,COLOR_RED,COLOR_BLACK);
+                        attron(COLOR_PAIR(1));
+                        printw("%c",map[i][j]);
+                        attroff(COLOR_PAIR(1));
+                    }
+                    else if(map[i][j]=='$'){
+                        init_pair(1,COLOR_GREEN,COLOR_BLACK);
+                        attron(COLOR_PAIR(1));
+                        printw("%c",'@');
+                        attroff(COLOR_PAIR(1));
                     }    
                     else{
                         printw("%c",map[i][j]);
@@ -1177,8 +1227,21 @@ int startgame(int v){
                 refresh();
                 usleep(4000000);
             }
+            else if(map[adamak.x][adamak.y]=='9'){
+                map[adamak.x][adamak.y]='.';
+                Ancient_Key=1;
+            }
             //در رمز دار
             else if(map[adamak.x][adamak.y]=='@'){
+                if(Ancient_Key==1){
+                    Ancient_Key=0;
+                    clear();
+                    mvprintw(20,60,"the door was opened with a Ancient Key");
+                    refresh();
+                    usleep(3000000);
+                    map[adamak.x][adamak.y]='$';
+                    continue;
+                }
                 clear();
                 echo();
                  if(khata<3){
@@ -1393,6 +1456,10 @@ int startgame(int v){
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.y--;
             }
+            else if(map[adamak.x][adamak.y]=='9'){
+                map[adamak.x][adamak.y]='.';
+                Ancient_Key=1;
+            }
             else if(map[adamak.x+1][adamak.y]==','){
                 map[adamak.x+1][adamak.y]='?';
             }
@@ -1407,6 +1474,15 @@ int startgame(int v){
                 usleep(4000000);
             }
             else if(map[adamak.x][adamak.y]=='@'){
+                if(Ancient_Key==1){
+                    Ancient_Key=0;
+                    clear();
+                    mvprintw(20,60,"the door was opened with a Ancient Key");
+                    refresh();
+                    usleep(3000000);
+                    map[adamak.x][adamak.y]='$';
+                    continue;
+                }
                 clear();
                 echo();
                  if(khata<3){
@@ -1605,6 +1681,10 @@ int startgame(int v){
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.x--;
             }
+            else if(map[adamak.x][adamak.y]=='9'){
+                map[adamak.x][adamak.y]='.';
+                Ancient_Key=1;
+            }
             else if(map[adamak.x][adamak.y]=='&'){
                 clear();
                 printw("your code : %d",key);
@@ -1613,6 +1693,15 @@ int startgame(int v){
                 usleep(4000000);
             }
             else if(map[adamak.x][adamak.y]=='@'){
+                if(Ancient_Key==1){
+                    Ancient_Key=0;
+                    clear();
+                    mvprintw(20,60,"the door was opened with a Ancient Key");
+                    refresh();
+                    usleep(3000000);
+                    map[adamak.x][adamak.y]='$';
+                    continue;
+                }
                 clear();
                 echo();
                  if(khata<3){
@@ -1818,6 +1907,10 @@ int startgame(int v){
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.y++;
             }
+            else if(map[adamak.x][adamak.y]=='9'){
+                map[adamak.x][adamak.y]='.';
+                Ancient_Key=1;
+            }
             else if(map[adamak.x][adamak.y]=='&'){
                 clear();
                 printw("your code : %d",key);
@@ -1832,6 +1925,15 @@ int startgame(int v){
                  map[adamak.x][adamak.y+1]='?';
             }
             else if(map[adamak.x][adamak.y]=='@'){
+                if(Ancient_Key==1){
+                    Ancient_Key=0;
+                    clear();
+                    mvprintw(20,60,"the door was opened with a Ancient Key");
+                    refresh();
+                    usleep(3000000);
+                    map[adamak.x][adamak.y]='$';
+                    continue;
+                }
                 clear();
                 echo();
                  if(khata<3){
@@ -2032,6 +2134,10 @@ int startgame(int v){
                 adamak.x++;
                 adamak.y++;
             }
+            else if(map[adamak.x][adamak.y]=='9'){
+                map[adamak.x][adamak.y]='.';
+                Ancient_Key=1;
+            }
             else if(map[adamak.x][adamak.y]=='&'){
                 clear();
                 printw("your code : %d",key);
@@ -2046,6 +2152,15 @@ int startgame(int v){
                  map[adamak.x][adamak.y+1]='?';
             }
             else if(map[adamak.x][adamak.y]=='@'){
+                if(Ancient_Key==1){
+                    Ancient_Key=0;
+                    clear();
+                    mvprintw(20,60,"the door was opened with a Ancient Key");
+                    refresh();
+                    usleep(3000000);
+                    map[adamak.x][adamak.y]='$';
+                    continue;
+                }
                 clear();
                 echo();
                  if(khata<3){
@@ -2248,6 +2363,10 @@ int startgame(int v){
                 adamak.x--;
                 adamak.y++;
             }
+            else if(map[adamak.x][adamak.y]=='9'){
+                map[adamak.x][adamak.y]='.';
+                Ancient_Key=1;
+            }
             else if(map[adamak.x][adamak.y]=='&'){
                 clear();
                 printw("your code : %d",key);
@@ -2256,6 +2375,15 @@ int startgame(int v){
                 usleep(4000000);
             }
             else if(map[adamak.x][adamak.y]=='@'){
+                if(Ancient_Key==1){
+                    Ancient_Key=0;
+                    clear();
+                    mvprintw(20,60,"the door was opened with a Ancient Key");
+                    refresh();
+                    usleep(3000000);
+                    map[adamak.x][adamak.y]='$';
+                    continue;
+                }
                 clear();
                 echo();
                  if(khata<3){
@@ -2464,6 +2592,10 @@ int startgame(int v){
                 adamak.x++;
                 adamak.y--;
             }
+            else if(map[adamak.x][adamak.y]=='9'){
+                map[adamak.x][adamak.y]='.';
+                Ancient_Key=1;
+            }
             else if(map[adamak.x][adamak.y]=='&'){
                 clear();
                 printw("your code : %d",key);
@@ -2478,51 +2610,60 @@ int startgame(int v){
                  map[adamak.x][adamak.y+1]='+';
             }
             else if(map[adamak.x][adamak.y]=='@'){
-                clear();
-                echo();
-                 if(khata<3){
-                    mvprintw(20,60,"pleas enter the code");
+                if(Ancient_Key==1){
+                    Ancient_Key=0;
+                    clear();
+                    mvprintw(20,60,"the door was opened with a Ancient Key");
+                    map[adamak.x][adamak.y]='$';
                     refresh();
-                    char a[30];
-                    scanf("%s",a);
-                    if(!correctcode(const_int,a)){
+                    usleep(3000000);
+                    continue;
+                }
+                    clear();
+                    echo();
+                    if(khata<3){
+                        mvprintw(20,60,"pleas enter the code");
+                        refresh();
+                        char a[30];
+                        scanf("%s",a);
+                        if(!correctcode(const_int,a)){
+                            adamak.x--;
+                            adamak.y++;
+                            clear();
+                            khata++;
+                            if(khata==1){
+                                init_pair(1,COLOR_YELLOW,COLOR_BLACK);
+                                attron(COLOR_PAIR(1));
+                                mvprintw(20,60,"the password is incorrect(Two opportunities left)");
+                                refresh();
+                                attroff(COLOR_PAIR(1));
+                                usleep(3000000);
+                            }
+                            else if(khata==2){
+                                init_pair(2,COLOR_RED,COLOR_YELLOW);
+                                attron(COLOR_PAIR(2));
+                                mvprintw(20,60,"the password is incorrect(one opportunities left)");
+                                refresh();
+                                attroff(COLOR_PAIR(2));
+                                usleep(3000000);
+                            }
+                            else if(khata==3){
+                                init_pair(3,COLOR_RED,COLOR_BLACK);
+                                attron(COLOR_PAIR(3));
+                                mvprintw(20,60,"the password is incorrect(SECURITY MODE)");
+                                refresh();
+                                attroff(COLOR_PAIR(3));
+                                usleep(3000000);
+                            }
+                        }
+                        else {
+                            map[adamak.x][adamak.y]='$';
+                        }
+                    }
+                    else{
                         adamak.x--;
                         adamak.y++;
-                        clear();
-                        khata++;
-                        if(khata==1){
-                            init_pair(1,COLOR_YELLOW,COLOR_BLACK);
-                            attron(COLOR_PAIR(1));
-                            mvprintw(20,60,"the password is incorrect(Two opportunities left)");
-                            refresh();
-                            attroff(COLOR_PAIR(1));
-                            usleep(3000000);
-                        }
-                        else if(khata==2){
-                            init_pair(2,COLOR_RED,COLOR_YELLOW);
-                            attron(COLOR_PAIR(2));
-                            mvprintw(20,60,"the password is incorrect(one opportunities left)");
-                            refresh();
-                            attroff(COLOR_PAIR(2));
-                            usleep(3000000);
-                        }
-                        else if(khata==3){
-                            init_pair(3,COLOR_RED,COLOR_BLACK);
-                            attron(COLOR_PAIR(3));
-                            mvprintw(20,60,"the password is incorrect(SECURITY MODE)");
-                            refresh();
-                            attroff(COLOR_PAIR(3));
-                            usleep(3000000);
-                        }
                     }
-                    else {
-                        map[adamak.x][adamak.y]='$';
-                    }
-                }
-                else{
-                    adamak.x--;
-                    adamak.y++;
-                }
             }
             else if(map[adamak.x][adamak.y]=='G'){
                 GOLD+=3;
@@ -2680,6 +2821,10 @@ int startgame(int v){
                 adamak.x--;
                 adamak.y--;
             }
+            else if(map[adamak.x][adamak.y]=='9'){
+                map[adamak.x][adamak.y]='.';
+                Ancient_Key=1;
+            }
             else if(map[adamak.x][adamak.y]=='&'){
                 clear();
                 printw("your code : %d",key);
@@ -2694,6 +2839,15 @@ int startgame(int v){
                  map[adamak.x][adamak.y+1]='?';
             }
             else if(map[adamak.x][adamak.y]=='@'){
+                if(Ancient_Key==1){
+                    Ancient_Key=0;
+                    clear();
+                    mvprintw(20,60,"the door was opened with a Ancient Key");
+                    refresh();
+                    usleep(3000000);
+                    map[adamak.x][adamak.y]='$';
+                    continue;
+                }
                 clear();
                 echo();
                 if(khata<3){
@@ -2974,6 +3128,7 @@ void Loadgame(const char username[]){
     int tabagheh2;
     int x;
     int y;
+    int Ancient_Key1;
     fscanf(game,"%d",&GOLD2);
     GOLD=GOLD2;
     fscanf(game,"%d",&HEALTH2);
@@ -3000,6 +3155,8 @@ void Loadgame(const char username[]){
     adamak.x=x;
     fscanf(game,"%d",&y);
     adamak.y=y;
+    fscanf(game,"%d",&Ancient_Key1);
+    Ancient_Key=Ancient_Key1;
     for(int i=0;i<49;i++){
         for(int j=0;j<183;j++){
             fscanf(game,"%d",&mark.m[i][j]);
