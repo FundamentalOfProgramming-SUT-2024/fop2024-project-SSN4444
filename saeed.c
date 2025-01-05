@@ -3345,6 +3345,8 @@ int MENU(){
         case 2:
             Login();
             clear();
+            init_pair(5,COLOR_GREEN,COLOR_BLACK);
+            bkgd(COLOR_PAIR(5));
             MENU();
             break;
         case 3:
@@ -3355,6 +3357,8 @@ int MENU(){
         case 4:
             startgame(0);
             clear();
+            init_pair(5,COLOR_GREEN,COLOR_BLACK);
+            bkgd(COLOR_PAIR(5));
             MENU();
             break;
         // case 5:
