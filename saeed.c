@@ -91,11 +91,11 @@ int correctcode(int key,char a[]){
     else return 0;
 }
 void svaescore(char username[],int GOLD){
-    FILE*score=fopen("score.txt","w+");
+    FILE*score1=fopen("score.txt","r");
     int i=0;
     int check=0;
     char a[1000];
-    while(fgets(a,sizeof(a),score)!=NULL){
+    while(fgets(a,sizeof(a),score1)!=NULL){
         char user[100];
         sscanf(a,"%s",user);
         if(strcmp(user,username)==0){
@@ -106,25 +106,30 @@ void svaescore(char username[],int GOLD){
             i++;
         }
     }
+    // mvprintw(20,3,"%d,%d",check,i);
+    // refresh();
+    // usleep(5000000);
     if(check==0){
-        fprintf(score,"%s %d %d %d",username,GOLD,GOLD*10,1);
+        FILE*score=fopen("score.txt","a");
+        fprintf(score,"%s %d %d %d\n",username,GOLD,GOLD*10,1);
         fclose(score);
     }
     else if(check==1){
+        FILE*score=fopen("score.txt","r+");
         FILE*temp=fopen("temp.txt","w");
         int lineNumber=0;
         char b[1000];
         while(fgets(b,sizeof(b),score)!=NULL){
-            lineNumber++;
             if(lineNumber==i){
                 char name[50];
                 int value1,value2,value3;
                 sscanf(b,"%s %d %d %d", name,&value1,&value2,&value3);
                 fprintf(temp,"%s %d %d %d\n",name,value1+GOLD,value2+GOLD*10,value3+1);
-            } 
+            }
             else{
                 fputs(b,temp);
             }
+            lineNumber++;
         }
         fclose(score);
         fclose(temp);
@@ -134,7 +139,7 @@ void svaescore(char username[],int GOLD){
 }
 void Scoreboard(){
     clear();
-    mvprintw(0,0,"Scoreboard");
+    mvprintw(0,0,"Scoreboard(USERNAME,GOLD,SCORE,NUMBER OF TIMES PLAYED)");
     FILE * score=fopen("score.txt","r");
     char a[100];
     move(2,10);
@@ -922,7 +927,7 @@ int startgame(int v){
             for(int j=0;j<183;j++){
                 mark.m[i][j]=0;    
             }
-    }
+        }
     }
     while(1){
         for(int i=0;i<49;i++){
@@ -3241,7 +3246,7 @@ void Loadgame(const char username[]){
     FILE*fptr=fopen(filename,"r");
     char a[50];
     move(0,0);
-    while(fgets(a,50,fptr)!=NULL){
+    while(fgets(a,sizeof(a),fptr)!=NULL){
         printw("%s",a);
     }
     refresh();
