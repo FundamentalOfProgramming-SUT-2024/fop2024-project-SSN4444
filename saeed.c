@@ -3214,8 +3214,6 @@ int startgame(int v){
                 char c1=getch();
                 if(c1=='y'){
                     clear();
-                    noecho();
-                    echo();
                     mvprintw(20,60,"plaes enter your username and filename:(username  and  username_filename )");
                     refresh();
                     move(22,60);
@@ -3224,9 +3222,7 @@ int startgame(int v){
                     char username[50];
                     char username_filename[50];
                     scanf("%s",username);
-                    refresh();
                     scanf("%s",username_filename);
-                    refresh();
                     savegame(username,username_filename);
                     return 0;
                 }
@@ -3268,7 +3264,7 @@ void Loadgame(const char username[]){
     for(int i=0;i<49;i++){
         for(int j=0;j<183;j++){
             if(temp[(183*i)+j][0]=='!'){
-                map[i][j]==' ';
+                map[i][j]=' ';
             }
             else{
                 map[i][j]=temp[(183*i)+j][0];
@@ -3325,6 +3321,15 @@ void Loadgame(const char username[]){
     }
     fclose(fptr);
     fclose(game);
+    // clear();
+    // for(int i=0;i<49;i++){
+    //     for(int j=0;j<183;j++){
+    //         printw("%c",map[i][j]);
+    //     }
+    //     printw("\n");
+    // }
+    // refresh();
+    // usleep(30000000);
     startgame(1);
 }
 //برای چک پسورد برای login
