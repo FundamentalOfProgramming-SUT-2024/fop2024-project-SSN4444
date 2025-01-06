@@ -25,7 +25,7 @@
 //✦ , ⚝ ,  ✧ , ✿ , ☽
 //🤖 , 👾 ,⛄️ ,🛹,🥷
 //❣️ ,  🎗️   ,   🗡️  ,  ⚠️  ,  ⚱️   ,    ,   ▫️  ,
-//❣️⭐🌝🌞🌛🌚⚡🌕🚦🎁🧨🏆🏅🥈🥇🥉🎗️🎖️🎄💍👑🔔⚱️🔑🗝️➡️⚠️🚸⚜️🔱🔅🔆🔸🔶🔻♦️💛🟨▫️◽◻️سل
+//❣️⭐🌝🌞🌛🌚⚡🌕🚦🎁🧨🏆🏅🥈🥉🎗️🎖️🎄💍👑🔔⚱️🔑🗝️➡️⚠️🚸⚜️🔱🔅🔆🔸🔶🔻♦️💛🟨▫️◽◻️سل
 #include<stdio.h>
 #include<ncursesw/ncurses.h>
 #include<stdlib.h>
@@ -78,6 +78,13 @@ struct DOOR{
     int y;
 };
 struct DOOR door[7];
+typedef struct {
+    char name[50];
+    int gold;
+    int score;
+    int amount;
+} User;
+User user[100];
 int randomInRange(int min,int max){
     return min+rand()%(max-min+1);
 }
@@ -137,17 +144,55 @@ void svaescore(char username[],int GOLD){
         rename("temp.txt","score.txt");
     }
 }
+int compare(const void *a, const void *b) {
+    User *studentA=(User*)a;
+    User *studentB=(User*)b;
+    return studentB->gold-studentA->gold;
+}
 void Scoreboard(){
     clear();
     mvprintw(0,0,"Scoreboard(USERNAME,GOLD,SCORE,NUMBER OF TIMES PLAYED)");
     FILE * score=fopen("score.txt","r");
     char a[100];
-    move(2,10);
-    while(fgets(a,sizeof(a),score)!=NULL){
-        printw("%s\n",a);
+    move(1,0);
+    int count=0;
+    while(fscanf(score,"%s %d %d %d",user[count].name,&user[count].gold,&user[count].score,&user[count].amount)!=EOF){
+        count++;
     }
-    refresh();
     fclose(score);
+    qsort(user,count,sizeof(User),compare);
+    for(int i=0;i<count;i++){
+        //🏅🥈🥉
+        if(strcmp(user[i].name,username1234)==0){
+            printw("*");
+        }
+        if(i==0){
+            init_pair(1,COLOR_YELLOW,COLOR_BLACK);
+            attron(COLOR_PAIR(1));
+            const char*medal="🏅";
+            printw("%s  %d:  %s  %d  %d  %d  %s\n",medal,i+1,user[i].name,user[i].gold,user[i].score,user[i].amount,"(LEGEND)");
+            attroff(COLOR_PAIR(1));
+        }
+        else if(i==1){
+            init_pair(2,COLOR_BLUE,COLOR_BLACK);
+            attron(COLOR_PAIR(2));
+            const char*medal="🥈";
+            printw("%s  %d:  %s  %d  %d  %d  %s\n",medal,i+1,user[i].name,user[i].gold,user[i].score,user[i].amount,"(GOAT)");
+            attroff(COLOR_PAIR(2));
+        }
+        else if(i==2){
+            init_pair(3,COLOR_RED,COLOR_BLACK);
+            attron(COLOR_PAIR(3));
+            const char*medal="🥉";
+            printw("%s  %d:  %s  %d  %d  %d\n",medal,i+1,user[i].name,user[i].gold,user[i].score,user[i].amount);
+            attroff(COLOR_PAIR(3));
+        }
+        else{
+            init_pair(5,COLOR_GREEN,COLOR_BLACK);
+            bkgd(COLOR_PAIR(5));
+            printw("  %d:  %s  %d  %d  %d\n",i+1,user[i].name,user[i].gold,user[i].score,user[i].amount);
+        }
+    }
     char c=getch();
 }
 void savegame(const char username[],const char username_filename[]){
