@@ -168,29 +168,35 @@ void Scoreboard(){
         }
         if(i==0){
             init_pair(1,COLOR_YELLOW,COLOR_BLACK);
+            attron(A_BOLD);
             attron(COLOR_PAIR(1));
             const char*medal="🏅";
             printw("%s  %d:  %s  %d  %d  %d  %s\n",medal,i+1,user[i].name,user[i].gold,user[i].score,user[i].amount,"(LEGEND)");
             attroff(COLOR_PAIR(1));
+            attroff(A_BOLD);
         }
         else if(i==1){
             init_pair(2,COLOR_BLUE,COLOR_BLACK);
+            attron(A_BOLD);
             attron(COLOR_PAIR(2));
             const char*medal="🥈";
             printw("%s  %d:  %s  %d  %d  %d  %s\n",medal,i+1,user[i].name,user[i].gold,user[i].score,user[i].amount,"(GOAT)");
             attroff(COLOR_PAIR(2));
+            attroff(A_BOLD);
         }
         else if(i==2){
             init_pair(3,COLOR_RED,COLOR_BLACK);
+            attron(A_BOLD);
             attron(COLOR_PAIR(3));
             const char*medal="🥉";
             printw("%s  %d:  %s  %d  %d  %d\n",medal,i+1,user[i].name,user[i].gold,user[i].score,user[i].amount);
             attroff(COLOR_PAIR(3));
+            attroff(A_BOLD);
         }
         else{
             init_pair(5,COLOR_GREEN,COLOR_BLACK);
             bkgd(COLOR_PAIR(5));
-            printw("  %d:  %s  %d  %d  %d\n",i+1,user[i].name,user[i].gold,user[i].score,user[i].amount);
+            printw("    %d:  %s  %d  %d  %d\n",i+1,user[i].name,user[i].gold,user[i].score,user[i].amount);
         }
     }
     char c=getch();
