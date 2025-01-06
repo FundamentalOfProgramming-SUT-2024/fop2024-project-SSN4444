@@ -57,6 +57,8 @@ const char *unicode_char8095="🤖";
 int khata=0;
 //رمز متغیر
 int const_int;
+//username
+char username1234[100];
 struct MARK{
     int m[49][183];
 };
@@ -87,6 +89,61 @@ int correctcode(int key,char a[]){
         return 1;
     }
     else return 0;
+}
+void svaescore(char username[],int GOLD){
+    FILE*score=fopen("score.txt","w+");
+    int i=0;
+    int check=0;
+    char a[1000];
+    while(fgets(a,sizeof(a),score)!=NULL){
+        char user[100];
+        sscanf(a,"%s",user);
+        if(strcmp(user,username)==0){
+            check=1;
+            break;
+        }
+        else{
+            i++;
+        }
+    }
+    if(check==0){
+        fprintf(score,"%s %d %d %d",username,GOLD,GOLD*10,1);
+        fclose(score);
+    }
+    else if(check==1){
+        FILE*temp=fopen("temp.txt","w");
+        int lineNumber=0;
+        char b[1000];
+        while(fgets(b,sizeof(b),score)!=NULL){
+            lineNumber++;
+            if(lineNumber==i){
+                char name[50];
+                int value1,value2,value3;
+                sscanf(b,"%s %d %d %d", name,&value1,&value2,&value3);
+                fprintf(temp,"%s %d %d %d\n",name,value1+GOLD,value2+GOLD*10,value3+1);
+            } 
+            else{
+                fputs(b,temp);
+            }
+        }
+        fclose(score);
+        fclose(temp);
+        remove("score.txt");
+        rename("temp.txt","score.txt");
+    }
+}
+void Scoreboard(){
+    clear();
+    mvprintw(0,0,"Scoreboard");
+    FILE * score=fopen("score.txt","r");
+    char a[100];
+    move(2,10);
+    while(fgets(a,sizeof(a),score)!=NULL){
+        printw("%s\n",a);
+    }
+    refresh();
+    fclose(score);
+    char c=getch();
 }
 void savegame(const char username[],const char username_filename[]){
     char filename[100];
@@ -120,6 +177,7 @@ void savegame(const char username[],const char username_filename[]){
     fprintf(savefile,"%d\n",adamak.x);
     fprintf(savefile,"%d\n",adamak.y);
     fprintf(savefile,"%d\n",Ancient_Key);
+    fprintf(savefile,"%s\n",username1234);
     for(int i=0;i<49;i++){
         for(int j=0;j<183;j++){
             fprintf(savefile,"%d\n",mark.m[i][j]);
@@ -589,6 +647,16 @@ void generatemap(int tabagheh){
     //اتاق گنج
     //برای شمارش و گذاشتن مقدار زیادی تلهو طلا 
     if(tabagheh==4){
+        //گذاشتن eبرای اتمام بازی 
+        int count1234=0;
+        while(count1234!=1){
+            int xT5=randomInRange(room[3].xs+2,room[3].xs+8);
+            int yT5=randomInRange(room[3].ys+2,room[3].ys+8);
+            if(map[xT5][yT5]=='.'){
+                map[xT5][yT5]='e';
+                count1234++;
+            }  
+        }
         int counttale=0;
         while(counttale!=5){
             int xT5=randomInRange(room[3].xs+2,room[3].xs+8);
@@ -745,9 +813,15 @@ void generatemap(int tabagheh){
     map[xo5][yo5]='o';
     //برای پله 
     if(tabagheh!=4){
-        int xp5=randomInRange(room[5].xs+2,room[5].xs+8);
-        int yp5=randomInRange(room[5].ys+2,room[5].ys+8);
-        map[xp5][yp5]='<';
+        int counter123=0;
+        while(counter123!=1){
+            int xG5=randomInRange(room[5].xs+2,room[5].xs+8);
+            int yG5=randomInRange(room[5].ys+2,room[5].ys+8);
+            if(map[xG5][yG5]=='.'){
+                map[xG5][yG5]='<';
+                counter123++;
+            }
+        }
     }
      //
      for(int i=room[5].xs+1;i<room[5].xs+10;i++){
@@ -1219,6 +1293,17 @@ int startgame(int v){
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.x++;
             }
+            //پایان بازی
+            else if(map[adamak.x][adamak.y]=='e'){
+                clear();
+                mvprintw(20,60,"Congratulations, you have completed the game");
+                mvprintw(22,60,"The amount of GOLD you have collected : %d",GOLD);
+                mvprintw(24,60,"your score : %d",GOLD*10);
+                refresh();
+                svaescore(username1234,GOLD);
+                usleep(4000000);
+                break;
+            }
             //برخورد با کلید تولید دکمه رمز
             else if(map[adamak.x][adamak.y]=='&'){
                 clear();
@@ -1456,6 +1541,16 @@ int startgame(int v){
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.y--;
             }
+            else if(map[adamak.x][adamak.y]=='e'){
+                clear();
+                mvprintw(20,60,"Congratulations, you have completed the game");
+                mvprintw(22,60,"The amount of GOLD you have collected : %d",GOLD);
+                mvprintw(24,60,"your score : %d",GOLD*10);
+                refresh();
+                svaescore(username1234,GOLD);
+                usleep(4000000);
+                break;
+            }
             else if(map[adamak.x][adamak.y]=='9'){
                 map[adamak.x][adamak.y]='.';
                 Ancient_Key=1;
@@ -1680,6 +1775,16 @@ int startgame(int v){
             int key=randomInRange(1000,9999);
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.x--;
+            }
+            else if(map[adamak.x][adamak.y]=='e'){
+                clear();
+                mvprintw(20,60,"Congratulations, you have completed the game");
+                mvprintw(22,60,"The amount of GOLD you have collected : %d",GOLD);
+                mvprintw(24,60,"your score : %d",GOLD*10);
+                refresh();
+                svaescore(username1234,GOLD);
+                usleep(4000000);
+                break;
             }
             else if(map[adamak.x][adamak.y]=='9'){
                 map[adamak.x][adamak.y]='.';
@@ -1907,6 +2012,16 @@ int startgame(int v){
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.y++;
             }
+            else if(map[adamak.x][adamak.y]=='e'){
+                clear();
+                mvprintw(20,60,"Congratulations, you have completed the game");
+                mvprintw(22,60,"The amount of GOLD you have collected : %d",GOLD);
+                mvprintw(24,60,"your score : %d",GOLD*10);
+                refresh();
+                svaescore(username1234,GOLD);
+                usleep(4000000);
+                break;
+            }
             else if(map[adamak.x][adamak.y]=='9'){
                 map[adamak.x][adamak.y]='.';
                 Ancient_Key=1;
@@ -2133,6 +2248,16 @@ int startgame(int v){
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.x++;
                 adamak.y++;
+            }
+            else if(map[adamak.x][adamak.y]=='e'){
+                clear();
+                mvprintw(20,60,"Congratulations, you have completed the game");
+                mvprintw(22,60,"The amount of GOLD you have collected : %d",GOLD);
+                mvprintw(24,60,"your score : %d",GOLD*10);
+                refresh();
+                svaescore(username1234,GOLD);
+                usleep(4000000);
+                break;
             }
             else if(map[adamak.x][adamak.y]=='9'){
                 map[adamak.x][adamak.y]='.';
@@ -2363,6 +2488,16 @@ int startgame(int v){
                 adamak.x--;
                 adamak.y++;
             }
+            else if(map[adamak.x][adamak.y]=='e'){
+                clear();
+                mvprintw(20,60,"Congratulations, you have completed the game");
+                mvprintw(22,60,"The amount of GOLD you have collected : %d",GOLD);
+                mvprintw(24,60,"your score : %d",GOLD*10);
+                refresh();
+                svaescore(username1234,GOLD);
+                usleep(4000000);
+                break;
+            }
             else if(map[adamak.x][adamak.y]=='9'){
                 map[adamak.x][adamak.y]='.';
                 Ancient_Key=1;
@@ -2592,6 +2727,16 @@ int startgame(int v){
                 adamak.x++;
                 adamak.y--;
             }
+            else if(map[adamak.x][adamak.y]=='e'){
+                clear();
+                mvprintw(20,60,"Congratulations, you have completed the game");
+                mvprintw(22,60,"The amount of GOLD you have collected : %d",GOLD);
+                mvprintw(24,60,"your score : %d",GOLD*10);
+                refresh();
+                svaescore(username1234,GOLD);
+                usleep(4000000);
+                break;
+            }
             else if(map[adamak.x][adamak.y]=='9'){
                 map[adamak.x][adamak.y]='.';
                 Ancient_Key=1;
@@ -2820,6 +2965,16 @@ int startgame(int v){
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.x--;
                 adamak.y--;
+            }
+            else if(map[adamak.x][adamak.y]=='e'){
+                clear();
+                mvprintw(20,60,"Congratulations, you have completed the game");
+                mvprintw(22,60,"The amount of GOLD you have collected : %d",GOLD);
+                mvprintw(24,60,"your score : %d",GOLD*10);
+                refresh();
+                svaescore(username1234,GOLD);
+                usleep(4000000);
+                break;
             }
             else if(map[adamak.x][adamak.y]=='9'){
                 map[adamak.x][adamak.y]='.';
@@ -3157,6 +3312,7 @@ void Loadgame(const char username[]){
     adamak.y=y;
     fscanf(game,"%d",&Ancient_Key1);
     Ancient_Key=Ancient_Key1;
+    fscanf(game,"%s",username1234);
     for(int i=0;i<49;i++){
         for(int j=0;j<183;j++){
             fscanf(game,"%d",&mark.m[i][j]);
@@ -3215,6 +3371,7 @@ int Login(){
         if(checkpasword2(b,target)){
             //وارد شدن به بازی
             clear();
+            strcpy(username1234,a);
             const char *unicode_char="⏳";
             mvprintw(20,71,"%s",unicode_char);
             mvprintw(20,60,"Loading...");
@@ -3536,8 +3693,13 @@ int MENU(){
             bkgd(COLOR_PAIR(5));
             MENU();
             break;
-        // case 5:
-        //     Scoreboard();
+        case 5:
+            Scoreboard();
+            clear();
+            init_pair(5,COLOR_GREEN,COLOR_BLACK);
+            bkgd(COLOR_PAIR(5));
+            echo();
+            MENU();
         case 6:
             return 0;
     }
