@@ -1,31 +1,4 @@
 //saeednoferesti 403106838
-//49*183
-//MENU->create account->back to MENU->Login->startgame->generatemap->
-//پله در اتاق اخر ۱۰*۱۰ قرار دارد <
-//اتاق طلسم شماره ۴ است
-//اتاق گنج در طبقه ۴  و اتاق شماره ی ۳ است
-//Tنماد طلسم
-//Gنماد طلا است  🎗️
-//gهم نماد طلا است      ▫️   
-//jهم نماد طلاست(کیسه طلا)   ⚱️ 
-//فعلا کاراکتر U به عنوان ادمک در نظر گرفته شده
-//وقتی تله غیر فعال میشود با این نماد نشان میدهیم {
-//💰,🪙,✨
-// 🍔, 🍕,🍰
-//🪓  سلاح اولیه
-// △ کلید باستانی
-// 🗡️1
-//🪄 2
-//  ➳   تیر3
-// ⚔️  4 شمشیر
-//غذا           0    ❤  
-//    const char *T_health1="⚝"---------> 5;
-//    const char *T_speed1="✦" ---------> 6;
-//    const char *T_damage1="☽"---------> 7;
-//✦ , ⚝ ,  ✧ , ✿ , ☽
-//🤖 , 👾 ,⛄️ ,🛹,🥷
-//❣️ ,  🎗️   ,   🗡️  ,  ⚠️  ,  ⚱️   ,    ,   ▫️  ,
-//❣️⭐🌝🌞🌛🌚⚡🌕🚦🎁🧨🏆🏅🥈🥉🎗️🎖️🎄💍👑🔔⚱️🔑🗝️➡️⚠️🚸⚜️🔱🔅🔆🔸🔶🔻♦️💛🟨▫️◽◻️سل
 #include<stdio.h>
 #include<ncursesw/ncurses.h>
 #include<stdlib.h>
@@ -35,7 +8,6 @@
 #include<time.h>
 #include<locale.h>
 char map[49][183];
-//برای شمارش طلا ها 
 int GOLD=0;
 int HEALTH=100;
 int food=0;
@@ -48,7 +20,6 @@ int T_health=0;
 int T_speed=0;
 int tabagheh=1;
 int Ancient_Key=0;
-///////////////////////////
 //میزان کاهش جان(درجه سختی بازی)
 int decrease=5;
 //انتخاب شخصیت بازی
@@ -1356,8 +1327,19 @@ int startgame(int v){
                 mvprintw(22,60,"The amount of GOLD you have collected : %d",GOLD);
                 mvprintw(24,60,"your score : %d",GOLD*10);
                 refresh();
-                svaescore(username1234,GOLD);
                 usleep(4000000);
+                clear();
+                mvprintw(20,60,"plaes enter your username and filename:(username  and  username_filename )");
+                refresh();
+                move(22,60);
+                refresh();
+                echo();
+                char username[50];
+                char username_filename[50];
+                scanf("%s",username);
+                scanf("%s",username_filename);
+                savegame(username,username_filename);
+                svaescore(username1234,GOLD);
                 break;
             }
             //برخورد با کلید تولید دکمه رمز
@@ -1603,8 +1585,19 @@ int startgame(int v){
                 mvprintw(22,60,"The amount of GOLD you have collected : %d",GOLD);
                 mvprintw(24,60,"your score : %d",GOLD*10);
                 refresh();
-                svaescore(username1234,GOLD);
                 usleep(4000000);
+                clear();
+                mvprintw(20,60,"plaes enter your username and filename:(username  and  username_filename )");
+                refresh();
+                move(22,60);
+                refresh();
+                echo();
+                char username[50];
+                char username_filename[50];
+                scanf("%s",username);
+                scanf("%s",username_filename);
+                savegame(username,username_filename);
+                svaescore(username1234,GOLD);
                 break;
             }
             else if(map[adamak.x][adamak.y]=='9'){
@@ -1838,8 +1831,19 @@ int startgame(int v){
                 mvprintw(22,60,"The amount of GOLD you have collected : %d",GOLD);
                 mvprintw(24,60,"your score : %d",GOLD*10);
                 refresh();
-                svaescore(username1234,GOLD);
                 usleep(4000000);
+                clear();
+                mvprintw(20,60,"plaes enter your username and filename:(username  and  username_filename )");
+                refresh();
+                move(22,60);
+                refresh();
+                echo();
+                char username[50];
+                char username_filename[50];
+                scanf("%s",username);
+                scanf("%s",username_filename);
+                savegame(username,username_filename);
+                svaescore(username1234,GOLD);
                 break;
             }
             else if(map[adamak.x][adamak.y]=='9'){
@@ -2074,8 +2078,19 @@ int startgame(int v){
                 mvprintw(22,60,"The amount of GOLD you have collected : %d",GOLD);
                 mvprintw(24,60,"your score : %d",GOLD*10);
                 refresh();
-                svaescore(username1234,GOLD);
                 usleep(4000000);
+                clear();
+                mvprintw(20,60,"plaes enter your username and filename:(username  and  username_filename )");
+                refresh();
+                move(22,60);
+                refresh();
+                echo();
+                char username[50];
+                char username_filename[50];
+                scanf("%s",username);
+                scanf("%s",username_filename);
+                savegame(username,username_filename);
+                svaescore(username1234,GOLD);
                 break;
             }
             else if(map[adamak.x][adamak.y]=='9'){
@@ -2311,8 +2326,19 @@ int startgame(int v){
                 mvprintw(22,60,"The amount of GOLD you have collected : %d",GOLD);
                 mvprintw(24,60,"your score : %d",GOLD*10);
                 refresh();
-                svaescore(username1234,GOLD);
                 usleep(4000000);
+                clear();
+                mvprintw(20,60,"plaes enter your username and filename:(username  and  username_filename )");
+                refresh();
+                move(22,60);
+                refresh();
+                echo();
+                char username[50];
+                char username_filename[50];
+                scanf("%s",username);
+                scanf("%s",username_filename);
+                savegame(username,username_filename);
+                svaescore(username1234,GOLD);
                 break;
             }
             else if(map[adamak.x][adamak.y]=='9'){
@@ -2550,8 +2576,19 @@ int startgame(int v){
                 mvprintw(22,60,"The amount of GOLD you have collected : %d",GOLD);
                 mvprintw(24,60,"your score : %d",GOLD*10);
                 refresh();
-                svaescore(username1234,GOLD);
                 usleep(4000000);
+                clear();
+                mvprintw(20,60,"plaes enter your username and filename:(username  and  username_filename )");
+                refresh();
+                move(22,60);
+                refresh();
+                echo();
+                char username[50];
+                char username_filename[50];
+                scanf("%s",username);
+                scanf("%s",username_filename);
+                savegame(username,username_filename);
+                svaescore(username1234,GOLD);
                 break;
             }
             else if(map[adamak.x][adamak.y]=='9'){
@@ -2789,8 +2826,19 @@ int startgame(int v){
                 mvprintw(22,60,"The amount of GOLD you have collected : %d",GOLD);
                 mvprintw(24,60,"your score : %d",GOLD*10);
                 refresh();
-                svaescore(username1234,GOLD);
                 usleep(4000000);
+                clear();
+                mvprintw(20,60,"plaes enter your username and filename:(username  and  username_filename )");
+                refresh();
+                move(22,60);
+                refresh();
+                echo();
+                char username[50];
+                char username_filename[50];
+                scanf("%s",username);
+                scanf("%s",username_filename);
+                savegame(username,username_filename);
+                svaescore(username1234,GOLD);
                 break;
             }
             else if(map[adamak.x][adamak.y]=='9'){
@@ -3028,8 +3076,19 @@ int startgame(int v){
                 mvprintw(22,60,"The amount of GOLD you have collected : %d",GOLD);
                 mvprintw(24,60,"your score : %d",GOLD*10);
                 refresh();
-                svaescore(username1234,GOLD);
                 usleep(4000000);
+                clear();
+                mvprintw(20,60,"plaes enter your username and filename:(username  and  username_filename )");
+                refresh();
+                move(22,60);
+                refresh();
+                echo();
+                char username[50];
+                char username_filename[50];
+                scanf("%s",username);
+                scanf("%s",username_filename);
+                savegame(username,username_filename);
+                svaescore(username1234,GOLD);
                 break;
             }
             else if(map[adamak.x][adamak.y]=='9'){
