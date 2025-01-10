@@ -8,6 +8,7 @@
 #include<time.h>
 #include<locale.h>
 char map[49][183];
+int mark_color[49][183];
 int GOLD=0;
 int HEALTH=100;
 int food=0;
@@ -951,88 +952,528 @@ int startgame(int v){
             }
         }
     }
-    while(1){
-        for(int i=0;i<49;i++){
-            for(int j=0;j<182;j++){
-                if(map[i][j]=='G'){
-                const char *unicode_char="🎗️";
-                    printw("%s",unicode_char);           
-                }
-                else if(map[i][j]=='g'){
-                    const char *unicode_char="▫️";
-                    addstr(unicode_char);
-                }
-                else if(map[i][j]=='j'){
-                    const char *unicode_char="⚱️";
-                    printw("%s",unicode_char);
-                }
-                //در مخفی
-                else if(map[i][j]==','){
-                    printw("%c",'|');
-                }
-                else if(map[i][j]=='^'){
-                    printw("%c",'.');
-                }
-                //وقتی تله غیر فعال میشود با این نماد نشان میدهیم {
-                else if(map[i][j]=='{'){
-                    printw("%c",'^');
-                }
-                else if(map[i][j]=='1'){
-                    const char *unicode_char="🗡️";
-                    printw("%s",unicode_char);
-                }
-                else if(map[i][j]=='2'){
-                    const char *unicode_char="🪄";
-                    printw("%s",unicode_char);
-                }
-                else if(map[i][j]=='3'){
-                    const char *unicode_char="➳";
-                    printw("%s",unicode_char);
-                }
-                else if(map[i][j]=='4'){
-                    const char *unicode_char="⚔️";
-                    printw("%s",unicode_char);
-                }
-                else if(map[i][j]=='5'){
-                    const char *unicode_char="⚝";
-                    printw("%s",unicode_char);
-                }
-                else if(map[i][j]=='6'){
-                    const char *unicode_char="✦";
-                    printw("%s",unicode_char);
-                }
-                else if(map[i][j]=='7'){
-                    const char *unicode_char="☽";
-                    printw("%s",unicode_char);
-                }
-                else if(map[i][j]=='0'){ 
-                    printw("%s","❤");
-                }
-                else if(map[i][j]=='@'){
-                    init_pair(1,COLOR_RED,COLOR_BLACK);
-                    attron(COLOR_PAIR(1));
-                    printw("%c",map[i][j]);
-                    attroff(COLOR_PAIR(1));
-                }
-                else if(map[i][j]=='$'){
-                    init_pair(1,COLOR_GREEN,COLOR_BLACK);
-                    attron(COLOR_PAIR(1));
-                    printw("%c",'@');
-                    attroff(COLOR_PAIR(1));
-                }
-                else if(map[i][j]=='9'){
-                    init_pair(7,COLOR_YELLOW,COLOR_BLACK);
-                    attron(COLOR_PAIR(7));
-                    const char*kilid="△";
-                    printw("%s",kilid);
-                    attroff(COLOR_PAIR(7));
-                }
-                else{
-                    printw("%c",map[i][j]);
-                }
-            }
-            printw("\n");
+    for(int i=0;i<25;i++){
+        for(int j=0;j<30;j++){
+            mark_color[i][j]=1;
         }
+    }
+    for(int i=0;i<25;i++){
+        for(int j=30;j<90;j++){
+            mark_color[i][j]=2;
+        }
+    }
+    for(int i=0;i<25;i++){
+        for(int j=90;j<183;j++){
+            mark_color[i][j]=3;
+        }
+    }
+    for(int i=25;i<49;i++){
+        for(int j=0;j<30;j++){
+            mark_color[i][j]=4;
+        }
+    }
+    for(int i=25;i<49;i++){
+        for(int j=30;j<90;j++){
+            mark_color[i][j]=5;
+        }
+    }
+    for(int i=25;i<49;i++){
+        for(int j=90;j<183;j++){
+            mark_color[i][j]=6;
+        }
+    }
+    while(1){
+            for(int i=0;i<49;i++){
+                for(int j=0;j<182;j++){
+                    if(mark_color[i][j]==1){
+                        init_pair(1,COLOR_RED,COLOR_BLACK);
+                        attron(COLOR_PAIR(1));
+                        if(map[i][j]=='G'){
+                        const char *unicode_char="🎗️";
+                            printw("%s",unicode_char);           
+                        }
+                        else if(map[i][j]=='g'){
+                            const char *unicode_char="▫️";
+                            addstr(unicode_char);
+                        }
+                        else if(map[i][j]=='j'){
+                            const char *unicode_char="⚱️";
+                            printw("%s",unicode_char);
+                        }
+                        //در مخفی
+                        else if(map[i][j]==','){
+                            printw("%c",'|');
+                        }
+                        else if(map[i][j]=='^'){
+                            printw("%c",'.');
+                        }
+                        //وقتی تله غیر فعال میشود با این نماد نشان میدهیم {
+                        else if(map[i][j]=='{'){
+                            printw("%c",'^');
+                        }
+                        else if(map[i][j]=='1'){
+                            const char *unicode_char="🗡️";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='2'){
+                            const char *unicode_char="🪄";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='3'){
+                            const char *unicode_char="➳";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='4'){
+                            const char *unicode_char="⚔️";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='5'){
+                            const char *unicode_char="⚝";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='6'){
+                            const char *unicode_char="✦";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='7'){
+                            const char *unicode_char="☽";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='0'){ 
+                            printw("%s","❤");
+                        }
+                        else if(map[i][j]=='@'){
+                            init_pair(1,COLOR_RED,COLOR_BLACK);
+                            attron(COLOR_PAIR(1));
+                            printw("%c",map[i][j]);
+                            attroff(COLOR_PAIR(1));
+                        }
+                        else if(map[i][j]=='$'){
+                            init_pair(1,COLOR_GREEN,COLOR_BLACK);
+                            attron(COLOR_PAIR(1));
+                            printw("%c",'@');
+                            attroff(COLOR_PAIR(1));
+                        }
+                        else if(map[i][j]=='9'){
+                            init_pair(7,COLOR_YELLOW,COLOR_BLACK);
+                            attron(COLOR_PAIR(7));
+                            const char*kilid="△";
+                            printw("%s",kilid);
+                            attroff(COLOR_PAIR(7));
+                        }
+                        else{
+                            printw("%c",map[i][j]);
+                        }
+                        attroff(COLOR_PAIR(1));
+                    }
+                    else if(mark_color[i][j]==2){
+                        init_pair(2,COLOR_BLUE,COLOR_BLACK);
+                        attron(COLOR_PAIR(2));
+                        if(map[i][j]=='G'){
+                        const char *unicode_char="🎗️";
+                            printw("%s",unicode_char);           
+                        }
+                        else if(map[i][j]=='g'){
+                            const char *unicode_char="▫️";
+                            addstr(unicode_char);
+                        }
+                        else if(map[i][j]=='j'){
+                            const char *unicode_char="⚱️";
+                            printw("%s",unicode_char);
+                        }
+                        //در مخفی
+                        else if(map[i][j]==','){
+                            printw("%c",'|');
+                        }
+                        else if(map[i][j]=='^'){
+                            printw("%c",'.');
+                        }
+                        //وقتی تله غیر فعال میشود با این نماد نشان میدهیم {
+                        else if(map[i][j]=='{'){
+                            printw("%c",'^');
+                        }
+                        else if(map[i][j]=='1'){
+                            const char *unicode_char="🗡️";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='2'){
+                            const char *unicode_char="🪄";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='3'){
+                            const char *unicode_char="➳";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='4'){
+                            const char *unicode_char="⚔️";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='5'){
+                            const char *unicode_char="⚝";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='6'){
+                            const char *unicode_char="✦";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='7'){
+                            const char *unicode_char="☽";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='0'){ 
+                            printw("%s","❤");
+                        }
+                        else if(map[i][j]=='@'){
+                            init_pair(1,COLOR_RED,COLOR_BLACK);
+                            attron(COLOR_PAIR(1));
+                            printw("%c",map[i][j]);
+                            attroff(COLOR_PAIR(1));
+                        }
+                        else if(map[i][j]=='$'){
+                            init_pair(1,COLOR_GREEN,COLOR_BLACK);
+                            attron(COLOR_PAIR(1));
+                            printw("%c",'@');
+                            attroff(COLOR_PAIR(1));
+                        }
+                        else if(map[i][j]=='9'){
+                            init_pair(7,COLOR_YELLOW,COLOR_BLACK);
+                            attron(COLOR_PAIR(7));
+                            const char*kilid="△";
+                            printw("%s",kilid);
+                            attroff(COLOR_PAIR(7));
+                        }
+                        else{
+                            printw("%c",map[i][j]);
+                        }
+                        attroff(COLOR_PAIR(2));
+                    }
+                    else if(mark_color[i][j]==3){
+                        init_pair(3,COLOR_GREEN,COLOR_BLACK);
+                        attron(COLOR_PAIR(3));
+                        if(map[i][j]=='G'){
+                        const char *unicode_char="🎗️";
+                            printw("%s",unicode_char);           
+                        }
+                        else if(map[i][j]=='g'){
+                            const char *unicode_char="▫️";
+                            addstr(unicode_char);
+                        }
+                        else if(map[i][j]=='j'){
+                            const char *unicode_char="⚱️";
+                            printw("%s",unicode_char);
+                        }
+                        //در مخفی
+                        else if(map[i][j]==','){
+                            printw("%c",'|');
+                        }
+                        else if(map[i][j]=='^'){
+                            printw("%c",'.');
+                        }
+                        //وقتی تله غیر فعال میشود با این نماد نشان میدهیم {
+                        else if(map[i][j]=='{'){
+                            printw("%c",'^');
+                        }
+                        else if(map[i][j]=='1'){
+                            const char *unicode_char="🗡️";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='2'){
+                            const char *unicode_char="🪄";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='3'){
+                            const char *unicode_char="➳";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='4'){
+                            const char *unicode_char="⚔️";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='5'){
+                            const char *unicode_char="⚝";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='6'){
+                            const char *unicode_char="✦";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='7'){
+                            const char *unicode_char="☽";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='0'){ 
+                            printw("%s","❤");
+                        }
+                        else if(map[i][j]=='@'){
+                            init_pair(1,COLOR_RED,COLOR_BLACK);
+                            attron(COLOR_PAIR(1));
+                            printw("%c",map[i][j]);
+                            attroff(COLOR_PAIR(1));
+                        }
+                        else if(map[i][j]=='$'){
+                            init_pair(1,COLOR_GREEN,COLOR_BLACK);
+                            attron(COLOR_PAIR(1));
+                            printw("%c",'@');
+                            attroff(COLOR_PAIR(1));
+                        }
+                        else if(map[i][j]=='9'){
+                            init_pair(7,COLOR_YELLOW,COLOR_BLACK);
+                            attron(COLOR_PAIR(7));
+                            const char*kilid="△";
+                            printw("%s",kilid);
+                            attroff(COLOR_PAIR(7));
+                        }
+                        else{
+                            printw("%c",map[i][j]);
+                        }
+                        attroff(COLOR_PAIR(3));
+                    }
+                    else if(mark_color[i][j]==4){
+                        init_pair(4,COLOR_YELLOW,COLOR_BLACK);
+                        attron(COLOR_PAIR(4));
+                        if(map[i][j]=='G'){
+                        const char *unicode_char="🎗️";
+                            printw("%s",unicode_char);           
+                        }
+                        else if(map[i][j]=='g'){
+                            const char *unicode_char="▫️";
+                            addstr(unicode_char);
+                        }
+                        else if(map[i][j]=='j'){
+                            const char *unicode_char="⚱️";
+                            printw("%s",unicode_char);
+                        }
+                        //در مخفی
+                        else if(map[i][j]==','){
+                            printw("%c",'|');
+                        }
+                        else if(map[i][j]=='^'){
+                            printw("%c",'.');
+                        }
+                        //وقتی تله غیر فعال میشود با این نماد نشان میدهیم {
+                        else if(map[i][j]=='{'){
+                            printw("%c",'^');
+                        }
+                        else if(map[i][j]=='1'){
+                            const char *unicode_char="🗡️";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='2'){
+                            const char *unicode_char="🪄";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='3'){
+                            const char *unicode_char="➳";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='4'){
+                            const char *unicode_char="⚔️";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='5'){
+                            const char *unicode_char="⚝";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='6'){
+                            const char *unicode_char="✦";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='7'){
+                            const char *unicode_char="☽";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='0'){ 
+                            printw("%s","❤");
+                        }
+                        else if(map[i][j]=='@'){
+                            init_pair(1,COLOR_RED,COLOR_BLACK);
+                            attron(COLOR_PAIR(1));
+                            printw("%c",map[i][j]);
+                            attroff(COLOR_PAIR(1));
+                        }
+                        else if(map[i][j]=='$'){
+                            init_pair(1,COLOR_GREEN,COLOR_BLACK);
+                            attron(COLOR_PAIR(1));
+                            printw("%c",'@');
+                            attroff(COLOR_PAIR(1));
+                        }
+                        else if(map[i][j]=='9'){
+                            init_pair(7,COLOR_YELLOW,COLOR_BLACK);
+                            attron(COLOR_PAIR(7));
+                            const char*kilid="△";
+                            printw("%s",kilid);
+                            attroff(COLOR_PAIR(7));
+                        }
+                        else{
+                            printw("%c",map[i][j]);
+                        }
+                        attroff(COLOR_PAIR(4));
+                    }
+                    else if(mark_color[i][j]==5){
+                        init_pair(5,COLOR_WHITE,COLOR_BLACK);
+                        attron(COLOR_PAIR(5));
+                        if(map[i][j]=='G'){
+                        const char *unicode_char="🎗️";
+                            printw("%s",unicode_char);           
+                        }
+                        else if(map[i][j]=='g'){
+                            const char *unicode_char="▫️";
+                            addstr(unicode_char);
+                        }
+                        else if(map[i][j]=='j'){
+                            const char *unicode_char="⚱️";
+                            printw("%s",unicode_char);
+                        }
+                        //در مخفی
+                        else if(map[i][j]==','){
+                            printw("%c",'|');
+                        }
+                        else if(map[i][j]=='^'){
+                            printw("%c",'.');
+                        }
+                        //وقتی تله غیر فعال میشود با این نماد نشان میدهیم {
+                        else if(map[i][j]=='{'){
+                            printw("%c",'^');
+                        }
+                        else if(map[i][j]=='1'){
+                            const char *unicode_char="🗡️";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='2'){
+                            const char *unicode_char="🪄";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='3'){
+                            const char *unicode_char="➳";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='4'){
+                            const char *unicode_char="⚔️";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='5'){
+                            const char *unicode_char="⚝";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='6'){
+                            const char *unicode_char="✦";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='7'){
+                            const char *unicode_char="☽";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='0'){ 
+                            printw("%s","❤");
+                        }
+                        else if(map[i][j]=='@'){
+                            init_pair(1,COLOR_RED,COLOR_BLACK);
+                            attron(COLOR_PAIR(1));
+                            printw("%c",map[i][j]);
+                            attroff(COLOR_PAIR(1));
+                        }
+                        else if(map[i][j]=='$'){
+                            init_pair(1,COLOR_GREEN,COLOR_BLACK);
+                            attron(COLOR_PAIR(1));
+                            printw("%c",'@');
+                            attroff(COLOR_PAIR(1));
+                        }
+                        else if(map[i][j]=='9'){
+                            init_pair(7,COLOR_YELLOW,COLOR_BLACK);
+                            attron(COLOR_PAIR(7));
+                            const char*kilid="△";
+                            printw("%s",kilid);
+                            attroff(COLOR_PAIR(7));
+                        }
+                        else{
+                            printw("%c",map[i][j]);
+                        }
+                        attroff(COLOR_PAIR(5));
+                    }
+                    else if(mark_color[i][j]==6){
+                        init_pair(6,COLOR_MAGENTA,COLOR_BLACK);
+                        attron(COLOR_PAIR(6));
+                        if(map[i][j]=='G'){
+                        const char *unicode_char="🎗️";
+                            printw("%s",unicode_char);           
+                        }
+                        else if(map[i][j]=='g'){
+                            const char *unicode_char="▫️";
+                            addstr(unicode_char);
+                        }
+                        else if(map[i][j]=='j'){
+                            const char *unicode_char="⚱️";
+                            printw("%s",unicode_char);
+                        }
+                        //در مخفی
+                        else if(map[i][j]==','){
+                            printw("%c",'|');
+                        }
+                        else if(map[i][j]=='^'){
+                            printw("%c",'.');
+                        }
+                        //وقتی تله غیر فعال میشود با این نماد نشان میدهیم {
+                        else if(map[i][j]=='{'){
+                            printw("%c",'^');
+                        }
+                        else if(map[i][j]=='1'){
+                            const char *unicode_char="🗡️";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='2'){
+                            const char *unicode_char="🪄";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='3'){
+                            const char *unicode_char="➳";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='4'){
+                            const char *unicode_char="⚔️";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='5'){
+                            const char *unicode_char="⚝";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='6'){
+                            const char *unicode_char="✦";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='7'){
+                            const char *unicode_char="☽";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='0'){ 
+                            printw("%s","❤");
+                        }
+                        else if(map[i][j]=='@'){
+                            init_pair(1,COLOR_RED,COLOR_BLACK);
+                            attron(COLOR_PAIR(1));
+                            printw("%c",map[i][j]);
+                            attroff(COLOR_PAIR(1));
+                        }
+                        else if(map[i][j]=='$'){
+                            init_pair(1,COLOR_GREEN,COLOR_BLACK);
+                            attron(COLOR_PAIR(1));
+                            printw("%c",'@');
+                            attroff(COLOR_PAIR(1));
+                        }
+                        else if(map[i][j]=='9'){
+                            init_pair(7,COLOR_YELLOW,COLOR_BLACK);
+                            attron(COLOR_PAIR(7));
+                            const char*kilid="△";
+                            printw("%s",kilid);
+                            attroff(COLOR_PAIR(7));
+                        }
+                        else{
+                            printw("%c",map[i][j]);
+                        }
+                        attroff(COLOR_PAIR(6));
+                    }
+                }
+                printw("\n");
+            }
         //جا هایی که ادمک رفته دیگه باید نمایان باشند
         mark.m[adamak.x][adamak.y]=1;
         // مسیر پیش رو تا ۵ خانه باید نمایان باشند
