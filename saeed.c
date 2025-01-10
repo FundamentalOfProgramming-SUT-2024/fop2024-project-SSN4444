@@ -18,7 +18,7 @@ int tir=0;
 int asa=0;
 int T_damage=0;
 int T_health=0;
-int T_speed=0;
+int T_speed=0; 
 int tabagheh=1;
 int Ancient_Key=0;
 //میزان کاهش جان(درجه سختی بازی)
