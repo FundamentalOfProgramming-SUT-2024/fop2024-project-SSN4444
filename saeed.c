@@ -21,6 +21,7 @@ int T_health=0;
 int T_speed=0; 
 int tabagheh=1;
 int Ancient_Key=0;
+int your_weapon=1000;
 //میزان کاهش جان(درجه سختی بازی)
 int decrease=5;
 //انتخاب شخصیت بازی
@@ -206,6 +207,7 @@ void savegame(const char username[],const char username_filename[]){
     fprintf(savefile,"%d\n",adamak.y);
     fprintf(savefile,"%d\n",Ancient_Key);
     fprintf(savefile,"%s\n",username1234);
+    fprintf(savefile,"%d\n",your_weapon);
     for(int i=0;i<49;i++){
         for(int j=0;j<183;j++){
             fprintf(savefile,"%d\n",mark.m[i][j]);
@@ -279,39 +281,147 @@ void gunandspellmenu(){
     // ⚔️  4 شمشیر
     //🪓  سلاح اولیه
     mvprintw(1,0,"Short range weapon:");
-    mvprintw(2,0,"%s:",sh);
+    mvprintw(2,0,"(1)  %s :",sh);
     if(shamshir>=1){
-        mvprintw(2,2,"%d",1);
+        mvprintw(2,8,"%d",1);
     }
     else if(shamshir==0){
-        mvprintw(2,2,"%d",0);
+        mvprintw(2,8,"%d",0);
     }
-    mvprintw(2,4,"damage:%d",10);
-    mvprintw(4,0,"%s:",tabar);
-    mvprintw(4,2,"%d",1);
-    mvprintw(4,4,"damage:%d",5);
+    mvprintw(2,10,"damage:%d",10);
+    mvprintw(4,0,"(2)  %s:",tabar);
+    mvprintw(4,8,"%d",1);
+    mvprintw(4,11,"damage:%d",5);
     mvprintw(1,60,"Long range weapon:");
-    mvprintw(2,60,"%s:",kh);
-    mvprintw(2,62,"%d",khanjar);
-    mvprintw(2,66,"damage:%d",12);
-    mvprintw(2,78,"range:%d",5);
-    mvprintw(4,60,"%s:",asa1);
-    mvprintw(4,62,"%d",asa);
-    mvprintw(4,78,"range:%d",10);
-    mvprintw(4,66,"damage:%d",15);
-    mvprintw(6,60,"%s:",tir1);
-    mvprintw(6,62,"%d",tir);
-    mvprintw(6,66,"damage:%d",5);
-    mvprintw(6,78,"range:%d",5);
+    mvprintw(2,60,"(3)  %s :",kh);
+    mvprintw(2,68,"%d",khanjar);
+    mvprintw(2,71,"damage:%d",12);
+    mvprintw(2,85,"range:%d",5);
+    mvprintw(4,60,"(4)  %s:",asa1);
+    mvprintw(4,68,"%d",asa);
+    mvprintw(4,85,"range:%d",10);
+    mvprintw(4,71,"damage:%d",15);
+    mvprintw(6,60,"(5)  %s :",tir1);
+    mvprintw(6,68,"%d",tir);
+    mvprintw(6,71,"damage:%d",5);
+    mvprintw(6,85,"range:%d",5);
     mvprintw(1,120,"Spells:");
-    mvprintw(2,120,"%s :",T_health1);
-    mvprintw(2,122,"%d",T_health);
-    mvprintw(4,120,"%s :",T_speed1);
-    mvprintw(4,122,"%d",T_speed);
-    mvprintw(6,120,"%s :",T_damage1);
-    mvprintw(6,122,"%d",T_damage);
+    mvprintw(2,120,"(6)  %s :",T_health1);
+    mvprintw(2,128,"%d",T_health);
+    mvprintw(4,120,"(7)  %s :",T_speed1);
+    mvprintw(4,128,"%d",T_speed);
+    mvprintw(6,120,"(8)  %s :",T_damage1);
+    mvprintw(6,128,"%d",T_damage);
+    mvprintw(20,55,"Press the (c) button to put the weapon in the backpack");
     refresh();
-    getch();
+    char q=getch();
+        if(q=='c'){
+            your_weapon=-1;
+            clear();
+            mvprintw(20,70,"you have no weapon in your hand now");
+            refresh();
+            usleep(2000000);
+        }
+        else if(q=='1'){
+            if(your_weapon!=-1){
+                clear();
+                mvprintw(20,70,"First, put your previous weapon in the backpack");
+                refresh();
+                usleep(2000000);
+            }
+            else if(shamshir==0){
+                clear();
+                mvprintw(20,70,"you don't have this weapon");
+                refresh();
+                usleep(2000000);
+            }
+            else{
+                your_weapon=4;
+                clear();
+                mvprintw(20,70,"your weapon has changed to a sword");
+                refresh();
+                usleep(2000000);
+            }
+        }
+        else if(q=='2'){
+            if(your_weapon!=-1){
+                clear();
+                mvprintw(20,70,"First, put your previous weapon in the backpack");
+                refresh();
+                usleep(2000000);
+            }
+            else{
+                your_weapon=1000;
+                clear();
+                mvprintw(20,70,"your weapon has changed to a mace");
+                refresh();
+                usleep(2000000);
+            }
+        }
+        else if(q=='3'){
+            if(your_weapon!=-1){
+                clear();
+                mvprintw(20,70,"First, put your previous weapon in the backpack");
+                refresh();
+                usleep(2000000);
+            }
+            else if(khanjar==0){
+                clear();
+                mvprintw(20,70,"you don't have this weapon");
+                refresh();
+                usleep(2000000);
+            }
+            else{
+                your_weapon=1;
+                clear();
+                mvprintw(20,70,"your weapon has changed to a dagger");
+                refresh();
+                usleep(2000000);
+            }
+        }
+        else if(q=='4'){
+            if(your_weapon!=-1){
+                clear();
+                mvprintw(20,70,"First, put your previous weapon in the backpack");
+                refresh();
+                usleep(2000000);
+            }
+            else if(asa==0){
+                clear();
+                mvprintw(20,70,"you don't have this weapon");
+                refresh();
+                usleep(2000000);
+            }
+            else{
+                your_weapon=2;
+                clear();
+                mvprintw(20,70,"your weapon has changed to a magic wand");
+                refresh();
+                usleep(2000000);
+            }
+        }
+        else if(q=='5'){
+            if(your_weapon!=-1){
+                clear();
+                mvprintw(20,70,"First, put your previous weapon in the backpack");
+                refresh();
+                usleep(2000000);
+            }
+            else if(tir==0){
+                clear();
+                mvprintw(20,70,"you don't have this weapon");
+                refresh();
+                usleep(2000000);
+            }
+            else{
+                your_weapon=3;
+                clear();
+                mvprintw(20,70,"your weapon has changed to a normal arrow");
+                refresh();
+                usleep(2000000);
+            }
+        }
+    return;
 }
 void generateRandomPath(){
     for(int i=1;i<45;i++){
@@ -1547,6 +1657,52 @@ int startgame(int v){
         const char *ghalb="♥️";
         mvprintw(49,20,"HEALTH :%d",HEALTH);
         mvprintw(49,25,"%s",ghalb);
+        //نمایش اسلحه در دست
+        if(your_weapon!=-1){
+            const char*sh="⚔️";
+            const char*kh="🗡️";
+            const char*asa1="🪄";
+            const char*tir1="➳";
+            const char*tabar="🪓";
+            const char *T_health1="⚝";
+            const char *T_speed1="✦";
+            const char *T_damage1="☽";
+            if(your_weapon==4){
+                if(shamshir!=0){
+                    mvprintw(49,35,"WEAPON READY TO USE  :%s",sh);
+                }
+                else{
+                    your_weapon=-1;
+                }
+            }
+            else if(your_weapon==1){
+                if(khanjar!=0){
+                    mvprintw(49,35,"WEAPON READY TO USE  :%s",kh);
+                }
+                else{
+                    your_weapon=-1;
+                }
+            }
+            else if(your_weapon==2){
+                if(asa!=0){
+                    mvprintw(49,35,"WEAPON READY TO USE  :%s",asa1);
+                }
+                else{
+                    your_weapon=-1;
+                }
+            }
+            else if(your_weapon==3){
+                if(tir!=0){
+                    mvprintw(49,35,"WEAPON READY TO USE  :%s",tir1);
+                }
+                else{
+                    your_weapon=-1;
+                }
+            }
+            else{
+                mvprintw(49,35,"WEAPON READY TO USE  :%s",tabar);
+            }
+        }
         refresh();
         char c=getch();
         //برای دیدن لیست اسلحه ها
@@ -3881,6 +4037,7 @@ void Loadgame(const char username[]){
     fscanf(game,"%d",&Ancient_Key1);
     Ancient_Key=Ancient_Key1;
     fscanf(game,"%s",username1234);
+    fscanf(game,"%d",&your_weapon);
     for(int i=0;i<49;i++){
         for(int j=0;j<183;j++){
             fscanf(game,"%d",&mark.m[i][j]);
