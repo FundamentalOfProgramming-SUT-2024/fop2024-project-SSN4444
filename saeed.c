@@ -1,4 +1,5 @@
 //saeednoferesti 403106838
+//  :   غذای فاسد
 #include<stdio.h>
 #include<ncursesw/ncurses.h>
 #include<stdlib.h>
@@ -614,6 +615,15 @@ void generatemap(int tabagheh){
             count6++;
         }
     }
+    int count61=0;
+    while(count61!=1){
+        int xg0=randomInRange(room[0].xs+2,room[0].xs+4);
+        int yg0=randomInRange(room[0].ys+2,room[0].ys+4);
+        if(map[xg0][yg0]=='.'){
+            map[xg0][yg0]=':';
+            count61++;
+        }
+    }
      int count66=0;
     while(count66!=1){
         int xg0=randomInRange(room[0].xs+2,room[0].xs+4);
@@ -704,6 +714,15 @@ void generatemap(int tabagheh){
             count9++;
         }
      }
+    int count93=0;
+    while(count93!=1){
+        int xG1=randomInRange(room[1].xs+2,room[1].xs+8);
+        int yG1=randomInRange(room[1].ys+2,room[1].ys+8);
+        if(map[xG1][yG1]=='.'){
+            map[xG1][yG1]=':';
+            count93++;
+        }
+    }
      int count19=0;
      while(count19!=2){
         int xG1=randomInRange(room[1].xs+2,room[1].xs+8);
@@ -748,7 +767,16 @@ void generatemap(int tabagheh){
      door[2].x=randomInRange(room[2].xs+2,room[2].xs+4);
     door[2].y=room[2].ys;
      map[door[2].x][room[2].ys]='+';
-     //=======================================================
+    int count333=0;
+    while(count333!=1){
+        int xT5=randomInRange(room[2].xs+1,room[2].xs+4);
+        int yT5=randomInRange(room[2].ys+1,room[2].ys+4);
+        if(map[xT5][yT5]=='.'){
+            map[xT5][yT5]=':';
+            count333++;
+        }  
+    }
+    //=======================================================
      for(int i=room[3].xs+1;i<room[3].xs+10;i++){
          map[i][room[3].ys]='|';
          map[i][room[3].ys+1]='.';
@@ -1044,6 +1072,15 @@ void generatemap(int tabagheh){
             count3++;
         }
     }
+    int count34=0;
+    while(count34!=1){
+        int xG5=randomInRange(room[5].xs+2,room[5].xs+8);
+        int yG5=randomInRange(room[5].ys+2,room[5].ys+8);
+        if(map[xG5][yG5]=='.'){
+            map[xG5][yG5]=':';
+            count34++;
+        }
+    }
     //====================================================
     //ساخت مسیر بین درب ها  
     generateRandomPath();
@@ -1126,6 +1163,10 @@ int startgame(int v){
                             const char *unicode_char="⚱️";
                             printw("%s",unicode_char);
                         }
+                        else if(map[i][j]==':'){
+                            const char *unicode_char="❤";
+                            printw("%s",unicode_char);
+                        }
                         //در مخفی
                         else if(map[i][j]==','){
                             printw("%c",'|');
@@ -1198,6 +1239,10 @@ int startgame(int v){
                         if(map[i][j]=='G'){
                         const char *unicode_char="🎗️";
                             printw("%s",unicode_char);           
+                        }
+                        else if(map[i][j]==':'){
+                            const char *unicode_char="❤";
+                            printw("%s",unicode_char);
                         }
                         else if(map[i][j]=='g'){
                             const char *unicode_char="▫️";
@@ -1280,6 +1325,10 @@ int startgame(int v){
                         const char *unicode_char="🎗️";
                             printw("%s",unicode_char);           
                         }
+                        else if(map[i][j]==':'){
+                            const char *unicode_char="❤";
+                            printw("%s",unicode_char);
+                        }
                         else if(map[i][j]=='g'){
                             const char *unicode_char="▫️";
                             addstr(unicode_char);
@@ -1360,6 +1409,10 @@ int startgame(int v){
                         if(map[i][j]=='G'){
                         const char *unicode_char="🎗️";
                             printw("%s",unicode_char);           
+                        }
+                        else if(map[i][j]==':'){
+                            const char *unicode_char="❤";
+                            printw("%s",unicode_char);
                         }
                         else if(map[i][j]=='g'){
                             const char *unicode_char="▫️";
@@ -1442,6 +1495,10 @@ int startgame(int v){
                         const char *unicode_char="🎗️";
                             printw("%s",unicode_char);           
                         }
+                        else if(map[i][j]==':'){
+                            const char *unicode_char="❤";
+                            printw("%s",unicode_char);
+                        }
                         else if(map[i][j]=='g'){
                             const char *unicode_char="▫️";
                             addstr(unicode_char);
@@ -1522,6 +1579,10 @@ int startgame(int v){
                         if(map[i][j]=='G'){
                         const char *unicode_char="🎗️";
                             printw("%s",unicode_char);           
+                        }
+                        else if(map[i][j]==':'){
+                            const char *unicode_char="❤";
+                            printw("%s",unicode_char);
                         }
                         else if(map[i][j]=='g'){
                             const char *unicode_char="▫️";
@@ -2107,6 +2168,16 @@ int startgame(int v){
                     refresh();
                 }
             }
+            else if(map[adamak.x][adamak.y]==':'){
+                    map[adamak.x][adamak.y]='.';
+                    HEALTH-=5;
+                    const char *const_char="😈"; 
+                    mvprintw(0,0,"the food was poisonous    %s   ",const_char );
+                    refresh();
+                    usleep(2000000);
+                    mvprintw(0,0,"                                     ");
+                    refresh();
+            }
             //برخورد با سلاح
             else if(map[adamak.x][adamak.y]=='4'){
                 //;
@@ -2310,6 +2381,16 @@ int startgame(int v){
                     mvprintw(0,0,"                           ");
                     refresh();
                 }
+            }
+            else if(map[adamak.x][adamak.y]==':'){
+                    map[adamak.x][adamak.y]='.';
+                    HEALTH-=5;
+                    const char *const_char="😈"; 
+                    mvprintw(0,0,"the food was poisonous    %s   ",const_char );
+                    refresh();
+                    usleep(2000000);
+                    mvprintw(0,0,"                                     ");
+                    refresh();
             }
             else if(map[adamak.x][adamak.y]=='5'){
                 map[adamak.x][adamak.y]='.';
@@ -2557,6 +2638,16 @@ int startgame(int v){
                     mvprintw(0,0,"                           ");
                     refresh();
                 }
+            }
+            else if(map[adamak.x][adamak.y]==':'){
+                    map[adamak.x][adamak.y]='.';
+                    HEALTH-=5;
+                    const char *const_char="😈"; 
+                    mvprintw(0,0,"the food was poisonous    %s   ",const_char );
+                    refresh();
+                    usleep(2000000);
+                    mvprintw(0,0,"                                     ");
+                    refresh();
             }
             else if(map[adamak.x][adamak.y]=='5'){
                 map[adamak.x][adamak.y]='.';
@@ -2813,6 +2904,16 @@ int startgame(int v){
                     refresh();
                 }
             }
+            else if(map[adamak.x][adamak.y]==':'){
+                    map[adamak.x][adamak.y]='.';
+                    HEALTH-=5;
+                    const char *const_char="😈"; 
+                    mvprintw(0,0,"the food was poisonous    %s   ",const_char );
+                    refresh();
+                    usleep(2000000);
+                    mvprintw(0,0,"                                     ");
+                    refresh();
+            }
             else if(map[adamak.x][adamak.y]=='5'){
                 map[adamak.x][adamak.y]='.';
                 T_health++;
@@ -3053,6 +3154,16 @@ int startgame(int v){
                     mvprintw(0,0,"                           ");
                     refresh();
                 }
+            }
+            else if(map[adamak.x][adamak.y]==':'){
+                    map[adamak.x][adamak.y]='.';
+                    HEALTH-=5;
+                    const char *const_char="😈"; 
+                    mvprintw(0,0,"the food was poisonous    %s   ",const_char );
+                    refresh();
+                    usleep(2000000);
+                    mvprintw(0,0,"                                     ");
+                    refresh();
             }
             else if(map[adamak.x][adamak.y]=='5'){
                 map[adamak.x][adamak.y]='.';
@@ -3313,6 +3424,16 @@ int startgame(int v){
                     refresh();
                 }
             }
+            else if(map[adamak.x][adamak.y]==':'){
+                    map[adamak.x][adamak.y]='.';
+                    HEALTH-=5;
+                    const char *const_char="😈"; 
+                    mvprintw(0,0,"the food was poisonous    %s   ",const_char );
+                    refresh();
+                    usleep(2000000);
+                    mvprintw(0,0,"                                     ");
+                    refresh();
+            }
             else if(map[adamak.x][adamak.y]=='5'){
                 map[adamak.x][adamak.y]='.';
                 T_health++;
@@ -3563,6 +3684,16 @@ int startgame(int v){
                     refresh();
                 }
             }
+            else if(map[adamak.x][adamak.y]==':'){
+                    map[adamak.x][adamak.y]='.';
+                    HEALTH-=5;
+                    const char *const_char="😈"; 
+                    mvprintw(0,0,"the food was poisonous    %s   ",const_char );
+                    refresh();
+                    usleep(2000000);
+                    mvprintw(0,0,"                                     ");
+                    refresh();
+            }
             else if(map[adamak.x][adamak.y]=='5'){
                 map[adamak.x][adamak.y]='.';
                 T_health++;
@@ -3803,6 +3934,16 @@ int startgame(int v){
                     mvprintw(0,0,"                           ");
                     refresh();
                 }
+            }
+            else if(map[adamak.x][adamak.y]==':'){
+                    map[adamak.x][adamak.y]='.';
+                    HEALTH-=5;
+                    const char *const_char="😈"; 
+                    mvprintw(0,0,"the food was poisonous    %s   ",const_char );
+                    refresh();
+                    usleep(2000000);
+                    mvprintw(0,0,"                                     ");
+                    refresh();
             }
             else if(map[adamak.x][adamak.y]=='5'){
                 map[adamak.x][adamak.y]='.';
