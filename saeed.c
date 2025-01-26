@@ -278,22 +278,38 @@ void gunandspellmenu(){
     //  ➳   تیر3
     // ⚔️  4 شمشیر
     //🪓  سلاح اولیه
+    mvprintw(1,0,"Short range weapon:");
     mvprintw(2,0,"%s:",sh);
-    mvprintw(2,2,"%d",shamshir);
-    mvprintw(4,0,"%s:",kh);
-    mvprintw(4,2,"%d",khanjar);
-    mvprintw(6,0,"%s:",asa1);
-    mvprintw(6,2,"%d",asa);
-    mvprintw(8,0,"%s:",tabar);
-    mvprintw(8,2,"%d",1);
-    mvprintw(10,0,"%s:",tir1);
-    mvprintw(10,2,"%d",tir);
-    mvprintw(12,0,"%s :",T_health1);
-    mvprintw(12,2,"%d",T_health);
-    mvprintw(14,0,"%s :",T_speed1);
-    mvprintw(14,2,"%d",T_speed);
-    mvprintw(16,0,"%s :",T_damage1);
-    mvprintw(16,2,"%d",T_damage);
+    if(shamshir>=1){
+        mvprintw(2,2,"%d",1);
+    }
+    else if(shamshir==0){
+        mvprintw(2,2,"%d",0);
+    }
+    mvprintw(2,4,"damage:%d",10);
+    mvprintw(4,0,"%s:",tabar);
+    mvprintw(4,2,"%d",1);
+    mvprintw(4,4,"damage:%d",5);
+    mvprintw(1,60,"Long range weapon:");
+    mvprintw(2,60,"%s:",kh);
+    mvprintw(2,62,"%d",khanjar);
+    mvprintw(2,66,"damage:%d",12);
+    mvprintw(2,78,"range:%d",5);
+    mvprintw(4,60,"%s:",asa1);
+    mvprintw(4,62,"%d",asa);
+    mvprintw(4,78,"range:%d",10);
+    mvprintw(4,66,"damage:%d",15);
+    mvprintw(6,60,"%s:",tir1);
+    mvprintw(6,62,"%d",tir);
+    mvprintw(6,66,"damage:%d",5);
+    mvprintw(6,78,"range:%d",5);
+    mvprintw(1,120,"Spells:");
+    mvprintw(2,120,"%s :",T_health1);
+    mvprintw(2,122,"%d",T_health);
+    mvprintw(4,120,"%s :",T_speed1);
+    mvprintw(4,122,"%d",T_speed);
+    mvprintw(6,120,"%s :",T_damage1);
+    mvprintw(6,122,"%d",T_damage);
     refresh();
     getch();
 }
@@ -1939,7 +1955,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]=='4'){
                 //;
                 map[adamak.x][adamak.y]='.';
-                shamshir++;
+                shamshir+=10;
                 mvprintw(0,0,"Weapon added");
                 refresh();
                 usleep(2000000);
@@ -1949,7 +1965,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]=='2'){
                 //;
                 map[adamak.x][adamak.y]='.';
-                asa++;
+                asa+=8;
                 mvprintw(0,0,"Weapon added");
                 refresh();
                 usleep(2000000);
@@ -1959,7 +1975,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]=='1'){
                 //;
                 map[adamak.x][adamak.y]='.';
-                khanjar++;
+                khanjar+=10;
                 mvprintw(0,0,"Weapon added");
                 refresh();
                 usleep(2000000);
@@ -1969,7 +1985,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]=='3'){
                 //;
                 map[adamak.x][adamak.y]='.';
-                tir++;
+                tir+=20;
                 mvprintw(0,0,"Weapon added");
                 refresh();
                 usleep(2000000);
@@ -2222,7 +2238,7 @@ int startgame(int v){
              else if(map[adamak.x][adamak.y]=='4'){
                 //;
                 map[adamak.x][adamak.y]='.';
-                shamshir++;
+                shamshir+=10;
                 mvprintw(0,0,"Weapon added");
                 refresh();
                 usleep(2000000);
@@ -2232,7 +2248,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]=='2'){
                 //;
                 map[adamak.x][adamak.y]='.';
-                asa++;
+                asa+=8;
                 mvprintw(0,0,"Weapon added");
                 refresh();
                 usleep(2000000);
@@ -2242,7 +2258,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]=='1'){
                 //;
                 map[adamak.x][adamak.y]='.';
-                khanjar++;
+                khanjar+=10;
                 mvprintw(0,0,"Weapon added");
                 refresh();
                 usleep(2000000);
@@ -2252,7 +2268,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]=='3'){
                 //;
                 map[adamak.x][adamak.y]='.';
-                tir++;
+                tir+=20;
                 mvprintw(0,0,"Weapon added");
                 refresh();
                 usleep(2000000);
@@ -2469,7 +2485,7 @@ int startgame(int v){
              else if(map[adamak.x][adamak.y]=='4'){
                 //;
                 map[adamak.x][adamak.y]='.';
-                shamshir++;
+                shamshir+=10;
                 mvprintw(0,0,"Weapon added");
                 refresh();
                 usleep(2000000);
@@ -2479,7 +2495,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]=='2'){
                 //;
                 map[adamak.x][adamak.y]='.';
-                asa++;
+                asa+=8;
                 mvprintw(0,0,"Weapon added");
                 refresh();
                 usleep(2000000);
@@ -2489,7 +2505,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]=='1'){
                 //;
                 map[adamak.x][adamak.y]='.';
-                khanjar++;
+                khanjar+=10;
                 mvprintw(0,0,"Weapon added");
                 refresh();
                 usleep(2000000);
@@ -2499,7 +2515,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]=='3'){
                 //;
                 map[adamak.x][adamak.y]='.';
-                tir++;
+                tir+=20;
                 mvprintw(0,0,"Weapon added");
                 refresh();
                 usleep(2000000);
@@ -2725,7 +2741,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]=='2'){
                 //;
                 map[adamak.x][adamak.y]='.';
-                asa++;
+                asa+=8;
                 mvprintw(0,0,"Weapon added");
                 refresh();
                 usleep(2000000);
@@ -2735,7 +2751,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]=='1'){
                 //;
                 map[adamak.x][adamak.y]='.';
-                khanjar++;
+                khanjar+=10;
                 mvprintw(0,0,"Weapon added");
                 refresh();
                 usleep(2000000);
@@ -2745,7 +2761,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]=='3'){
                 //;
                 map[adamak.x][adamak.y]='.';
-                tir++;
+                tir+=20;
                 mvprintw(0,0,"Weapon added");
                 refresh();
                 usleep(2000000);
@@ -2975,7 +2991,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]=='2'){
                 //;
                 map[adamak.x][adamak.y]='.';
-                asa++;
+                asa+=8;
                 mvprintw(0,0,"Weapon added");
                 refresh();
                 usleep(2000000);
@@ -2985,7 +3001,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]=='1'){
                 //;
                 map[adamak.x][adamak.y]='.';
-                khanjar++;
+                khanjar+=10;
                 mvprintw(0,0,"Weapon added");
                 refresh();
                 usleep(2000000);
@@ -2995,7 +3011,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]=='3'){
                 //;
                 map[adamak.x][adamak.y]='.';
-                tir++;
+                tir+=20;
                 mvprintw(0,0,"Weapon added");
                 refresh();
                 usleep(2000000);
@@ -3225,7 +3241,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]=='2'){
                 //;
                 map[adamak.x][adamak.y]='.';
-                asa++;
+                asa+=8;
                 mvprintw(0,0,"Weapon added");
                 refresh();
                 usleep(2000000);
@@ -3235,7 +3251,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]=='1'){
                 //;
                 map[adamak.x][adamak.y]='.';
-                khanjar++;
+                khanjar+=10;
                 mvprintw(0,0,"Weapon added");
                 refresh();
                 usleep(2000000);
@@ -3245,7 +3261,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]=='3'){
                 //;
                 map[adamak.x][adamak.y]='.';
-                tir++;
+                tir+=20;
                 mvprintw(0,0,"Weapon added");
                 refresh();
                 usleep(2000000);
@@ -3475,7 +3491,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]=='2'){
                 //;
                 map[adamak.x][adamak.y]='.';
-                asa++;
+                asa+=8;
                 mvprintw(0,0,"Weapon added");
                 refresh();
                 usleep(2000000);
@@ -3485,7 +3501,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]=='1'){
                 //;
                 map[adamak.x][adamak.y]='.';
-                khanjar++;
+                khanjar+=10;
                 mvprintw(0,0,"Weapon added");
                 refresh();
                 usleep(2000000);
@@ -3495,7 +3511,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]=='3'){
                 //;
                 map[adamak.x][adamak.y]='.';
-                tir++;
+                tir+=20;
                 mvprintw(0,0,"Weapon added");
                 refresh();
                 usleep(2000000);
@@ -3725,7 +3741,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]=='2'){
                 //;
                 map[adamak.x][adamak.y]='.';
-                asa++;
+                asa+=8;
                 mvprintw(0,0,"Weapon added");
                 refresh();
                 usleep(2000000);
@@ -3735,7 +3751,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]=='1'){
                 //;
                 map[adamak.x][adamak.y]='.';
-                khanjar++;
+                khanjar+=10;
                 mvprintw(0,0,"Weapon added");
                 refresh();
                 usleep(2000000);
@@ -3745,7 +3761,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]=='3'){
                 //;
                 map[adamak.x][adamak.y]='.';
-                tir++;
+                tir+=20;
                 mvprintw(0,0,"Weapon added");
                 refresh();
                 usleep(2000000);
