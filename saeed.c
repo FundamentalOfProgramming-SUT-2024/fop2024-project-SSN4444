@@ -634,6 +634,15 @@ void generatemap(int tabagheh){
             count66++;
         }
     }
+    int count662=0;
+    while(count662!=1){
+        int xg0=randomInRange(room[0].xs+2,room[0].xs+4);
+        int yg0=randomInRange(room[0].ys+2,room[0].ys+4);
+        if(map[xg0][yg0]=='.'){
+            map[xg0][yg0]='D';
+            count662++;
+        }
+    }
      int count666=0;
     while(count666!=1){
         int xg0=randomInRange(room[0].xs+2,room[0].xs+4);
@@ -695,6 +704,15 @@ void generatemap(int tabagheh){
         if(map[xg1][yg1]=='.'){
             map[xg1][yg1]='g';
             count++;
+        }
+     }
+     int count21=0;
+     while(count21!=1){
+        int xg1=randomInRange(room[1].xs+2,room[1].xs+8);
+        int yg1=randomInRange(room[1].ys+2,room[1].ys+8);
+        if(map[xg1][yg1]=='.'){
+            map[xg1][yg1]='F';
+            count21++;
         }
      }
      int count2=0;
@@ -777,6 +795,15 @@ void generatemap(int tabagheh){
             count333++;
         }  
     }
+    int count5=0;
+    while(count5!=1){
+        int xT5=randomInRange(room[2].xs+1,room[2].xs+4);
+        int yT5=randomInRange(room[2].ys+1,room[2].ys+4);
+        if(map[xT5][yT5]=='.'){
+            map[xT5][yT5]='M';
+            count5++;
+        }  
+    }
     //=======================================================
      for(int i=room[3].xs+1;i<room[3].xs+10;i++){
          map[i][room[3].ys]='|';
@@ -825,6 +852,15 @@ void generatemap(int tabagheh){
             if(map[xT5][yT5]=='.'){
                 map[xT5][yT5]='&';
                 count85674++;
+            }  
+        }
+        int count00=0;
+        while(count00!=1){
+            int xT5=randomInRange(room[3].xs+2,room[3].xs+8);
+            int yT5=randomInRange(room[3].ys+2,room[3].ys+8);
+            if(map[xT5][yT5]=='.'){
+                map[xT5][yT5]='S';
+                count00++;
             }  
         }
     //اتاق گنج
@@ -1036,6 +1072,15 @@ void generatemap(int tabagheh){
             counter1++;
         }
     }
+    int count11=0;
+    while(count11!=1){
+        int xG5=randomInRange(room[5].xs+2,room[5].xs+8);
+        int yG5=randomInRange(room[5].ys+2,room[5].ys+8);
+        if(map[xG5][yG5]=='.'){
+            map[xG5][yG5]='U';
+            count11++;
+        }
+    }
     int counter11=0;
     while(counter11!=1){
         int xG5=randomInRange(room[5].xs+2,room[5].xs+8);
@@ -1155,8 +1200,8 @@ int startgame(int v){
         current_time=time(NULL);
         elapsed_time=difftime(current_time,start_time);
         if(elapsed_time>=20){
-            if(HEALTH<=95){
-                HEALTH+=5;
+            if(HEALTH<=99){
+                HEALTH+=1;
             }
             start_time=time(NULL);
         }
