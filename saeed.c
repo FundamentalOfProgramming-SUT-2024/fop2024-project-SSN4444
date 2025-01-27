@@ -11,6 +11,7 @@
 #include<locale.h>
 char map[49][183];
 int mark_color[49][183];
+char MAP_END[49][183];
 int GOLD=0;
 int HEALTH=100;
 int food=0;
@@ -425,6 +426,10 @@ void gunandspellmenu(){
         }
     return;
 }
+void ENDROOM(){
+    clear();
+
+}
 void generateRandomPath(){
     for(int i=1;i<45;i++){
         map[27][i]='#';
@@ -553,7 +558,7 @@ void generateRandomPath(){
         }
     }
 }
-void generatemap(int tabagheh){
+void generatemap(int tabagheh,int v){
     room[0].ys=randomInRange(4,20);
     room[0].xs=randomInRange(4,14);
     room[1].ys=randomInRange(28,54);
@@ -1152,7 +1157,7 @@ int startgame(int v){
     noecho();
     // int tabagheh=1;
     if(v==0){
-        generatemap(tabagheh);
+        generatemap(tabagheh,0);
         adamak.x=27;
         adamak.y=1;
         for(int i=0;i<49;i++){
@@ -1196,6 +1201,18 @@ int startgame(int v){
     bool condition=false;
     start_time=time(NULL);
     while(1){
+        //پایان بازی دز صوزت حان زیر۰  
+        if(HEALTH<=0){
+            clear();
+            mvprintw(20,65,"YOU LOST");
+            mvprintw(21,65,"YOUR GOLD: %d",GOLD);
+            mvprintw(22,65,"YOUR SCORE: %d ",GOLD*10);
+            mvprintw(23,65,"PLEAS ENTER ANY KEY TO MOVE TO THE MENU...");
+            char c=getch();
+            refresh();
+            HEALTH=100;
+            break;
+        }
         //اضافه شدن جان بعد از ۲۰ ثانیه
         current_time=time(NULL);
         elapsed_time=difftime(current_time,start_time);
@@ -1265,6 +1282,10 @@ int startgame(int v){
                             const char *unicode_char="☽";
                             printw("%s",unicode_char);
                         }
+                        else if(map[i][j]=='e'){
+                            const char *unicode_char="🏁";
+                            printw("%s",unicode_char);
+                        }
                         else if(map[i][j]=='0'){ 
                             printw("%s","❤");
                         }
@@ -1301,6 +1322,10 @@ int startgame(int v){
                         }
                         else if(map[i][j]==':'){
                             const char *unicode_char="❤";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='e'){
+                            const char *unicode_char="🏁";
                             printw("%s",unicode_char);
                         }
                         else if(map[i][j]=='g'){
@@ -1388,6 +1413,10 @@ int startgame(int v){
                             const char *unicode_char="❤";
                             printw("%s",unicode_char);
                         }
+                        else if(map[i][j]=='e'){
+                            const char *unicode_char="🏁";
+                            printw("%s",unicode_char);
+                        }
                         else if(map[i][j]=='g'){
                             const char *unicode_char="▫️";
                             addstr(unicode_char);
@@ -1468,6 +1497,10 @@ int startgame(int v){
                         if(map[i][j]=='G'){
                         const char *unicode_char="🎗️";
                             printw("%s",unicode_char);           
+                        }
+                        else if(map[i][j]=='e'){
+                            const char *unicode_char="🏁";
+                            printw("%s",unicode_char);
                         }
                         else if(map[i][j]==':'){
                             const char *unicode_char="❤";
@@ -1553,6 +1586,10 @@ int startgame(int v){
                         if(map[i][j]=='G'){
                         const char *unicode_char="🎗️";
                             printw("%s",unicode_char);           
+                        }
+                        else if(map[i][j]=='e'){
+                            const char *unicode_char="🏁";
+                            printw("%s",unicode_char);
                         }
                         else if(map[i][j]==':'){
                             const char *unicode_char="❤";
@@ -1641,6 +1678,10 @@ int startgame(int v){
                         }
                         else if(map[i][j]==':'){
                             const char *unicode_char="❤";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='e'){
+                            const char *unicode_char="🏁";
                             printw("%s",unicode_char);
                         }
                         else if(map[i][j]=='g'){
@@ -2500,6 +2541,7 @@ int startgame(int v){
                 refresh();
                 usleep(4000000);
                 clear();
+                if(v!=0){
                 mvprintw(20,60,"plaes enter your username and filename:(username  and  username_filename )");
                 refresh();
                 move(22,60);
@@ -2511,6 +2553,7 @@ int startgame(int v){
                 scanf("%s",username_filename);
                 savegame(username,username_filename);
                 svaescore(username1234,GOLD);
+                }
                 break;
             }
             //برخورد با کلید تولید دکمه رمز
@@ -2734,7 +2777,7 @@ int startgame(int v){
                     adamak.x=26;
                     adamak.y=170;
                 }
-                generatemap(tabagheh);
+                generatemap(tabagheh,0);
             }
             //برخورد با تله
             else if(map[adamak.x][adamak.y]=='^'){
@@ -2768,6 +2811,7 @@ int startgame(int v){
                 refresh();
                 usleep(4000000);
                 clear();
+                if(v!=0){
                 mvprintw(20,60,"plaes enter your username and filename:(username  and  username_filename )");
                 refresh();
                 move(22,60);
@@ -2779,6 +2823,7 @@ int startgame(int v){
                 scanf("%s",username_filename);
                 savegame(username,username_filename);
                 svaescore(username1234,GOLD);
+                }
                 break;
             }
             else if(map[adamak.x][adamak.y]=='9'){
@@ -2951,7 +2996,7 @@ int startgame(int v){
                     adamak.x=26;
                     adamak.y=170;
                 }
-                generatemap(tabagheh);
+                generatemap(tabagheh,0);
             }
             else if(map[adamak.x][adamak.y]=='^'){
                 if(HEALTH<=0){
@@ -3024,6 +3069,7 @@ int startgame(int v){
                 refresh();
                 usleep(4000000);
                 clear();
+                if(v!=0){
                 mvprintw(20,60,"plaes enter your username and filename:(username  and  username_filename )");
                 refresh();
                 move(22,60);
@@ -3035,6 +3081,7 @@ int startgame(int v){
                 scanf("%s",username_filename);
                 savegame(username,username_filename);
                 svaescore(username1234,GOLD);
+                }
                 break;
             }
             else if(map[adamak.x][adamak.y]=='9'){
@@ -3208,7 +3255,7 @@ int startgame(int v){
                     adamak.x=26;
                     adamak.y=170;
                 }
-                generatemap(tabagheh);
+                generatemap(tabagheh,0);
             }
             else if(map[adamak.x][adamak.y]=='^'){
                 if(HEALTH<=0){
@@ -3281,6 +3328,7 @@ int startgame(int v){
                 refresh();
                 usleep(4000000);
                 clear();
+                if(v!=0){
                 mvprintw(20,60,"plaes enter your username and filename:(username  and  username_filename )");
                 refresh();
                 move(22,60);
@@ -3292,6 +3340,7 @@ int startgame(int v){
                 scanf("%s",username_filename);
                 savegame(username,username_filename);
                 svaescore(username1234,GOLD);
+                }
                 break;
             }
             else if(map[adamak.x][adamak.y]=='9'){
@@ -3464,7 +3513,7 @@ int startgame(int v){
                     adamak.x=26;
                     adamak.y=170;
                 }
-                generatemap(tabagheh);
+                generatemap(tabagheh,0);
             }
             else if(map[adamak.x][adamak.y]=='^'){
                 if(HEALTH<=0){
@@ -3539,6 +3588,7 @@ int startgame(int v){
                 refresh();
                 usleep(4000000);
                 clear();
+                if(v!=0){
                 mvprintw(20,60,"plaes enter your username and filename:(username  and  username_filename )");
                 refresh();
                 move(22,60);
@@ -3550,6 +3600,7 @@ int startgame(int v){
                 scanf("%s",username_filename);
                 savegame(username,username_filename);
                 svaescore(username1234,GOLD);
+                }
                 break;
             }
             else if(map[adamak.x][adamak.y]=='9'){
@@ -3724,7 +3775,7 @@ int startgame(int v){
                     adamak.x=26;
                     adamak.y=170;
                 }
-                generatemap(tabagheh||tabagheh==2);
+                generatemap(tabagheh,0);
             }
             else if(map[adamak.x][adamak.y]=='^'){
                 if(HEALTH<=0){
@@ -3799,6 +3850,7 @@ int startgame(int v){
                 refresh();
                 usleep(4000000);
                 clear();
+                if(v!=0){
                 mvprintw(20,60,"plaes enter your username and filename:(username  and  username_filename )");
                 refresh();
                 move(22,60);
@@ -3810,6 +3862,7 @@ int startgame(int v){
                 scanf("%s",username_filename);
                 savegame(username,username_filename);
                 svaescore(username1234,GOLD);
+                }
                 break;
             }
             else if(map[adamak.x][adamak.y]=='9'){
@@ -3984,7 +4037,7 @@ int startgame(int v){
                     adamak.x=26;
                     adamak.y=170;
                 }
-                generatemap(tabagheh);
+                generatemap(tabagheh,0);
             }
             else if(map[adamak.x][adamak.y]=='^'){
                 if(HEALTH<=0){
@@ -4059,17 +4112,19 @@ int startgame(int v){
                 refresh();
                 usleep(4000000);
                 clear();
-                mvprintw(20,60,"plaes enter your username and filename:(username  and  username_filename )");
-                refresh();
-                move(22,60);
-                refresh();
-                echo();
-                char username[50];
-                char username_filename[50];
-                scanf("%s",username);
-                scanf("%s",username_filename);
-                savegame(username,username_filename);
-                svaescore(username1234,GOLD);
+                if(v!=0){
+                    mvprintw(20,60,"plaes enter your username and filename:(username  and  username_filename )");
+                    refresh();
+                    move(22,60);
+                    refresh();
+                    echo();
+                    char username[50];
+                    char username_filename[50];
+                    scanf("%s",username);
+                    scanf("%s",username_filename);
+                    savegame(username,username_filename);
+                    svaescore(username1234,GOLD);
+                }
                 break;
             }
             else if(map[adamak.x][adamak.y]=='9'){
@@ -4244,7 +4299,7 @@ int startgame(int v){
                     adamak.x=26;
                     adamak.y=170;
                 }
-                generatemap(tabagheh);
+                generatemap(tabagheh,0);
             }
             else if(map[adamak.x][adamak.y]=='^'){
                 if(HEALTH<=0){
@@ -4319,6 +4374,7 @@ int startgame(int v){
                 refresh();
                 usleep(4000000);
                 clear();
+                if(v!=0){
                 mvprintw(20,60,"plaes enter your username and filename:(username  and  username_filename )");
                 refresh();
                 move(22,60);
@@ -4330,6 +4386,7 @@ int startgame(int v){
                 scanf("%s",username_filename);
                 savegame(username,username_filename);
                 svaescore(username1234,GOLD);
+                }
                 break;
             }
             else if(map[adamak.x][adamak.y]=='9'){
@@ -4504,7 +4561,7 @@ int startgame(int v){
                     adamak.x=26;
                     adamak.y=170;
                 }
-                generatemap(tabagheh);
+                generatemap(tabagheh,0);
             }
             else if(map[adamak.x][adamak.y]=='^'){
                 if(HEALTH<=0){
