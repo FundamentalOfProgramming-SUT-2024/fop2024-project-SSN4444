@@ -34,6 +34,8 @@ int khata=0;
 int const_int;
 //username
 char username1234[100];
+//عدد برای اتاق گنج
+int vv=0;
 //اتاق گنج
 struct end_room{
     int X;
@@ -1877,16 +1879,18 @@ int startgame(int v){
             }
         }      
         }
-        for(int i=1;i<48;i++){
-            for(int j=0;j<183;j++){
-                if(mark.m[i][j]==0){
-                    mvprintw(i,j,"%c",' ');
+        if(vv!=1000){
+            for(int i=1;i<48;i++){
+                for(int j=0;j<183;j++){
+                    if(mark.m[i][j]==0){
+                        mvprintw(i,j,"%c",' ');
+                    }
+                    else if(mark.m[i][j]==1){
+                        continue;
+                    }
                 }
-                else if(mark.m[i][j]==1){
-                    continue;
-                }
+                printw("\n");
             }
-            printw("\n");
         }
         // if(tabagheh==2||tabagheh==4){
         //     for(int i=adamak.x;i<adamak.x+6;i++){
@@ -2769,6 +2773,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]==';'){
                 clear();
                 mvprintw(20,65,"you are being transported to the treasure room");
+                vv=1000;
                 generatemap(4,1);
                 refresh();
                 usleep(2000000);
@@ -2968,6 +2973,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]==';'){
                 clear();
                 mvprintw(20,65,"you are being transported to the treasure room");
+                vv=1000;
                 generatemap(4,1);
                 refresh();
                 usleep(2000000);
@@ -3216,6 +3222,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]==';'){
                 clear();
                 mvprintw(20,65,"you are being transported to the treasure room");
+                vv=1000;
                 generatemap(4,1);
                 refresh();
                 usleep(2000000);
@@ -3486,6 +3493,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]==';'){
                 clear();
                 mvprintw(20,65,"you are being transported to the treasure room");
+                vv=1000;
                 generatemap(4,1);
                 refresh();
                 usleep(2000000);
@@ -3749,6 +3757,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]==';'){
                 clear();
                 mvprintw(20,65,"you are being transported to the treasure room");
+                vv=1000;
                 generatemap(4,1);
                 refresh();
                 usleep(2000000);
@@ -4018,6 +4027,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]==';'){
                 clear();
                 mvprintw(20,65,"you are being transported to the treasure room");
+                vv=1000;
                 generatemap(4,1);
                 refresh();
                 usleep(2000000);
@@ -4304,6 +4314,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]==';'){
                 clear();
                 mvprintw(20,65,"you are being transported to the treasure room");
+                vv=1000;
                 generatemap(4,1);
                 refresh();
                 usleep(2000000);
@@ -4560,6 +4571,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]==';'){
                 clear();
                 mvprintw(20,65,"you are being transported to the treasure room");
+                vv=1000;
                 generatemap(4,1);
                 refresh();
                 usleep(2000000);
