@@ -11,7 +11,6 @@
 #include<locale.h>
 char map[49][183];
 int mark_color[49][183];
-char MAP_END[49][183];
 int GOLD=0;
 int HEALTH=100;
 int food=0;
@@ -35,6 +34,12 @@ int khata=0;
 int const_int;
 //username
 char username1234[100];
+//اتاق گنج
+struct end_room{
+    int X;
+    int Y;
+};
+struct end_room END_ROOM;
 struct MARK{
     int m[49][183];
 };
@@ -559,6 +564,66 @@ void generateRandomPath(){
     }
 }
 void generatemap(int tabagheh,int v){
+    if(v==1){
+        clear();
+        for(int i=0;i<49;i++){
+            for(int j=0;j<183;j++){
+                map[i][j]=' ';
+            }
+        }
+        END_ROOM.Y=randomInRange(55,70);
+        END_ROOM.X=randomInRange(10,17);
+        adamak.x=END_ROOM.X+1;
+        adamak.y=END_ROOM.Y+1;
+        for(int i=END_ROOM.X+1;i<END_ROOM.X+25;i++){
+            map[i][END_ROOM.Y]='|';
+            map[i][END_ROOM.Y+1]='.';
+            map[i][END_ROOM.Y+2]='.';
+            map[i][END_ROOM.Y+3]='.';
+            map[i][END_ROOM.Y+4]='.';
+            map[i][END_ROOM.Y+5]='.';
+            map[i][END_ROOM.Y+6]='.';
+            map[i][END_ROOM.Y+7]='.';
+            map[i][END_ROOM.Y+8]='.';
+            map[i][END_ROOM.Y+9]='.';
+            map[i][END_ROOM.Y+10]='.';
+            map[i][END_ROOM.Y+11]='.';
+            map[i][END_ROOM.Y+12]='.';
+            map[i][END_ROOM.Y+13]='.';
+            map[i][END_ROOM.Y+14]='.';
+            map[i][END_ROOM.Y+15]='.';
+            map[i][END_ROOM.Y+16]='.';
+            map[i][END_ROOM.Y+17]='.';
+            map[i][END_ROOM.Y+18]='.';
+            map[i][END_ROOM.Y+19]='.';
+            map[i][END_ROOM.Y+20]='.';
+            map[i][END_ROOM.Y+21]='.';
+            map[i][END_ROOM.Y+22]='.';
+            map[i][END_ROOM.Y+23]='.';
+            map[i][END_ROOM.Y+24]='.';
+        }
+        for(int i=END_ROOM.X+1;i<END_ROOM.X+25;i++){
+            map[i][END_ROOM.Y+25]='|';
+        }
+        for(int j=END_ROOM.Y+1;j<END_ROOM.Y+25;j++){
+            map[END_ROOM.X][j]='_';
+        }
+        for(int j=END_ROOM.Y+1;j<END_ROOM.Y+25;j++){
+            map[END_ROOM.X+24][j]='_';
+        }
+        int count1234=0;
+        while(count1234!=1){
+            int xT5=randomInRange(END_ROOM.X+20,END_ROOM.X+22);
+            int yT5=randomInRange(END_ROOM.Y+20,END_ROOM.Y+22);
+            if(map[xT5][yT5]=='.'){
+                map[xT5][yT5]='e';
+                count1234++;
+            }  
+        }
+
+    }
+    ///////////////////////////////////////////////////////////////////////////////////
+    else{
     room[0].ys=randomInRange(4,20);
     room[0].xs=randomInRange(4,14);
     room[1].ys=randomInRange(28,54);
@@ -873,14 +938,14 @@ void generatemap(int tabagheh,int v){
     if(tabagheh==4){
         //گذاشتن eبرای اتمام بازی 
         int count1234=0;
-        while(count1234!=1){
-            int xT5=randomInRange(room[3].xs+2,room[3].xs+8);
-            int yT5=randomInRange(room[3].ys+2,room[3].ys+8);
-            if(map[xT5][yT5]=='.'){
-                map[xT5][yT5]='e';
-                count1234++;
-            }  
-        }
+            while(count1234!=1){
+                int xT5=randomInRange(room[3].xs+2,room[3].xs+8);
+                int yT5=randomInRange(room[3].ys+2,room[3].ys+8);
+                if(map[xT5][yT5]=='.'){
+                    map[xT5][yT5]=';';
+                    count1234++;
+                }  
+            }
         int counttale=0;
         while(counttale!=5){
             int xT5=randomInRange(room[3].xs+2,room[3].xs+8);
@@ -1151,11 +1216,11 @@ void generatemap(int tabagheh,int v){
     if(map[xT5][yT5]=='.'){
         map[xT5][yT5]='^';
     }
+    }
 }
 int startgame(int v){
     clear();
     noecho();
-    // int tabagheh=1;
     if(v==0){
         generatemap(tabagheh,0);
         adamak.x=27;
@@ -1239,6 +1304,7 @@ int startgame(int v){
                             const char *unicode_char="⚱️";
                             printw("%s",unicode_char);
                         }
+
                         else if(map[i][j]==':'){
                             const char *unicode_char="❤";
                             printw("%s",unicode_char);
@@ -1249,6 +1315,10 @@ int startgame(int v){
                         }
                         else if(map[i][j]=='^'){
                             printw("%c",'.');
+                        }
+                        else if(map[i][j]==';'){
+                            const char *unicode_char="⚜️";
+                            printw("%s",unicode_char);
                         }
                         //وقتی تله غیر فعال میشود با این نماد نشان میدهیم {
                         else if(map[i][j]=='{'){
@@ -1322,6 +1392,10 @@ int startgame(int v){
                         }
                         else if(map[i][j]==':'){
                             const char *unicode_char="❤";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]==';'){
+                            const char *unicode_char="⚜️";
                             printw("%s",unicode_char);
                         }
                         else if(map[i][j]=='e'){
@@ -1411,6 +1485,10 @@ int startgame(int v){
                         }
                         else if(map[i][j]==':'){
                             const char *unicode_char="❤";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]==';'){
+                            const char *unicode_char="⚜️";
                             printw("%s",unicode_char);
                         }
                         else if(map[i][j]=='e'){
@@ -1506,6 +1584,10 @@ int startgame(int v){
                             const char *unicode_char="❤";
                             printw("%s",unicode_char);
                         }
+                        else if(map[i][j]==';'){
+                            const char *unicode_char="⚜️";
+                            printw("%s",unicode_char);
+                        }
                         else if(map[i][j]=='g'){
                             const char *unicode_char="▫️";
                             addstr(unicode_char);
@@ -1595,6 +1677,10 @@ int startgame(int v){
                             const char *unicode_char="❤";
                             printw("%s",unicode_char);
                         }
+                        else if(map[i][j]==';'){
+                            const char *unicode_char="⚜️";
+                            printw("%s",unicode_char);
+                        }
                         else if(map[i][j]=='g'){
                             const char *unicode_char="▫️";
                             addstr(unicode_char);
@@ -1682,6 +1768,10 @@ int startgame(int v){
                         }
                         else if(map[i][j]=='e'){
                             const char *unicode_char="🏁";
+                            printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]==';'){
+                            const char *unicode_char="⚜️";
                             printw("%s",unicode_char);
                         }
                         else if(map[i][j]=='g'){
@@ -1908,6 +1998,10 @@ int startgame(int v){
                         else if(map[i][j]==','){
                             printw("%c",'|');
                         }
+                        else if(map[i][j]==';'){
+                            const char *unicode_char="⚜️";
+                            printw("%s",unicode_char);
+                        }
                         else if(map[i][j]=='^'){
                             printw("%c",'.');
                         }
@@ -1989,6 +2083,10 @@ int startgame(int v){
                             const char *unicode_char="⚱️";
                             printw("%s",unicode_char);
                         }
+                        else if(map[i][j]==';'){
+                            const char *unicode_char="⚜️";
+                            printw("%s",unicode_char);
+                        }
                         //در مخفی
                         else if(map[i][j]==','){
                             printw("%c",'|');
@@ -2061,6 +2159,10 @@ int startgame(int v){
                         if(map[i][j]=='G'){
                         const char *unicode_char="🎗️";
                             printw("%s",unicode_char);           
+                        }
+                        else if(map[i][j]==';'){
+                            const char *unicode_char="⚜️";
+                            printw("%s",unicode_char);
                         }
                         else if(map[i][j]==':'){
                             const char *unicode_char="❤";
@@ -2151,6 +2253,10 @@ int startgame(int v){
                             const char *unicode_char="❤";
                             printw("%s",unicode_char);
                         }
+                        else if(map[i][j]==';'){
+                            const char *unicode_char="⚜️";
+                            printw("%s",unicode_char);
+                        }
                         else if(map[i][j]=='g'){
                             const char *unicode_char="▫️";
                             addstr(unicode_char);
@@ -2236,6 +2342,10 @@ int startgame(int v){
                             const char *unicode_char="❤";
                             printw("%s",unicode_char);
                         }
+                        else if(map[i][j]==';'){
+                            const char *unicode_char="⚜️";
+                            printw("%s",unicode_char);
+                        }
                         else if(map[i][j]=='g'){
                             const char *unicode_char="▫️";
                             addstr(unicode_char);
@@ -2316,6 +2426,10 @@ int startgame(int v){
                         if(map[i][j]=='G'){
                         const char *unicode_char="🎗️";
                             printw("%s",unicode_char);           
+                        }
+                        else if(map[i][j]==';'){
+                            const char *unicode_char="⚜️";
+                            printw("%s",unicode_char);
                         }
                         else if(map[i][j]==':'){
                             const char *unicode_char="❤";
@@ -2651,6 +2765,14 @@ int startgame(int v){
                 mvprintw(0,0,"                                         ");
                 refresh();
             }
+            //انتقال به اتاق گنچ
+            else if(map[adamak.x][adamak.y]==';'){
+                clear();
+                mvprintw(20,65,"you are being transported to the treasure room");
+                generatemap(4,1);
+                refresh();
+                usleep(2000000);
+            }
             //طلای سیاه
             else if(map[adamak.x][adamak.y]=='g'){
                 GOLD+=1;
@@ -2842,6 +2964,13 @@ int startgame(int v){
                 const_int=key;
                 refresh();
                 usleep(4000000);
+            }
+            else if(map[adamak.x][adamak.y]==';'){
+                clear();
+                mvprintw(20,65,"you are being transported to the treasure room");
+                generatemap(4,1);
+                refresh();
+                usleep(2000000);
             }
             else if(map[adamak.x][adamak.y]=='@'){
                 if(Ancient_Key==1){
@@ -3083,6 +3212,13 @@ int startgame(int v){
                 svaescore(username1234,GOLD);
                 }
                 break;
+            }
+            else if(map[adamak.x][adamak.y]==';'){
+                clear();
+                mvprintw(20,65,"you are being transported to the treasure room");
+                generatemap(4,1);
+                refresh();
+                usleep(2000000);
             }
             else if(map[adamak.x][adamak.y]=='9'){
                 map[adamak.x][adamak.y]='.';
@@ -3347,6 +3483,13 @@ int startgame(int v){
                 map[adamak.x][adamak.y]='.';
                 Ancient_Key=1;
             }
+            else if(map[adamak.x][adamak.y]==';'){
+                clear();
+                mvprintw(20,65,"you are being transported to the treasure room");
+                generatemap(4,1);
+                refresh();
+                usleep(2000000);
+            }
             else if(map[adamak.x][adamak.y]=='&'){
                 clear();
                 printw("your code : %d",key);
@@ -3602,6 +3745,13 @@ int startgame(int v){
                 svaescore(username1234,GOLD);
                 }
                 break;
+            }
+            else if(map[adamak.x][adamak.y]==';'){
+                clear();
+                mvprintw(20,65,"you are being transported to the treasure room");
+                generatemap(4,1);
+                refresh();
+                usleep(2000000);
             }
             else if(map[adamak.x][adamak.y]=='9'){
                 map[adamak.x][adamak.y]='.';
@@ -3864,6 +4014,13 @@ int startgame(int v){
                 svaescore(username1234,GOLD);
                 }
                 break;
+            }
+            else if(map[adamak.x][adamak.y]==';'){
+                clear();
+                mvprintw(20,65,"you are being transported to the treasure room");
+                generatemap(4,1);
+                refresh();
+                usleep(2000000);
             }
             else if(map[adamak.x][adamak.y]=='9'){
                 map[adamak.x][adamak.y]='.';
@@ -4144,6 +4301,13 @@ int startgame(int v){
             else if( map[adamak.x][adamak.y+1]=='?'){
                  map[adamak.x][adamak.y+1]='+';
             }
+            else if(map[adamak.x][adamak.y]==';'){
+                clear();
+                mvprintw(20,65,"you are being transported to the treasure room");
+                generatemap(4,1);
+                refresh();
+                usleep(2000000);
+            }
             else if(map[adamak.x][adamak.y]=='@'){
                 if(Ancient_Key==1){
                     Ancient_Key=0;
@@ -4392,6 +4556,13 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]=='9'){
                 map[adamak.x][adamak.y]='.';
                 Ancient_Key=1;
+            }
+            else if(map[adamak.x][adamak.y]==';'){
+                clear();
+                mvprintw(20,65,"you are being transported to the treasure room");
+                generatemap(4,1);
+                refresh();
+                usleep(2000000);
             }
             else if(map[adamak.x][adamak.y]=='&'){
                 clear();
