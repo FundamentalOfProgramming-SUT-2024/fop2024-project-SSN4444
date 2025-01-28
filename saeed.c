@@ -3662,12 +3662,14 @@ int startgame(int v,int tabagheh2){
 
                     }
                     khanjar--;
+                    refresh();
                 }
                 else{
                     mvprintw(0,0,"you don't have enough weapons!");
                     refresh();
                     usleep(2000000);
                     mvprintw(0,0,"                                  ");
+                    refresh();
                 }
 
             }
@@ -4671,12 +4673,14 @@ int startgame(int v,int tabagheh2){
 
                     }
                     asa--;
+                    refresh();
                 }
                 else{
                     mvprintw(0,0,"you don't have enough weapons!");
                     refresh();
                     usleep(2000000);
                     mvprintw(0,0,"                                  ");
+                    refresh();
                 }
             }
             else if(your_weapon==3){
@@ -5675,12 +5679,14 @@ int startgame(int v,int tabagheh2){
 
                     }
                     tir--;
+                    refresh();
                 }
                 else{
                     mvprintw(0,0,"you don't have enough weapons!");
                     refresh();
-                    mvprintw(0,0,"                                  ");
                     usleep(2000000);
+                    mvprintw(0,0,"                                  ");
+                    refresh();
                 }
 
             }
@@ -5785,6 +5791,7 @@ int startgame(int v,int tabagheh2){
                         mvprintw(0,0,"                                  ");
                     }
                 }
+                refresh();
             }
             else{
                 if(map[adamak.x][adamak.y]=='D'||map[adamak.x+1][adamak.y]=='D'||map[adamak.x-1][adamak.y]=='D'||map[adamak.x][adamak.y+1]=='D'||map[adamak.x][adamak.y-1]=='D'||map[adamak.x+1][adamak.y+1]=='D'||map[adamak.x-1][adamak.y-1]=='D'||map[adamak.x+1][adamak.y-1]=='D'||map[adamak.x-1][adamak.y+1]=='D'){
@@ -5887,7 +5894,7 @@ int startgame(int v,int tabagheh2){
                         mvprintw(0,0,"                                  ");
                     }
                 }
-
+                refresh();
             }
         }
         //برای دیدن لیست غذا و مصرف غذا
