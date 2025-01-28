@@ -696,7 +696,7 @@ void generatemap(int tabagheh,int v){
         }
         //تله
         int count8=0;
-        while(count8!=15){
+        while(count8!=20){
             int xg0=randomInRange(END_ROOM.X+2,END_ROOM.X+23);
             int yg0=randomInRange(END_ROOM.Y+2,END_ROOM.Y+23);
             if(map[xg0][yg0]=='.'){
@@ -1961,7 +1961,7 @@ int startgame(int v,int tabagheh){
             }
         }      
         }
-        if(vv!=1000){
+        if(vv!=1000&&tabagheh==5){
             for(int i=1;i<48;i++){
                 for(int j=0;j<183;j++){
                     if(mark.m[i][j]==0){
