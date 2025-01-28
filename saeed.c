@@ -1415,6 +1415,9 @@ int startgame(int v,int tabagheh2){
                         else if(map[i][j]==','){
                             printw("%c",'|');
                         }
+                        else if(map[i][j]=='C'){
+                            printw("%c",'G');
+                        }
                         else if(map[i][j]=='^'){
                             printw("%c",'.');
                         }
@@ -1495,6 +1498,9 @@ int startgame(int v,int tabagheh2){
                         else if(map[i][j]==':'){
                             const char *unicode_char="❤";
                             printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='C'){
+                            printw("%c",'G');
                         }
                         else if(map[i][j]==';'){
                             const char *unicode_char="⚜️";
@@ -1584,6 +1590,9 @@ int startgame(int v,int tabagheh2){
                         if(map[i][j]=='G'){
                         const char *unicode_char="🎗️";
                             printw("%s",unicode_char);           
+                        }
+                        else if(map[i][j]=='C'){
+                            printw("%c",'G');
                         }
                         else if(map[i][j]==':'){
                             const char *unicode_char="❤";
@@ -1682,6 +1691,9 @@ int startgame(int v,int tabagheh2){
                             const char *unicode_char="🏁";
                             printw("%s",unicode_char);
                         }
+                        else if(map[i][j]=='C'){
+                            printw("%c",'G');
+                        }
                         else if(map[i][j]==':'){
                             const char *unicode_char="❤";
                             printw("%s",unicode_char);
@@ -1770,6 +1782,9 @@ int startgame(int v,int tabagheh2){
                         if(map[i][j]=='G'){
                         const char *unicode_char="🎗️";
                             printw("%s",unicode_char);           
+                        }
+                        else if(map[i][j]=='C'){
+                            printw("%c",'G');
                         }
                         else if(map[i][j]=='e'){
                             const char *unicode_char="🏁";
@@ -1863,6 +1878,9 @@ int startgame(int v,int tabagheh2){
                         if(map[i][j]=='G'){
                         const char *unicode_char="🎗️";
                             printw("%s",unicode_char);           
+                        }
+                        else if(map[i][j]=='C'){
+                            printw("%c",'G');
                         }
                         else if(map[i][j]==':'){
                             const char *unicode_char="❤";
@@ -2089,6 +2107,9 @@ int startgame(int v,int tabagheh2){
                             const char *unicode_char="⚱️";
                             printw("%s",unicode_char);
                         }
+                        else if(map[i][j]=='C'){
+                            printw("%c",'G');
+                        }
                         else if(map[i][j]==':'){
                             const char *unicode_char="❤";
                             printw("%s",unicode_char);
@@ -2173,6 +2194,9 @@ int startgame(int v,int tabagheh2){
                         else if(map[i][j]==':'){
                             const char *unicode_char="❤";
                             printw("%s",unicode_char);
+                        }
+                        else if(map[i][j]=='C'){
+                            printw("%c",'G');
                         }
                         else if(map[i][j]=='g'){
                             const char *unicode_char="▫️";
@@ -2267,6 +2291,9 @@ int startgame(int v,int tabagheh2){
                             const char *unicode_char="❤";
                             printw("%s",unicode_char);
                         }
+                        else if(map[i][j]=='C'){
+                            printw("%c",'G');
+                        }
                         else if(map[i][j]=='g'){
                             const char *unicode_char="▫️";
                             addstr(unicode_char);
@@ -2347,6 +2374,9 @@ int startgame(int v,int tabagheh2){
                         if(map[i][j]=='G'){
                         const char *unicode_char="🎗️";
                             printw("%s",unicode_char);           
+                        }
+                        else if(map[i][j]=='C'){
+                            printw("%c",'G');
                         }
                         else if(map[i][j]==':'){
                             const char *unicode_char="❤";
@@ -2437,6 +2467,9 @@ int startgame(int v,int tabagheh2){
                         const char *unicode_char="🎗️";
                             printw("%s",unicode_char);           
                         }
+                        else if(map[i][j]=='C'){
+                            printw("%c",'G');
+                        }
                         else if(map[i][j]==':'){
                             const char *unicode_char="❤";
                             printw("%s",unicode_char);
@@ -2525,6 +2558,9 @@ int startgame(int v,int tabagheh2){
                         if(map[i][j]=='G'){
                         const char *unicode_char="🎗️";
                             printw("%s",unicode_char);           
+                        }
+                        else if(map[i][j]=='C'){
+                            printw("%c",'G');
                         }
                         else if(map[i][j]==';'){
                             const char *unicode_char="⚜️";
