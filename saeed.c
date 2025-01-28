@@ -1302,7 +1302,7 @@ void generatemap(int tabagheh,int v){
     }
     }
 }
-int startgame(int v,int tabagheh){
+int startgame(int v,int tabagheh2){
     clear();
     noecho();
     if(v==0){
@@ -1961,7 +1961,7 @@ int startgame(int v,int tabagheh){
             }
         }      
         }
-        if(vv!=1000&&tabagheh==5){
+        if(vv!=1000&&tabagheh2!=5){
             for(int i=1;i<48;i++){
                 for(int j=0;j<183;j++){
                     if(mark.m[i][j]==0){
@@ -1974,11 +1974,6 @@ int startgame(int v,int tabagheh){
                 printw("\n");
             }
         }
-        // if(tabagheh==2||tabagheh==4){
-        //     for(int i=adamak.x;i<adamak.x+6;i++){
-        //         mvprintw(26,183-i,"%c",'#');
-        //     }
-        // }
         refresh();    
         //نمایش کاراکتر
         //🤖 , 👾 ,⛄️ ,🛹,🥷
@@ -2732,6 +2727,10 @@ int startgame(int v,int tabagheh){
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.x++;
             }
+            //برخورد با هیولا 
+            else if(map[adamak.x-1][adamak.y]=='D'||map[adamak.x][adamak.y-1]=='D'||map[adamak.x][adamak.y]=='D'||map[adamak.x+1][adamak.y]=='D'||map[adamak.x][adamak.y+1]=='D'||map[adamak.x+1][adamak.y+1]=='D'||map[adamak.x-1][adamak.y-1]=='D'||map[adamak.x-1][adamak.y+1]=='D'||map[adamak.x+1][adamak.y-1]=='D'){
+                HEALTH-=3;
+            }
             //پایان بازی
             else if(map[adamak.x][adamak.y]=='e'){
                 clear();
@@ -3013,6 +3012,9 @@ int startgame(int v,int tabagheh){
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.y--;
             }
+            else if(map[adamak.x-1][adamak.y]=='D'||map[adamak.x][adamak.y-1]=='D'||map[adamak.x][adamak.y]=='D'||map[adamak.x+1][adamak.y]=='D'||map[adamak.x][adamak.y+1]=='D'||map[adamak.x+1][adamak.y+1]=='D'||map[adamak.x-1][adamak.y-1]=='D'||map[adamak.x-1][adamak.y+1]=='D'||map[adamak.x+1][adamak.y-1]=='D'){
+                HEALTH-=3;
+            }
             else if(map[adamak.x][adamak.y]=='e'){
                 clear();
                 mvprintw(20,60,"Congratulations, you have completed the game");
@@ -3279,6 +3281,9 @@ int startgame(int v,int tabagheh){
             int key=randomInRange(1000,9999);
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.x--;
+            }
+            else if(map[adamak.x-1][adamak.y]=='D'||map[adamak.x][adamak.y-1]=='D'||map[adamak.x][adamak.y]=='D'||map[adamak.x+1][adamak.y]=='D'||map[adamak.x][adamak.y+1]=='D'||map[adamak.x+1][adamak.y+1]=='D'||map[adamak.x-1][adamak.y-1]=='D'||map[adamak.x-1][adamak.y+1]=='D'||map[adamak.x+1][adamak.y-1]=='D'){
+                HEALTH-=3;
             }
             else if(map[adamak.x][adamak.y]=='e'){
                 clear();
@@ -3548,6 +3553,9 @@ int startgame(int v,int tabagheh){
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.y++;
             }
+            else if(map[adamak.x-1][adamak.y]=='D'||map[adamak.x][adamak.y-1]=='D'||map[adamak.x][adamak.y]=='D'||map[adamak.x+1][adamak.y]=='D'||map[adamak.x][adamak.y+1]=='D'||map[adamak.x+1][adamak.y+1]=='D'||map[adamak.x-1][adamak.y-1]=='D'||map[adamak.x-1][adamak.y+1]=='D'||map[adamak.x+1][adamak.y-1]=='D'){
+                HEALTH-=3;
+            }
             else if(map[adamak.x][adamak.y]=='e'){
                 clear();
                 mvprintw(20,60,"Congratulations, you have completed the game");
@@ -3816,6 +3824,9 @@ int startgame(int v,int tabagheh){
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.x++;
                 adamak.y++;
+            }
+            else if(map[adamak.x-1][adamak.y]=='D'||map[adamak.x][adamak.y-1]=='D'||map[adamak.x][adamak.y]=='D'||map[adamak.x+1][adamak.y]=='D'||map[adamak.x][adamak.y+1]=='D'||map[adamak.x+1][adamak.y+1]=='D'||map[adamak.x-1][adamak.y-1]=='D'||map[adamak.x-1][adamak.y+1]=='D'||map[adamak.x+1][adamak.y-1]=='D'){
+                HEALTH-=3;
             }
             else if(map[adamak.x][adamak.y]=='e'){
                 clear();
@@ -4088,6 +4099,9 @@ int startgame(int v,int tabagheh){
                 adamak.x--;
                 adamak.y++;
             }
+            else if(map[adamak.x-1][adamak.y]=='D'||map[adamak.x][adamak.y-1]=='D'||map[adamak.x][adamak.y]=='D'||map[adamak.x+1][adamak.y]=='D'||map[adamak.x][adamak.y+1]=='D'||map[adamak.x+1][adamak.y+1]=='D'||map[adamak.x-1][adamak.y-1]=='D'||map[adamak.x-1][adamak.y+1]=='D'||map[adamak.x+1][adamak.y-1]=='D'){
+                HEALTH-=3;
+            }
             else if(map[adamak.x][adamak.y]=='e'){
                 clear();
                 mvprintw(20,60,"Congratulations, you have completed the game");
@@ -4359,6 +4373,9 @@ int startgame(int v,int tabagheh){
                 adamak.x++;
                 adamak.y--;
             }
+            else if(map[adamak.x-1][adamak.y]=='D'||map[adamak.x][adamak.y-1]=='D'||map[adamak.x][adamak.y]=='D'||map[adamak.x+1][adamak.y]=='D'||map[adamak.x][adamak.y+1]=='D'||map[adamak.x+1][adamak.y+1]=='D'||map[adamak.x-1][adamak.y-1]=='D'||map[adamak.x-1][adamak.y+1]=='D'||map[adamak.x+1][adamak.y-1]=='D'){
+                HEALTH-=3;
+            }
             else if(map[adamak.x][adamak.y]=='e'){
                 clear();
                 mvprintw(20,60,"Congratulations, you have completed the game");
@@ -4629,6 +4646,9 @@ int startgame(int v,int tabagheh){
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
                 adamak.x--;
                 adamak.y--;
+            }
+            else if(map[adamak.x-1][adamak.y]=='D'||map[adamak.x][adamak.y-1]=='D'||map[adamak.x][adamak.y]=='D'||map[adamak.x+1][adamak.y]=='D'||map[adamak.x][adamak.y+1]=='D'||map[adamak.x+1][adamak.y+1]=='D'||map[adamak.x-1][adamak.y-1]=='D'||map[adamak.x-1][adamak.y+1]=='D'||map[adamak.x+1][adamak.y-1]=='D'){
+                HEALTH-=3;
             }
             else if(map[adamak.x][adamak.y]=='e'){
                 clear();
@@ -5022,7 +5042,7 @@ void Loadgame(const char username[]){
     // }
     // refresh();
     // usleep(30000000);
-    startgame(1,tabagheh);
+    startgame(1,tabagheh2);
 }
 //برای چک پسورد برای login
 int checkpasword2(char b[],int target){
@@ -5085,7 +5105,7 @@ int Login(){
             refresh();
             char c6=getch();
             if(c6=='1'){
-                startgame(0,1);
+                startgame(0,tabagheh);
             }
             else if(c6=='2'){
                 Loadgame(a);    
@@ -5389,7 +5409,7 @@ int MENU(){
             MENU();
             break;
         case 4:
-            startgame(0,1);
+            startgame(0,tabagheh);
             clear();
             init_pair(5,COLOR_GREEN,COLOR_BLACK);
             bkgd(COLOR_PAIR(5));
