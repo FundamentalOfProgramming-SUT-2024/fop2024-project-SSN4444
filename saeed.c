@@ -35,6 +35,15 @@ int const_int;
 char username1234[100];
 //عدد برای اتاق گنج
 int vv=0;
+//سلامت هیولا
+struct JOON{
+    int D=5;
+    int F=10;
+    int G=15;
+    int U=30;
+    int S=20;
+};
+struct JOON joon;
 //اتاق گنج
 struct end_room{
     int X;
@@ -2649,6 +2658,2028 @@ int startgame(int v,int tabagheh2){
             }
             refresh();
             char t=getch();
+        }
+        //استفاده از سلاح
+        else if(c==' '){
+            if(your_weapon==1){
+                if(khanjar>=1){
+                    char c=getch();
+                    if(c=='d'){
+                        int count=0;
+                        int target=0;
+                        int y=adamak.y;
+                        while(count!=5){
+                            count++;
+                            y++;
+                            if(map[adamak.x][y]=='D'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.d-=12;
+                                if(joon.d<=0){
+                                    mvprintw(0,0,"deamon was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"deamon's health  %d ",joon.d);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[adamak.x][y]=='F'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.f-=12;
+                                if(joon.f<=0){
+                                    mvprintw(0,0,"fire breathing monster was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"fire breathing monster's health  %d ",joon.f);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[adamak.x][y]=='U'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.u-=12;
+                                if(joon.u<=0){
+                                    mvprintw(0,0,"undeed was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"undeed's health  %d ",joon.u);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[adamak.x][y]=='C'){
+
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.g-=12;
+                                if(joon.g<=0){
+                                    mvprintw(0,0,"giant was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"giant's health  %d ",joon.g);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[adamak.x][y]=='S'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.s-=12;
+                                if(joon.s<=0){
+                                    mvprintw(0,0,"snake was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"snake's health  %d ",joon.s);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                        }
+                        if(target==0){
+                            mvprintw(0,0,"it did not hit the target!");
+                            refresh();
+                            mvprintw(0,0,"                                  ");
+                            usleep(2000000);
+                        }
+
+                    }
+                    else if(c=='a'){
+                        int count=0;
+                        int target=0;
+                        int y=adamak.y;
+                        while(count!=5){
+                            count++;
+                            y--;
+                            if(map[adamak.x][y]=='D'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.d-=12;
+                                if(joon.d<=0){
+                                    mvprintw(0,0,"deamon was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"deamon's health  %d ",joon.d);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[adamak.x][y]=='F'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.f-=12;
+                                if(joon.f<=0){
+                                    mvprintw(0,0,"fire breathing monster was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"fire breathing monster's health  %d ",joon.f);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[adamak.x][y]=='U'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.u-=12;
+                                if(joon.u<=0){
+                                    mvprintw(0,0,"undeed was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"undeed's health  %d ",joon.u);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[adamak.x][y]=='C'){
+
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.g-=12;
+                                if(joon.g<=0){
+                                    mvprintw(0,0,"giant was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"giant's health  %d ",joon.g);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[adamak.x][y]=='S'){
+
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.s-=12;
+                                if(joon.s<=0){
+                                    mvprintw(0,0,"snake was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"snake's health  %d ",joon.s);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                        }
+                        if(target==0){
+                            mvprintw(0,0,"it did not hit the target!");
+                            refresh();
+                            mvprintw(0,0,"                                  ");
+                            usleep(2000000);
+                        }
+
+                    }
+                    else if(c=='w'){
+                        int count=0;
+                        int target=0;
+                        int x=adamak.x;
+                        while(count!=5){
+                            count++;
+                            x--;
+                            if(map[x][adamak.y]=='D'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.d-=12;
+                                if(joon.d<=0){
+                                    mvprintw(0,0,"deamon was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"deamon's health  %d ",joon.d);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][adamak.y]=='F'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.f-=12;
+                                if(joon.f<=0){
+                                    mvprintw(0,0,"fire breathing monster was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"fire breathing monster's health  %d ",joon.f);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][adamak.y]=='U'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.u-=12;
+                                if(joon.u<=0){
+                                    mvprintw(0,0,"undeed was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"undeed's health  %d ",joon.u);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][adamak.y]=='C'){
+
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.g-=12;
+                                if(joon.g<=0){
+                                    mvprintw(0,0,"giant was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"giant's health  %d ",joon.g);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][adamak.y]=='S'){
+
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.s-=12;
+                                if(joon.s<=0){
+                                    mvprintw(0,0,"snake was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"snake's health  %d ",joon.s);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                        }
+                        if(target==0){
+                            mvprintw(0,0,"it did not hit the target!");
+                            refresh();
+                            mvprintw(0,0,"                                  ");
+                            usleep(2000000);
+                        }
+
+                    }
+                    else if(c=='x'){
+                        int count=0;
+                        int target=0;
+                        int x=adamak.x;
+                        while(count!=5){
+                            count++;
+                            x++;
+                            if(map[x][adamak.y]=='D'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.d-=12;
+                                if(joon.d<=0){
+                                    mvprintw(0,0,"deamon was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"deamon's health  %d ",joon.d);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][adamak.y]=='F'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.f-=12;
+                                if(joon.f<=0){
+                                    mvprintw(0,0,"fire breathing monster was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"fire breathing monster's health  %d ",joon.f);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][adamak.y]=='U'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.u-=12;
+                                if(joon.u<=0){
+                                    mvprintw(0,0,"undeed was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"undeed's health  %d ",joon.u);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][adamak.y]=='C'){
+
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.g-=12;
+                                if(joon.g<=0){
+                                    mvprintw(0,0,"giant was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"giant's health  %d ",joon.g);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][adamak.y]=='S'){
+
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.s-=12;
+                                if(joon.s<=0){
+                                    mvprintw(0,0,"snake was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"snake's health  %d ",joon.s);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                        }
+                        if(target==0){
+                            mvprintw(0,0,"it did not hit the target!");
+                            refresh();
+                            mvprintw(0,0,"                                  ");
+                            usleep(2000000);
+                        }
+                    }
+                    else if(c=='e'){
+                        int count=0;
+                        int target=0;
+                        int x=adamak.x;
+                        int y=adamak.y;
+                        while(count!=5){
+                            count++;
+                            x--;
+                            y++;
+                            if(map[x][y]=='D'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.d-=12;
+                                if(joon.d<=0){
+                                    mvprintw(0,0,"deamon was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"deamon's health  %d ",joon.d);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][y]=='F'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.f-=12;
+                                if(joon.f<=0){
+                                    mvprintw(0,0,"fire breathing monster was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"fire breathing monster's health  %d ",joon.f);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][y]=='U'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.u-=12;
+                                if(joon.u<=0){
+                                    mvprintw(0,0,"undeed was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"undeed's health  %d ",joon.u);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][y]=='C'){
+
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.g-=12;
+                                if(joon.g<=0){
+                                    mvprintw(0,0,"giant was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"giant's health  %d ",joon.g);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][y]=='S'){
+
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.s-=12;
+                                if(joon.s<=0){
+                                    mvprintw(0,0,"snake was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"snake's health  %d ",joon.s);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                        }
+                        if(target==0){
+                            mvprintw(0,0,"it did not hit the target!");
+                            refresh();
+                            mvprintw(0,0,"                                  ");
+                            usleep(2000000);
+                        }
+
+                    }
+                    else if(c=='q'){
+                        int count=0;
+                        int target=0;
+                        int x=adamak.x;
+                        int y=adamak.y;
+                        while(count!=5){
+                            count++;
+                            x--;
+                            y--;
+                            if(map[x][y]=='D'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.d-=12;
+                                if(joon.d<=0){
+                                    mvprintw(0,0,"deamon was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"deamon's health  %d ",joon.d);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][y]=='F'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.f-=12;
+                                if(joon.f<=0){
+                                    mvprintw(0,0,"fire breathing monster was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"fire breathing monster's health  %d ",joon.f);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][y]=='U'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.u-=12;
+                                if(joon.u<=0){
+                                    mvprintw(0,0,"undeed was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"undeed's health  %d ",joon.u);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][y]=='C'){
+
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.g-=12;
+                                if(joon.g<=0){
+                                    mvprintw(0,0,"giant was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"giant's health  %d ",joon.g);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][y]=='S'){
+
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.s-=12;
+                                if(joon.s<=0){
+                                    mvprintw(0,0,"snake was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"snake's health  %d ",joon.s);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                        }
+                        if(target==0){
+                            mvprintw(0,0,"it did not hit the target!");
+                            refresh();
+                            mvprintw(0,0,"                                  ");
+                            usleep(2000000);
+                        }
+
+
+                    }
+                    else if(c=='c'){
+                        int count=0;
+                        int target=0;
+                        int x=adamak.x;
+                        int y=adamak.y;
+                        while(count!=5){
+                            count++;
+                            x++;
+                            y++;
+                            if(map[x][y]=='D'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.d-=12;
+                                if(joon.d<=0){
+                                    mvprintw(0,0,"deamon was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"deamon's health  %d ",joon.d);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][y]=='F'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.f-=12;
+                                if(joon.f<=0){
+                                    mvprintw(0,0,"fire breathing monster was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"fire breathing monster's health  %d ",joon.f);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][y]=='U'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.u-=12;
+                                if(joon.u<=0){
+                                    mvprintw(0,0,"undeed was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"undeed's health  %d ",joon.u);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][y]=='C'){
+
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.g-=12;
+                                if(joon.g<=0){
+                                    mvprintw(0,0,"giant was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"giant's health  %d ",joon.g);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][y]=='S'){
+
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.s-=12;
+                                if(joon.s<=0){
+                                    mvprintw(0,0,"snake was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"snake's health  %d ",joon.s);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                        }
+                        if(target==0){
+                            mvprintw(0,0,"it did not hit the target!");
+                            refresh();
+                            mvprintw(0,0,"                                  ");
+                            usleep(2000000);
+                        }
+
+
+                    }
+                    else if(c=='z'){
+                        int count=0;
+                        int target=0;
+                        int x=adamak.x;
+                        int y=adamak.y;
+                        while(count!=5){
+                            count++;
+                            x++;
+                            y--;
+                            if(map[x][y]=='D'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.d-=12;
+                                if(joon.d<=0){
+                                    mvprintw(0,0,"deamon was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"deamon's health  %d ",joon.d);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][y]=='F'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.f-=12;
+                                if(joon.f<=0){
+                                    mvprintw(0,0,"fire breathing monster was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"fire breathing monster's health  %d ",joon.f);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][y]=='U'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.u-=12;
+                                if(joon.u<=0){
+                                    mvprintw(0,0,"undeed was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"undeed's health  %d ",joon.u);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][y]=='C'){
+
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.g-=12;
+                                if(joon.g<=0){
+                                    mvprintw(0,0,"giant was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"giant's health  %d ",joon.g);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][y]=='S'){
+
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.s-=12;
+                                if(joon.s<=0){
+                                    mvprintw(0,0,"snake was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"snake's health  %d ",joon.s);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                        }
+                        if(target==0){
+                            mvprintw(0,0,"it did not hit the target!");
+                            refresh();
+                            mvprintw(0,0,"                                  ");
+                            usleep(2000000);
+                        }
+
+                    }
+                    khanjar--;
+                }
+                else{
+                    mvprintw(0,0,"you don't have enough weapons!");
+                    refresh();
+                    mvprintw(0,0,"                                  ");
+                    usleep(2000000);
+                }
+
+            }
+            else if(your_weapon==2){
+                if(asa>=1){
+                    char c=getch();
+                    if(c=='d'){
+                        int count=0;
+                        int target=0;
+                        int y=adamak.y;
+                        while(count!=10){
+                            count++;
+                            y++;
+                            if(map[adamak.x][y]=='D'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.d-=15;
+                                if(joon.d<=0){
+                                    mvprintw(0,0,"deamon was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"deamon's health  %d ",joon.d);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[adamak.x][y]=='F'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.f-=15;
+                                if(joon.f<=0){
+                                    mvprintw(0,0,"fire breathing monster was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"fire breathing monster's health  %d ",joon.f);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[adamak.x][y]=='U'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.u-=15;
+                                if(joon.u<=0){
+                                    mvprintw(0,0,"undeed was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"undeed's health  %d ",joon.u);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[adamak.x][y]=='C'){
+
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.g-=15;
+                                if(joon.g<=0){
+                                    mvprintw(0,0,"giant was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"giant's health  %d ",joon.g);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[adamak.x][y]=='S'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.s-=15;
+                                if(joon.s<=0){
+                                    mvprintw(0,0,"snake was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"snake's health  %d ",joon.s);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                        }
+                        if(target==0){
+                            mvprintw(0,0,"it did not hit the target!");
+                            refresh();
+                            mvprintw(0,0,"                                  ");
+                            usleep(2000000);
+                        }
+
+                    }
+                    else if(c=='a'){
+                        int count=0;
+                        int target=0;
+                        int y=adamak.y;
+                        while(count!=10){
+                            count++;
+                            y--;
+                            if(map[adamak.x][y]=='D'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.d-=15;
+                                if(joon.d<=0){
+                                    mvprintw(0,0,"deamon was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"deamon's health  %d ",joon.d);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[adamak.x][y]=='F'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.f-=15;
+                                if(joon.f<=0){
+                                    mvprintw(0,0,"fire breathing monster was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"fire breathing monster's health  %d ",joon.f);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[adamak.x][y]=='U'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.u-=15;
+                                if(joon.u<=0){
+                                    mvprintw(0,0,"undeed was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"undeed's health  %d ",joon.u);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[adamak.x][y]=='C'){
+
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.g-=15;
+                                if(joon.g<=0){
+                                    mvprintw(0,0,"giant was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"giant's health  %d ",joon.g);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[adamak.x][y]=='S'){
+
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.s-=15;
+                                if(joon.s<=0){
+                                    mvprintw(0,0,"snake was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"snake's health  %d ",joon.s);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                        }
+                        if(target==0){
+                            mvprintw(0,0,"it did not hit the target!");
+                            refresh();
+                            mvprintw(0,0,"                                  ");
+                            usleep(2000000);
+                        }
+
+                    }
+                    else if(c=='w'){
+                        int count=0;
+                        int target=0;
+                        int x=adamak.x;
+                        while(count!=10){
+                            count++;
+                            x--;
+                            if(map[x][adamak.y]=='D'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.d-=15;
+                                if(joon.d<=0){
+                                    mvprintw(0,0,"deamon was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"deamon's health  %d ",joon.d);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][adamak.y]=='F'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.f-=15;
+                                if(joon.f<=0){
+                                    mvprintw(0,0,"fire breathing monster was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"fire breathing monster's health  %d ",joon.f);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][adamak.y]=='U'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.u-=15;
+                                if(joon.u<=0){
+                                    mvprintw(0,0,"undeed was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"undeed's health  %d ",joon.u);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][adamak.y]=='C'){
+
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.g-=15;
+                                if(joon.g<=0){
+                                    mvprintw(0,0,"giant was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"giant's health  %d ",joon.g);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][adamak.y]=='S'){
+
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.s-=15;
+                                if(joon.s<=0){
+                                    mvprintw(0,0,"snake was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"snake's health  %d ",joon.s);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                        }
+                        if(target==0){
+                            mvprintw(0,0,"it did not hit the target!");
+                            refresh();
+                            mvprintw(0,0,"                                  ");
+                            usleep(2000000);
+                        }
+
+                    }
+                    else if(c=='x'){
+                        int count=0;
+                        int target=0;
+                        int x=adamak.x;
+                        while(count!=10){
+                            count++;
+                            x++;
+                            if(map[x][adamak.y]=='D'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.d-=15;
+                                if(joon.d<=0){
+                                    mvprintw(0,0,"deamon was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"deamon's health  %d ",joon.d);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][adamak.y]=='F'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.f-=15;
+                                if(joon.f<=0){
+                                    mvprintw(0,0,"fire breathing monster was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"fire breathing monster's health  %d ",joon.f);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][adamak.y]=='U'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.u-=15;
+                                if(joon.u<=0){
+                                    mvprintw(0,0,"undeed was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"undeed's health  %d ",joon.u);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][adamak.y]=='C'){
+
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.g-=15;
+                                if(joon.g<=0){
+                                    mvprintw(0,0,"giant was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"giant's health  %d ",joon.g);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][adamak.y]=='S'){
+
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.s-=15;
+                                if(joon.s<=0){
+                                    mvprintw(0,0,"snake was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"snake's health  %d ",joon.s);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                        }
+                        if(target==0){
+                            mvprintw(0,0,"it did not hit the target!");
+                            refresh();
+                            mvprintw(0,0,"                                  ");
+                            usleep(2000000);
+                        }
+                    }
+                    else if(c=='e'){
+                        int count=0;
+                        int target=0;
+                        int x=adamak.x;
+                        int y=adamak.y;
+                        while(count!=10){
+                            count++;
+                            x--;
+                            y++;
+                            if(map[x][y]=='D'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.d-=15;
+                                if(joon.d<=0){
+                                    mvprintw(0,0,"deamon was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"deamon's health  %d ",joon.d);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][y]=='F'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.f-=15;
+                                if(joon.f<=0){
+                                    mvprintw(0,0,"fire breathing monster was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"fire breathing monster's health  %d ",joon.f);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][y]=='U'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.u-=15;
+                                if(joon.u<=0){
+                                    mvprintw(0,0,"undeed was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"undeed's health  %d ",joon.u);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][y]=='C'){
+
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.g-=15;
+                                if(joon.g<=0){
+                                    mvprintw(0,0,"giant was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"giant's health  %d ",joon.g);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][y]=='S'){
+
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.s-=15;
+                                if(joon.s<=0){
+                                    mvprintw(0,0,"snake was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"snake's health  %d ",joon.s);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                        }
+                        if(target==0){
+                            mvprintw(0,0,"it did not hit the target!");
+                            refresh();
+                            mvprintw(0,0,"                                  ");
+                            usleep(2000000);
+                        }
+
+                    }
+                    else if(c=='q'){
+                        int count=0;
+                        int target=0;
+                        int x=adamak.x;
+                        int y=adamak.y;
+                        while(count!=10){
+                            count++;
+                            x--;
+                            y--;
+                            if(map[x][y]=='D'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.d-=15;
+                                if(joon.d<=0){
+                                    mvprintw(0,0,"deamon was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"deamon's health  %d ",joon.d);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][y]=='F'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.f-=15;
+                                if(joon.f<=0){
+                                    mvprintw(0,0,"fire breathing monster was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"fire breathing monster's health  %d ",joon.f);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][y]=='U'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.u-=15;
+                                if(joon.u<=0){
+                                    mvprintw(0,0,"undeed was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"undeed's health  %d ",joon.u);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][y]=='C'){
+
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.g-=15;
+                                if(joon.g<=0){
+                                    mvprintw(0,0,"giant was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"giant's health  %d ",joon.g);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][y]=='S'){
+
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.s-=15;
+                                if(joon.s<=0){
+                                    mvprintw(0,0,"snake was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"snake's health  %d ",joon.s);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                        }
+                        if(target==0){
+                            mvprintw(0,0,"it did not hit the target!");
+                            refresh();
+                            mvprintw(0,0,"                                  ");
+                            usleep(2000000);
+                        }
+
+
+                    }
+                    else if(c=='c'){
+                        int count=0;
+                        int target=0;
+                        int x=adamak.x;
+                        int y=adamak.y;
+                        while(count!=10){
+                            count++;
+                            x++;
+                            y++;
+                            if(map[x][y]=='D'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.d-=15;
+                                if(joon.d<=0){
+                                    mvprintw(0,0,"deamon was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"deamon's health  %d ",joon.d);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][y]=='F'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.f-=15;
+                                if(joon.f<=0){
+                                    mvprintw(0,0,"fire breathing monster was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"fire breathing monster's health  %d ",joon.f);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][y]=='U'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.u-=15;
+                                if(joon.u<=0){
+                                    mvprintw(0,0,"undeed was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"undeed's health  %d ",joon.u);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][y]=='C'){
+
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.g-=15;
+                                if(joon.g<=0){
+                                    mvprintw(0,0,"giant was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"giant's health  %d ",joon.g);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][y]=='S'){
+
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.s-=15;
+                                if(joon.s<=0){
+                                    mvprintw(0,0,"snake was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"snake's health  %d ",joon.s);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                        }
+                        if(target==0){
+                            mvprintw(0,0,"it did not hit the target!");
+                            refresh();
+                            mvprintw(0,0,"                                  ");
+                            usleep(2000000);
+                        }
+
+
+                    }
+                    else if(c=='z'){
+                        int count=0;
+                        int target=0;
+                        int x=adamak.x;
+                        int y=adamak.y;
+                        while(count!=10){
+                            count++;
+                            x++;
+                            y--;
+                            if(map[x][y]=='D'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.d-=15;
+                                if(joon.d<=0){
+                                    mvprintw(0,0,"deamon was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"deamon's health  %d ",joon.d);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][y]=='F'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.f-=15;
+                                if(joon.f<=0){
+                                    mvprintw(0,0,"fire breathing monster was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"fire breathing monster's health  %d ",joon.f);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][y]=='U'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.u-=15;
+                                if(joon.u<=0){
+                                    mvprintw(0,0,"undeed was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"undeed's health  %d ",joon.u);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][y]=='C'){
+
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.g-=15;
+                                if(joon.g<=0){
+                                    mvprintw(0,0,"giant was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"giant's health  %d ",joon.g);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                            else if(map[x][y]=='S'){
+                                mvprintw(0,0,"hit the target!");
+                                refresh();
+                                mvprintw(0,0,"                                  ");
+                                usleep(2000000);
+                                joon.s-=15;
+                                if(joon.s<=0){
+                                    mvprintw(0,0,"snake was destroyed");
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                else{
+                                    mvprintw(0,0,"snake's health  %d ",joon.s);
+                                    refresh();
+                                    mvprintw(0,0,"                                  ");
+                                    usleep(2000000);
+                                }
+                                target=1;
+                                break;
+                            }
+                        }
+                        if(target==0){
+                            mvprintw(0,0,"it did not hit the target!");
+                            refresh();
+                            mvprintw(0,0,"                                  ");
+                            usleep(2000000);
+                        }
+
+                    }
+                    asa--;
+                }
+                else{
+                    mvprintw(0,0,"you don't have enough weapons!");
+                    refresh();
+                    mvprintw(0,0,"                                  ");
+                    usleep(2000000);
+                }
+            }
+            else if(your_weapon==3){
+
+
+            }
+            else if(your_weapon==4){
+
+            }
+            else{
+
+            }
+
         }
         //برای دیدن لیست غذا و مصرف غذا
         else if(c=='E'){
