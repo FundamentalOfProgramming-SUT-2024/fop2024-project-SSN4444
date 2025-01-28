@@ -44,11 +44,6 @@ struct JOON{
     int s;
 };
 struct JOON joon;
-joon.d=5;
-joon.f=10;
-joon.g=15;
-joon.s=20;
-joon.u=30;
 //اتاق گنج
 struct end_room{
     int X;
@@ -231,6 +226,11 @@ void savegame(const char username[],const char username_filename[]){
     fprintf(savefile,"%d\n",Ancient_Key);
     fprintf(savefile,"%s\n",username1234);
     fprintf(savefile,"%d\n",your_weapon);
+    fprintf(savefile,"%d\n",joon.d);
+    fprintf(savefile,"%d\n",joon.f);
+    fprintf(savefile,"%d\n",joon.g);
+    fprintf(savefile,"%d\n",joon.s);
+    fprintf(savefile,"%d\n",joon.u);
     for(int i=0;i<49;i++){
         for(int j=0;j<183;j++){
             fprintf(savefile,"%d\n",mark.m[i][j]);
@@ -1338,6 +1338,11 @@ int startgame(int v,int tabagheh2){
     clear();
     noecho();
     if(v==0||v==2){
+        joon.d=5;
+        joon.f=10;
+        joon.g=15;
+        joon.s=20;
+        joon.u=30;
         generatemap(tabagheh,0);
         adamak.x=27;
         adamak.y=1;
@@ -8623,6 +8628,11 @@ void Loadgame(const char username[]){
     Ancient_Key=Ancient_Key1;
     fscanf(game,"%s",username1234);
     fscanf(game,"%d",&your_weapon);
+    fscanf(game,"%d",&joon.d);
+    fscanf(game,"%d",&joon.f);
+    fscanf(game,"%d",&joon.g);
+    fscanf(game,"%d",&joon.s);
+    fscanf(game,"%d",&joon.u);
     for(int i=0;i<49;i++){
         for(int j=0;j<183;j++){
             fscanf(game,"%d",&mark.m[i][j]);
