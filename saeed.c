@@ -433,10 +433,6 @@ void gunandspellmenu(){
         }
     return;
 }
-void ENDROOM(){
-    clear();
-
-}
 void generateRandomPath(){
     for(int i=1;i<45;i++){
         map[27][i]='#';
@@ -621,6 +617,92 @@ void generatemap(int tabagheh,int v){
                 map[xT5][yT5]='e';
                 count1234++;
             }  
+        }
+        //غذا
+        int count0=0;
+        while(count0!=6){
+            int xg0=randomInRange(END_ROOM.X+2,END_ROOM.X+23);
+            int yg0=randomInRange(END_ROOM.Y+2,END_ROOM.Y+23);
+            if(map[xg0][yg0]=='.'){
+                map[xg0][yg0]='0';
+                count0++;
+            }
+        }
+        //غذای فاسد
+        int count1=0;
+        while(count1!=2){
+            int xg0=randomInRange(END_ROOM.X+2,END_ROOM.X+23);
+            int yg0=randomInRange(END_ROOM.Y+2,END_ROOM.Y+23);
+            if(map[xg0][yg0]=='.'){
+                map[xg0][yg0]=':';
+                count1++;
+            }
+        }
+        //طلا
+        int count2=0;
+        while(count2!=7){
+            int xg0=randomInRange(END_ROOM.X+2,END_ROOM.X+23);
+            int yg0=randomInRange(END_ROOM.Y+2,END_ROOM.Y+23);
+            if(map[xg0][yg0]=='.'){
+                map[xg0][yg0]='g';
+                count2++;
+            }
+        }
+        int count3=0;
+        while(count3!=5){
+            int xg0=randomInRange(END_ROOM.X+2,END_ROOM.X+23);
+            int yg0=randomInRange(END_ROOM.Y+2,END_ROOM.Y+23);
+            if(map[xg0][yg0]=='.'){
+                map[xg0][yg0]='G';
+                count3++;
+            }
+        }
+        int count4=0;
+        while(count4!=5){
+            int xg0=randomInRange(END_ROOM.X+2,END_ROOM.X+23);
+            int yg0=randomInRange(END_ROOM.Y+2,END_ROOM.Y+23);
+            if(map[xg0][yg0]=='.'){
+                map[xg0][yg0]='j';
+                count4++;
+            }
+        }
+        //هیولا ها
+        int count5=0;
+        while(count5!=2){
+            int xg0=randomInRange(END_ROOM.X+2,END_ROOM.X+23);
+            int yg0=randomInRange(END_ROOM.Y+2,END_ROOM.Y+23);
+            if(map[xg0][yg0]=='.'){
+                map[xg0][yg0]='D';
+                count5++;
+            }
+        }
+        int count6=0;
+        while(count6!=1){
+            int xg0=randomInRange(END_ROOM.X+2,END_ROOM.X+23);
+            int yg0=randomInRange(END_ROOM.Y+2,END_ROOM.Y+23);
+            if(map[xg0][yg0]=='.'){
+                map[xg0][yg0]='S';
+                count6++;
+            }
+        }
+        int count7=0;
+        while(count7!=2){
+            int xg0=randomInRange(END_ROOM.X+2,END_ROOM.X+23);
+            int yg0=randomInRange(END_ROOM.Y+2,END_ROOM.Y+23);
+            if(map[xg0][yg0]=='.'){
+                map[xg0][yg0]='F';
+                count7++;
+            }
+        }
+        //تله
+        int count8=0;
+        while(count8!=15){
+            int xg0=randomInRange(END_ROOM.X+2,END_ROOM.X+23);
+            int yg0=randomInRange(END_ROOM.Y+2,END_ROOM.Y+23);
+            if(map[xg0][yg0]=='.'){
+                map[xg0][yg0]='^';
+                count8++;
+            }
         }
 
     }
@@ -1220,7 +1302,7 @@ void generatemap(int tabagheh,int v){
     }
     }
 }
-int startgame(int v){
+int startgame(int v,int tabagheh){
     clear();
     noecho();
     if(v==0){
@@ -2774,6 +2856,7 @@ int startgame(int v){
                 clear();
                 mvprintw(20,65,"you are being transported to the treasure room");
                 vv=1000;
+                tabagheh++;
                 generatemap(4,1);
                 refresh();
                 usleep(2000000);
@@ -2973,6 +3056,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]==';'){
                 clear();
                 mvprintw(20,65,"you are being transported to the treasure room");
+                tabagheh++;
                 vv=1000;
                 generatemap(4,1);
                 refresh();
@@ -3222,6 +3306,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]==';'){
                 clear();
                 mvprintw(20,65,"you are being transported to the treasure room");
+                tabagheh++;
                 vv=1000;
                 generatemap(4,1);
                 refresh();
@@ -3493,6 +3578,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]==';'){
                 clear();
                 mvprintw(20,65,"you are being transported to the treasure room");
+                tabagheh++;
                 vv=1000;
                 generatemap(4,1);
                 refresh();
@@ -3757,6 +3843,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]==';'){
                 clear();
                 mvprintw(20,65,"you are being transported to the treasure room");
+                tabagheh++;
                 vv=1000;
                 generatemap(4,1);
                 refresh();
@@ -4027,6 +4114,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]==';'){
                 clear();
                 mvprintw(20,65,"you are being transported to the treasure room");
+                tabagheh++;
                 vv=1000;
                 generatemap(4,1);
                 refresh();
@@ -4314,6 +4402,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]==';'){
                 clear();
                 mvprintw(20,65,"you are being transported to the treasure room");
+                tabagheh++;
                 vv=1000;
                 generatemap(4,1);
                 refresh();
@@ -4571,6 +4660,7 @@ int startgame(int v){
             else if(map[adamak.x][adamak.y]==';'){
                 clear();
                 mvprintw(20,65,"you are being transported to the treasure room");
+                tabagheh++;
                 vv=1000;
                 generatemap(4,1);
                 refresh();
@@ -4932,7 +5022,7 @@ void Loadgame(const char username[]){
     // }
     // refresh();
     // usleep(30000000);
-    startgame(1);
+    startgame(1,tabagheh);
 }
 //برای چک پسورد برای login
 int checkpasword2(char b[],int target){
@@ -4995,7 +5085,7 @@ int Login(){
             refresh();
             char c6=getch();
             if(c6=='1'){
-                startgame(0);
+                startgame(0,1);
             }
             else if(c6=='2'){
                 Loadgame(a);    
@@ -5299,7 +5389,7 @@ int MENU(){
             MENU();
             break;
         case 4:
-            startgame(0);
+            startgame(0,1);
             clear();
             init_pair(5,COLOR_GREEN,COLOR_BLACK);
             bkgd(COLOR_PAIR(5));
