@@ -1,5 +1,4 @@
 //saeednoferesti 403106838
-//  :   غذای فاسد
 #include<stdio.h>
 #include<ncursesw/ncurses.h>
 #include<stdlib.h>
@@ -696,12 +695,21 @@ void generatemap(int tabagheh,int v){
         }
         //تله
         int count8=0;
-        while(count8!=20){
+        while(count8!=35){
             int xg0=randomInRange(END_ROOM.X+2,END_ROOM.X+23);
             int yg0=randomInRange(END_ROOM.Y+2,END_ROOM.Y+23);
             if(map[xg0][yg0]=='.'){
                 map[xg0][yg0]='^';
                 count8++;
+            }
+        }
+        int count9=0;
+        while(count9!=2){
+            int xg0=randomInRange(END_ROOM.X+2,END_ROOM.X+23);
+            int yg0=randomInRange(END_ROOM.Y+2,END_ROOM.Y+23);
+            if(map[xg0][yg0]=='.'){
+                map[xg0][yg0]='C';
+                count9++;
             }
         }
 
@@ -858,6 +866,16 @@ void generatemap(int tabagheh,int v){
         if(map[xg1][yg1]=='.'){
             map[xg1][yg1]='g';
             count++;
+        }
+     }
+     //هیولای G
+     int count121212=0;
+     while(count121212!=1){
+        int xg1=randomInRange(room[1].xs+2,room[1].xs+8);
+        int yg1=randomInRange(room[1].ys+2,room[1].ys+8);
+        if(map[xg1][yg1]=='.'){
+            map[xg1][yg1]='C';
+            count121212++;
         }
      }
      int count21=0;
@@ -2729,13 +2747,44 @@ int startgame(int v,int tabagheh2){
             }
             //برخورد با هیولا 
             else if(map[adamak.x-1][adamak.y]=='D'||map[adamak.x][adamak.y-1]=='D'||map[adamak.x][adamak.y]=='D'||map[adamak.x+1][adamak.y]=='D'||map[adamak.x][adamak.y+1]=='D'||map[adamak.x+1][adamak.y+1]=='D'||map[adamak.x-1][adamak.y-1]=='D'||map[adamak.x-1][adamak.y+1]=='D'||map[adamak.x+1][adamak.y-1]=='D'){
+                HEALTH-=1;
+                mvprintw(0,0,"you were hurt!  -1");
+                refresh();
+                usleep(2000000);
+                mvprintw(0,0,"                           ");
+                refresh();
+            }
+            else if(map[adamak.x-1][adamak.y]=='F'||map[adamak.x][adamak.y-1]=='F'||map[adamak.x][adamak.y]=='F'||map[adamak.x+1][adamak.y]=='F'||map[adamak.x][adamak.y+1]=='F'||map[adamak.x+1][adamak.y+1]=='F'||map[adamak.x-1][adamak.y-1]=='F'||map[adamak.x-1][adamak.y+1]=='F'||map[adamak.x+1][adamak.y-1]=='F'){
                 HEALTH-=3;
                 mvprintw(0,0,"you were hurt!  -3");
                 refresh();
                 usleep(2000000);
                 mvprintw(0,0,"                           ");
                 refresh();
-
+            }
+            else if(map[adamak.x-1][adamak.y]=='C'||map[adamak.x][adamak.y-1]=='C'||map[adamak.x][adamak.y]=='C'||map[adamak.x+1][adamak.y]=='C'||map[adamak.x][adamak.y+1]=='C'||map[adamak.x+1][adamak.y+1]=='C'||map[adamak.x-1][adamak.y-1]=='C'||map[adamak.x-1][adamak.y+1]=='C'||map[adamak.x+1][adamak.y-1]=='C'){
+                HEALTH-=5;
+                mvprintw(0,0,"you were hurt!  -5");
+                refresh();
+                usleep(2000000);
+                mvprintw(0,0,"                           ");
+                refresh();
+            }
+            else if(map[adamak.x-1][adamak.y]=='S'||map[adamak.x][adamak.y-1]=='S'||map[adamak.x][adamak.y]=='S'||map[adamak.x+1][adamak.y]=='S'||map[adamak.x][adamak.y+1]=='S'||map[adamak.x+1][adamak.y+1]=='S'||map[adamak.x-1][adamak.y-1]=='S'||map[adamak.x-1][adamak.y+1]=='S'||map[adamak.x+1][adamak.y-1]=='S'){
+                HEALTH-=7;
+                mvprintw(0,0,"you were hurt!  -7");
+                refresh();
+                usleep(2000000);
+                mvprintw(0,0,"                           ");
+                refresh();
+            }
+            else if(map[adamak.x-1][adamak.y]=='U'||map[adamak.x][adamak.y-1]=='U'||map[adamak.x][adamak.y]=='U'||map[adamak.x+1][adamak.y]=='U'||map[adamak.x][adamak.y+1]=='U'||map[adamak.x+1][adamak.y+1]=='U'||map[adamak.x-1][adamak.y-1]=='U'||map[adamak.x-1][adamak.y+1]=='U'||map[adamak.x+1][adamak.y-1]=='U'){
+                HEALTH-=9;
+                mvprintw(0,0,"you were hurt!  -9");
+                refresh();
+                usleep(2000000);
+                mvprintw(0,0,"                           ");
+                refresh();
             }
             //پایان بازی
             else if(map[adamak.x][adamak.y]=='e'){
@@ -3026,6 +3075,38 @@ int startgame(int v,int tabagheh2){
                 mvprintw(0,0,"                           ");
                 refresh();
             }
+            else if(map[adamak.x-1][adamak.y]=='F'||map[adamak.x][adamak.y-1]=='F'||map[adamak.x][adamak.y]=='F'||map[adamak.x+1][adamak.y]=='F'||map[adamak.x][adamak.y+1]=='F'||map[adamak.x+1][adamak.y+1]=='F'||map[adamak.x-1][adamak.y-1]=='F'||map[adamak.x-1][adamak.y+1]=='F'||map[adamak.x+1][adamak.y-1]=='F'){
+                HEALTH-=3;
+                mvprintw(0,0,"you were hurt!  -3");
+                refresh();
+                usleep(2000000);
+                mvprintw(0,0,"                           ");
+                refresh();
+            }
+            else if(map[adamak.x-1][adamak.y]=='C'||map[adamak.x][adamak.y-1]=='C'||map[adamak.x][adamak.y]=='C'||map[adamak.x+1][adamak.y]=='C'||map[adamak.x][adamak.y+1]=='C'||map[adamak.x+1][adamak.y+1]=='C'||map[adamak.x-1][adamak.y-1]=='C'||map[adamak.x-1][adamak.y+1]=='C'||map[adamak.x+1][adamak.y-1]=='C'){
+                HEALTH-=5;
+                mvprintw(0,0,"you were hurt!  -5");
+                refresh();
+                usleep(2000000);
+                mvprintw(0,0,"                           ");
+                refresh();
+            }
+            else if(map[adamak.x-1][adamak.y]=='S'||map[adamak.x][adamak.y-1]=='S'||map[adamak.x][adamak.y]=='S'||map[adamak.x+1][adamak.y]=='S'||map[adamak.x][adamak.y+1]=='S'||map[adamak.x+1][adamak.y+1]=='S'||map[adamak.x-1][adamak.y-1]=='S'||map[adamak.x-1][adamak.y+1]=='S'||map[adamak.x+1][adamak.y-1]=='S'){
+                HEALTH-=7;
+                mvprintw(0,0,"you were hurt!  -7");
+                refresh();
+                usleep(2000000);
+                mvprintw(0,0,"                           ");
+                refresh();
+            }
+            else if(map[adamak.x-1][adamak.y]=='U'||map[adamak.x][adamak.y-1]=='U'||map[adamak.x][adamak.y]=='U'||map[adamak.x+1][adamak.y]=='U'||map[adamak.x][adamak.y+1]=='U'||map[adamak.x+1][adamak.y+1]=='U'||map[adamak.x-1][adamak.y-1]=='U'||map[adamak.x-1][adamak.y+1]=='U'||map[adamak.x+1][adamak.y-1]=='U'){
+                HEALTH-=9;
+                mvprintw(0,0,"you were hurt!  -9");
+                refresh();
+                usleep(2000000);
+                mvprintw(0,0,"                           ");
+                refresh();
+            }
             else if(map[adamak.x][adamak.y]=='e'){
                 clear();
                 mvprintw(20,60,"Congratulations, you have completed the game");
@@ -3296,6 +3377,38 @@ int startgame(int v,int tabagheh2){
             else if(map[adamak.x-1][adamak.y]=='D'||map[adamak.x][adamak.y-1]=='D'||map[adamak.x][adamak.y]=='D'||map[adamak.x+1][adamak.y]=='D'||map[adamak.x][adamak.y+1]=='D'||map[adamak.x+1][adamak.y+1]=='D'||map[adamak.x-1][adamak.y-1]=='D'||map[adamak.x-1][adamak.y+1]=='D'||map[adamak.x+1][adamak.y-1]=='D'){
                 HEALTH-=3;
                 mvprintw(0,0,"you were hurt!  -3");
+                refresh();
+                usleep(2000000);
+                mvprintw(0,0,"                           ");
+                refresh();
+            }
+            else if(map[adamak.x-1][adamak.y]=='F'||map[adamak.x][adamak.y-1]=='F'||map[adamak.x][adamak.y]=='F'||map[adamak.x+1][adamak.y]=='F'||map[adamak.x][adamak.y+1]=='F'||map[adamak.x+1][adamak.y+1]=='F'||map[adamak.x-1][adamak.y-1]=='F'||map[adamak.x-1][adamak.y+1]=='F'||map[adamak.x+1][adamak.y-1]=='F'){
+                HEALTH-=3;
+                mvprintw(0,0,"you were hurt!  -3");
+                refresh();
+                usleep(2000000);
+                mvprintw(0,0,"                           ");
+                refresh();
+            }
+            else if(map[adamak.x-1][adamak.y]=='C'||map[adamak.x][adamak.y-1]=='C'||map[adamak.x][adamak.y]=='C'||map[adamak.x+1][adamak.y]=='C'||map[adamak.x][adamak.y+1]=='C'||map[adamak.x+1][adamak.y+1]=='C'||map[adamak.x-1][adamak.y-1]=='C'||map[adamak.x-1][adamak.y+1]=='C'||map[adamak.x+1][adamak.y-1]=='C'){
+                HEALTH-=5;
+                mvprintw(0,0,"you were hurt!  -5");
+                refresh();
+                usleep(2000000);
+                mvprintw(0,0,"                           ");
+                refresh();
+            }
+            else if(map[adamak.x-1][adamak.y]=='S'||map[adamak.x][adamak.y-1]=='S'||map[adamak.x][adamak.y]=='S'||map[adamak.x+1][adamak.y]=='S'||map[adamak.x][adamak.y+1]=='S'||map[adamak.x+1][adamak.y+1]=='S'||map[adamak.x-1][adamak.y-1]=='S'||map[adamak.x-1][adamak.y+1]=='S'||map[adamak.x+1][adamak.y-1]=='S'){
+                HEALTH-=7;
+                mvprintw(0,0,"you were hurt!  -7");
+                refresh();
+                usleep(2000000);
+                mvprintw(0,0,"                           ");
+                refresh();
+            }
+            else if(map[adamak.x-1][adamak.y]=='U'||map[adamak.x][adamak.y-1]=='U'||map[adamak.x][adamak.y]=='U'||map[adamak.x+1][adamak.y]=='U'||map[adamak.x][adamak.y+1]=='U'||map[adamak.x+1][adamak.y+1]=='U'||map[adamak.x-1][adamak.y-1]=='U'||map[adamak.x-1][adamak.y+1]=='U'||map[adamak.x+1][adamak.y-1]=='U'){
+                HEALTH-=9;
+                mvprintw(0,0,"you were hurt!  -9");
                 refresh();
                 usleep(2000000);
                 mvprintw(0,0,"                           ");
@@ -3577,6 +3690,38 @@ int startgame(int v,int tabagheh2){
                 mvprintw(0,0,"                           ");
                 refresh();
             }
+            else if(map[adamak.x-1][adamak.y]=='F'||map[adamak.x][adamak.y-1]=='F'||map[adamak.x][adamak.y]=='F'||map[adamak.x+1][adamak.y]=='F'||map[adamak.x][adamak.y+1]=='F'||map[adamak.x+1][adamak.y+1]=='F'||map[adamak.x-1][adamak.y-1]=='F'||map[adamak.x-1][adamak.y+1]=='F'||map[adamak.x+1][adamak.y-1]=='F'){
+                HEALTH-=3;
+                mvprintw(0,0,"you were hurt!  -3");
+                refresh();
+                usleep(2000000);
+                mvprintw(0,0,"                           ");
+                refresh();
+            }
+            else if(map[adamak.x-1][adamak.y]=='C'||map[adamak.x][adamak.y-1]=='C'||map[adamak.x][adamak.y]=='C'||map[adamak.x+1][adamak.y]=='C'||map[adamak.x][adamak.y+1]=='C'||map[adamak.x+1][adamak.y+1]=='C'||map[adamak.x-1][adamak.y-1]=='C'||map[adamak.x-1][adamak.y+1]=='C'||map[adamak.x+1][adamak.y-1]=='C'){
+                HEALTH-=5;
+                mvprintw(0,0,"you were hurt!  -5");
+                refresh();
+                usleep(2000000);
+                mvprintw(0,0,"                           ");
+                refresh();
+            }
+            else if(map[adamak.x-1][adamak.y]=='S'||map[adamak.x][adamak.y-1]=='S'||map[adamak.x][adamak.y]=='S'||map[adamak.x+1][adamak.y]=='S'||map[adamak.x][adamak.y+1]=='S'||map[adamak.x+1][adamak.y+1]=='S'||map[adamak.x-1][adamak.y-1]=='S'||map[adamak.x-1][adamak.y+1]=='S'||map[adamak.x+1][adamak.y-1]=='S'){
+                HEALTH-=7;
+                mvprintw(0,0,"you were hurt!  -7");
+                refresh();
+                usleep(2000000);
+                mvprintw(0,0,"                           ");
+                refresh();
+            }
+            else if(map[adamak.x-1][adamak.y]=='U'||map[adamak.x][adamak.y-1]=='U'||map[adamak.x][adamak.y]=='U'||map[adamak.x+1][adamak.y]=='U'||map[adamak.x][adamak.y+1]=='U'||map[adamak.x+1][adamak.y+1]=='U'||map[adamak.x-1][adamak.y-1]=='U'||map[adamak.x-1][adamak.y+1]=='U'||map[adamak.x+1][adamak.y-1]=='U'){
+                HEALTH-=9;
+                mvprintw(0,0,"you were hurt!  -9");
+                refresh();
+                usleep(2000000);
+                mvprintw(0,0,"                           ");
+                refresh();
+            }
             else if(map[adamak.x][adamak.y]=='e'){
                 clear();
                 mvprintw(20,60,"Congratulations, you have completed the game");
@@ -3849,6 +3994,38 @@ int startgame(int v,int tabagheh2){
             else if(map[adamak.x-1][adamak.y]=='D'||map[adamak.x][adamak.y-1]=='D'||map[adamak.x][adamak.y]=='D'||map[adamak.x+1][adamak.y]=='D'||map[adamak.x][adamak.y+1]=='D'||map[adamak.x+1][adamak.y+1]=='D'||map[adamak.x-1][adamak.y-1]=='D'||map[adamak.x-1][adamak.y+1]=='D'||map[adamak.x+1][adamak.y-1]=='D'){
                 HEALTH-=3;
                 mvprintw(0,0,"you were hurt!  -3");
+                refresh();
+                usleep(2000000);
+                mvprintw(0,0,"                           ");
+                refresh();
+            }
+            else if(map[adamak.x-1][adamak.y]=='F'||map[adamak.x][adamak.y-1]=='F'||map[adamak.x][adamak.y]=='F'||map[adamak.x+1][adamak.y]=='F'||map[adamak.x][adamak.y+1]=='F'||map[adamak.x+1][adamak.y+1]=='F'||map[adamak.x-1][adamak.y-1]=='F'||map[adamak.x-1][adamak.y+1]=='F'||map[adamak.x+1][adamak.y-1]=='F'){
+                HEALTH-=3;
+                mvprintw(0,0,"you were hurt!  -3");
+                refresh();
+                usleep(2000000);
+                mvprintw(0,0,"                           ");
+                refresh();
+            }
+            else if(map[adamak.x-1][adamak.y]=='C'||map[adamak.x][adamak.y-1]=='C'||map[adamak.x][adamak.y]=='C'||map[adamak.x+1][adamak.y]=='C'||map[adamak.x][adamak.y+1]=='C'||map[adamak.x+1][adamak.y+1]=='C'||map[adamak.x-1][adamak.y-1]=='C'||map[adamak.x-1][adamak.y+1]=='C'||map[adamak.x+1][adamak.y-1]=='C'){
+                HEALTH-=5;
+                mvprintw(0,0,"you were hurt!  -5");
+                refresh();
+                usleep(2000000);
+                mvprintw(0,0,"                           ");
+                refresh();
+            }
+            else if(map[adamak.x-1][adamak.y]=='S'||map[adamak.x][adamak.y-1]=='S'||map[adamak.x][adamak.y]=='S'||map[adamak.x+1][adamak.y]=='S'||map[adamak.x][adamak.y+1]=='S'||map[adamak.x+1][adamak.y+1]=='S'||map[adamak.x-1][adamak.y-1]=='S'||map[adamak.x-1][adamak.y+1]=='S'||map[adamak.x+1][adamak.y-1]=='S'){
+                HEALTH-=7;
+                mvprintw(0,0,"you were hurt!  -7");
+                refresh();
+                usleep(2000000);
+                mvprintw(0,0,"                           ");
+                refresh();
+            }
+            else if(map[adamak.x-1][adamak.y]=='U'||map[adamak.x][adamak.y-1]=='U'||map[adamak.x][adamak.y]=='U'||map[adamak.x+1][adamak.y]=='U'||map[adamak.x][adamak.y+1]=='U'||map[adamak.x+1][adamak.y+1]=='U'||map[adamak.x-1][adamak.y-1]=='U'||map[adamak.x-1][adamak.y+1]=='U'||map[adamak.x+1][adamak.y-1]=='U'){
+                HEALTH-=9;
+                mvprintw(0,0,"you were hurt!  -9");
                 refresh();
                 usleep(2000000);
                 mvprintw(0,0,"                           ");
@@ -4133,6 +4310,38 @@ int startgame(int v,int tabagheh2){
                 mvprintw(0,0,"                           ");
                 refresh();
             }
+            else if(map[adamak.x-1][adamak.y]=='F'||map[adamak.x][adamak.y-1]=='F'||map[adamak.x][adamak.y]=='F'||map[adamak.x+1][adamak.y]=='F'||map[adamak.x][adamak.y+1]=='F'||map[adamak.x+1][adamak.y+1]=='F'||map[adamak.x-1][adamak.y-1]=='F'||map[adamak.x-1][adamak.y+1]=='F'||map[adamak.x+1][adamak.y-1]=='F'){
+                HEALTH-=3;
+                mvprintw(0,0,"you were hurt!  -3");
+                refresh();
+                usleep(2000000);
+                mvprintw(0,0,"                           ");
+                refresh();
+            }
+            else if(map[adamak.x-1][adamak.y]=='C'||map[adamak.x][adamak.y-1]=='C'||map[adamak.x][adamak.y]=='C'||map[adamak.x+1][adamak.y]=='C'||map[adamak.x][adamak.y+1]=='C'||map[adamak.x+1][adamak.y+1]=='C'||map[adamak.x-1][adamak.y-1]=='C'||map[adamak.x-1][adamak.y+1]=='C'||map[adamak.x+1][adamak.y-1]=='C'){
+                HEALTH-=5;
+                mvprintw(0,0,"you were hurt!  -5");
+                refresh();
+                usleep(2000000);
+                mvprintw(0,0,"                           ");
+                refresh();
+            }
+            else if(map[adamak.x-1][adamak.y]=='S'||map[adamak.x][adamak.y-1]=='S'||map[adamak.x][adamak.y]=='S'||map[adamak.x+1][adamak.y]=='S'||map[adamak.x][adamak.y+1]=='S'||map[adamak.x+1][adamak.y+1]=='S'||map[adamak.x-1][adamak.y-1]=='S'||map[adamak.x-1][adamak.y+1]=='S'||map[adamak.x+1][adamak.y-1]=='S'){
+                HEALTH-=7;
+                mvprintw(0,0,"you were hurt!  -7");
+                refresh();
+                usleep(2000000);
+                mvprintw(0,0,"                           ");
+                refresh();
+            }
+            else if(map[adamak.x-1][adamak.y]=='U'||map[adamak.x][adamak.y-1]=='U'||map[adamak.x][adamak.y]=='U'||map[adamak.x+1][adamak.y]=='U'||map[adamak.x][adamak.y+1]=='U'||map[adamak.x+1][adamak.y+1]=='U'||map[adamak.x-1][adamak.y-1]=='U'||map[adamak.x-1][adamak.y+1]=='U'||map[adamak.x+1][adamak.y-1]=='U'){
+                HEALTH-=9;
+                mvprintw(0,0,"you were hurt!  -9");
+                refresh();
+                usleep(2000000);
+                mvprintw(0,0,"                           ");
+                refresh();
+            }
             else if(map[adamak.x][adamak.y]=='e'){
                 clear();
                 mvprintw(20,60,"Congratulations, you have completed the game");
@@ -4412,6 +4621,38 @@ int startgame(int v,int tabagheh2){
                 mvprintw(0,0,"                           ");
                 refresh();
             }
+            else if(map[adamak.x-1][adamak.y]=='F'||map[adamak.x][adamak.y-1]=='F'||map[adamak.x][adamak.y]=='F'||map[adamak.x+1][adamak.y]=='F'||map[adamak.x][adamak.y+1]=='F'||map[adamak.x+1][adamak.y+1]=='F'||map[adamak.x-1][adamak.y-1]=='F'||map[adamak.x-1][adamak.y+1]=='F'||map[adamak.x+1][adamak.y-1]=='F'){
+                HEALTH-=3;
+                mvprintw(0,0,"you were hurt!  -3");
+                refresh();
+                usleep(2000000);
+                mvprintw(0,0,"                           ");
+                refresh();
+            }
+            else if(map[adamak.x-1][adamak.y]=='C'||map[adamak.x][adamak.y-1]=='C'||map[adamak.x][adamak.y]=='C'||map[adamak.x+1][adamak.y]=='C'||map[adamak.x][adamak.y+1]=='C'||map[adamak.x+1][adamak.y+1]=='C'||map[adamak.x-1][adamak.y-1]=='C'||map[adamak.x-1][adamak.y+1]=='C'||map[adamak.x+1][adamak.y-1]=='C'){
+                HEALTH-=5;
+                mvprintw(0,0,"you were hurt!  -5");
+                refresh();
+                usleep(2000000);
+                mvprintw(0,0,"                           ");
+                refresh();
+            }
+            else if(map[adamak.x-1][adamak.y]=='S'||map[adamak.x][adamak.y-1]=='S'||map[adamak.x][adamak.y]=='S'||map[adamak.x+1][adamak.y]=='S'||map[adamak.x][adamak.y+1]=='S'||map[adamak.x+1][adamak.y+1]=='S'||map[adamak.x-1][adamak.y-1]=='S'||map[adamak.x-1][adamak.y+1]=='S'||map[adamak.x+1][adamak.y-1]=='S'){
+                HEALTH-=7;
+                mvprintw(0,0,"you were hurt!  -7");
+                refresh();
+                usleep(2000000);
+                mvprintw(0,0,"                           ");
+                refresh();
+            }
+            else if(map[adamak.x-1][adamak.y]=='U'||map[adamak.x][adamak.y-1]=='U'||map[adamak.x][adamak.y]=='U'||map[adamak.x+1][adamak.y]=='U'||map[adamak.x][adamak.y+1]=='U'||map[adamak.x+1][adamak.y+1]=='U'||map[adamak.x-1][adamak.y-1]=='U'||map[adamak.x-1][adamak.y+1]=='U'||map[adamak.x+1][adamak.y-1]=='U'){
+                HEALTH-=9;
+                mvprintw(0,0,"you were hurt!  -9");
+                refresh();
+                usleep(2000000);
+                mvprintw(0,0,"                           ");
+                refresh();
+            }
             else if(map[adamak.x][adamak.y]=='e'){
                 clear();
                 mvprintw(20,60,"Congratulations, you have completed the game");
@@ -4686,6 +4927,38 @@ int startgame(int v,int tabagheh2){
             else if(map[adamak.x-1][adamak.y]=='D'||map[adamak.x][adamak.y-1]=='D'||map[adamak.x][adamak.y]=='D'||map[adamak.x+1][adamak.y]=='D'||map[adamak.x][adamak.y+1]=='D'||map[adamak.x+1][adamak.y+1]=='D'||map[adamak.x-1][adamak.y-1]=='D'||map[adamak.x-1][adamak.y+1]=='D'||map[adamak.x+1][adamak.y-1]=='D'){
                 HEALTH-=3;
                 mvprintw(0,0,"you were hurt!  -3");
+                refresh();
+                usleep(2000000);
+                mvprintw(0,0,"                           ");
+                refresh();
+            }
+            else if(map[adamak.x-1][adamak.y]=='F'||map[adamak.x][adamak.y-1]=='F'||map[adamak.x][adamak.y]=='F'||map[adamak.x+1][adamak.y]=='F'||map[adamak.x][adamak.y+1]=='F'||map[adamak.x+1][adamak.y+1]=='F'||map[adamak.x-1][adamak.y-1]=='F'||map[adamak.x-1][adamak.y+1]=='F'||map[adamak.x+1][adamak.y-1]=='F'){
+                HEALTH-=3;
+                mvprintw(0,0,"you were hurt!  -3");
+                refresh();
+                usleep(2000000);
+                mvprintw(0,0,"                           ");
+                refresh();
+            }
+            else if(map[adamak.x-1][adamak.y]=='C'||map[adamak.x][adamak.y-1]=='C'||map[adamak.x][adamak.y]=='C'||map[adamak.x+1][adamak.y]=='C'||map[adamak.x][adamak.y+1]=='C'||map[adamak.x+1][adamak.y+1]=='C'||map[adamak.x-1][adamak.y-1]=='C'||map[adamak.x-1][adamak.y+1]=='C'||map[adamak.x+1][adamak.y-1]=='C'){
+                HEALTH-=5;
+                mvprintw(0,0,"you were hurt!  -5");
+                refresh();
+                usleep(2000000);
+                mvprintw(0,0,"                           ");
+                refresh();
+            }
+            else if(map[adamak.x-1][adamak.y]=='S'||map[adamak.x][adamak.y-1]=='S'||map[adamak.x][adamak.y]=='S'||map[adamak.x+1][adamak.y]=='S'||map[adamak.x][adamak.y+1]=='S'||map[adamak.x+1][adamak.y+1]=='S'||map[adamak.x-1][adamak.y-1]=='S'||map[adamak.x-1][adamak.y+1]=='S'||map[adamak.x+1][adamak.y-1]=='S'){
+                HEALTH-=7;
+                mvprintw(0,0,"you were hurt!  -7");
+                refresh();
+                usleep(2000000);
+                mvprintw(0,0,"                           ");
+                refresh();
+            }
+            else if(map[adamak.x-1][adamak.y]=='U'||map[adamak.x][adamak.y-1]=='U'||map[adamak.x][adamak.y]=='U'||map[adamak.x+1][adamak.y]=='U'||map[adamak.x][adamak.y+1]=='U'||map[adamak.x+1][adamak.y+1]=='U'||map[adamak.x-1][adamak.y-1]=='U'||map[adamak.x-1][adamak.y+1]=='U'||map[adamak.x+1][adamak.y-1]=='U'){
+                HEALTH-=9;
+                mvprintw(0,0,"you were hurt!  -9");
                 refresh();
                 usleep(2000000);
                 mvprintw(0,0,"                           ");
