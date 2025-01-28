@@ -37,13 +37,18 @@ char username1234[100];
 int vv=0;
 //سلامت هیولا
 struct JOON{
-    int d=5;
-    int f=10;
-    int g=15;
-    int u=30;
-    int s=20;
+    int d;
+    int f;
+    int g;
+    int u;
+    int s;
 };
 struct JOON joon;
+joon.d=5;
+joon.f=10;
+joon.g=15;
+joon.s=20;
+joon.u=30;
 //اتاق گنج
 struct end_room{
     int X;
@@ -4675,7 +4680,6 @@ int startgame(int v,int tabagheh2){
                 }
             }
             else if(your_weapon==3){
-                if(your_weapon==1){
                 if(tir>=1){
                     char c=getch();
                     if(c=='d'){
@@ -5885,7 +5889,6 @@ int startgame(int v,int tabagheh2){
                 }
 
             }
-
         }
         //برای دیدن لیست غذا و مصرف غذا
         else if(c=='E'){
