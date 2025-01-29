@@ -2693,7 +2693,7 @@ int startgame(int v,int tabagheh2){
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
                                     joon.d=5;
-                                    map[adamak.x][y]=='.';
+                                    map[adamak.x][y]='.';
                                 }
                                 else{
                                     mvprintw(0,0,"deamon's health  %d ",joon.d);
@@ -2715,7 +2715,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[adamak.x][y]=='.';
+                                    map[adamak.x][y]='.';
                                     joon.f=10;
                                 }
                                 else{
@@ -2738,7 +2738,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[adamak.x][y]=='.';
+                                    map[adamak.x][y]='.';
                                     joon.u=30;
                                 }
                                 else{
@@ -2761,7 +2761,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[adamak.x][y]=='.';
+                                    map[adamak.x][y]='.';
                                     joon.g=15;
                                 }
                                 else{
@@ -2784,7 +2784,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[adamak.x][y]=='.';
+                                    map[adamak.x][y]='.';
                                     joon.s=20;
                                 }
                                 else{
@@ -2829,7 +2829,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[adamak.x][y]=='.';
+                                    map[adamak.x][y]='.';
                                     joon.d=5;
                                 }
                                 target=1;
@@ -2846,7 +2846,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[adamak.x][y]=='.';
+                                    map[adamak.x][y]='.';
                                     joon.f=10;
                                 }
                                 else{
@@ -2869,7 +2869,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[adamak.x][y]=='.';
+                                    map[adamak.x][y]='.';
                                     joon.u=30;
                                 }
                                 else{
@@ -2893,7 +2893,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[adamak.x][y]=='.';
+                                    map[adamak.x][y]='.';
                                     joon.g=15;
                                 }
                                 else{
@@ -2917,7 +2917,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[adamak.x][y]=='.';
+                                    map[adamak.x][y]='.';
                                     joon.s=20;
                                 }
                                 else{
@@ -2956,7 +2956,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][adamak.y]=='.';
+                                    map[x][adamak.y]='.';
                                     joon.d=5;
                                 }
                                 else{
@@ -2979,7 +2979,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][adamak.y]=='.';
+                                    map[x][adamak.y]='.';
                                     joon.f=10;
                                 }
                                 else{
@@ -3002,7 +3002,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][adamak.y]=='.';
+                                    map[x][adamak.y]='.';
                                     joon.u=30;
                                 }
                                 else{
@@ -3026,7 +3026,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][adamak.y]=='.';
+                                    map[x][adamak.y]='.';
                                     joon.g=30;
                                 }
                                 else{
@@ -3050,7 +3050,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][adamak.y]=='.';
+                                    map[x][adamak.y]='.';
                                     joon.s=20;
                                 }
                                 else{
@@ -3089,7 +3089,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][adamak.y]=='.';
+                                    map[x][adamak.y]='.';
                                     joon.d=5;
                                 }
                                 else{
@@ -3112,7 +3112,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][adamak.y]=='.';
+                                    map[x][adamak.y]='.';
                                     joon.f=10;
                                 }
                                 else{
@@ -3135,7 +3135,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][adamak.y]=='.';
+                                    map[x][adamak.y]='.';
                                     joon.u=30;
                                 }
                                 else{
@@ -3159,7 +3159,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][adamak.y]=='.';
+                                    map[x][adamak.y]='.';
                                     joon.g=15;
                                 }
                                 else{
@@ -3183,7 +3183,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][adamak.y]=='.';
+                                    map[x][adamak.y]='.';
                                     joon.s=20;
                                 }
                                 else{
@@ -3223,7 +3223,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.d=5;
                                 }
                                 else{
@@ -3246,7 +3246,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.f=10;
                                 }
                                 else{
@@ -3269,7 +3269,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.u=30;
                                 }
                                 else{
@@ -3293,7 +3293,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.g=15;
                                 }
                                 else{
@@ -3317,7 +3317,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.s=20;
                                 }
                                 else{
@@ -3358,7 +3358,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.d=5;
                                 }
                                 else{
@@ -3381,7 +3381,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.f=10;
                                 }
                                 else{
@@ -3404,7 +3404,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.u=30;
                                 }
                                 else{
@@ -3428,7 +3428,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.g=15;
                                 }
                                 else{
@@ -3452,7 +3452,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.s=20;
                                 }
                                 else{
@@ -3494,7 +3494,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.d=5;
                                 }
                                 else{
@@ -3517,7 +3517,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.f=10;
                                 }
                                 else{
@@ -3540,7 +3540,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.u=30;
                                 }
                                 else{
@@ -3564,7 +3564,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.g=15;
                                 }
                                 else{
@@ -3588,7 +3588,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.s=20;
                                 }
                                 else{
@@ -3630,7 +3630,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.d=5;
                                 }
                                 else{
@@ -3653,7 +3653,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.f=10;
                                 }
                                 else{
@@ -3676,7 +3676,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.u=30;
                                 }
                                 else{
@@ -3700,7 +3700,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.g=15;
                                 }
                                 else{
@@ -3724,7 +3724,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.s=20;
                                 }
                                 else{
@@ -3778,7 +3778,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[adamak.x][y]=='.';
+                                    map[adamak.x][y]='.';
                                     joon.d=5;
 
                                 }
@@ -3802,7 +3802,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[adamak.x][y]=='.';
+                                    map[adamak.x][y]='.';
                                     joon.f=10;
                                 }
                                 else{
@@ -3825,7 +3825,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[adamak.x][y]=='.';
+                                    map[adamak.x][y]='.';
                                     joon.u=30;
                                 }
                                 else{
@@ -3849,7 +3849,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[adamak.x][y]=='.';
+                                    map[adamak.x][y]='.';
                                     joon.g=15;
                                 }
                                 else{
@@ -3872,7 +3872,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[adamak.x][y]=='.';
+                                    map[adamak.x][y]='.';
                                     joon.s=20;
                                 }
                                 else{
@@ -3911,7 +3911,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[adamak.x][y]=='.';
+                                    map[adamak.x][y]='.';
                                     joon.d=5;
                                 }
                                 else{
@@ -3934,7 +3934,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[adamak.x][y]=='.';
+                                    map[adamak.x][y]='.';
                                     joon.f=10;
                                 }
                                 else{
@@ -3958,7 +3958,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[adamak.x][y]=='.';
+                                    map[adamak.x][y]='.';
                                     joon.u=30;
                                 }
                                 else{
@@ -3982,7 +3982,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[adamak.x][y]=='.';
+                                    map[adamak.x][y]='.';
                                     joon.g=15;
                                 }
                                 else{
@@ -4006,7 +4006,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[adamak.x][y]=='.';
+                                    map[adamak.x][y]='.';
                                     joon.s=20;
                                 }
                                 else{
@@ -4045,7 +4045,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][adamak.y]=='.';
+                                    map[x][adamak.y]='.';
                                     joon.d=5;
                                 }
                                 else{
@@ -4068,7 +4068,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][adamak.y]=='.';
+                                    map[x][adamak.y]='.';
                                     joon.f=10;
                                 }
                                 else{
@@ -4091,7 +4091,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][adamak.y]=='.';
+                                    map[x][adamak.y]='.';
                                     joon.u=30;
                                 }
                                 else{
@@ -4116,7 +4116,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][adamak.y]=='.';
+                                    map[x][adamak.y]='.';
                                     joon.g=15;
                                 }
                                 else{
@@ -4140,7 +4140,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][adamak.y]=='.';
+                                    map[x][adamak.y]='.';
                                     joon.s=20;
                                 }
                                 else{
@@ -4179,7 +4179,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][adamak.y]=='.';
+                                    map[x][adamak.y]='.';
                                     joon.d=5;
                                 }
                                 else{
@@ -4202,7 +4202,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][adamak.y]=='.';
+                                    map[x][adamak.y]='.';
                                     joon.f=10;
                                 }
                                 else{
@@ -4225,7 +4225,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][adamak.y]=='.';
+                                    map[x][adamak.y]='.';
                                     joon.u=30;
                                 }
                                 else{
@@ -4250,7 +4250,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][adamak.y]=='.';
+                                    map[x][adamak.y]='.';
                                     joon.g=15;
                                 }
                                 else{
@@ -4274,7 +4274,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][adamak.y]=='.';
+                                    map[x][adamak.y]='.';
                                     joon.s=20;
                                 }
                                 else{
@@ -4314,7 +4314,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.d=5;
                                 }
                                 else{
@@ -4337,7 +4337,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.f=10;
                                 }
                                 else{
@@ -4360,7 +4360,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.u=30;
                                 }
                                 else{
@@ -4384,7 +4384,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.g=15;
                                 }
                                 else{
@@ -4408,7 +4408,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.s=20;
                                 }
                                 else{
@@ -4449,7 +4449,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.d=5;
                                 }
                                 else{
@@ -4472,7 +4472,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.f=10;
                                 }
                                 else{
@@ -4495,7 +4495,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.u=30;
                                 }
                                 else{
@@ -4519,7 +4519,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.g=15;
                                 }
                                 else{
@@ -4544,7 +4544,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.s=20;
                                 }
                                 else{
@@ -4587,7 +4587,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.d=5;
                                 }
                                 else{
@@ -4610,7 +4610,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.f=10;
                                 }
                                 else{
@@ -4633,7 +4633,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.u=30;
                                 }
                                 else{
@@ -4657,7 +4657,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.g=15;
                                 }
                                 else{
@@ -4681,7 +4681,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.s=20;
                                 }
                                 else{
@@ -4723,7 +4723,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.d=5;
                                 }
                                 else{
@@ -4746,7 +4746,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.f=10;
                                 }
                                 else{
@@ -4769,7 +4769,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.u=30;
                                 }
                                 else{
@@ -4793,7 +4793,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.g=15;
                                 }
                                 else{
@@ -4816,7 +4816,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.s=20;
                                 }
                                 else{
@@ -4869,7 +4869,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[adamak.x][y]=='.';
+                                    map[adamak.x][y]='.';
                                     joon.d=5;
                                 }
                                 else{
@@ -4892,7 +4892,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[adamak.x][y]=='.';
+                                    map[adamak.x][y]='.';
                                     joon.f=10;
                                 }
                                 else{
@@ -4915,7 +4915,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[adamak.x][y]=='.';
+                                    map[adamak.x][y]='.';
                                     joon.u=30;
                                 }
                                 else{
@@ -4939,7 +4939,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[adamak.x][y]=='.';
+                                    map[adamak.x][y]='.';
                                     joon.g=15;
                                 }
                                 else{
@@ -4962,7 +4962,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[adamak.x][y]=='.';
+                                    map[adamak.x][y]='.';
                                     joon.s=20;
                                 }
                                 else{
@@ -5001,7 +5001,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[adamak.x][y]=='.';
+                                    map[adamak.x][y]='.';
                                     joon.d=5;
                                 }
                                 else{
@@ -5024,7 +5024,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[adamak.x][y]=='.';
+                                    map[adamak.x][y]='.';
                                     joon.f=10;
                                 }
                                 else{
@@ -5047,7 +5047,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[adamak.x][y]=='.';
+                                    map[adamak.x][y]='.';
                                     joon.u=30;
                                 }
                                 else{
@@ -5071,7 +5071,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[adamak.x][y]=='.';
+                                    map[adamak.x][y]='.';
                                     joon.g=15;
                                 }
                                 else{
@@ -5095,7 +5095,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[adamak.x][y]=='.';
+                                    map[adamak.x][y]='.';
                                     joon.s=20;
                                 }
                                 else{
@@ -5134,7 +5134,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][adamak.y]=='.';
+                                    map[x][adamak.y]='.';
                                     joon.d=5;
                                 }
                                 else{
@@ -5157,7 +5157,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][adamak.y]=='.';
+                                    map[x][adamak.y]='.';
                                     joon.f=10;
                                 }
                                 else{
@@ -5180,7 +5180,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][adamak.y]=='.';
+                                    map[x][adamak.y]='.';
                                     joon.u=30;
                                 }
                                 else{
@@ -5204,7 +5204,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][adamak.y]=='.';
+                                    map[x][adamak.y]='.';
                                     joon.g=15;
                                 }
                                 else{
@@ -5228,7 +5228,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][adamak.y]=='.';
+                                    map[x][adamak.y]='.';
                                     joon.s=20;
                                 }
                                 else{
@@ -5267,7 +5267,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][adamak.y]=='.';
+                                    map[x][adamak.y]='.';
                                     joon.d=5;
                                 }
                                 else{
@@ -5290,7 +5290,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][adamak.y]=='.';
+                                    map[x][adamak.y]='.';
                                     joon.f=10;
                                 }
                                 else{
@@ -5313,7 +5313,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][adamak.y]=='.';
+                                    map[x][adamak.y]='.';
                                     joon.u=30;
                                 }
                                 else{
@@ -5337,7 +5337,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][adamak.y]=='.';
+                                    map[x][adamak.y]='.';
                                     joon.g=15;
                                 }
                                 else{
@@ -5361,7 +5361,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][adamak.y]=='.';
+                                    map[x][adamak.y]='.';
                                     joon.s=20;
                                 }
                                 else{
@@ -5401,7 +5401,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.d=5;
                                 }
                                 else{
@@ -5424,7 +5424,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.f=10;
                                 }
                                 else{
@@ -5447,7 +5447,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.u=30;
                                 }
                                 else{
@@ -5471,7 +5471,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.g=15;
                                 }
                                 else{
@@ -5495,7 +5495,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.s=20;
                                 }
                                 else{
@@ -5536,7 +5536,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.d=5;
                                 }
                                 else{
@@ -5559,7 +5559,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.f=10;
                                 }
                                 else{
@@ -5582,7 +5582,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.u=30;
                                 }
                                 else{
@@ -5606,7 +5606,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.g=15;
                                 }
                                 else{
@@ -5630,7 +5630,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.s=20;
                                 }
                                 else{
@@ -5672,7 +5672,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.d=5;
                                 }
                                 else{
@@ -5695,7 +5695,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.f=10;
                                 }
                                 else{
@@ -5718,7 +5718,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.u=30;
                                 }
                                 else{
@@ -5742,7 +5742,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.g=15;
                                 }
                                 else{
@@ -5766,7 +5766,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.s=20;
                                 }
                                 else{
@@ -5808,7 +5808,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.d=5;
                                 }
                                 else{
@@ -5831,7 +5831,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.f=10;
                                 }
                                 else{
@@ -5854,7 +5854,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.u=30;
                                 }
                                 else{
@@ -5878,7 +5878,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.g=15;
                                 }
                                 else{
@@ -5902,7 +5902,7 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
-                                    map[x][y]=='.';
+                                    map[x][y]='.';
                                     joon.s=20;
                                 }
                                 else{
@@ -5948,31 +5948,31 @@ int startgame(int v,int tabagheh2){
                         mvprintw(0,0,"                                  ");
                         joon.d=5;
                         if(map[adamak.x][adamak.y]=='D'){
-                            map[adamak.x][adamak.y]=='.';
+                            map[adamak.x][adamak.y]='.';
                         }
                         else if(map[adamak.x+1][adamak.y]=='D'){
-                            map[adamak.x+1][adamak.y]=='.';
+                            map[adamak.x+1][adamak.y]='.';
                         }
                         else if(map[adamak.x+1][adamak.y+1]=='D'){
-                            map[adamak.x+1][adamak.y+1]=='.';
+                            map[adamak.x+1][adamak.y+1]='.';
                         }
                         else if(map[adamak.x][adamak.y+1]=='D'){
-                            map[adamak.x][adamak.y+1]=='.';
+                            map[adamak.x][adamak.y+1]='.';
                         }
                         else if(map[adamak.x][adamak.y-1]=='D'){
-                            map[adamak.x][adamak.y-1]=='.';
+                            map[adamak.x][adamak.y-1]='.';
                         }
                         else if(map[adamak.x-1][adamak.y-1]=='D'){
-                            map[adamak.x-1][adamak.y-1]=='.';
+                            map[adamak.x-1][adamak.y-1]='.';
                         }
                         else if(map[adamak.x-1][adamak.y]=='D'){
-                            map[adamak.x-1][adamak.y]=='.';
+                            map[adamak.x-1][adamak.y]='.';
                         }
                         else if(map[adamak.x+1][adamak.y-1]=='D'){
-                            map[adamak.x+1][adamak.y-1]=='.';
+                            map[adamak.x+1][adamak.y-1]='.';
                         }
                         else if(map[adamak.x-1][adamak.y+1]=='D'){
-                            map[adamak.x-1][adamak.y+1]=='.';
+                            map[adamak.x-1][adamak.y+1]='.';
                         }
                     }
                     else{
@@ -5995,31 +5995,31 @@ int startgame(int v,int tabagheh2){
                         mvprintw(0,0,"                                  ");
                         joon.f=10;
                         if(map[adamak.x][adamak.y]=='F'){
-                            map[adamak.x][adamak.y]=='.';
+                            map[adamak.x][adamak.y]='.';
                         }
                         else if(map[adamak.x+1][adamak.y]=='F'){
-                            map[adamak.x+1][adamak.y]=='.';
+                            map[adamak.x+1][adamak.y]='.';
                         }
                         else if(map[adamak.x+1][adamak.y+1]=='F'){
-                            map[adamak.x+1][adamak.y+1]=='.';
+                            map[adamak.x+1][adamak.y+1]='.';
                         }
                         else if(map[adamak.x][adamak.y+1]=='F'){
-                            map[adamak.x][adamak.y+1]=='.';
+                            map[adamak.x][adamak.y+1]='.';
                         }
                         else if(map[adamak.x][adamak.y-1]=='F'){
-                            map[adamak.x][adamak.y-1]=='.';
+                            map[adamak.x][adamak.y-1]='.';
                         }
                         else if(map[adamak.x-1][adamak.y-1]=='F'){
-                            map[adamak.x-1][adamak.y-1]=='.';
+                            map[adamak.x-1][adamak.y-1]='.';
                         }
                         else if(map[adamak.x-1][adamak.y]=='F'){
-                            map[adamak.x-1][adamak.y]=='.';
+                            map[adamak.x-1][adamak.y]='.';
                         }
                         else if(map[adamak.x+1][adamak.y-1]=='F'){
-                            map[adamak.x+1][adamak.y-1]=='.';
+                            map[adamak.x+1][adamak.y-1]='.';
                         }
                         else if(map[adamak.x-1][adamak.y+1]=='F'){
-                            map[adamak.x-1][adamak.y+1]=='.';
+                            map[adamak.x-1][adamak.y+1]='.';
                         }
                     }
                     else{
@@ -6042,31 +6042,31 @@ int startgame(int v,int tabagheh2){
                         mvprintw(0,0,"                                  ");
                         joon.g=15;
                         if(map[adamak.x][adamak.y]=='C'){
-                            map[adamak.x][adamak.y]=='.';
+                            map[adamak.x][adamak.y]='.';
                         }
                         else if(map[adamak.x+1][adamak.y]=='C'){
-                            map[adamak.x+1][adamak.y]=='.';
+                            map[adamak.x+1][adamak.y]='.';
                         }
                         else if(map[adamak.x+1][adamak.y+1]=='C'){
-                            map[adamak.x+1][adamak.y+1]=='.';
+                            map[adamak.x+1][adamak.y+1]='.';
                         }
                         else if(map[adamak.x][adamak.y+1]=='C'){
-                            map[adamak.x][adamak.y+1]=='.';
+                            map[adamak.x][adamak.y+1]='.';
                         }
-                        else if(map[adamak.x][adamak.y-1]=='C'){
-                            map[adamak.x][adamak.y-1]=='.';
+                        else if(map[adamak.x][adamak.y1]=='C'){
+                            map[adamak.x][adamak.y-1]='.';
                         }
                         else if(map[adamak.x-1][adamak.y-1]=='C'){
-                            map[adamak.x-1][adamak.y-1]=='.';
+                            map[adamak.x-1][adamak.y-1]='.';
                         }
                         else if(map[adamak.x-1][adamak.y]=='C'){
-                            map[adamak.x-1][adamak.y]=='.';
+                            map[adamak.x-1][adamak.y]='.';
                         }
                         else if(map[adamak.x+1][adamak.y-1]=='C'){
-                            map[adamak.x+1][adamak.y-1]=='.';
+                            map[adamak.x+1][adamak.y-1]='.';
                         }
                         else if(map[adamak.x-1][adamak.y+1]=='C'){
-                            map[adamak.x-1][adamak.y+1]=='.';
+                            map[adamak.x-1][adamak.y+1]='.';
                         }
                     }
                     else{
@@ -6089,31 +6089,31 @@ int startgame(int v,int tabagheh2){
                         mvprintw(0,0,"                                  ");
                         joon.s=20;
                         if(map[adamak.x][adamak.y]=='S'){
-                            map[adamak.x][adamak.y]=='.';
+                            map[adamak.x][adamak.y]='.';
                         }
                         else if(map[adamak.x+1][adamak.y]=='S'){
-                            map[adamak.x+1][adamak.y]=='.';
+                            map[adamak.x+1][adamak.y]='.';
                         }
                         else if(map[adamak.x+1][adamak.y+1]=='S'){
-                            map[adamak.x+1][adamak.y+1]=='.';
+                            map[adamak.x+1][adamak.y+1]='.';
                         }
                         else if(map[adamak.x][adamak.y+1]=='S'){
-                            map[adamak.x][adamak.y+1]=='.';
+                            map[adamak.x][adamak.y+1]='.';
                         }
                         else if(map[adamak.x][adamak.y-1]=='S'){
-                            map[adamak.x][adamak.y-1]=='.';
+                            map[adamak.x][adamak.y-1]='.';
                         }
                         else if(map[adamak.x-1][adamak.y-1]=='S'){
-                            map[adamak.x-1][adamak.y-1]=='.';
+                            map[adamak.x-1][adamak.y-1]='.';
                         }
                         else if(map[adamak.x-1][adamak.y]=='S'){
-                            map[adamak.x-1][adamak.y]=='.';
+                            map[adamak.x-1][adamak.y]='.';
                         }
                         else if(map[adamak.x+1][adamak.y-1]=='S'){
-                            map[adamak.x+1][adamak.y-1]=='.';
+                            map[adamak.x+1][adamak.y-1]='.';
                         }
                         else if(map[adamak.x-1][adamak.y+1]=='S'){
-                            map[adamak.x-1][adamak.y+1]=='.';
+                            map[adamak.x-1][adamak.y+1]='.';
                         }
                     }
                     else{
@@ -6136,31 +6136,31 @@ int startgame(int v,int tabagheh2){
                         mvprintw(0,0,"                                  ");
                         joon.u=30;
                         if(map[adamak.x][adamak.y]=='U'){
-                            map[adamak.x][adamak.y]=='.';
+                            map[adamak.x][adamak.y]='.';
                         }
                         else if(map[adamak.x+1][adamak.y]=='U'){
-                            map[adamak.x+1][adamak.y]=='.';
+                            map[adamak.x+1][adamak.y]='.';
                         }
                         else if(map[adamak.x+1][adamak.y+1]=='U'){
-                            map[adamak.x+1][adamak.y+1]=='.';
+                            map[adamak.x+1][adamak.y+1]='.';
                         }
                         else if(map[adamak.x][adamak.y+1]=='U'){
-                            map[adamak.x][adamak.y+1]=='.';
+                            map[adamak.x][adamak.y+1]='.';
                         }
                         else if(map[adamak.x][adamak.y-1]=='U'){
-                            map[adamak.x][adamak.y-1]=='.';
+                            map[adamak.x][adamak.y-1]='.';
                         }
                         else if(map[adamak.x-1][adamak.y-1]=='U'){
-                            map[adamak.x-1][adamak.y-1]=='.';
+                            map[adamak.x-1][adamak.y-1]='.';
                         }
                         else if(map[adamak.x-1][adamak.y]=='U'){
-                            map[adamak.x-1][adamak.y]=='.';
+                            map[adamak.x-1][adamak.y]='.';
                         }
                         else if(map[adamak.x+1][adamak.y-1]=='U'){
-                            map[adamak.x+1][adamak.y-1]=='.';
+                            map[adamak.x+1][adamak.y-1]='.';
                         }
                         else if(map[adamak.x-1][adamak.y+1]=='U'){
-                            map[adamak.x-1][adamak.y+1]=='.';
+                            map[adamak.x-1][adamak.y+1]='.';
                         }
                     }
                     else{
@@ -6186,31 +6186,31 @@ int startgame(int v,int tabagheh2){
                         mvprintw(0,0,"                                  ");
                         joon.d=5;
                         if(map[adamak.x][adamak.y]=='D'){
-                            map[adamak.x][adamak.y]=='.';
+                            map[adamak.x][adamak.y]='.';
                         }
                         else if(map[adamak.x+1][adamak.y]=='D'){
-                            map[adamak.x+1][adamak.y]=='.';
+                            map[adamak.x+1][adamak.y]='.';
                         }
                         else if(map[adamak.x+1][adamak.y+1]=='D'){
-                            map[adamak.x+1][adamak.y+1]=='.';
+                            map[adamak.x+1][adamak.y+1]='.';
                         }
                         else if(map[adamak.x][adamak.y+1]=='D'){
-                            map[adamak.x][adamak.y+1]=='.';
+                            map[adamak.x][adamak.y+1]='.';
                         }
                         else if(map[adamak.x][adamak.y-1]=='D'){
-                            map[adamak.x][adamak.y-1]=='.';
+                            map[adamak.x][adamak.y-1]='.';
                         }
                         else if(map[adamak.x-1][adamak.y-1]=='D'){
-                            map[adamak.x-1][adamak.y-1]=='.';
+                            map[adamak.x-1][adamak.y-1]='.';
                         }
                         else if(map[adamak.x-1][adamak.y]=='D'){
-                            map[adamak.x-1][adamak.y]=='.';
+                            map[adamak.x-1][adamak.y]='.';
                         }
                         else if(map[adamak.x+1][adamak.y-1]=='D'){
-                            map[adamak.x+1][adamak.y-1]=='.';
+                            map[adamak.x+1][adamak.y-1]='.';
                         }
                         else if(map[adamak.x-1][adamak.y+1]=='D'){
-                            map[adamak.x-1][adamak.y+1]=='.';
+                            map[adamak.x-1][adamak.y+1]='.';
                         }
                     }
                     else{
@@ -6233,31 +6233,31 @@ int startgame(int v,int tabagheh2){
                         mvprintw(0,0,"                                  ");
                         joon.f=10;
                         if(map[adamak.x][adamak.y]=='F'){
-                            map[adamak.x][adamak.y]=='.';
+                            map[adamak.x][adamak.y]='.';
                         }
                         else if(map[adamak.x+1][adamak.y]=='F'){
-                            map[adamak.x+1][adamak.y]=='.';
+                            map[adamak.x+1][adamak.y]='.';
                         }
                         else if(map[adamak.x+1][adamak.y+1]=='F'){
-                            map[adamak.x+1][adamak.y+1]=='.';
+                            map[adamak.x+1][adamak.y+1]='.';
                         }
                         else if(map[adamak.x][adamak.y+1]=='F'){
-                            map[adamak.x][adamak.y+1]=='.';
+                            map[adamak.x][adamak.y+1]='.';
                         }
                         else if(map[adamak.x][adamak.y-1]=='F'){
-                            map[adamak.x][adamak.y-1]=='.';
+                            map[adamak.x][adamak.y-1]='.';
                         }
                         else if(map[adamak.x-1][adamak.y-1]=='F'){
-                            map[adamak.x-1][adamak.y-1]=='.';
+                            map[adamak.x-1][adamak.y-1]='.';
                         }
                         else if(map[adamak.x-1][adamak.y]=='F'){
-                            map[adamak.x-1][adamak.y]=='.';
+                            map[adamak.x-1][adamak.y]='.';
                         }
                         else if(map[adamak.x+1][adamak.y-1]=='F'){
-                            map[adamak.x+1][adamak.y-1]=='.';
+                            map[adamak.x+1][adamak.y-1]='.';
                         }
                         else if(map[adamak.x-1][adamak.y+1]=='F'){
-                            map[adamak.x-1][adamak.y+1]=='.';
+                            map[adamak.x-1][adamak.y+1]='.';
                         }
                     }
                     else{
@@ -6280,31 +6280,31 @@ int startgame(int v,int tabagheh2){
                         mvprintw(0,0,"                                  ");
                         joon.g=15;
                         if(map[adamak.x][adamak.y]=='C'){
-                            map[adamak.x][adamak.y]=='.';
+                            map[adamak.x][adamak.y]='.';
                         }
                         else if(map[adamak.x+1][adamak.y]=='C'){
-                            map[adamak.x+1][adamak.y]=='.';
+                            map[adamak.x+1][adamak.y]='.';
                         }
                         else if(map[adamak.x+1][adamak.y+1]=='C'){
-                            map[adamak.x+1][adamak.y+1]=='.';
+                            map[adamak.x+1][adamak.y+1]='.';
                         }
                         else if(map[adamak.x][adamak.y+1]=='C'){
-                            map[adamak.x][adamak.y+1]=='.';
+                            map[adamak.x][adamak.y+1]='.';
                         }
                         else if(map[adamak.x][adamak.y-1]=='C'){
-                            map[adamak.x][adamak.y-1]=='.';
+                            map[adamak.x][adamak.y-1]='.';
                         }
                         else if(map[adamak.x-1][adamak.y-1]=='C'){
-                            map[adamak.x-1][adamak.y-1]=='.';
+                            map[adamak.x-1][adamak.y-1]='.';
                         }
                         else if(map[adamak.x-1][adamak.y]=='C'){
-                            map[adamak.x-1][adamak.y]=='.';
+                            map[adamak.x-1][adamak.y]='.';
                         }
                         else if(map[adamak.x+1][adamak.y-1]=='C'){
-                            map[adamak.x+1][adamak.y-1]=='.';
+                            map[adamak.x+1][adamak.y-1]='.';
                         }
                         else if(map[adamak.x-1][adamak.y+1]=='C'){
-                            map[adamak.x-1][adamak.y+1]=='.';
+                            map[adamak.x-1][adamak.y+1]='.';
                         }
                     }
                     else{
@@ -6327,31 +6327,31 @@ int startgame(int v,int tabagheh2){
                         mvprintw(0,0,"                                  ");
                         joon.s=20;
                         if(map[adamak.x][adamak.y]=='S'){
-                            map[adamak.x][adamak.y]=='.';
+                            map[adamak.x][adamak.y]='.';
                         }
                         else if(map[adamak.x+1][adamak.y]=='S'){
-                            map[adamak.x+1][adamak.y]=='.';
+                            map[adamak.x+1][adamak.y]='.';
                         }
                         else if(map[adamak.x+1][adamak.y+1]=='S'){
-                            map[adamak.x+1][adamak.y+1]=='.';
+                            map[adamak.x+1][adamak.y+1]='.';
                         }
                         else if(map[adamak.x][adamak.y+1]=='S'){
-                            map[adamak.x][adamak.y+1]=='.';
+                            map[adamak.x][adamak.y+1]='.';
                         }
                         else if(map[adamak.x][adamak.y-1]=='S'){
-                            map[adamak.x][adamak.y-1]=='.';
+                            map[adamak.x][adamak.y-1]='.';
                         }
                         else if(map[adamak.x-1][adamak.y-1]=='S'){
-                            map[adamak.x-1][adamak.y-1]=='.';
+                            map[adamak.x-1][adamak.y-1]='.';
                         }
                         else if(map[adamak.x-1][adamak.y]=='S'){
-                            map[adamak.x-1][adamak.y]=='.';
+                            map[adamak.x-1][adamak.y]='.';
                         }
                         else if(map[adamak.x+1][adamak.y-1]=='S'){
-                            map[adamak.x+1][adamak.y-1]=='.';
+                            map[adamak.x+1][adamak.y-1]='.';
                         }
                         else if(map[adamak.x-1][adamak.y+1]=='S'){
-                            map[adamak.x-1][adamak.y+1]=='.';
+                            map[adamak.x-1][adamak.y+1]='.';
                         }
                     }
                     else{
@@ -6374,31 +6374,31 @@ int startgame(int v,int tabagheh2){
                         mvprintw(0,0,"                                  ");
                         joon.u=30;
                         if(map[adamak.x][adamak.y]=='U'){
-                            map[adamak.x][adamak.y]=='.';
+                            map[adamak.x][adamak.y]='.';
                         }
                         else if(map[adamak.x+1][adamak.y]=='U'){
-                            map[adamak.x+1][adamak.y]=='.';
+                            map[adamak.x+1][adamak.y]='.';
                         }
                         else if(map[adamak.x+1][adamak.y+1]=='U'){
-                            map[adamak.x+1][adamak.y+1]=='.';
+                            map[adamak.x+1][adamak.y+1]='.';
                         }
                         else if(map[adamak.x][adamak.y+1]=='U'){
-                            map[adamak.x][adamak.y+1]=='.';
+                            map[adamak.x][adamak.y+1]='.';
                         }
                         else if(map[adamak.x][adamak.y-1]=='U'){
-                            map[adamak.x][adamak.y-1]=='.';
+                            map[adamak.x][adamak.y-1]='.';
                         }
                         else if(map[adamak.x-1][adamak.y-1]=='U'){
-                            map[adamak.x-1][adamak.y-1]=='.';
+                            map[adamak.x-1][adamak.y-1]='.';
                         }
                         else if(map[adamak.x-1][adamak.y]=='U'){
-                            map[adamak.x-1][adamak.y]=='.';
+                            map[adamak.x-1][adamak.y]='.';
                         }
                         else if(map[adamak.x+1][adamak.y-1]=='U'){
-                            map[adamak.x+1][adamak.y-1]=='.';
+                            map[adamak.x+1][adamak.y-1]='.';
                         }
                         else if(map[adamak.x-1][adamak.y+1]=='U'){
-                            map[adamak.x-1][adamak.y+1]=='.';
+                            map[adamak.x-1][adamak.y+1]='.';
                         }
                     }
                     else{
