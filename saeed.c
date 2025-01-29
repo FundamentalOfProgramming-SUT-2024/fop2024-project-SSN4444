@@ -27,7 +27,9 @@ int your_weapon=1000;
 int increase=2;
 int count_increase=0;
 //سرعت 
-int count_speed=0;
+int count_speed=1;
+int count_speed2=0;
+int count_damage=0;
 //میزان کاهش جان(درجه سختی بازی)
 int decrease=5;
 //انتخاب شخصیت بازی
@@ -481,7 +483,7 @@ void gunandspellmenu(){
                 usleep(2000000);
             }
             else{
-                count_speed=1;
+                count_speed=2;
                 T_speed--;
                 clear();
                 mvprintw(20,70,"the power of the spell was activated");
@@ -1460,6 +1462,16 @@ int startgame(int v,int tabagheh2){
                 increase=2;
             }
         }
+        //speed
+        if(count_speed!=1){
+            count_speed2++;
+            if(count_speed2==11){
+                count_speed=1;
+                count_speed2=0;
+            }
+        }
+        //damage
+
         //پایان بازی دز صوزت حان زیر۰  
         if(HEALTH<=0){
             clear();
@@ -6516,126 +6528,126 @@ int startgame(int v,int tabagheh2){
             char c2=getch();
             if(c2=='w'){
                 while(!(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0)){
-                    adamak.x--;   
+                    adamak.x-=count_speed;   
                 }
-                adamak.x++; 
+                adamak.x+=count_speed; 
             }
             else if(c2=='x'){
                 while(!(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0)){
-                    adamak.x++;   
+                    adamak.x+=count_speed;   
                 }
-                adamak.x--;
+                adamak.x-=count_speed;
             }
             else if(c2=='a'){
                 while(!(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0)){
-                    adamak.y--;   
+                    adamak.y-=count_speed;   
                 }
-                adamak.y++; 
+                adamak.y+=count_speed; 
             }
             else if(c2=='d'){
                 while(!(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0)){
-                    adamak.y++;   
+                    adamak.y+=count_speed;   
                 }
-                adamak.y--;
+                adamak.y-=count_speed;
             }
             else if(c2=='q'){
                 while(!(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0)){
-                    adamak.y--;
-                    adamak.x--;   
+                    adamak.y-=count_speed;
+                    adamak.x-=count_speed;   
                 }
-                adamak.y++;
-                adamak.x++; 
+                adamak.y+=count_speed;
+                adamak.x+=count_speed; 
             }
             else if(c2=='e'){
                 while(!(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0)){
-                    adamak.y++;
-                    adamak.x--;   
+                    adamak.y+=count_speed;
+                    adamak.x-=count_speed;   
                 }
-                adamak.y--;
-                adamak.x++;
+                adamak.y-=count_speed;
+                adamak.x+=count_speed;
             }
             else if(c2=='z'){
                 while(!(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0)){
-                    adamak.y--;
-                    adamak.x++;   
+                    adamak.y-=count_speed;
+                    adamak.x+=count_speed;   
                 }
-                adamak.y++;
-                adamak.x--;
+                adamak.y+=count_speed;
+                adamak.x-=count_speed;
             }
              else if(c2=='c'){
                 while(!(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0)){
-                    adamak.y++;
-                    adamak.x++;   
+                    adamak.y+=count_speed;
+                    adamak.x+=count_speed;   
                 }
-                adamak.y++;
-                adamak.x--;
+                adamak.y+=count_speed;
+                adamak.x-=count_speed;
             }
         }
         else if(c=='g'){
             char c2=getch();
             if(c2=='w'){
                 while(map[adamak.x][adamak.y]=='.'||map[adamak.x][adamak.y]=='#'||map[adamak.x][adamak.y]=='+'){
-                    adamak.x--;   
+                    adamak.x-=count_speed;   
                 }
-                adamak.x++; 
+                adamak.x+=count_speed; 
             }
             else if(c2=='x'){
                 while(map[adamak.x][adamak.y]=='.'||map[adamak.x][adamak.y]=='#'||map[adamak.x][adamak.y]=='+'){
-                    adamak.x++;   
+                    adamak.x+=count_speed;   
                 }
-                adamak.x--;
+                adamak.x-=count_speed;
             }
             else if(c2=='a'){
                 while(map[adamak.x][adamak.y]=='.'||map[adamak.x][adamak.y]=='#'||map[adamak.x][adamak.y]=='+'){
-                    adamak.y--;   
+                    adamak.y-=count_speed;   
                 }
-                adamak.y++; 
+                adamak.y+=count_speed; 
             }
             else if(c2=='d'){
                 while(map[adamak.x][adamak.y]=='.'||map[adamak.x][adamak.y]=='#'||map[adamak.x][adamak.y]=='+'){
-                    adamak.y++;   
+                    adamak.y+=count_speed;   
                 }
-                adamak.y--;
+                adamak.y-=count_speed;
             }
             else if(c2=='q'){
                 while(map[adamak.x][adamak.y]=='.'||map[adamak.x][adamak.y]=='#'||map[adamak.x][adamak.y]=='+'){
-                    adamak.y--;
-                    adamak.x--;   
+                    adamak.y-=count_speed;
+                    adamak.x-=count_speed;   
                 }
-                adamak.y++;
-                adamak.x++; 
+                adamak.y+=count_speed;
+                adamak.x+=count_speed; 
             }
             else if(c2=='e'){
                 while(map[adamak.x][adamak.y]=='.'||map[adamak.x][adamak.y]=='#'||map[adamak.x][adamak.y]=='+'){
-                    adamak.y++;
-                    adamak.x--;   
+                    adamak.y+=count_speed;
+                    adamak.x-=count_speed;   
                 }
-                adamak.y--;
-                adamak.x++;
+                adamak.y-=count_speed;
+                adamak.x+=count_speed;
             }
             else if(c2=='z'){
                 while(map[adamak.x][adamak.y]=='.'||map[adamak.x][adamak.y]=='#'||map[adamak.x][adamak.y]=='+'){
-                    adamak.y--;
-                    adamak.x++;   
+                    adamak.y-=count_speed;
+                    adamak.x+=count_speed;   
                 }
-                adamak.y++;
-                adamak.x--;
+                adamak.y+=count_speed;
+                adamak.x-=count_speed;
             }
              else if(c2=='c'){
                 while(map[adamak.x][adamak.y]=='.'||map[adamak.x][adamak.y]=='#'||map[adamak.x][adamak.y]=='+'){
-                    adamak.y++;
-                    adamak.x++;   
+                    adamak.y+=count_speed;
+                    adamak.x+=count_speed;   
                 }
-                adamak.y++;
-                adamak.x--;
+                adamak.y+=count_speed;
+                adamak.x-=count_speed;
             }
         }
         else if(c=='w'){
-            adamak.x--;
+            adamak.x-=count_speed;
             int key=randomInRange(1000,9999);
             //در صورت برخورد با موانع بازگشت به حالت قبل
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
-                adamak.x++;
+                adamak.x+=count_speed;
             }
             //برخورد با هیولا 
             else if(map[adamak.x-1][adamak.y]=='D'||map[adamak.x][adamak.y-1]=='D'||map[adamak.x][adamak.y]=='D'||map[adamak.x+1][adamak.y]=='D'||map[adamak.x][adamak.y+1]=='D'||map[adamak.x+1][adamak.y+1]=='D'||map[adamak.x-1][adamak.y-1]=='D'||map[adamak.x-1][adamak.y+1]=='D'||map[adamak.x+1][adamak.y-1]=='D'){
@@ -6733,7 +6745,7 @@ int startgame(int v,int tabagheh2){
                     char a[30];
                     scanf("%s",a);
                     if(!correctcode(const_int,a)){
-                        adamak.x++;
+                        adamak.x+=count_speed;
                         clear();
                         khata++;
                         if(khata==1){
@@ -6766,7 +6778,7 @@ int startgame(int v,int tabagheh2){
                     }
                 }
                 else{
-                    adamak.x++;
+                    adamak.x+=count_speed;
                 }
             }
             //در مخفی
@@ -6954,10 +6966,10 @@ int startgame(int v,int tabagheh2){
             }
         }
         else if(c=='d'){
-            adamak.y++;
+            adamak.y+=count_speed;
             int key=randomInRange(1000,9999);
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
-                adamak.y--;
+                adamak.y-=count_speed;
             }
             else if(map[adamak.x-1][adamak.y]=='D'||map[adamak.x][adamak.y-1]=='D'||map[adamak.x][adamak.y]=='D'||map[adamak.x+1][adamak.y]=='D'||map[adamak.x][adamak.y+1]=='D'||map[adamak.x+1][adamak.y+1]=='D'||map[adamak.x-1][adamak.y-1]=='D'||map[adamak.x-1][adamak.y+1]=='D'||map[adamak.x+1][adamak.y-1]=='D'){
                 HEALTH-=3;
@@ -7066,7 +7078,7 @@ int startgame(int v,int tabagheh2){
                     char a[30];
                     scanf("%s",a);
                     if(!correctcode(const_int,a)){
-                        adamak.y--;
+                        adamak.y-=count_speed;
                         clear();
                         khata++;
                         if(khata==1){
@@ -7099,7 +7111,7 @@ int startgame(int v,int tabagheh2){
                     }
                 }
                 else{
-                    adamak.y--;
+                    adamak.y-=count_speed;
                 }
             }
             else if(map[adamak.x][adamak.y]=='G'){
@@ -7261,10 +7273,10 @@ int startgame(int v,int tabagheh2){
             }
         }
         else if(c=='x'){
-            adamak.x++;
+            adamak.x+=count_speed;
             int key=randomInRange(1000,9999);
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
-                adamak.x--;
+                adamak.x-=count_speed;
             }
             else if(map[adamak.x-1][adamak.y]=='D'||map[adamak.x][adamak.y-1]=='D'||map[adamak.x][adamak.y]=='D'||map[adamak.x+1][adamak.y]=='D'||map[adamak.x][adamak.y+1]=='D'||map[adamak.x+1][adamak.y+1]=='D'||map[adamak.x-1][adamak.y-1]=='D'||map[adamak.x-1][adamak.y+1]=='D'||map[adamak.x+1][adamak.y-1]=='D'){
                 HEALTH-=3;
@@ -7367,7 +7379,7 @@ int startgame(int v,int tabagheh2){
                     char a[30];
                     scanf("%s",a);
                     if(!correctcode(const_int,a)){
-                        adamak.x--;
+                        adamak.x-=count_speed;
                         clear();
                         khata++;
                         if(khata==1){
@@ -7400,7 +7412,7 @@ int startgame(int v,int tabagheh2){
                     }
                 }
                 else{
-                    adamak.x--;
+                    adamak.x-=count_speed;
 
                 }
             }
@@ -7569,10 +7581,10 @@ int startgame(int v,int tabagheh2){
             }
         }
         else if(c=='a'){
-            adamak.y--;
+            adamak.y-=count_speed;
             int key=randomInRange(1000,9999);
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
-                adamak.y++;
+                adamak.y+=count_speed;
             }
             else if(map[adamak.x-1][adamak.y]=='D'||map[adamak.x][adamak.y-1]=='D'||map[adamak.x][adamak.y]=='D'||map[adamak.x+1][adamak.y]=='D'||map[adamak.x][adamak.y+1]=='D'||map[adamak.x+1][adamak.y+1]=='D'||map[adamak.x-1][adamak.y-1]=='D'||map[adamak.x-1][adamak.y+1]=='D'||map[adamak.x+1][adamak.y-1]=='D'){
                 HEALTH-=3;
@@ -7681,7 +7693,7 @@ int startgame(int v,int tabagheh2){
                     char a[30];
                     scanf("%s",a);
                     if(!correctcode(const_int,a)){
-                        adamak.y++;
+                        adamak.y+=count_speed;
                         clear();
                         khata++;
                         if(khata==1){
@@ -7714,7 +7726,7 @@ int startgame(int v,int tabagheh2){
                     }
                 }
                 else{
-                    adamak.y++;
+                    adamak.y+=count_speed;
                 }
             }
             else if(map[adamak.x][adamak.y]=='G'){
@@ -7876,12 +7888,12 @@ int startgame(int v,int tabagheh2){
             }
         }
         else if(c=='q'){
-            adamak.x--;
-            adamak.y--;
+            adamak.x-=count_speed;
+            adamak.y-=count_speed;
             int key=randomInRange(1000,9999);
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
-                adamak.x++;
-                adamak.y++;
+                adamak.x+=count_speed;
+                adamak.y+=count_speed;
             }
             else if(map[adamak.x-1][adamak.y]=='D'||map[adamak.x][adamak.y-1]=='D'||map[adamak.x][adamak.y]=='D'||map[adamak.x+1][adamak.y]=='D'||map[adamak.x][adamak.y+1]=='D'||map[adamak.x+1][adamak.y+1]=='D'||map[adamak.x-1][adamak.y-1]=='D'||map[adamak.x-1][adamak.y+1]=='D'||map[adamak.x+1][adamak.y-1]=='D'){
                 HEALTH-=3;
@@ -7990,8 +8002,8 @@ int startgame(int v,int tabagheh2){
                     char a[30];
                     scanf("%s",a);
                     if(!correctcode(const_int,a)){
-                        adamak.x++;
-                        adamak.y++;
+                        adamak.x+=count_speed;
+                        adamak.y+=count_speed;
                         clear();
                         khata++;
                         if(khata==1){
@@ -8024,8 +8036,8 @@ int startgame(int v,int tabagheh2){
                     }
                 }
                 else{
-                    adamak.x++;
-                    adamak.y++;
+                    adamak.x+=count_speed;
+                    adamak.y+=count_speed;
                 }
             }
             else if(map[adamak.x][adamak.y]=='G'){
@@ -8187,12 +8199,12 @@ int startgame(int v,int tabagheh2){
             }
         }
         else if(c=='z'){
-            adamak.y--;
-            adamak.x++;
+            adamak.y-=count_speed;
+            adamak.x+=count_speed;
             int key=randomInRange(1000,9999);
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
-                adamak.x--;
-                adamak.y++;
+                adamak.x-=count_speed;
+                adamak.y+=count_speed;
             }
             else if(map[adamak.x-1][adamak.y]=='D'||map[adamak.x][adamak.y-1]=='D'||map[adamak.x][adamak.y]=='D'||map[adamak.x+1][adamak.y]=='D'||map[adamak.x][adamak.y+1]=='D'||map[adamak.x+1][adamak.y+1]=='D'||map[adamak.x-1][adamak.y-1]=='D'||map[adamak.x-1][adamak.y+1]=='D'||map[adamak.x+1][adamak.y-1]=='D'){
                 HEALTH-=3;
@@ -8295,8 +8307,8 @@ int startgame(int v,int tabagheh2){
                     char a[30];
                     scanf("%s",a);
                     if(!correctcode(const_int,a)){
-                        adamak.x++;
-                        adamak.y--;
+                        adamak.x+=count_speed;
+                        adamak.y-=count_speed;
                         clear();
                         khata++;
                         if(khata==1){
@@ -8329,8 +8341,8 @@ int startgame(int v,int tabagheh2){
                     }
                 }
                 else{
-                    adamak.x++;
-                    adamak.y--;
+                    adamak.x+=count_speed;
+                    adamak.y-=count_speed;
                 }
             }
             else if(map[adamak.x+1][adamak.y]==','){
@@ -8498,12 +8510,12 @@ int startgame(int v,int tabagheh2){
             }
         }
         else if(c=='e'){
-            adamak.y++;
-            adamak.x--;
+            adamak.y+=count_speed;
+            adamak.x-=count_speed;
             int key=randomInRange(1000,9999);
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
-                adamak.x++;
-                adamak.y--;
+                adamak.x+=count_speed;
+                adamak.y-=count_speed;
             }
             else if(map[adamak.x-1][adamak.y]=='D'||map[adamak.x][adamak.y-1]=='D'||map[adamak.x][adamak.y]=='D'||map[adamak.x+1][adamak.y]=='D'||map[adamak.x][adamak.y+1]=='D'||map[adamak.x+1][adamak.y+1]=='D'||map[adamak.x-1][adamak.y-1]=='D'||map[adamak.x-1][adamak.y+1]=='D'||map[adamak.x+1][adamak.y-1]=='D'){
                 HEALTH-=3;
@@ -8612,8 +8624,8 @@ int startgame(int v,int tabagheh2){
                         char a[30];
                         scanf("%s",a);
                         if(!correctcode(const_int,a)){
-                            adamak.x--;
-                            adamak.y++;
+                            adamak.x-=count_speed;
+                            adamak.y+=count_speed;
                             clear();
                             khata++;
                             if(khata==1){
@@ -8646,8 +8658,8 @@ int startgame(int v,int tabagheh2){
                         }
                     }
                     else{
-                        adamak.x--;
-                        adamak.y++;
+                        adamak.x-=count_speed;
+                        adamak.y+=count_speed;
                     }
             }
             else if(map[adamak.x][adamak.y]=='G'){
@@ -8809,12 +8821,12 @@ int startgame(int v,int tabagheh2){
             }
         }
         else if(c=='c'){
-            adamak.y++;
-            adamak.x++;
+            adamak.y+=count_speed;
+            adamak.x+=count_speed;
             int key=randomInRange(1000,9999);
             if(map[adamak.x][adamak.y]==' '||map[adamak.x][adamak.y]=='o'||map[adamak.x][adamak.y]=='|'||map[adamak.x][adamak.y]=='_'||adamak.y>183||adamak.y<0||adamak.x>49||adamak.x<0){
-                adamak.x--;
-                adamak.y--;
+                adamak.x-=count_speed;
+                adamak.y-=count_speed;
             }
             else if(map[adamak.x-1][adamak.y]=='D'||map[adamak.x][adamak.y-1]=='D'||map[adamak.x][adamak.y]=='D'||map[adamak.x+1][adamak.y]=='D'||map[adamak.x][adamak.y+1]=='D'||map[adamak.x+1][adamak.y+1]=='D'||map[adamak.x-1][adamak.y-1]=='D'||map[adamak.x-1][adamak.y+1]=='D'||map[adamak.x+1][adamak.y-1]=='D'){
                 HEALTH-=3;
@@ -8923,8 +8935,8 @@ int startgame(int v,int tabagheh2){
                     char a[30];
                     scanf("%s",a);
                     if(!correctcode(const_int,a)){
-                        adamak.x--;
-                        adamak.y--;
+                        adamak.x-=count_speed;
+                        adamak.y-=count_speed;
                         clear();
                         khata++;
                         if(khata==1){
@@ -8957,8 +8969,8 @@ int startgame(int v,int tabagheh2){
                     }
                 }
                 else{
-                    adamak.x--;
-                    adamak.y--;
+                    adamak.x-=count_speed;
+                    adamak.y-=count_speed;
                 }
             }
             else if(map[adamak.x][adamak.y]=='G'){
