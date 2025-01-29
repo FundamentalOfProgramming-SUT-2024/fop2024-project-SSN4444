@@ -6053,7 +6053,7 @@ int startgame(int v,int tabagheh2){
                         else if(map[adamak.x][adamak.y+1]=='C'){
                             map[adamak.x][adamak.y+1]='.';
                         }
-                        else if(map[adamak.x][adamak.y1]=='C'){
+                        else if(map[adamak.x][adamak.y]=='C'){
                             map[adamak.x][adamak.y-1]='.';
                         }
                         else if(map[adamak.x-1][adamak.y-1]=='C'){
