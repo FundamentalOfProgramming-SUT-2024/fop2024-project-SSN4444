@@ -30,6 +30,11 @@ int count_increase=0;
 int count_speed=1;
 int count_speed2=0;
 int count_damage=0;
+//damage
+int damage_dagger=12;
+int damage_majic_wand=15;
+int damage_mace_arrow=5;
+int damage_sword=10;
 //میزان کاهش جان(درجه سختی بازی)
 int decrease=5;
 //انتخاب شخصیت بازی
@@ -325,22 +330,22 @@ void gunandspellmenu(){
     else if(shamshir==0){
         mvprintw(2,8,"%d",0);
     }
-    mvprintw(2,10,"damage:%d",10);
+    mvprintw(2,10,"damage:%d",damage_sword);
     mvprintw(4,0,"(2)  %s:",tabar);
     mvprintw(4,8,"%d",1);
-    mvprintw(4,11,"damage:%d",5);
+    mvprintw(4,11,"damage:%d",damage_mace_arrow);
     mvprintw(1,60,"Long range weapon:");
     mvprintw(2,60,"(3)  %s :",kh);
     mvprintw(2,68,"%d",khanjar);
-    mvprintw(2,71,"damage:%d",12);
+    mvprintw(2,71,"damage:%d",damage_dagger);
     mvprintw(2,85,"range:%d",5);
     mvprintw(4,60,"(4)  %s:",asa1);
     mvprintw(4,68,"%d",asa);
     mvprintw(4,85,"range:%d",10);
-    mvprintw(4,71,"damage:%d",15);
+    mvprintw(4,71,"damage:%d",damage_majic_wand);
     mvprintw(6,60,"(5)  %s :",tir1);
     mvprintw(6,68,"%d",tir);
-    mvprintw(6,71,"damage:%d",5);
+    mvprintw(6,71,"damage:%d",damage_mace_arrow);
     mvprintw(6,85,"range:%d",5);
     mvprintw(1,120,"Spells:");
     mvprintw(2,120,"(6)  %s :",T_health1);
@@ -500,7 +505,10 @@ void gunandspellmenu(){
             }
             else{
                 count_damage=1;
-                increase*=2;
+                damage_dagger*=2;
+                damage_majic_wand*=2;
+                damage_mace_arrow*=2;
+                damage_sword*=2;
                 T_damage--;
                 clear();
                 mvprintw(20,70,"the power of the spell was activated");
@@ -1471,7 +1479,16 @@ int startgame(int v,int tabagheh2){
             }
         }
         //damage
-
+        if(count_damage){
+            count_damage++;
+            if(count_damage==11){
+                count_damage=0;
+                damage_dagger=12;
+                damage_majic_wand=15;
+                damage_mace_arrow=5;
+                damage_sword=10;
+            }
+        }
         //پایان بازی دز صوزت حان زیر۰  
         if(HEALTH<=0){
             clear();
@@ -2771,7 +2788,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.d-=12;
+                                joon.d-=damage_dagger;
                                 if(joon.d<=0){
                                     mvprintw(0,0,"deamon was destroyed");
                                     refresh();
@@ -2794,7 +2811,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.f-=12;
+                                joon.f-=damage_dagger;
                                 if(joon.f<=0){
                                     mvprintw(0,0,"fire breathing monster was destroyed");
                                     refresh();
@@ -2817,7 +2834,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.u-=12;
+                                joon.u-=damage_dagger;
                                 if(joon.u<=0){
                                     mvprintw(0,0,"undeed was destroyed");
                                     refresh();
@@ -2840,7 +2857,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.g-=12;
+                                joon.g-=damage_dagger;
                                 if(joon.g<=0){
                                     mvprintw(0,0,"giant was destroyed");
                                     refresh();
@@ -2863,7 +2880,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.s-=12;
+                                joon.s-=damage_dagger;
                                 if(joon.s<=0){
                                     mvprintw(0,0,"snake was destroyed");
                                     refresh();
@@ -2902,7 +2919,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.d-=12;
+                                joon.d-=damage_dagger;
                                 if(joon.d<=0){
                                     mvprintw(0,0,"deamon was destroyed");
                                     refresh();
@@ -2925,7 +2942,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.f-=12;
+                                joon.f-=damage_dagger;
                                 if(joon.f<=0){
                                     mvprintw(0,0,"fire breathing monster was destroyed");
                                     refresh();
@@ -2948,7 +2965,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.u-=12;
+                                joon.u-=damage_dagger;
                                 if(joon.u<=0){
                                     mvprintw(0,0,"undeed was destroyed");
                                     refresh();
@@ -2972,7 +2989,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.g-=12;
+                                joon.g-=damage_dagger;
                                 if(joon.g<=0){
                                     mvprintw(0,0,"giant was destroyed");
                                     refresh();
@@ -2996,7 +3013,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.s-=12;
+                                joon.s-=damage_dagger;
                                 if(joon.s<=0){
                                     mvprintw(0,0,"snake was destroyed");
                                     refresh();
@@ -3035,7 +3052,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.d-=12;
+                                joon.d-=damage_dagger;
                                 if(joon.d<=0){
                                     mvprintw(0,0,"deamon was destroyed");
                                     refresh();
@@ -3058,7 +3075,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.f-=12;
+                                joon.f-=damage_dagger;
                                 if(joon.f<=0){
                                     mvprintw(0,0,"fire breathing monster was destroyed");
                                     refresh();
@@ -3081,7 +3098,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.u-=12;
+                                joon.u-=damage_dagger;
                                 if(joon.u<=0){
                                     mvprintw(0,0,"undeed was destroyed");
                                     refresh();
@@ -3105,7 +3122,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.g-=12;
+                                joon.g-=damage_dagger;
                                 if(joon.g<=0){
                                     mvprintw(0,0,"giant was destroyed");
                                     refresh();
@@ -3129,7 +3146,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.s-=12;
+                                joon.s-=damage_dagger;
                                 if(joon.s<=0){
                                     mvprintw(0,0,"snake was destroyed");
                                     refresh();
@@ -3168,7 +3185,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.d-=12;
+                                joon.d-=damage_dagger;
                                 if(joon.d<=0){
                                     mvprintw(0,0,"deamon was destroyed");
                                     refresh();
@@ -3191,7 +3208,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.f-=12;
+                                joon.f-=damage_dagger;
                                 if(joon.f<=0){
                                     mvprintw(0,0,"fire breathing monster was destroyed");
                                     refresh();
@@ -3214,7 +3231,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.u-=12;
+                                joon.u-=damage_dagger;
                                 if(joon.u<=0){
                                     mvprintw(0,0,"undeed was destroyed");
                                     refresh();
@@ -3238,7 +3255,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.g-=12;
+                                joon.g-=damage_dagger;
                                 if(joon.g<=0){
                                     mvprintw(0,0,"giant was destroyed");
                                     refresh();
@@ -3262,7 +3279,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.s-=12;
+                                joon.s-=damage_dagger;
                                 if(joon.s<=0){
                                     mvprintw(0,0,"snake was destroyed");
                                     refresh();
@@ -3302,7 +3319,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.d-=12;
+                                joon.d-=damage_dagger;
                                 if(joon.d<=0){
                                     mvprintw(0,0,"deamon was destroyed");
                                     refresh();
@@ -3325,7 +3342,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.f-=12;
+                                joon.f-=damage_dagger;
                                 if(joon.f<=0){
                                     mvprintw(0,0,"fire breathing monster was destroyed");
                                     refresh();
@@ -3348,7 +3365,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.u-=12;
+                                joon.u-=damage_dagger;
                                 if(joon.u<=0){
                                     mvprintw(0,0,"undeed was destroyed");
                                     refresh();
@@ -3372,7 +3389,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.g-=12;
+                                joon.g-=damage_dagger;
                                 if(joon.g<=0){
                                     mvprintw(0,0,"giant was destroyed");
                                     refresh();
@@ -3396,7 +3413,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.s-=12;
+                                joon.s-=damage_dagger;
                                 if(joon.s<=0){
                                     mvprintw(0,0,"snake was destroyed");
                                     refresh();
@@ -3437,7 +3454,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.d-=12;
+                                joon.d-=damage_dagger;
                                 if(joon.d<=0){
                                     mvprintw(0,0,"deamon was destroyed");
                                     refresh();
@@ -3460,7 +3477,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.f-=12;
+                                joon.f-=damage_dagger;
                                 if(joon.f<=0){
                                     mvprintw(0,0,"fire breathing monster was destroyed");
                                     refresh();
@@ -3483,7 +3500,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.u-=12;
+                                joon.u-=damage_dagger;
                                 if(joon.u<=0){
                                     mvprintw(0,0,"undeed was destroyed");
                                     refresh();
@@ -3507,7 +3524,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.g-=12;
+                                joon.g-=damage_dagger;
                                 if(joon.g<=0){
                                     mvprintw(0,0,"giant was destroyed");
                                     refresh();
@@ -3531,7 +3548,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.s-=12;
+                                joon.s-=damage_dagger;
                                 if(joon.s<=0){
                                     mvprintw(0,0,"snake was destroyed");
                                     refresh();
@@ -3573,7 +3590,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.d-=12;
+                                joon.d-=damage_dagger;
                                 if(joon.d<=0){
                                     mvprintw(0,0,"deamon was destroyed");
                                     refresh();
@@ -3596,7 +3613,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.f-=12;
+                                joon.f-=damage_dagger;
                                 if(joon.f<=0){
                                     mvprintw(0,0,"fire breathing monster was destroyed");
                                     refresh();
@@ -3619,7 +3636,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.u-=12;
+                                joon.u-=damage_dagger;
                                 if(joon.u<=0){
                                     mvprintw(0,0,"undeed was destroyed");
                                     refresh();
@@ -3643,7 +3660,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.g-=12;
+                                joon.g-=damage_dagger;
                                 if(joon.g<=0){
                                     mvprintw(0,0,"giant was destroyed");
                                     refresh();
@@ -3667,7 +3684,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.s-=12;
+                                joon.s-=damage_dagger;
                                 if(joon.s<=0){
                                     mvprintw(0,0,"snake was destroyed");
                                     refresh();
@@ -3709,7 +3726,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.d-=12;
+                                joon.d-=damage_dagger;
                                 if(joon.d<=0){
                                     mvprintw(0,0,"deamon was destroyed");
                                     refresh();
@@ -3732,7 +3749,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.f-=12;
+                                joon.f-=damage_dagger;
                                 if(joon.f<=0){
                                     mvprintw(0,0,"fire breathing monster was destroyed");
                                     refresh();
@@ -3755,7 +3772,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.u-=12;
+                                joon.u-=damage_dagger;
                                 if(joon.u<=0){
                                     mvprintw(0,0,"undeed was destroyed");
                                     refresh();
@@ -3779,7 +3796,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.g-=12;
+                                joon.g-=damage_dagger;
                                 if(joon.g<=0){
                                     mvprintw(0,0,"giant was destroyed");
                                     refresh();
@@ -3803,7 +3820,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.s-=12;
+                                joon.s-=damage_dagger;
                                 if(joon.s<=0){
                                     mvprintw(0,0,"snake was destroyed");
                                     refresh();
@@ -3857,7 +3874,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.d-=15;
+                                joon.d-=damage_majic_wand;
                                 if(joon.d<=0){
                                     mvprintw(0,0,"deamon was destroyed");
                                     refresh();
@@ -3881,7 +3898,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.f-=15;
+                                joon.f-=damage_majic_wand;
                                 if(joon.f<=0){
                                     mvprintw(0,0,"fire breathing monster was destroyed");
                                     refresh();
@@ -3905,7 +3922,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.u-=15;
+                                joon.u-=damage_majic_wand;
                                 if(joon.u<=0){
                                     mvprintw(0,0,"undeed was destroyed");
                                     refresh();
@@ -3929,7 +3946,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.g-=15;
+                                joon.g-=damage_majic_wand;
                                 if(joon.g<=0){
                                     mvprintw(0,0,"giant was destroyed");
                                     refresh();
@@ -3953,7 +3970,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.s-=15;
+                                joon.s-=damage_majic_wand;
                                 if(joon.s<=0){
                                     mvprintw(0,0,"snake was destroyed");
                                     refresh();
@@ -3992,7 +4009,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.d-=15;
+                                joon.d-=damage_majic_wand;
                                 if(joon.d<=0){
                                     mvprintw(0,0,"deamon was destroyed");
                                     refresh();
@@ -4015,7 +4032,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.f-=15;
+                                joon.f-=damage_majic_wand;
                                 if(joon.f<=0){
                                     mvprintw(0,0,"fire breathing monster was destroyed");
                                     refresh();
@@ -4040,7 +4057,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.u-=15;
+                                joon.u-=damage_majic_wand;
                                 if(joon.u<=0){
                                     mvprintw(0,0,"undeed was destroyed");
                                     refresh();
@@ -4065,7 +4082,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.g-=15;
+                                joon.g-=damage_majic_wand;
                                 if(joon.g<=0){
                                     mvprintw(0,0,"giant was destroyed");
                                     refresh();
@@ -4090,7 +4107,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.s-=15;
+                                joon.s-=damage_majic_wand;
                                 if(joon.s<=0){
                                     mvprintw(0,0,"snake was destroyed");
                                     refresh();
@@ -4129,7 +4146,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.d-=15;
+                                joon.d-=damage_majic_wand;
                                 if(joon.d<=0){
                                     mvprintw(0,0,"deamon was destroyed");
                                     refresh();
@@ -4152,7 +4169,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.f-=15;
+                                joon.f-=damage_majic_wand;
                                 if(joon.f<=0){
                                     mvprintw(0,0,"fire breathing monster was destroyed");
                                     refresh();
@@ -4176,7 +4193,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.u-=15;
+                                joon.u-=damage_majic_wand;
                                 if(joon.u<=0){
                                     mvprintw(0,0,"undeed was destroyed");
                                     refresh();
@@ -4202,7 +4219,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.g-=15;
+                                joon.g-=damage_majic_wand;
                                 if(joon.g<=0){
                                     mvprintw(0,0,"giant was destroyed");
                                     refresh();
@@ -4226,7 +4243,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.s-=15;
+                                joon.s-=damage_majic_wand;
                                 if(joon.s<=0){
                                     mvprintw(0,0,"snake was destroyed");
                                     refresh();
@@ -4265,7 +4282,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.d-=15;
+                                joon.d-=damage_majic_wand;
                                 if(joon.d<=0){
                                     mvprintw(0,0,"deamon was destroyed");
                                     refresh();
@@ -4288,7 +4305,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.f-=15;
+                                joon.f-=damage_majic_wand;
                                 if(joon.f<=0){
                                     mvprintw(0,0,"fire breathing monster was destroyed");
                                     refresh();
@@ -4312,7 +4329,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.u-=15;
+                                joon.u-=damage_majic_wand;
                                 if(joon.u<=0){
                                     mvprintw(0,0,"undeed was destroyed");
                                     refresh();
@@ -4338,7 +4355,7 @@ int startgame(int v,int tabagheh2){
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
 
-                                joon.g-=15;
+                                joon.g-=damage_majic_wand;
                                 if(joon.g<=0){
                                     mvprintw(0,0,"giant was destroyed");
                                     refresh();
@@ -4363,7 +4380,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.s-=15;
+                                joon.s-=damage_majic_wand;
                                 if(joon.s<=0){
                                     mvprintw(0,0,"snake was destroyed");
                                     refresh();
@@ -4403,7 +4420,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.d-=15;
+                                joon.d-=damage_majic_wand;
                                 if(joon.d<=0){
                                     mvprintw(0,0,"deamon was destroyed");
                                     refresh();
@@ -4426,7 +4443,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.f-=15;
+                                joon.f-=damage_majic_wand;
                                 if(joon.f<=0){
                                     mvprintw(0,0,"fire breathing monster was destroyed");
                                     refresh();
@@ -4450,7 +4467,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.u-=15;
+                                joon.u-=damage_majic_wand;
                                 if(joon.u<=0){
                                     mvprintw(0,0,"undeed was destroyed");
                                     refresh();
@@ -4475,7 +4492,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.g-=15;
+                                joon.g-=damage_majic_wand;
                                 if(joon.g<=0){
                                     mvprintw(0,0,"giant was destroyed");
                                     refresh();
@@ -4500,7 +4517,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.s-=15;
+                                joon.s-=damage_majic_wand;
                                 if(joon.s<=0){
                                     mvprintw(0,0,"snake was destroyed");
                                     refresh();
@@ -4541,7 +4558,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.d-=15;
+                                joon.d-=damage_majic_wand;
                                 if(joon.d<=0){
                                     mvprintw(0,0,"deamon was destroyed");
                                     refresh();
@@ -4564,7 +4581,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 mvprintw(0,0,"                                  ");
                                 usleep(2000000);
-                                joon.f-=15;
+                                joon.f-=damage_majic_wand;
                                 if(joon.f<=0){
                                     mvprintw(0,0,"fire breathing monster was destroyed");
                                     refresh();
@@ -4588,7 +4605,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.u-=15;
+                                joon.u-=damage_majic_wand;
                                 if(joon.u<=0){
                                     mvprintw(0,0,"undeed was destroyed");
                                     refresh();
@@ -4613,7 +4630,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.g-=15;
+                                joon.g-=damage_majic_wand;
                                 if(joon.g<=0){
                                     mvprintw(0,0,"giant was destroyed");
                                     refresh();
@@ -4639,7 +4656,7 @@ int startgame(int v,int tabagheh2){
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
 
-                                joon.s-=15;
+                                joon.s-=damage_majic_wand;
                                 if(joon.s<=0){
                                     mvprintw(0,0,"snake was destroyed");
                                     refresh();
@@ -4682,7 +4699,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.d-=15;
+                                joon.d-=damage_majic_wand;
                                 if(joon.d<=0){
                                     mvprintw(0,0,"deamon was destroyed");
                                     refresh();
@@ -4705,7 +4722,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.f-=15;
+                                joon.f-=damage_majic_wand;
                                 if(joon.f<=0){
                                     mvprintw(0,0,"fire breathing monster was destroyed");
                                     refresh();
@@ -4729,7 +4746,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.u-=15;
+                                joon.u-=damage_majic_wand;
                                 if(joon.u<=0){
                                     mvprintw(0,0,"undeed was destroyed");
                                     refresh();
@@ -4754,7 +4771,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.g-=15;
+                                joon.g-=damage_majic_wand;
                                 if(joon.g<=0){
                                     mvprintw(0,0,"giant was destroyed");
                                     refresh();
@@ -4779,7 +4796,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.s-=15;
+                                joon.s-=damage_majic_wand;
                                 if(joon.s<=0){
                                     mvprintw(0,0,"snake was destroyed");
                                     refresh();
@@ -4821,7 +4838,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.d-=15;
+                                joon.d-=damage_majic_wand;
                                 if(joon.d<=0){
                                     mvprintw(0,0,"deamon was destroyed");
                                     refresh();
@@ -4844,7 +4861,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.f-=15;
+                                joon.f-=damage_majic_wand;
                                 if(joon.f<=0){
                                     mvprintw(0,0,"fire breathing monster was destroyed");
                                     refresh();
@@ -4868,7 +4885,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.u-=15;
+                                joon.u-=damage_majic_wand;
                                 if(joon.u<=0){
                                     mvprintw(0,0,"undeed was destroyed");
                                     refresh();
@@ -4893,7 +4910,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.g-=15;
+                                joon.g-=damage_majic_wand;
                                 if(joon.g<=0){
                                     mvprintw(0,0,"giant was destroyed");
                                     refresh();
@@ -4917,7 +4934,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.s-=15;
+                                joon.s-=damage_majic_wand;
                                 if(joon.s<=0){
                                     mvprintw(0,0,"snake was destroyed");
                                     refresh();
@@ -4970,7 +4987,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.d-=12;
+                                joon.d-=damage_dagger;
                                 if(joon.d<=0){
                                     mvprintw(0,0,"deamon was destroyed");
                                     refresh();
@@ -4993,7 +5010,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.f-=12;
+                                joon.f-=damage_dagger;
                                 if(joon.f<=0){
                                     mvprintw(0,0,"fire breathing monster was destroyed");
                                     refresh();
@@ -5016,7 +5033,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.u-=12;
+                                joon.u-=damage_dagger;
                                 if(joon.u<=0){
                                     mvprintw(0,0,"undeed was destroyed");
                                     refresh();
@@ -5040,7 +5057,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.g-=12;
+                                joon.g-=damage_dagger;
                                 if(joon.g<=0){
                                     mvprintw(0,0,"giant was destroyed");
                                     refresh();
@@ -5063,7 +5080,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.s-=12;
+                                joon.s-=damage_dagger;
                                 if(joon.s<=0){
                                     mvprintw(0,0,"snake was destroyed");
                                     refresh();
@@ -5102,7 +5119,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.d-=12;
+                                joon.d-=damage_dagger;
                                 if(joon.d<=0){
                                     mvprintw(0,0,"deamon was destroyed");
                                     refresh();
@@ -5125,7 +5142,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.f-=12;
+                                joon.f-=damage_dagger;
                                 if(joon.f<=0){
                                     mvprintw(0,0,"fire breathing monster was destroyed");
                                     refresh();
@@ -5148,7 +5165,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.u-=12;
+                                joon.u-=damage_dagger;
                                 if(joon.u<=0){
                                     mvprintw(0,0,"undeed was destroyed");
                                     refresh();
@@ -5172,7 +5189,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.g-=12;
+                                joon.g-=damage_dagger;
                                 if(joon.g<=0){
                                     mvprintw(0,0,"giant was destroyed");
                                     refresh();
@@ -5196,7 +5213,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.s-=12;
+                                joon.s-=damage_dagger;
                                 if(joon.s<=0){
                                     mvprintw(0,0,"snake was destroyed");
                                     refresh();
@@ -5235,7 +5252,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.d-=12;
+                                joon.d-=damage_dagger;
                                 if(joon.d<=0){
                                     mvprintw(0,0,"deamon was destroyed");
                                     refresh();
@@ -5258,7 +5275,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.f-=12;
+                                joon.f-=damage_dagger;
                                 if(joon.f<=0){
                                     mvprintw(0,0,"fire breathing monster was destroyed");
                                     refresh();
@@ -5281,7 +5298,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.u-=12;
+                                joon.u-=damage_dagger;
                                 if(joon.u<=0){
                                     mvprintw(0,0,"undeed was destroyed");
                                     refresh();
@@ -5305,7 +5322,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.g-=12;
+                                joon.g-=damage_dagger;
                                 if(joon.g<=0){
                                     mvprintw(0,0,"giant was destroyed");
                                     refresh();
@@ -5329,7 +5346,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.s-=12;
+                                joon.s-=damage_dagger;
                                 if(joon.s<=0){
                                     mvprintw(0,0,"snake was destroyed");
                                     refresh();
@@ -5368,7 +5385,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.d-=12;
+                                joon.d-=damage_dagger;
                                 if(joon.d<=0){
                                     mvprintw(0,0,"deamon was destroyed");
                                     refresh();
@@ -5391,7 +5408,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.f-=12;
+                                joon.f-=damage_dagger;
                                 if(joon.f<=0){
                                     mvprintw(0,0,"fire breathing monster was destroyed");
                                     refresh();
@@ -5414,7 +5431,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.u-=12;
+                                joon.u-=damage_dagger;
                                 if(joon.u<=0){
                                     mvprintw(0,0,"undeed was destroyed");
                                     refresh();
@@ -5438,7 +5455,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.g-=12;
+                                joon.g-=damage_dagger;
                                 if(joon.g<=0){
                                     mvprintw(0,0,"giant was destroyed");
                                     refresh();
@@ -5462,7 +5479,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.s-=12;
+                                joon.s-=damage_dagger;
                                 if(joon.s<=0){
                                     mvprintw(0,0,"snake was destroyed");
                                     refresh();
@@ -5502,7 +5519,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.d-=12;
+                                joon.d-=damage_dagger;
                                 if(joon.d<=0){
                                     mvprintw(0,0,"deamon was destroyed");
                                     refresh();
@@ -5525,7 +5542,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.f-=12;
+                                joon.f-=damage_dagger;
                                 if(joon.f<=0){
                                     mvprintw(0,0,"fire breathing monster was destroyed");
                                     refresh();
@@ -5548,7 +5565,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.u-=12;
+                                joon.u-=damage_dagger;
                                 if(joon.u<=0){
                                     mvprintw(0,0,"undeed was destroyed");
                                     refresh();
@@ -5572,7 +5589,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.g-=12;
+                                joon.g-=damage_dagger;
                                 if(joon.g<=0){
                                     mvprintw(0,0,"giant was destroyed");
                                     refresh();
@@ -5596,7 +5613,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.s-=12;
+                                joon.s-=damage_dagger;
                                 if(joon.s<=0){
                                     mvprintw(0,0,"snake was destroyed");
                                     refresh();
@@ -5637,7 +5654,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.d-=12;
+                                joon.d-=damage_dagger;
                                 if(joon.d<=0){
                                     mvprintw(0,0,"deamon was destroyed");
                                     refresh();
@@ -5660,7 +5677,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.f-=12;
+                                joon.f-=damage_dagger;
                                 if(joon.f<=0){
                                     mvprintw(0,0,"fire breathing monster was destroyed");
                                     refresh();
@@ -5683,7 +5700,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.u-=12;
+                                joon.u-=damage_dagger;
                                 if(joon.u<=0){
                                     mvprintw(0,0,"undeed was destroyed");
                                     refresh();
@@ -5707,7 +5724,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.g-=12;
+                                joon.g-=damage_dagger;
                                 if(joon.g<=0){
                                     mvprintw(0,0,"giant was destroyed");
                                     refresh();
@@ -5731,7 +5748,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.s-=12;
+                                joon.s-=damage_dagger;
                                 if(joon.s<=0){
                                     mvprintw(0,0,"snake was destroyed");
                                     refresh();
@@ -5773,7 +5790,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.d-=12;
+                                joon.d-=damage_dagger;
                                 if(joon.d<=0){
                                     mvprintw(0,0,"deamon was destroyed");
                                     refresh();
@@ -5796,7 +5813,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.f-=12;
+                                joon.f-=damage_dagger;
                                 if(joon.f<=0){
                                     mvprintw(0,0,"fire breathing monster was destroyed");
                                     refresh();
@@ -5819,7 +5836,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.u-=12;
+                                joon.u-=damage_dagger;
                                 if(joon.u<=0){
                                     mvprintw(0,0,"undeed was destroyed");
                                     refresh();
@@ -5843,7 +5860,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.g-=12;
+                                joon.g-=damage_dagger;
                                 if(joon.g<=0){
                                     mvprintw(0,0,"giant was destroyed");
                                     refresh();
@@ -5867,7 +5884,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.s-=12;
+                                joon.s-=damage_dagger;
                                 if(joon.s<=0){
                                     mvprintw(0,0,"snake was destroyed");
                                     refresh();
@@ -5909,7 +5926,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.d-=12;
+                                joon.d-=damage_dagger;
                                 if(joon.d<=0){
                                     mvprintw(0,0,"deamon was destroyed");
                                     refresh();
@@ -5932,7 +5949,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 mvprintw(0,0,"                                  ");
                                 usleep(2000000);
-                                joon.f-=12;
+                                joon.f-=damage_dagger;
                                 if(joon.f<=0){
                                     mvprintw(0,0,"fire breathing monster was destroyed");
                                     refresh();
@@ -5955,7 +5972,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.u-=12;
+                                joon.u-=damage_dagger;
                                 if(joon.u<=0){
                                     mvprintw(0,0,"undeed was destroyed");
                                     refresh();
@@ -5979,7 +5996,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
-                                joon.g-=12;
+                                joon.g-=damage_dagger;
                                 if(joon.g<=0){
                                     mvprintw(0,0,"giant was destroyed");
                                     refresh();
@@ -6003,7 +6020,7 @@ int startgame(int v,int tabagheh2){
                                 refresh();
                                 mvprintw(0,0,"                                  ");
                                 usleep(2000000);
-                                joon.s-=12;
+                                joon.s-=damage_dagger;
                                 if(joon.s<=0){
                                     mvprintw(0,0,"snake was destroyed");
                                     refresh();
@@ -6043,7 +6060,7 @@ int startgame(int v,int tabagheh2){
             }
             else if(your_weapon==4){
                 if(map[adamak.x][adamak.y]=='D'||map[adamak.x+1][adamak.y]=='D'||map[adamak.x-1][adamak.y]=='D'||map[adamak.x][adamak.y+1]=='D'||map[adamak.x][adamak.y-1]=='D'||map[adamak.x+1][adamak.y+1]=='D'||map[adamak.x-1][adamak.y-1]=='D'||map[adamak.x+1][adamak.y-1]=='D'||map[adamak.x-1][adamak.y+1]=='D'){
-                    joon.d-=10;
+                    joon.d-=damage_sword;
                     mvprintw(0,0,"hit the target!");
                     refresh();
                     usleep(2000000);
@@ -6090,7 +6107,7 @@ int startgame(int v,int tabagheh2){
                     }
                 }
                 else if(map[adamak.x][adamak.y]=='F'||map[adamak.x+1][adamak.y]=='F'||map[adamak.x-1][adamak.y]=='F'||map[adamak.x][adamak.y+1]=='F'||map[adamak.x][adamak.y-1]=='F'||map[adamak.x+1][adamak.y+1]=='F'||map[adamak.x-1][adamak.y-1]=='F'||map[adamak.x+1][adamak.y-1]=='F'||map[adamak.x-1][adamak.y+1]=='F'){
-                    joon.f-=10;
+                    joon.f-=damage_sword;
                     mvprintw(0,0,"hit the target!");
                     refresh();
                     usleep(2000000);
@@ -6137,7 +6154,7 @@ int startgame(int v,int tabagheh2){
                     }
                 }
                 else if(map[adamak.x][adamak.y]=='C'||map[adamak.x+1][adamak.y]=='C'||map[adamak.x-1][adamak.y]=='C'||map[adamak.x][adamak.y+1]=='C'||map[adamak.x][adamak.y-1]=='C'||map[adamak.x+1][adamak.y+1]=='C'||map[adamak.x-1][adamak.y-1]=='C'||map[adamak.x+1][adamak.y-1]=='C'||map[adamak.x-1][adamak.y+1]=='C'){
-                    joon.g-=10;
+                    joon.g-=damage_sword;
                     mvprintw(0,0,"hit the target!");
                     refresh();
                     usleep(2000000);
@@ -6184,7 +6201,7 @@ int startgame(int v,int tabagheh2){
                     }
                 }
                 else if(map[adamak.x][adamak.y]=='S'||map[adamak.x+1][adamak.y]=='S'||map[adamak.x-1][adamak.y]=='S'||map[adamak.x][adamak.y+1]=='S'||map[adamak.x][adamak.y-1]=='S'||map[adamak.x+1][adamak.y+1]=='S'||map[adamak.x-1][adamak.y-1]=='S'||map[adamak.x+1][adamak.y-1]=='S'||map[adamak.x-1][adamak.y+1]=='S'){
-                    joon.s-=10;
+                    joon.s-=damage_sword;
                     mvprintw(0,0,"hit the target!");
                     refresh();
                     usleep(2000000);
@@ -6231,7 +6248,7 @@ int startgame(int v,int tabagheh2){
                     }
                 }
                 else if(map[adamak.x][adamak.y]=='U'||map[adamak.x+1][adamak.y]=='U'||map[adamak.x-1][adamak.y]=='U'||map[adamak.x][adamak.y+1]=='U'||map[adamak.x][adamak.y-1]=='U'||map[adamak.x+1][adamak.y+1]=='U'||map[adamak.x-1][adamak.y-1]=='U'||map[adamak.x+1][adamak.y-1]=='U'||map[adamak.x-1][adamak.y+1]=='U'){
-                    joon.u-=10;
+                    joon.u-=damage_sword;
                     mvprintw(0,0,"hit the target!");
                     refresh();
                     usleep(2000000);
@@ -6281,7 +6298,7 @@ int startgame(int v,int tabagheh2){
             }
             else{
                 if(map[adamak.x][adamak.y]=='D'||map[adamak.x+1][adamak.y]=='D'||map[adamak.x-1][adamak.y]=='D'||map[adamak.x][adamak.y+1]=='D'||map[adamak.x][adamak.y-1]=='D'||map[adamak.x+1][adamak.y+1]=='D'||map[adamak.x-1][adamak.y-1]=='D'||map[adamak.x+1][adamak.y-1]=='D'||map[adamak.x-1][adamak.y+1]=='D'){
-                    joon.d-=5;
+                    joon.d-=damage_mace_arrow;
                     mvprintw(0,0,"hit the target!");
                     refresh();
                     usleep(2000000);
@@ -6328,7 +6345,7 @@ int startgame(int v,int tabagheh2){
                     }
                 }
                 else if(map[adamak.x][adamak.y]=='F'||map[adamak.x+1][adamak.y]=='F'||map[adamak.x-1][adamak.y]=='F'||map[adamak.x][adamak.y+1]=='F'||map[adamak.x][adamak.y-1]=='F'||map[adamak.x+1][adamak.y+1]=='F'||map[adamak.x-1][adamak.y-1]=='F'||map[adamak.x+1][adamak.y-1]=='F'||map[adamak.x-1][adamak.y+1]=='F'){
-                    joon.f-=5;
+                    joon.f-=damage_mace_arrow;
                     mvprintw(0,0,"hit the target!");
                     refresh();
                     usleep(2000000);
@@ -6375,7 +6392,7 @@ int startgame(int v,int tabagheh2){
                     }
                 }
                 else if(map[adamak.x][adamak.y]=='C'||map[adamak.x+1][adamak.y]=='C'||map[adamak.x-1][adamak.y]=='C'||map[adamak.x][adamak.y+1]=='C'||map[adamak.x][adamak.y-1]=='C'||map[adamak.x+1][adamak.y+1]=='C'||map[adamak.x-1][adamak.y-1]=='C'||map[adamak.x+1][adamak.y-1]=='C'||map[adamak.x-1][adamak.y+1]=='C'){
-                    joon.g-=5;
+                    joon.g-=damage_mace_arrow;
                     mvprintw(0,0,"hit the target!");
                     refresh();
                     usleep(2000000);
@@ -6422,7 +6439,7 @@ int startgame(int v,int tabagheh2){
                     }
                 }
                 else if(map[adamak.x][adamak.y]=='S'||map[adamak.x+1][adamak.y]=='S'||map[adamak.x-1][adamak.y]=='S'||map[adamak.x][adamak.y+1]=='S'||map[adamak.x][adamak.y-1]=='S'||map[adamak.x+1][adamak.y+1]=='S'||map[adamak.x-1][adamak.y-1]=='S'||map[adamak.x+1][adamak.y-1]=='S'||map[adamak.x-1][adamak.y+1]=='S'){
-                    joon.s-=5;
+                    joon.s-=damage_mace_arrow;
                     mvprintw(0,0,"hit the target!");
                     refresh();
                     usleep(2000000);
@@ -6469,7 +6486,7 @@ int startgame(int v,int tabagheh2){
                     }
                 }
                 else if(map[adamak.x][adamak.y]=='U'||map[adamak.x+1][adamak.y]=='U'||map[adamak.x-1][adamak.y]=='U'||map[adamak.x][adamak.y+1]=='U'||map[adamak.x][adamak.y-1]=='U'||map[adamak.x+1][adamak.y+1]=='U'||map[adamak.x-1][adamak.y-1]=='U'||map[adamak.x+1][adamak.y-1]=='U'||map[adamak.x-1][adamak.y+1]=='U'){
-                    joon.u-=5;
+                    joon.u-=damage_mace_arrow;
                     mvprintw(0,0,"hit the target!");
                     refresh();
                     usleep(2000000);
