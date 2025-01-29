@@ -11,7 +11,7 @@
 char map[49][183];
 int mark_color[49][183];
 int GOLD=0;
-int HEALTH=100;
+int HEALTH=80;
 int food=0;
 int shamshir=0;
 int khanjar=0;
@@ -23,6 +23,11 @@ int T_speed=0;
 int tabagheh=1;
 int Ancient_Key=0;
 int your_weapon=1000;
+//نرخ افزایش جان
+int increase=2;
+int count_increase=0;
+//سرعت 
+int count_speed=0;
 //میزان کاهش جان(درجه سختی بازی)
 int decrease=5;
 //انتخاب شخصیت بازی
@@ -41,7 +46,7 @@ struct MOVE{
     int S;
     int U;
 };
-struct MOVE move; 
+struct MOVE move1; 
 //سلامت هیولا
 struct JOON{
     int d;
@@ -449,6 +454,56 @@ void gunandspellmenu(){
                 mvprintw(20,70,"your weapon has changed to a normal arrow");
                 refresh();
                 usleep(2000000);
+            }
+        }
+        else if(q=='6'){
+            if(T_health==0){
+                clear();
+                mvprintw(20,70,"you don't have this spell");
+                refresh();
+                usleep(2000000);
+            }
+            else{
+                count_increase=1;
+                increase*=2;
+                T_health--;
+                clear();
+                mvprintw(20,70,"the power of the spell was activated");
+                refresh();
+                usleep(3000000);
+            }
+        }
+        else if(q=='7'){
+            if(T_speed==0){
+                clear();
+                mvprintw(20,70,"you don't have this spell");
+                refresh();
+                usleep(2000000);
+            }
+            else{
+                count_speed=1;
+                T_speed--;
+                clear();
+                mvprintw(20,70,"the power of the spell was activated");
+                refresh();
+                usleep(3000000);
+            }
+        }
+        else if(q=='8'){
+            if(T_damage==0){
+                clear();
+                mvprintw(20,70,"you don't have this spell");
+                refresh();
+                usleep(2000000);
+            }
+            else{
+                count_damage=1;
+                increase*=2;
+                T_damage--;
+                clear();
+                mvprintw(20,70,"the power of the spell was activated");
+                refresh();
+                usleep(3000000);
             }
         }
     return;
@@ -1345,9 +1400,9 @@ int startgame(int v,int tabagheh2){
     clear();
     noecho();
     if(v==0||v==2){
-        move.G=1;
-        move.S=1;
-        move.U=1;
+        move1.G=1;
+        move1.S=1;
+        move1.U=1;
         joon.d=5;
         joon.f=10;
         joon.g=15;
@@ -1397,6 +1452,14 @@ int startgame(int v,int tabagheh2){
     bool condition=false;
     start_time=time(NULL);
     while(1){
+        //طلسم سلامتی
+        if(count_increase){
+            count_increase++;
+            if(count_increase==11){
+                count_increase=0;
+                increase=2;
+            }
+        }
         //پایان بازی دز صوزت حان زیر۰  
         if(HEALTH<=0){
             clear();
@@ -1414,7 +1477,7 @@ int startgame(int v,int tabagheh2){
         elapsed_time=difftime(current_time,start_time);
         if(elapsed_time>=20){
             if(HEALTH<=99){
-                HEALTH+=1;
+                HEALTH+=increase;
             }
             start_time=time(NULL);
         }
@@ -3826,7 +3889,7 @@ int startgame(int v,int tabagheh2){
                             }
                             else if(map[adamak.x][y]=='U'){
                                 mvprintw(0,0,"hit the target!");
-                                move.U=0;
+                                move1.U=0;
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
@@ -3850,7 +3913,7 @@ int startgame(int v,int tabagheh2){
                             }
                             else if(map[adamak.x][y]=='C'){
                                 mvprintw(0,0,"hit the target!");
-                                move.G=0;
+                                move1.G=0;
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
@@ -3874,7 +3937,7 @@ int startgame(int v,int tabagheh2){
                             }
                             else if(map[adamak.x][y]=='S'){
                                 mvprintw(0,0,"hit the target!");
-                                move.S=0;
+                                move1.S=0;
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
@@ -3961,7 +4024,7 @@ int startgame(int v,int tabagheh2){
                             }
                             else if(map[adamak.x][y]=='U'){
                                 mvprintw(0,0,"hit the target!");
-                                move.U=0;
+                                move1.U=0;
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
@@ -3986,7 +4049,7 @@ int startgame(int v,int tabagheh2){
                             else if(map[adamak.x][y]=='C'){
 
                                 mvprintw(0,0,"hit the target!");
-                                move.G=0;
+                                move1.G=0;
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
@@ -4011,7 +4074,7 @@ int startgame(int v,int tabagheh2){
                             else if(map[adamak.x][y]=='S'){
 
                                 mvprintw(0,0,"hit the target!");
-                                move.S=0;
+                                move1.S=0;
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
@@ -4097,7 +4160,7 @@ int startgame(int v,int tabagheh2){
                             }
                             else if(map[x][adamak.y]=='U'){
                                 mvprintw(0,0,"hit the target!");
-                                move.U=0;
+                                move1.U=0;
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
@@ -4123,7 +4186,7 @@ int startgame(int v,int tabagheh2){
                             else if(map[x][adamak.y]=='C'){
 
                                 mvprintw(0,0,"hit the target!");
-                                move.G=0;
+                                move1.G=0;
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
@@ -4147,7 +4210,7 @@ int startgame(int v,int tabagheh2){
                             }
                             else if(map[x][adamak.y]=='S'){
                                 mvprintw(0,0,"hit the target!");
-                                move.S=0;
+                                move1.S=0;
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
@@ -4233,7 +4296,7 @@ int startgame(int v,int tabagheh2){
                             }
                             else if(map[x][adamak.y]=='U'){
                                 mvprintw(0,0,"hit the target!");
-                                move.U=0;
+                                move1.U=0;
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
@@ -4258,7 +4321,7 @@ int startgame(int v,int tabagheh2){
                             else if(map[x][adamak.y]=='C'){
 
                                 mvprintw(0,0,"hit the target!");
-                                move.G=0;
+                                move1.G=0;
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
@@ -4284,7 +4347,7 @@ int startgame(int v,int tabagheh2){
                             else if(map[x][adamak.y]=='S'){
 
                                 mvprintw(0,0,"hit the target!");
-                                move.S=0;
+                                move1.S=0;
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
@@ -4371,7 +4434,7 @@ int startgame(int v,int tabagheh2){
                             }
                             else if(map[x][y]=='U'){
                                 mvprintw(0,0,"hit the target!");
-                                move.U=0;
+                                move1.U=0;
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
@@ -4396,7 +4459,7 @@ int startgame(int v,int tabagheh2){
                             else if(map[x][y]=='C'){
 
                                 mvprintw(0,0,"hit the target!");
-                                move.G=0;
+                                move1.G=0;
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
@@ -4421,7 +4484,7 @@ int startgame(int v,int tabagheh2){
                             else if(map[x][y]=='S'){
 
                                 mvprintw(0,0,"hit the target!");
-                                move.S=0;
+                                move1.S=0;
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
@@ -4509,7 +4572,7 @@ int startgame(int v,int tabagheh2){
                             }
                             else if(map[x][y]=='U'){
                                 mvprintw(0,0,"hit the target!");
-                                move.U=0;
+                                move1.U=0;
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
@@ -4534,7 +4597,7 @@ int startgame(int v,int tabagheh2){
                             else if(map[x][y]=='C'){
 
                                 mvprintw(0,0,"hit the target!");
-                                move.G=0;
+                                move1.G=0;
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
@@ -4559,7 +4622,7 @@ int startgame(int v,int tabagheh2){
                             else if(map[x][y]=='S'){
 
                                 mvprintw(0,0,"hit the target!");
-                                move.S=0;
+                                move1.S=0;
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
@@ -4650,7 +4713,7 @@ int startgame(int v,int tabagheh2){
                             }
                             else if(map[x][y]=='U'){
                                 mvprintw(0,0,"hit the target!");
-                                move.U=0;
+                                move1.U=0;
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
@@ -4675,7 +4738,7 @@ int startgame(int v,int tabagheh2){
                             else if(map[x][y]=='C'){
 
                                 mvprintw(0,0,"hit the target!");
-                                move.G=0;
+                                move1.G=0;
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
@@ -4700,7 +4763,7 @@ int startgame(int v,int tabagheh2){
                             else if(map[x][y]=='S'){
 
                                 mvprintw(0,0,"hit the target!");
-                                move.S=0;
+                                move1.S=0;
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
@@ -4789,7 +4852,7 @@ int startgame(int v,int tabagheh2){
                             }
                             else if(map[x][y]=='U'){
                                 mvprintw(0,0,"hit the target!");
-                                move.U=0;
+                                move1.U=0;
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
@@ -4814,7 +4877,7 @@ int startgame(int v,int tabagheh2){
                             else if(map[x][y]=='C'){
 
                                 mvprintw(0,0,"hit the target!");
-                                move.G=0;
+                                move1.G=0;
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
@@ -4838,7 +4901,7 @@ int startgame(int v,int tabagheh2){
                             }
                             else if(map[x][y]=='S'){
                                 mvprintw(0,0,"hit the target!");
-                                move.S=0;
+                                move1.S=0;
                                 refresh();
                                 usleep(2000000);
                                 mvprintw(0,0,"                                  ");
