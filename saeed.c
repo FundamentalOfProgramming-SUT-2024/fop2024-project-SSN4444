@@ -2692,6 +2692,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    joon.d=5;
+                                    map[adamak.x][y]=='.';
                                 }
                                 else{
                                     mvprintw(0,0,"deamon's health  %d ",joon.d);
@@ -2713,6 +2715,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[adamak.x][y]=='.';
+                                    joon.f=10;
                                 }
                                 else{
                                     mvprintw(0,0,"fire breathing monster's health  %d ",joon.f);
@@ -2734,6 +2738,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[adamak.x][y]=='.';
+                                    joon.u=30;
                                 }
                                 else{
                                     mvprintw(0,0,"undeed's health  %d ",joon.u);
@@ -2745,7 +2751,6 @@ int startgame(int v,int tabagheh2){
                                 break;
                             }
                             else if(map[adamak.x][y]=='C'){
-
                                 mvprintw(0,0,"hit the target!");
                                 refresh();
                                 usleep(2000000);
@@ -2756,6 +2761,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[adamak.x][y]=='.';
+                                    joon.g=15;
                                 }
                                 else{
                                     mvprintw(0,0,"giant's health  %d ",joon.g);
@@ -2777,6 +2784,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[adamak.x][y]=='.';
+                                    joon.s=20;
                                 }
                                 else{
                                     mvprintw(0,0,"snake's health  %d ",joon.s);
@@ -2820,6 +2829,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[adamak.x][y]=='.';
+                                    joon.d=5;
                                 }
                                 target=1;
                                 break;
@@ -2835,6 +2846,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[adamak.x][y]=='.';
+                                    joon.f=10;
                                 }
                                 else{
                                     mvprintw(0,0,"fire breathing monster's health  %d ",joon.f);
@@ -2856,6 +2869,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[adamak.x][y]=='.';
+                                    joon.u=30;
                                 }
                                 else{
                                     mvprintw(0,0,"undeed's health  %d ",joon.u);
@@ -2878,6 +2893,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[adamak.x][y]=='.';
+                                    joon.g=15;
                                 }
                                 else{
                                     mvprintw(0,0,"giant's health  %d ",joon.g);
@@ -2900,6 +2917,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[adamak.x][y]=='.';
+                                    joon.s=20;
                                 }
                                 else{
                                     mvprintw(0,0,"snake's health  %d ",joon.s);
@@ -2937,6 +2956,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][adamak.y]=='.';
+                                    joon.d=5;
                                 }
                                 else{
                                     mvprintw(0,0,"deamon's health  %d ",joon.d);
@@ -2958,6 +2979,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][adamak.y]=='.';
+                                    joon.f=10;
                                 }
                                 else{
                                     mvprintw(0,0,"fire breathing monster's health  %d ",joon.f);
@@ -2979,6 +3002,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][adamak.y]=='.';
+                                    joon.u=30;
                                 }
                                 else{
                                     mvprintw(0,0,"undeed's health  %d ",joon.u);
@@ -3001,6 +3026,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][adamak.y]=='.';
+                                    joon.g=30;
                                 }
                                 else{
                                     mvprintw(0,0,"giant's health  %d ",joon.g);
@@ -3023,6 +3050,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][adamak.y]=='.';
+                                    joon.s=20;
                                 }
                                 else{
                                     mvprintw(0,0,"snake's health  %d ",joon.s);
@@ -3060,6 +3089,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][adamak.y]=='.';
+                                    joon.d=5;
                                 }
                                 else{
                                     mvprintw(0,0,"deamon's health  %d ",joon.d);
@@ -3081,6 +3112,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][adamak.y]=='.';
+                                    joon.f=10;
                                 }
                                 else{
                                     mvprintw(0,0,"fire breathing monster's health  %d ",joon.f);
@@ -3102,6 +3135,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][adamak.y]=='.';
+                                    joon.u=30;
                                 }
                                 else{
                                     mvprintw(0,0,"undeed's health  %d ",joon.u);
@@ -3124,6 +3159,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][adamak.y]=='.';
+                                    joon.g=15;
                                 }
                                 else{
                                     mvprintw(0,0,"giant's health  %d ",joon.g);
@@ -3146,6 +3183,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][adamak.y]=='.';
+                                    joon.s=20;
                                 }
                                 else{
                                     mvprintw(0,0,"snake's health  %d ",joon.s);
@@ -3184,6 +3223,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.d=5;
                                 }
                                 else{
                                     mvprintw(0,0,"deamon's health  %d ",joon.d);
@@ -3205,6 +3246,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.f=10;
                                 }
                                 else{
                                     mvprintw(0,0,"fire breathing monster's health  %d ",joon.f);
@@ -3226,6 +3269,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.u=30;
                                 }
                                 else{
                                     mvprintw(0,0,"undeed's health  %d ",joon.u);
@@ -3248,6 +3293,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.g=15;
                                 }
                                 else{
                                     mvprintw(0,0,"giant's health  %d ",joon.g);
@@ -3270,6 +3317,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.s=20;
                                 }
                                 else{
                                     mvprintw(0,0,"snake's health  %d ",joon.s);
@@ -3309,6 +3358,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.d=5;
                                 }
                                 else{
                                     mvprintw(0,0,"deamon's health  %d ",joon.d);
@@ -3330,6 +3381,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.f=10;
                                 }
                                 else{
                                     mvprintw(0,0,"fire breathing monster's health  %d ",joon.f);
@@ -3351,6 +3404,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.u=30;
                                 }
                                 else{
                                     mvprintw(0,0,"undeed's health  %d ",joon.u);
@@ -3373,6 +3428,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.g=15;
                                 }
                                 else{
                                     mvprintw(0,0,"giant's health  %d ",joon.g);
@@ -3395,6 +3452,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.s=20;
                                 }
                                 else{
                                     mvprintw(0,0,"snake's health  %d ",joon.s);
@@ -3435,6 +3494,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.d=5;
                                 }
                                 else{
                                     mvprintw(0,0,"deamon's health  %d ",joon.d);
@@ -3456,6 +3517,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.f=10;
                                 }
                                 else{
                                     mvprintw(0,0,"fire breathing monster's health  %d ",joon.f);
@@ -3477,6 +3540,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.u=30;
                                 }
                                 else{
                                     mvprintw(0,0,"undeed's health  %d ",joon.u);
@@ -3499,6 +3564,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.g=15;
                                 }
                                 else{
                                     mvprintw(0,0,"giant's health  %d ",joon.g);
@@ -3521,6 +3588,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.s=20;
                                 }
                                 else{
                                     mvprintw(0,0,"snake's health  %d ",joon.s);
@@ -3561,6 +3630,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.d=5;
                                 }
                                 else{
                                     mvprintw(0,0,"deamon's health  %d ",joon.d);
@@ -3582,6 +3653,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.f=10;
                                 }
                                 else{
                                     mvprintw(0,0,"fire breathing monster's health  %d ",joon.f);
@@ -3603,6 +3676,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.u=30;
                                 }
                                 else{
                                     mvprintw(0,0,"undeed's health  %d ",joon.u);
@@ -3625,6 +3700,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.g=15;
                                 }
                                 else{
                                     mvprintw(0,0,"giant's health  %d ",joon.g);
@@ -3647,6 +3724,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.s=20;
                                 }
                                 else{
                                     mvprintw(0,0,"snake's health  %d ",joon.s);
@@ -3699,6 +3778,9 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[adamak.x][y]=='.';
+                                    joon.d=5;
+
                                 }
                                 else{
                                     mvprintw(0,0,"deamon's health  %d ",joon.d);
@@ -3720,6 +3802,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[adamak.x][y]=='.';
+                                    joon.f=10;
                                 }
                                 else{
                                     mvprintw(0,0,"fire breathing monster's health  %d ",joon.f);
@@ -3741,6 +3825,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[adamak.x][y]=='.';
+                                    joon.u=30;
                                 }
                                 else{
                                     mvprintw(0,0,"undeed's health  %d ",joon.u);
@@ -3763,6 +3849,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[adamak.x][y]=='.';
+                                    joon.g=15;
                                 }
                                 else{
                                     mvprintw(0,0,"giant's health  %d ",joon.g);
@@ -3784,6 +3872,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[adamak.x][y]=='.';
+                                    joon.s=20;
                                 }
                                 else{
                                     mvprintw(0,0,"snake's health  %d ",joon.s);
@@ -3821,6 +3911,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[adamak.x][y]=='.';
+                                    joon.d=5;
                                 }
                                 else{
                                     mvprintw(0,0,"deamon's health  %d ",joon.d);
@@ -3842,6 +3934,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[adamak.x][y]=='.';
+                                    joon.f=10;
                                 }
                                 else{
                                     mvprintw(0,0,"fire breathing monster's health  %d ",joon.f);
@@ -3864,6 +3958,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[adamak.x][y]=='.';
+                                    joon.u=30;
                                 }
                                 else{
                                     mvprintw(0,0,"undeed's health  %d ",joon.u);
@@ -3886,6 +3982,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[adamak.x][y]=='.';
+                                    joon.g=15;
                                 }
                                 else{
                                     mvprintw(0,0,"giant's health  %d ",joon.g);
@@ -3908,6 +4006,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[adamak.x][y]=='.';
+                                    joon.s=20;
                                 }
                                 else{
                                     mvprintw(0,0,"snake's health  %d ",joon.s);
@@ -3945,6 +4045,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][adamak.y]=='.';
+                                    joon.d=5;
                                 }
                                 else{
                                     mvprintw(0,0,"deamon's health  %d ",joon.d);
@@ -3966,6 +4068,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][adamak.y]=='.';
+                                    joon.f=10;
                                 }
                                 else{
                                     mvprintw(0,0,"fire breathing monster's health  %d ",joon.f);
@@ -3987,6 +4091,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][adamak.y]=='.';
+                                    joon.u=30;
                                 }
                                 else{
                                     mvprintw(0,0,"undeed's health  %d ",joon.u);
@@ -4010,6 +4116,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][adamak.y]=='.';
+                                    joon.g=15;
                                 }
                                 else{
                                     mvprintw(0,0,"giant's health  %d ",joon.g);
@@ -4032,6 +4140,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][adamak.y]=='.';
+                                    joon.s=20;
                                 }
                                 else{
                                     mvprintw(0,0,"snake's health  %d ",joon.s);
@@ -4069,6 +4179,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][adamak.y]=='.';
+                                    joon.d=5;
                                 }
                                 else{
                                     mvprintw(0,0,"deamon's health  %d ",joon.d);
@@ -4090,6 +4202,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][adamak.y]=='.';
+                                    joon.f=10;
                                 }
                                 else{
                                     mvprintw(0,0,"fire breathing monster's health  %d ",joon.f);
@@ -4111,6 +4225,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][adamak.y]=='.';
+                                    joon.u=30;
                                 }
                                 else{
                                     mvprintw(0,0,"undeed's health  %d ",joon.u);
@@ -4134,6 +4250,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][adamak.y]=='.';
+                                    joon.g=15;
                                 }
                                 else{
                                     mvprintw(0,0,"giant's health  %d ",joon.g);
@@ -4156,6 +4274,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][adamak.y]=='.';
+                                    joon.s=20;
                                 }
                                 else{
                                     mvprintw(0,0,"snake's health  %d ",joon.s);
@@ -4194,6 +4314,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.d=5;
                                 }
                                 else{
                                     mvprintw(0,0,"deamon's health  %d ",joon.d);
@@ -4215,6 +4337,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.f=10;
                                 }
                                 else{
                                     mvprintw(0,0,"fire breathing monster's health  %d ",joon.f);
@@ -4236,6 +4360,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.u=30;
                                 }
                                 else{
                                     mvprintw(0,0,"undeed's health  %d ",joon.u);
@@ -4258,6 +4384,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.g=15;
                                 }
                                 else{
                                     mvprintw(0,0,"giant's health  %d ",joon.g);
@@ -4280,6 +4408,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.s=20;
                                 }
                                 else{
                                     mvprintw(0,0,"snake's health  %d ",joon.s);
@@ -4319,6 +4449,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.d=5;
                                 }
                                 else{
                                     mvprintw(0,0,"deamon's health  %d ",joon.d);
@@ -4340,6 +4472,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.f=10;
                                 }
                                 else{
                                     mvprintw(0,0,"fire breathing monster's health  %d ",joon.f);
@@ -4361,6 +4495,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.u=30;
                                 }
                                 else{
                                     mvprintw(0,0,"undeed's health  %d ",joon.u);
@@ -4383,6 +4519,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.g=15;
                                 }
                                 else{
                                     mvprintw(0,0,"giant's health  %d ",joon.g);
@@ -4406,6 +4544,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.s=20;
                                 }
                                 else{
                                     mvprintw(0,0,"snake's health  %d ",joon.s);
@@ -4447,6 +4587,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.d=5;
                                 }
                                 else{
                                     mvprintw(0,0,"deamon's health  %d ",joon.d);
@@ -4468,6 +4610,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.f=10;
                                 }
                                 else{
                                     mvprintw(0,0,"fire breathing monster's health  %d ",joon.f);
@@ -4489,6 +4633,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.u=30;
                                 }
                                 else{
                                     mvprintw(0,0,"undeed's health  %d ",joon.u);
@@ -4511,6 +4657,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.g=15;
                                 }
                                 else{
                                     mvprintw(0,0,"giant's health  %d ",joon.g);
@@ -4533,6 +4681,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.s=20;
                                 }
                                 else{
                                     mvprintw(0,0,"snake's health  %d ",joon.s);
@@ -4573,6 +4723,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.d=5;
                                 }
                                 else{
                                     mvprintw(0,0,"deamon's health  %d ",joon.d);
@@ -4594,6 +4746,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.f=10;
                                 }
                                 else{
                                     mvprintw(0,0,"fire breathing monster's health  %d ",joon.f);
@@ -4615,6 +4769,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.u=30;
                                 }
                                 else{
                                     mvprintw(0,0,"undeed's health  %d ",joon.u);
@@ -4637,6 +4793,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.g=15;
                                 }
                                 else{
                                     mvprintw(0,0,"giant's health  %d ",joon.g);
@@ -4658,6 +4816,8 @@ int startgame(int v,int tabagheh2){
                                     refresh();
                                     usleep(2000000);
                                     mvprintw(0,0,"                                  ");
+                                    map[x][y]=='.';
+                                    joon.s=20;
                                 }
                                 else{
                                     mvprintw(0,0,"snake's health  %d ",joon.s);
