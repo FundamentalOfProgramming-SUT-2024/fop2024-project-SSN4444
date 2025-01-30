@@ -8,10 +8,14 @@
 #include<time.h>
 #include<stdbool.h>
 #include<locale.h>
+#include<SDL2/SDL_mixer.h>
+#include<SDL2/SDL.h>
+#include <unistd.h>
+#include <signal.h>
 char map[49][183];
 int mark_color[49][183];
 int GOLD=0;
-int HEALTH=80;
+int HEALTH=100;
 int food=0;
 int shamshir=0;
 int khanjar=0;
@@ -29,8 +33,8 @@ int count_increase=0;
 //سرعت 
 int count_speed=1;
 int count_speed2=0;
-int count_damage=0;
 //damage
+int count_damage=0;
 int damage_dagger=12;
 int damage_majic_wand=15;
 int damage_mace_arrow=5;
@@ -95,6 +99,28 @@ typedef struct {
     int amount;
 } User;
 User user[100];
+pid_t music_pid=-1;
+void stop_music(){
+    if(music_pid>0){
+        kill(music_pid,SIGTERM);
+        music_pid=-1;
+    }
+}
+void play_music(const char *filename){
+    stop_music();
+    pid_t pid=fork();
+    if (pid==0){ 
+        freopen("/dev/null", "w", stdout);
+        freopen("/dev/null", "w", stderr);
+        execlp("mpg123", "mpg123", "-q", "--loop", "-1", filename, NULL);
+        exit(1);
+    } else {
+        music_pid = pid;
+    }
+    clear();
+    mvprintw(5, 5, "پخش موسیقی جدید: %s", filename);
+    refresh();
+}
 int randomInRange(int min,int max){
     return min+rand()%(max-min+1);
 }
@@ -9510,6 +9536,7 @@ void Settings(){
     clear();
     mvprintw(18,60,"choose the difficulty level of the game (1)");
     mvprintw(20,60,"choose the character of the game (2)");
+    mvprintw(22,60,"choose the music of the game (3)");
     refresh();
     char c=getch();
     if(c=='1'){
@@ -9570,10 +9597,40 @@ void Settings(){
             Settings();
         }
     }
+    else if(c=='3'){
+        clear();
+        mvprintw(0,0,"choose your music");
+        refresh();
+        mvprintw(18,68,"%s","the last of us");
+        mvprintw(18,80,"(1)");
+        mvprintw(20,68,"%s","021kid");
+        mvprintw(20,80,"(2)");
+        mvprintw(22,68,"%s","secret garden");
+        mvprintw(22,80,"(3)");
+        refresh();
+        char c4=getch();
+        if(c4=='1'){
+            play_music("music.mp3");
+            refresh();
+            clear();
+        }
+        else if(c4=='2'){
+            play_music("music2.mp3");
+            refresh();
+            clear();
+        }
+        else if(c4=='3'){
+            play_music("music3.mp3");
+            refresh();
+            clear();
+        }
+        else{
+            Settings();
+        }
+    }
     else{
         return;
     }
-    Settings();
 }
 void display_menu(WINDOW *menu_win,int highlight,char *options[],int n_options){
     int x,y,i;
