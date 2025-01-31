@@ -8,10 +8,8 @@
 #include<time.h>
 #include<stdbool.h>
 #include<locale.h>
-#include<SDL2/SDL_mixer.h>
-#include<SDL2/SDL.h>
-#include <unistd.h>
-#include <signal.h>
+#include<unistd.h>
+#include<signal.h>
 char map[49][183];
 int mark_color[49][183];
 int GOLD=0;
@@ -9367,7 +9365,7 @@ int Login(){
             usleep(3000000);
             clear();
             mvprintw(20,60,"to play the NEW game press(1)");
-            mvprintw(21,60,"to play the saved game press(2)");
+            mvprintw(21,60,"(Resume game or load game)to play the saved game press(2)");
             refresh();
             char c6=getch();
             if(c6=='1'){
