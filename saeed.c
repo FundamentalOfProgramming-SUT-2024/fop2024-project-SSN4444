@@ -1442,6 +1442,7 @@ int startgame(int v,int tabagheh2){
         joon.g=15;
         joon.s=20;
         joon.u=30;
+        your_weapon=1000;
         generatemap(tabagheh,0);
         adamak.x=27;
         adamak.y=1;
@@ -9704,8 +9705,9 @@ int MENU(){
             MENU();
             break;
         case 4:
-            startgame(0,tabagheh);
+            startgame(0,1);
             clear();
+            echo();
             init_pair(5,COLOR_GREEN,COLOR_BLACK);
             bkgd(COLOR_PAIR(5));
             MENU();
